@@ -1,4 +1,4 @@
-	A little write up on how to work in here
+A little write up on how to work in here
 ======
 
 Ok, so how do we work here?
@@ -38,6 +38,3 @@ Ok, so how do we work here?
 
 ### 6. Close issue. ###
   * Add link to branch that resolves it.
-         
-         
-         
