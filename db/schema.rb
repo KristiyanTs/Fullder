@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520182331) do
+ActiveRecord::Schema.define(version: 20160520185053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 20160520182331) do
   add_index "positions", ["restaurant_id"], name: "index_positions_on_restaurant_id", using: :btree
   add_index "positions", ["user_id"], name: "index_positions_on_user_id", using: :btree
 
+  create_table "reservations", force: :cascade do |t|
+    t.datetime "from"
+    t.datetime "to"
+    t.integer  "table_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reservations", ["table_id"], name: "index_reservations_on_table_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
+
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -87,6 +99,18 @@ ActiveRecord::Schema.define(version: 20160520182331) do
   end
 
   add_index "supplementals", ["meal_id"], name: "index_supplementals_on_meal_id", using: :btree
+
+  create_table "tables", force: :cascade do |t|
+    t.integer  "number"
+    t.integer  "capacity"
+    t.text     "description"
+    t.boolean  "available"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "tables", ["restaurant_id"], name: "index_tables_on_restaurant_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -126,6 +150,9 @@ ActiveRecord::Schema.define(version: 20160520182331) do
   add_foreign_key "menus", "restaurants"
   add_foreign_key "positions", "restaurants"
   add_foreign_key "positions", "users"
+  add_foreign_key "reservations", "tables"
+  add_foreign_key "reservations", "users"
   add_foreign_key "supplementals", "meals"
+  add_foreign_key "tables", "restaurants"
   add_foreign_key "working_hours", "restaurants"
 end
