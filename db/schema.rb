@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520141434) do
+ActiveRecord::Schema.define(version: 20160520172554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,9 @@ ActiveRecord::Schema.define(version: 20160520141434) do
     t.string   "name"
     t.string   "address"
     t.text     "description"
-    t.string   "woring_time"
-    t.string   "tlephone_number"
-    t.decimal  "rating"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,9 +38,25 @@ ActiveRecord::Schema.define(version: 20160520141434) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "address"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "working_hours", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.datetime "starting_hour"
+    t.datetime "ending_hour"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "working_hours", ["restaurant_id"], name: "index_working_hours_on_restaurant_id", using: :btree
+
+  add_foreign_key "working_hours", "restaurants"
 end

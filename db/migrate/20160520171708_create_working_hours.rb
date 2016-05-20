@@ -1,7 +1,7 @@
 class CreateWorkingHours < ActiveRecord::Migration
   def change
     create_table :working_hours do |t|
-      t.references :restaurants, index: true, foreign_key: true
+      t.references :restaurant, index: true, foreign_key: true
 
       t.datetime :starting_hour
       t.datetime :ending_hour
