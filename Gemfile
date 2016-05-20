@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.1.4'
+ruby '2.3.0'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
@@ -48,7 +48,6 @@ end
 
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'devise_invitable'
 gem 'figaro'
 gem 'pg'
 gem 'puma'

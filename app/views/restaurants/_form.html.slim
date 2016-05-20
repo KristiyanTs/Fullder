@@ -1,0 +1,13 @@
+= simple_form_for(@restaurant) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :address
+    = f.input :description
+    = f.input :woring_time
+    = f.input :tlephone_number
+    = f.input :rating
+
+  .form-actions
+    = f.button :submit

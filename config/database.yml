@@ -19,7 +19,7 @@ development:
   database: FastOrder_development
   pool:     5
   username: FastOrder
-  password:
+  password: 
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -47,7 +47,7 @@ test:
   database: FastOrder_test
   pool:     5
   username: FastOrder
-  password:
+  password: 
   template: template0
 
 production:
@@ -56,6 +56,8 @@ production:
   encoding: unicode
   database: FastOrder_production
   pool:     5
-  username: FastOrder
-  password:
+  username: <%= ENV['FASTORDER_DATABASE_USER'] %>
+  password: <%= ENV['FASTORDER_DATABASE_PASSWORD'] %>
   template: template0
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: ENV['RAILS_MAX_THREADS']
