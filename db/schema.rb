@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520185053) do
+ActiveRecord::Schema.define(version: 20160520190941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.decimal  "bill",          precision: 10, scale: 2
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "carts", ["restaurant_id"], name: "index_carts_on_restaurant_id", using: :btree
+  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.integer  "menu_id"
@@ -53,6 +64,18 @@ ActiveRecord::Schema.define(version: 20160520185053) do
   end
 
   add_index "menus", ["restaurant_id"], name: "index_menus_on_restaurant_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "meal_id"
+    t.integer  "quantity"
+    t.string   "specifications"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree
+  add_index "orders", ["meal_id"], name: "index_orders_on_meal_id", using: :btree
 
   create_table "positions", force: :cascade do |t|
     t.integer  "user_id"
@@ -145,9 +168,13 @@ ActiveRecord::Schema.define(version: 20160520185053) do
 
   add_index "working_hours", ["restaurant_id"], name: "index_working_hours_on_restaurant_id", using: :btree
 
+  add_foreign_key "carts", "restaurants"
+  add_foreign_key "carts", "users"
   add_foreign_key "categories", "menus"
   add_foreign_key "meal_sizes", "meals"
   add_foreign_key "menus", "restaurants"
+  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "meals"
   add_foreign_key "positions", "restaurants"
   add_foreign_key "positions", "users"
   add_foreign_key "reservations", "tables"
