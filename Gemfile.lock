@@ -51,6 +51,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-select-rails (1.6.3)
     builder (3.2.2)
     byebug (9.0.4)
     capybara (2.7.1)
@@ -62,6 +63,7 @@ GEM
       xpath (~> 2.0)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
+    cocoon (1.2.9)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -324,8 +326,10 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootstrap-select-rails
   byebug
   capybara
+  cocoon
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise

@@ -1,0 +1,33 @@
+/*
+ *
+ *= require bootstrap-select
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+.navbar-inverse{
+	border-color:rgba(0,0,0,0);
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: rgba(0,0,0,0);
+}
+
+input{
+	font-size:16px !important;  
+	/* When the font-size is 16px phones do not zoom when filling in an input */	
+}
+
+#header_navbar{
+	background-color: #CF000F;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: rgba(250,250,250,0.9);
+}
