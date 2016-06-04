@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: menus
+#
+#  id            :integer          not null, primary key
+#  restaurant_id :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Menu, type: :model do

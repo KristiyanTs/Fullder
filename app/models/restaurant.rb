@@ -1,9 +1,22 @@
+# == Schema Information
+#
+# Table name: restaurants
+#
+#  id           :integer          not null, primary key
+#  name         :string
+#  address      :string
+#  description  :text
+#  phone_number :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Restaurant < ActiveRecord::Base
   has_one :menu
-  has_many :categories, through: :menu
-  has_many :meals, through: :categories
+  has_many :categories, through: :menu, :dependent => :destroy
+  has_many :meals, through: :categories, :dependent => :destroy
 
-  has_many :working_hours
-  has_many :positions
-  has_many :roles, through: :positions
+  has_many :working_hours, :dependent => :destroy
+  has_many :positions, :dependent => :destroy
+  has_many :roles, through: :positions, :dependent => :destroy
 end

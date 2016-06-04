@@ -63,6 +63,7 @@ gem 'bootstrap-select-rails'
 gem 'therubyracer', :platform=>:ruby
 
 group :development do
+  gem 'annotate' #to annotate(the schema of all models) just write "annotate" in the console
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'guard-bundler'
