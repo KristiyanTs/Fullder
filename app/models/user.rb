@@ -23,13 +23,13 @@
 #
 
 class User < ActiveRecord::Base
-  has_one :cart, :dependent => :destroy
+  has_one :cart, dependent: :destroy
 
-  has_many :positions, :dependent => :destroy
+  has_many :positions, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :email, :presence => true, 
-  					:uniqueness => { :case_sensitive => false }
+  validates :email, presence: true,
+                    uniqueness: { case_sensitive: false }
 end

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.3.0'
 
@@ -16,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Using images
+gem 'paperclip'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -23,7 +24,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -47,7 +47,6 @@ group :development do
   gem 'spring'
 end
 
-
 # Use devise for user auth
 gem 'devise'
 gem 'figaro'
@@ -60,12 +59,12 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'cocoon'
 gem 'bootstrap-select-rails'
-gem 'therubyracer', :platform=>:ruby
+gem 'therubyracer', platform: :ruby
 
 group :development do
-  gem 'annotate' #to annotate(the schema of all models) just write "annotate" in the console
+  gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
+  gem 'binding_of_caller', platforms: [:mri_21]
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
@@ -74,9 +73,9 @@ group :development do
   gem 'rails_apps_pages'
   gem 'rails_apps_testing'
   gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
   gem 'spring-commands-rspec'
 end
 
@@ -99,4 +98,3 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
-

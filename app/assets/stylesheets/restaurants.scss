@@ -1,0 +1,34 @@
+// Place all the styles related to the restaurants controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#restaurant-avatar{
+	background-color: black;
+	height:150px;
+	margin-top:-15px;
+	margin-bottom:5px;
+	color:white;
+}
+
+#working-hours-button{
+	background-color: red;
+	height:150px;
+	margin-bottom:5px;
+}
+
+#reservations-button{
+	background-color: blue;
+	height:150px;
+	color: white;
+}
+
+#reviews-button{
+	background-color: yellow;
+	height:150px;
+}
+
+#menu-button{
+	background-color: grey;
+	height:150px;
+}

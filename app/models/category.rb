@@ -12,6 +12,6 @@
 #
 
 class Category < ActiveRecord::Base
-  has_many :meals, :dependent => :destroy
-  has_many :working_hours, :dependent => :destroy
+  has_many :meals, dependent: :destroy
+  has_many :working_hours, dependent: :destroy
 end
