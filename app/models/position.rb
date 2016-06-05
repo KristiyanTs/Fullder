@@ -16,7 +16,7 @@
 #
 
 class Position < ActiveRecord::Base
-  has_many :roles, :dependent => :destroy
+  has_many :roles, dependent: :destroy
   belongs_to :user
   belongs_to :restaurant
 end
