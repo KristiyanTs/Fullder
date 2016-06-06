@@ -9,6 +9,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  working_hour_id   :integer
+#  name              :string
 #
 
 FactoryGirl.define do

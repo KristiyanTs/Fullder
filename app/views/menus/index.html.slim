@@ -1,0 +1,15 @@
+.container
+	table.table.table-striped
+		tbody
+			-@menus.each do |menu|
+				tr
+					td = link_to menu.name, restaurant_menu_path(@restaurant, menu)
+					td 
+						-if !is_active(menu)
+							= link_to "Activate", restaurant_menu_activate_path(@restaurant,menu), method: "patch", class: "btn btn-default"
+						-else
+							= output_menu_status(menu.active)
+					td = link_to "", restaurant_menu_path(@restaurant, menu), method: :delete, 
+					data: { confirm: delete_menu_text(menu.name) }, class: "glyphicon glyphicon-remove"
+					td = link_to '', edit_restaurant_menu_path(@restaurant, menu), class: "glyphicon glyphicon-pencil"
+
