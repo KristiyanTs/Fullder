@@ -5,3 +5,51 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+puts "Generating seeds..."
+
+restaurant_seed = [
+  {
+    name: "KFC",
+    address: "Sofia",
+    description: "Fast food.",
+    phone_number: "88888888"
+  }
+]
+
+menu_seed = [
+  {
+    name: 'Spring menu.',
+    active: true
+  },
+  {
+    # TODO: add default active false
+    name: 'Winter menu.',
+    active: false
+  }
+]
+
+category_seed = [
+  {
+    name: "Dessert",
+    available_all_day: false,
+    age_restriction: false
+  },
+  {
+    name: "Salad",
+    available_all_day: true,
+    age_restriction: false
+  },
+  {
+    name: 'Wine',
+    available_all_day: true,
+    age_restriction: true
+  }
+]
+restaurant_seed.each do |res|
+  Restaurant.find_or_create_by!(res)
+end
+
+
+p Restaurant.first.menus
+puts 'Done ...'

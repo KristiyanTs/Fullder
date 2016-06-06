@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, flash: { notice: 'Category was successfully created.' } }
+        format.html { redirect_to restaurant_category_path(@restaurant, @category), flash: { notice: 'Category was successfully created.' } }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }

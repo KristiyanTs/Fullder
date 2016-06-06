@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-	before_action :set_restaurant, only: [:index, :show, :new, :create, :edit, :update, :destroy, :activate]
+	before_action :set_restaurant
 	before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -26,7 +26,7 @@ class MenusController < ApplicationController
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
+        format.json { render json: @menu.errors.full_messages.join(','), status: :unprocessable_entity }
       end
     end
   end

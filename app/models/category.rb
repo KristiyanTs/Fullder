@@ -13,6 +13,7 @@
 #
 
 class Category < ActiveRecord::Base
+  belongs_to :menu
   has_many :meals, dependent: :destroy
   has_many :working_hours, dependent: :destroy
 end

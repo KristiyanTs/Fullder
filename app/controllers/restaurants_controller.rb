@@ -1,8 +1,12 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
+  def index
+  end
+
   def show
     @active_menu = @restaurant.menus.find_by(active: true)
+    debugger
   end
 
   def new
