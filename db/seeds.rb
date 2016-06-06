@@ -8,6 +8,19 @@
 
 puts "Generating seeds..."
 
+User.create(first_name: 'Kristiyan', last_name: 'Tsvetanov',
+            email: 'test1@example.com', password: 'password',
+            password_confirmation: 'password', admin: true)
+User.create(first_name: 'Valentina', last_name: 'Latinska',
+            email: 'test2@example.com', password: 'password',
+            password_confirmation: 'password')
+User.create(first_name: 'Plamen', last_name: 'Dimitrov',
+            email: 'test3@example.com', password: 'password',
+            password_confirmation: 'password')
+User.create(first_name: 'Pesho', last_name: 'Petrov',
+            email: 'pesho@abv.bg', password: '123123123',
+            password_confirmation: '123123123')
+
 restaurant_seed = [
   {
     name: "KFC",
@@ -50,8 +63,10 @@ category_seed = [
 restaurant_seed.each do |restaurant_params|
   res = Restaurant.find_or_create_by(restaurant_params)
   menu_seed.each do |menu_params|
-    res.menus.find_or_create_by(menu_params)
-    res.save
+    menu = res.menus.find_or_create_by(menu_params)
+    category_seed.each do |category_params|
+      menu.categories.find_or_create_by(category_params)
+    end
   end
 end
 

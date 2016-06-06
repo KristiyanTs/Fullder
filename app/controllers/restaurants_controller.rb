@@ -6,7 +6,6 @@ class RestaurantsController < ApplicationController
 
   def show
     @active_menu = @restaurant.menus.find_by(active: true)
-    debugger
   end
 
   def new
