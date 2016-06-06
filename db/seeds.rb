@@ -46,10 +46,13 @@ category_seed = [
     age_restriction: true
   }
 ]
-restaurant_seed.each do |res|
-  Restaurant.find_or_create_by!(res)
+
+restaurant_seed.each do |restaurant_params|
+  res = Restaurant.find_or_create_by(restaurant_params)
+  menu_seed.each do |menu_params|
+    res.menus.find_or_create_by(menu_params)
+    res.save
+  end
 end
 
-
-p Restaurant.first.menus
 puts 'Done ...'
