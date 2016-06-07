@@ -60,12 +60,30 @@ category_seed = [
   }
 ]
 
+meal_seed = [
+  {
+    name: "Shopska salata",
+    meal_avatar: File.new(Rails.root.join("app", "assets", "images", "shopska_salad.jpg"))
+  },
+  {
+    name: "Duner",
+    meal_avatar: File.new(Rails.root.join("app", "assets", "images", "duner.jpg"))
+  },
+  {
+    name: "Shisha",
+    meal_avatar: File.new(Rails.root.join("app", "assets", "images", "shisha.jpg"))
+  }
+]
+
 restaurant_seed.each do |restaurant_params|
   res = Restaurant.find_or_create_by(restaurant_params)
   menu_seed.each do |menu_params|
     menu = res.menus.find_or_create_by(menu_params)
     category_seed.each do |category_params|
-      menu.categories.find_or_create_by(category_params)
+      category = menu.categories.find_or_create_by(category_params)
+      meal_seed.each do |meal_params|
+        meal = category.meals.find_or_create_by(meal_params)
+      end
     end
   end
 end

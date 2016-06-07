@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @meals = @category.meals
   end
 
   def new

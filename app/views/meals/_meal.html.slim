@@ -1,0 +1,5 @@
+ul.list-group
+	- @meals.each do |meal|
+		= link_to restaurant_meal_path(@restaurant, meal, category_id: @category.id, menu_id: @menu.id)
+			li.list-group-item.list-height
+				= meal.name

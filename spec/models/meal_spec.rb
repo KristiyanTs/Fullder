@@ -2,11 +2,15 @@
 #
 # Table name: meals
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  category_id :integer
+#  id                       :integer          not null, primary key
+#  name                     :string
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  category_id              :integer
+#  meal_avatar_file_name    :string
+#  meal_avatar_content_type :string
+#  meal_avatar_file_size    :integer
+#  meal_avatar_updated_at   :datetime
 #
 
 require 'rails_helper'
