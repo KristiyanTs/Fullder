@@ -63,15 +63,15 @@ category_seed = [
 meal_seed = [
   {
     name: "Shopska salata",
-    meal_avatar: File.new(Rails.root.join("app", "assets", "images", "shopska_salad.jpg"))
+    meal_avatar: File.open(File.join(Rails.root, "app/assets/images/shopska_salad.jpg"))
   },
   {
     name: "Duner",
-    meal_avatar: File.new(Rails.root.join("app", "assets", "images", "duner.jpg"))
+    meal_avatar: File.open(File.join(Rails.root, "app/assets/images/duner.jpg"))
   },
   {
     name: "Shisha",
-    meal_avatar: File.new(Rails.root.join("app", "assets", "images", "shisha.jpg"))
+    meal_avatar: File.open(File.join(Rails.root, "app/assets/images/shisha.jpg"))
   }
 ]
 
@@ -82,7 +82,10 @@ restaurant_seed.each do |restaurant_params|
     category_seed.each do |category_params|
       category = menu.categories.find_or_create_by(category_params)
       meal_seed.each do |meal_params|
+        avatar = meal_params.delete(:meal_avatar)
         meal = category.meals.find_or_create_by(meal_params)
+        meal.meal_avatar = avatar
+        meal.save
       end
     end
   end
