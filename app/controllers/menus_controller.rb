@@ -7,6 +7,7 @@ class MenusController < ApplicationController
   end
 
   def show
+    @categories = @menu.categories
   end
 
   def new

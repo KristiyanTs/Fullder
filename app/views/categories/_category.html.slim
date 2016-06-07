@@ -1,0 +1,9 @@
+ul.list-group
+	- @categories.each do |category|
+		= link_to restaurant_category_path(@restaurant, category, menu_id: @menu.id)
+			li.list-group-item.list-height
+				span.badge
+					= category.meals.count
+				= category.name
+	
+
