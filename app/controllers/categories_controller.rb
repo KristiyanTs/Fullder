@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-	before_action :set_menu, only: [:show, :edit, :update, :destroy]
-	before_action :set_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
     @categories = @menu.categories
@@ -59,11 +58,11 @@ class CategoriesController < ApplicationController
   end
 
   def set_menu
-  	@menu = @restaurant.menus.find(params[:menu_id])
+    @menu = @restaurant.menus.find(params[:menu_id])
   end
 
   def set_category
-  	@category = @menu.categories.find(params[:id])
+    @category = @menu.categories.find(params[:id])
   end
 
   def category_params

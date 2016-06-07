@@ -15,7 +15,7 @@ class Menu < ActiveRecord::Base
   has_many :categories, dependent: :destroy
 
   validates :name, uniqueness: { scope: :restaurant_id,
-  message: "You should not have two menus with the same name" }
+                                 message: 'You should not have two menus with the same name' }
 
   accepts_nested_attributes_for :categories
 end
