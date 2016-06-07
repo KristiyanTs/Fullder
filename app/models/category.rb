@@ -9,9 +9,11 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  working_hour_id   :integer
+#  name              :string
 #
 
 class Category < ActiveRecord::Base
+  belongs_to :menu
   has_many :meals, dependent: :destroy
   has_many :working_hours, dependent: :destroy
 end

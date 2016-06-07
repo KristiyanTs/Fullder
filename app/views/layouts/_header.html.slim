@@ -12,6 +12,8 @@ nav#header_navbar.navbar.navbar-inverse.col-12
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li
+            = link_to('Profile', edit_user_registration_path, class: "glyphicon glyphicon-user")
+          li
             = link_to(' Logout', destroy_user_session_path, :method => :delete, class: "glyphicon glyphicon-log-out white_text")
         - else
           li
