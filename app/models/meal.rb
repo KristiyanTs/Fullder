@@ -19,6 +19,6 @@ class Meal < ActiveRecord::Base
   has_many :supplementals, dependent: :destroy
   has_many :orders
 
-  has_attached_file :meal_avatar, styles: { large: '300x300' }, default_url: '/images/:style/missing.png'
+  has_attached_file :meal_avatar, styles: { small: '80x80#', large: '250x250#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :meal_avatar, content_type: /\Aimage\/.*\Z/
 end

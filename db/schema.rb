@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607123713) do
+ActiveRecord::Schema.define(version: 20160608164404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,14 @@ ActiveRecord::Schema.define(version: 20160607123713) do
     t.integer  "menu_id"
     t.boolean  "age_restriction"
     t.boolean  "available_all_day"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "working_hour_id"
     t.string   "name"
+    t.string   "category_avatar_file_name"
+    t.string   "category_avatar_content_type"
+    t.integer  "category_avatar_file_size"
+    t.datetime "category_avatar_updated_at"
   end
 
   add_index "categories", ["menu_id"], name: "index_categories_on_menu_id", using: :btree
