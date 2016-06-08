@@ -1,18 +1,18 @@
 class CartsController < ApplicationController
 
-
 	def show
 
-  	end
+	end
 
-  	def create
-  		@user = current_user
-  		@user.create_cart(params[:cart])
-  	end
+	def create
+		@user = current_user
+		@user.create_cart(params[:cart])
+	end
 
-  	private
+	private
 
-  	def cart_params
+	def cart_params
     params.require(:cart).permit(:restaurant_id, :table_number, :user_id)
-  	end
+	end
+
 end
