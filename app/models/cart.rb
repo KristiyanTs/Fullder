@@ -11,5 +11,6 @@
 #
 
 class Cart < ActiveRecord::Base
+  belong_to :user
   has_many :orders, dependent: :destroy
 end
