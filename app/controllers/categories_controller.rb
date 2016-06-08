@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @meals = @category.meals
   end
 
   def new
@@ -66,6 +67,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name, :age_restriction, :available_all_day)
+    params.require(:category).permit(:name, :age_restriction, :available_all_day, :category_avatar)
   end
 end
