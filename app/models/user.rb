@@ -24,7 +24,6 @@
 
 class User < ActiveRecord::Base
   has_one :cart, dependent: :destroy
-
   has_many :positions, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
