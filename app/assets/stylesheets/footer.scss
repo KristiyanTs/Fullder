@@ -1,0 +1,25 @@
+#footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  list-style: none;
+  padding: 0px;
+  margin-bottom: 0px;
+  height:30px;
+}
+
+#footer li{
+	width:33.33%;
+	float: left;
+	text-align: center;
+}
+
+#footer li a{
+	display: inline-block;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:8px;
+}
