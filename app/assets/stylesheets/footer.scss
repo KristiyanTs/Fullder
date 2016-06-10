@@ -4,26 +4,25 @@
   padding:0px;
   margin-bottom:0px;
   list-style: none;
-}
 
-#footer li{
-	width:33.33%;
-	float: left;
-	text-align: center;
+  li{
+  	width:33.33%;
+  	float: left;
+  	text-align: center;
 
-  a{
-    display: inline-block;
-    padding-left:20px;
-    padding-right:20px;
-    padding-top:8px;
-    color: white;
+    a{
+      display: inline-block;
+      padding-left:20px;
+      padding-right:20px;
+      padding-top:8px;
+      color: white;
+    }
+
+    a:hover{
+      text-decoration: none;
+      background-color: transparent;
+    }
+
   }
 
-  a:hover{
-    text-decoration: none;
-    background-color: transparent;
-  }
-
 }
-
-
