@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :meals
   end
+
+  resources :cart
 end
