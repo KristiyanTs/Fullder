@@ -23,6 +23,7 @@ class Restaurant < ActiveRecord::Base
   has_many :working_hours, dependent: :destroy
   has_many :positions, dependent: :destroy
   has_many :roles, through: :positions, dependent: :destroy
+  has_many :tables
 
   accepts_nested_attributes_for :menus
   # this will be used as a banner for a restaurant's show page. However, it is hard to scale
