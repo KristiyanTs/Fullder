@@ -4,7 +4,16 @@ class CartsController < ApplicationController
 
   def create
     @user = current_user
-    @user.create_cart(params[:cart])
+    @user.create_cart(cart_params)
+  end
+
+  def new
+    @cart = Cart.net
+  end
+
+  def destroy
+    @user = current_user
+    @user.cart.destroy
   end
 
   private

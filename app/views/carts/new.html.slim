@@ -1,0 +1,5 @@
+.container
+	h2 | Pick a table
+	= simple_form_for @cart do |f|
+		= f.input :table_number
+		= f.button :submit

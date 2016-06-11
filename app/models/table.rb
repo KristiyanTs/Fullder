@@ -17,7 +17,7 @@ class Table < ActiveRecord::Base
   has_many :reservations, dependent: :destroy
 
   validates :number, uniqueness: { scope: :restaurant_id,
-                                 message: 'You should not have two tables with the same number.' }
+                                   message: 'You should not have two tables with the same number.' }
 
 
   def available?
