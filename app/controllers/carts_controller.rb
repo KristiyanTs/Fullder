@@ -1,18 +1,25 @@
 class CartsController < ApplicationController
+  def show
+  end
 
+  def new
+    @cart = Cart.net
+  end
 
-	def show
+  def create
+    @user = current_user
+    @user.create_cart(params[:cart])
+  end
 
-  	end
+  def destroy
+    @user = current_user
+    @user.cart.destroy
+    @user.save # do we need this?
+  end
 
-  	def create
-  		@user = current_user
-  		@user.create_cart(params[:cart])
-  	end
+  private
 
-  	private
-
-  	def cart_params
+  def cart_params
     params.require(:cart).permit(:restaurant_id, :table_number, :user_id)
-  	end
+  end
 end

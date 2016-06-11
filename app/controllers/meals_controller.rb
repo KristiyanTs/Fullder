@@ -16,8 +16,10 @@ class MealsController < ApplicationController
     @meal = @category.meals.new(meal_params)
 
     if @meal.save
-      format.html { redirect_to restaurant_meals_path,
-                    flash: { notice: @meal.name + ' meal was successfully created.' } }
+      format.html do
+        redirect_to restaurant_meals_path,
+                    flash: { notice: @meal.name + ' meal was successfully created.' }
+      end
       format.json { render :show, status: :created, location: @meal }
     else
       format.html { render :new }
@@ -42,7 +44,7 @@ class MealsController < ApplicationController
   end
 
   def destroy
-  	@meal.destroy
+    @meal.destroy
     respond_to do |format|
       format.html { redirect_to restaurant_category_path(@restarant, @category), flash: { notice: 'Meal was successfully destroyed.' } }
       format.json { head :no_content }

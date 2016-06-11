@@ -86,7 +86,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
-  gem 'rubocop'
+  gem 'rubocop', require: false
 end
 
 group :production do
