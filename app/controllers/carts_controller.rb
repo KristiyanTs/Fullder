@@ -2,13 +2,13 @@ class CartsController < ApplicationController
   def show
   end
 
+  def new
+    @cart = Cart.net
+  end
+
   def create
     @user = current_user
     @user.create_cart(cart_params)
-  end
-
-  def new
-    @cart = Cart.net
   end
 
   def destroy
