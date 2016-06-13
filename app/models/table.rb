@@ -16,6 +16,9 @@ class Table < ActiveRecord::Base
   belongs_to :restaurant
   has_many :reservations, dependent: :destroy
 
+  validates :number, uniqueness: { scope: :restaurant_id,
+                                   message: 'You should not have two tables with the same number.' }
+
   def available?
     available
   end
