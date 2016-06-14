@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :tables
   end
 
-  resources :cart
+  resources :users do
+    resources :carts
+  end
 end

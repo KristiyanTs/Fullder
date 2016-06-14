@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.destroy_all
+Restaurant.destroy_all
+
+
 puts "Generating seeds..."
 
 User.create(first_name: 'Kristiyan', last_name: 'Tsvetanov',
@@ -21,6 +25,8 @@ User.create(first_name: 'Pesho', last_name: 'Petrov',
             email: 'pesho@abv.bg', password: '123123123',
             password_confirmation: '123123123')
 
+p "Created #{User.count} users"
+
 restaurant_seed = [
   {
     name: "KFC",
@@ -32,12 +38,11 @@ restaurant_seed = [
 
 menu_seed = [
   {
-    name: 'Spring menu.',
+    name: 'Spring menu',
     active: true
   },
   {
-    # TODO: add default active false
-    name: 'Winter menu.',
+    name: 'Winter menu',
     active: false
   }
 ]

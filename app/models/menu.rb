@@ -11,6 +11,7 @@
 #
 
 class Menu < ActiveRecord::Base
+  before_save :default_values
   belongs_to :restaurant
   has_many :categories, dependent: :destroy
 
@@ -18,4 +19,9 @@ class Menu < ActiveRecord::Base
                                  message: 'You should not have two menus with the same name' }
 
   accepts_nested_attributes_for :categories
+  belongs_to :user
+  has_many :orders, dependent: :destroy
+  def default_values
+    self.active ||= false
+  end
 end
