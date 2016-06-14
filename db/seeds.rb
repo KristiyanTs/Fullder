@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# TODO: Discuss #destroy_all method
 User.destroy_all
 Restaurant.destroy_all
 
@@ -33,6 +34,12 @@ restaurant_seed = [
     address: "Sofia",
     description: "Fast food.",
     phone_number: "88888888"
+  },
+  {
+    name: "McDonals",
+    address: "Varna",
+    description: "Mc OOD",
+    phone_number: "99999999"
   }
 ]
 
@@ -83,22 +90,38 @@ meal_seed = [
   }
 ]
 
+rest_ids = []
+menu_ids = []
+category_ids = []
+meal_ids = []
+
 restaurant_seed.each do |restaurant_params|
-  res = Restaurant.find_or_create_by(restaurant_params)
-  menu_seed.each do |menu_params|
-    menu = res.menus.find_or_create_by(menu_params)
-    category_seed.each do |category_params|
-      category_avatar = category_params.delete(:category_avatar)
-      category = menu.categories.find_or_create_by(category_params)
-      meal_seed.each do |meal_params|
-        meal_avatar = meal_params.delete(:meal_avatar)
-        meal = category.meals.find_or_create_by(meal_params)
-        meal.meal_avatar = meal_avatar
-        meal.save
-      end
-      category.category_avatar = category_avatar
-      category.save
-    end
+  rest_ids << Restaurant.find_or_create_by(restaurant_params).id
+end
+
+menu_seed.each do |menu_params|
+  rest_ids.each do |rest_id|
+    menu_ids << Menu.create(menu_params.merge(restaurant_id: rest_id)).id
+  end
+end
+
+category_seed.each do |category_params|
+  menu_ids.each do |menu_id|
+    category_ids << Category.find_or_create_by(category_params
+      .merge(menu_id: menu_id)
+      .except(:category_avatar)) do |cat|
+        cat.category_avatar = category_params[:category_avatar]
+      end.id
+  end
+end
+
+meal_seed.each do |meal_params|
+  category_ids.each do |cat_id|
+    meal_ids << Meal.find_or_create_by(meal_params
+      .merge(category_id: cat_id)
+      .except(:meal_avatar)) do |meal|
+        meal.meal_avatar = meal_params[:meal_avatar]
+      end.id
   end
 end
 

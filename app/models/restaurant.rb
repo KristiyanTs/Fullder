@@ -16,13 +16,13 @@
 #
 
 class Restaurant < ActiveRecord::Base
-  has_many :menus
-  has_many :categories, through: :menus, dependent: :destroy
-  has_many :meals, through: :categories, dependent: :destroy
+  has_many :menus, dependent: :destroy
+  has_many :categories, through: :menus
+  has_many :meals, through: :categories
 
   has_many :working_hours, dependent: :destroy
   has_many :positions, dependent: :destroy
-  has_many :roles, through: :positions, dependent: :destroy
+  has_many :roles, through: :positions
   has_many :tables
 
   accepts_nested_attributes_for :menus
