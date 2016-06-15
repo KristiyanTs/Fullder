@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
 
+  before_action :set_cart, only:[:show, :destroy]
+
   def show
   end
 
@@ -21,11 +23,14 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
-    @user.cart.destroy
+    @cart.destroy
   end
 
   private
+
+  def set_cart
+    @cart = current_user.cart
+  end
 
   def cart_params
     params.require(:cart).permit(:restaurant_id, :table_number, :user_id)
