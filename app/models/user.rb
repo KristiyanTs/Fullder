@@ -32,8 +32,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
 
-  def has_a_cart(rest_id)
-    #checking if user has a cart in the current restaurant
-    !self.cart.nil? && self.cart.restaurant_id = rest_id 
+  def has_cart(rest_id)
+    !cart.nil? && cart.restaurant_id = rest_id 
   end
 end
