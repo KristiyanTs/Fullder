@@ -33,6 +33,6 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
   def has_cart(rest_id)
-    !cart.nil? && cart.restaurant_id = rest_id 
+    !cart.nil? && cart.restaurant_id = rest_id
   end
 end

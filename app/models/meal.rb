@@ -15,7 +15,7 @@
 
 class Meal < ActiveRecord::Base
   belongs_to :category
-  
+
   has_many :meal_sizes, dependent: :destroy
   has_many :supplementals, dependent: :destroy
   has_many :orders

@@ -4,5 +4,4 @@ class UserDecorator < Draper::Decorator
   def fullname
     "#{first_name.first}. #{last_name}"
   end
-
 end
