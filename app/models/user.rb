@@ -31,4 +31,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
+
+  def has_a_cart(rest_id)
+    #checking if user has a cart in the current restaurant
+    !self.cart.nil? && self.cart.restaurant_id = rest_id 
+  end
 end
