@@ -12,8 +12,12 @@
 #working-hours-button.col-sm-8.col-xs-8.col-md-8
 	| Working hours
 
-= link_to restaurant_menu_path(@restaurant, @active_menu), id: "menu-button", class: "col-sm-4 col-xs-4 col-md-4"
-	| Menu
+- if current_user.has_cart?(@restaurant.id)
+	= link_to restaurant_menu_path(@restaurant, @active_menu), id: "menu-button", class: "col-sm-4 col-xs-4 col-md-4"
+		| Menu
+- else
+	= link_to new_user_cart_path(current_user, restaurant_id: @restaurant), id: "menu-button", class: "col-sm-4 col-xs-4 col-md-4"
+		| Menu
 
 #reservations-button.col-sm-6.col-xs-6.col-md-6
 	| Reservations

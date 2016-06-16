@@ -11,11 +11,18 @@
 #
 
 class Menu < ActiveRecord::Base
+  before_save :default_values
+
   belongs_to :restaurant
+
   has_many :categories, dependent: :destroy
+
+  accepts_nested_attributes_for :categories
 
   validates :name, uniqueness: { scope: :restaurant_id,
                                  message: 'You should not have two menus with the same name' }
 
-  accepts_nested_attributes_for :categories
+  def default_values
+    self.active = false if active.nil?
+  end
 end

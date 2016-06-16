@@ -1,4 +1,5 @@
 class TablesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_restaurant
   before_action :set_table, only: [:show, :edit, :update, :destroy]
 

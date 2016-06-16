@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_restaurant
   before_action :set_menu
   before_action :set_category
@@ -6,6 +7,9 @@ class MealsController < ApplicationController
 
   def index
     @meals = @category.meals
+  end
+
+  def show
   end
 
   def new
@@ -25,9 +29,6 @@ class MealsController < ApplicationController
       format.html { render :new }
       format.json { render json: @meal.errors, status: :unprocessable_entity }
     end
-  end
-
-  def show
   end
 
   def edit

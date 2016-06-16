@@ -2,8 +2,8 @@
 - @left_class = "glyphicon glyphicon-triangle-left"
 - @middle_link = @restaurant
 - @middle_class = "glyphicon glyphicon-triangle-left"
-- @right_link = @restaurant
-- @right_class = "glyphicon glyphicon-triangle-left"
+- @right_link = user_cart_path(current_user, current_user.cart)
+- @right_class = "glyphicon glyphicon-shopping-cart"
 
 
 .container
