@@ -13,9 +13,9 @@
 
 FactoryGirl.define do
   factory :meal_size do
-    description "MyText"
-    name "MyString"
-    price "9.99"
+    description 'MyText'
+    name 'MyString'
+    price '9.99'
     meal nil
   end
 end
