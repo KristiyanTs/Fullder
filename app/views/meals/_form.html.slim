@@ -1,6 +1,11 @@
 = simple_form_for [@restaurant, @meal], html: {multipart: true} do |f|
   = f.input :meal_avatar, as: :file
   = f.input :name
+  .supplementals
+    = f.simple_fields_for :supplementals do |supplemental|
+      = render 'supplemental_fields', f: supplemental
+    .links
+      = link_to_add_association 'Add supplemental', f, :supplementals
   .meal_sizes
     = f.simple_fields_for :meal_sizes do |meal_size|
       = render 'meal_size_fields', f: meal_size
