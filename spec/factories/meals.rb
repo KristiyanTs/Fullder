@@ -11,6 +11,8 @@
 #  meal_avatar_content_type :string
 #  meal_avatar_file_size    :integer
 #  meal_avatar_updated_at   :datetime
+#  restaurant_id            :integer
+#  menu_id                  :integer
 #
 
 FactoryGirl.define do

@@ -1,5 +1,5 @@
 ul.unordered-list-properties
 	- @meals.each do |meal|
 		li.list-height.list-properties
-			= link_to meal.name, restaurant_meal_path(@restaurant, meal, category_id: @category.id, menu_id: @menu.id), class: "vcenter link-style"
+			= link_to meal.name, restaurant_meal_path(@restaurant, meal, menu_id: @menu.id, category_id: @category), class: "vcenter link-style"
 			= image_tag meal.meal_avatar.url(:small), class: "img-circle round-picture-right"

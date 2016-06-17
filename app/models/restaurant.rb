@@ -23,7 +23,7 @@ class Restaurant < ActiveRecord::Base
   has_many :working_hours, dependent: :destroy
   has_many :positions, dependent: :destroy
   has_many :roles, through: :positions
-  has_many :tables
+  has_many :tables, dependent: :destroy
 
   accepts_nested_attributes_for :menus
   has_attached_file :restaurant_avatar, styles: { large: '300x300' }, default_url: '/images/:style/missing.png'

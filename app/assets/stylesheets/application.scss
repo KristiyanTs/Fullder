@@ -8,6 +8,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+  padding-bottom:50px; 
+}
 
 .navbar-inverse{
 	border-color:rgba(0,0,0,0);
