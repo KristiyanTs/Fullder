@@ -11,9 +11,9 @@
 
 FactoryGirl.define do
   factory :supplemental do
-    name "MyString"
-    description "MyText"
-    price "9.99"
+    name 'MyString'
+    description 'MyText'
+    price '9.99'
     meal nil
   end
 end

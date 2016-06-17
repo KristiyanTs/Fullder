@@ -59,9 +59,9 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :meal_avatar, :menu_id, :category_id, 
-      meal_sizes_attributes: [:id, :description, :name, :price, :meal_id, :_destroy],
-      supplementals_attributes: [:id, :description, :name, :price, :meal_id, :_destroy])
+    params.require(:meal).permit(:name, :meal_avatar, :menu_id, :category_id,
+                                 meal_sizes_attributes: [:id, :description, :name, :price, :meal_id, :_destroy],
+                                 supplementals_attributes: [:id, :description, :name, :price, :meal_id, :_destroy])
   end
 
   def set_restaurant
