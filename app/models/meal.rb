@@ -13,9 +13,12 @@
 #  meal_avatar_updated_at   :datetime
 #  restaurant_id            :integer
 #  menu_id                  :integer
+#  short_description        :string
 #
 
 class Meal < ActiveRecord::Base
+  before_save :default_values
+  
   belongs_to :category
 
   has_many :meal_sizes, dependent: :destroy
@@ -31,4 +34,8 @@ class Meal < ActiveRecord::Base
 
   has_attached_file :meal_avatar, styles: { small: '80x80#', large: '250x250#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :meal_avatar, content_type: /\Aimage\/.*\Z/
+
+  def default_values
+    self.short_description ||= ""
+  end
 end

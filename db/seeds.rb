@@ -78,10 +78,12 @@ category_seed = [
 meal_seed = [
   {
     name: "Shopska salata",
+    short_description: "Cucumbers, Tomatoes, Cheese, Olive oil",
     meal_avatar: File.open(File.join(Rails.root, "app/assets/images/shopska_salad.jpg"))
   },
   {
     name: "Duner",
+    short_description: "Bread, Chicken meat, Patatoes, White sauce",
     meal_avatar: File.open(File.join(Rails.root, "app/assets/images/duner.jpg"))
   },
   {

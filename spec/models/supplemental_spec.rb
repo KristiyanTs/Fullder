@@ -3,10 +3,12 @@
 # Table name: supplementals
 #
 #  id          :integer          not null, primary key
-#  meal_id     :integer
 #  name        :string
 #  description :text
-#  price       :decimal(10, 2)
+#  price       :decimal(, )
+#  meal_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'rails_helper'

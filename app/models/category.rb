@@ -20,7 +20,7 @@ class Category < ActiveRecord::Base
   belongs_to :menu
 
   has_many :meals, dependent: :destroy
-  has_many :working_hours, dependent: :destroy
+  has_many :working_hours
 
   has_attached_file :category_avatar, styles: { small: '80x80#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :category_avatar, content_type: /\Aimage\/.*\Z/

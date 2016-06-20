@@ -13,6 +13,7 @@
 #  meal_avatar_updated_at   :datetime
 #  restaurant_id            :integer
 #  menu_id                  :integer
+#  short_description        :string
 #
 
 require 'rails_helper'

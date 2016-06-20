@@ -1,7 +1,10 @@
 .round-picture-right{
-	position: absolute;
+	position: relative;
 	border:1px solid rgb(220,220,220);
-	right:10px;
+  margin-left: calc(100% - 80px);
+}
+.link-style{
+width: calc(100% - 120px);
 }
 
 .link-style:hover {
