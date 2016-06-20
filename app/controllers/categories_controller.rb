@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @meals = @category.meals
+    @meals = MealDecorator.decorate_collection(@category.meals)
   end
 
   def new

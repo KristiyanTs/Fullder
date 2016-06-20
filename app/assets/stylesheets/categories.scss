@@ -13,11 +13,17 @@
 	position:absolute;
   padding-left:10px;
   color: black;
-  h3{
+  h5{
     font-weight: bold;
   }
   .short_description{
     font-style: italic;
+    font-weight: bold;
     font-size: 12px;
+  }
+  .prices{
+    position: absolute;
+    top:10px;
+    right: 0px;
   }
 }

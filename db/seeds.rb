@@ -92,10 +92,30 @@ meal_seed = [
   }
 ]
 
+meal_size_seed = [
+  {
+    description: "hey",
+    name: "Small",
+    price: 3.99
+  },
+  {
+    description: "bey",
+    name: "Medium",
+    price: 5.59
+  },
+  {
+    description: "mey",
+    name: "Large",
+    price: 7.39
+  }
+]
+
+
 rest_ids = []
 menu_ids = []
 category_ids = []
 meal_ids = []
+meal_size_ids = []
 
 restaurant_seed.each do |restaurant_params|
   rest_ids << Restaurant.find_or_create_by(restaurant_params).id
@@ -117,14 +137,20 @@ category_seed.each do |category_params|
   end
 end
 
-meal_seed.each do |meal_params|
-  category_ids.each do |cat_id|
-    meal_ids << Meal.find_or_create_by(meal_params
-      .merge(category_id: cat_id)
-      .except(:meal_avatar)) do |meal|
-        meal.meal_avatar = meal_params[:meal_avatar]
-      end.id
-  end
-end
+# meal_seed.each do |meal_params|
+#   category_ids.each do |cat_id|
+#     meal_ids << Meal.find_or_create_by(meal_params
+#       .merge(category_id: cat_id)
+#       .except(:meal_avatar)) do |meal|
+#         meal.meal_avatar = meal_params[:meal_avatar]
+#       end.id
+#   end
+# end
+
+# meal_size_seed.each do |meal_size_params|
+#   meal_ids.each do |meal_id|
+#     meal_size_ids << MealSize.find_or_create_by(meal_size_params).id
+#   end
+# end
 
 puts 'Done ...'

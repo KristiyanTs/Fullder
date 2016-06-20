@@ -1,10 +1,12 @@
 ul.unordered-list-properties
   - @meals.each do |meal|
-    li.list-height.list-properties
+    li.list-height
       = link_to restaurant_meal_path(@restaurant, meal, menu_id: @menu.id, category_id: @category), class: "vcenter link-style" do
-        h4
-          =meal.name
+        h5.name
+          = meal.name
+        .prices
+          = meal.prices(meal)
         .short_description
-          =meal.short_description
+          = meal.short_description
       = image_tag meal.meal_avatar.url(:small), class: "img-circle round-picture-right"
     hr
