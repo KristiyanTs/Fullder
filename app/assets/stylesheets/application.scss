@@ -8,8 +8,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body{
-  padding-bottom:50px; 
+html,body {
+    height:100%;
 }
 
 .navbar-inverse{

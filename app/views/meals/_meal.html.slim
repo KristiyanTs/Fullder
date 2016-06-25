@@ -1,6 +1,6 @@
 ul.unordered-list-properties
   - @meals.each do |meal|
-    li.list-height
+    li.list-height.col-xs-12.col-sm-12.col-md-12.col-lg-12
       = link_to restaurant_meal_path(@restaurant, meal, menu_id: @menu.id, category_id: @category), class: "vcenter link-style" do
         h5.name
           = meal.name
@@ -9,4 +9,21 @@ ul.unordered-list-properties
         .short_description
           = meal.short_description
       = image_tag meal.meal_avatar.url(:small), class: "img-circle round-picture-right"
+    div.meal_sizes.col-xs-12.col-sm-12.col-md-12.col-lg-12
+      - bootstrap_grids = (12/meal.meal_sizes.count).to_s
+      - meal.meal_sizes.each do |meal_size|
+        = div_for(meal_size, class: "col-xs-" + bootstrap_grids + " col-sm-" + bootstrap_grids)
+          .bold
+            = meal_size.name
+          .prices
+            = meal_size.price
+          .short_description
+            = meal_size.description
+    div.meal_supplementals.col-xs-12.col-sm-12.col-md-12.col-lg-12
+      - meal.supplementals.each do |supplemental|
+        .col-xs-6.col-sm-6.col-md-4.col-lg-3.meal_supplemental
+          .bold
+            = supplemental.name
+          .prices.pull-right
+            = "+" + supplemental.price.to_s
     hr

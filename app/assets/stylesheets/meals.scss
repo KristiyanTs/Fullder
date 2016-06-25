@@ -20,3 +20,55 @@ width: calc(100% - 120px);
 .round-picture-middle{
 	border:1px solid rgb(220,220,220);
 }
+
+.meal_size{
+  text-align: center;
+  background-color: rgb(250,250,250);
+  align-items: stretch;
+  border-bottom: 1px solid rgb(230,230,230);
+}
+
+.bold{
+  font-weight: bold;
+  padding: 0px;
+}
+
+.meal_sizes{
+  min-height: 100px !important;
+  display: flex;
+  .short_description{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .prices{
+    color: grey;
+  }
+  :hover{
+    background-color: rgb(220,220,220);
+  }
+}
+
+.meal_supplementals{
+  position: absolute;
+  .prices{
+    float: left;
+    display: inline-block;
+  }
+  .bold{
+    float: left;
+    display: inline-block;
+  }
+  .meal_supplemental{
+    background-color: rgb(250,250,250);
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  :hover{
+    background-color: rgb(220,220,220);
+  }
+}
+
+.hidden{
+  display: none;
+}
