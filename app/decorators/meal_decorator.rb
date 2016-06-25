@@ -7,8 +7,7 @@ class MealDecorator < Draper::Decorator
     if lowest == highest
       lowest
     else
-      lowest.to_s + " - " + highest.to_s
+      lowest.to_s + ' - ' + highest.to_s
     end
   end
-
 end

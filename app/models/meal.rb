@@ -18,7 +18,7 @@
 
 class Meal < ActiveRecord::Base
   before_save :default_values
-  
+
   belongs_to :category
 
   has_many :meal_sizes, dependent: :destroy
@@ -36,6 +36,6 @@ class Meal < ActiveRecord::Base
   validates_attachment_content_type :meal_avatar, content_type: /\Aimage\/.*\Z/
 
   def default_values
-    self.short_description ||= ""
+    self.short_description ||= ''
   end
 end
