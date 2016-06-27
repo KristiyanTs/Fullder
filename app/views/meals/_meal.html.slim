@@ -9,21 +9,11 @@ ul.unordered-list-properties
         .short_description
           = meal.short_description
       = image_tag meal.meal_avatar.url(:small), class: "img-circle round-picture-right meal_image"
+
     .meal_sizes.col-xs-12.col-sm-12.col-md-12.col-lg-12.hidden
-      - bootstrap_grids = (12/meal.meal_sizes.count).to_s
-      - meal.meal_sizes.each do |meal_size|
-        = div_for(meal_size, class: "col-xs-" + bootstrap_grids + " col-sm-" + bootstrap_grids)
-          .bold
-            = meal_size.name
-          .prices
-            = meal_size.price
-          .short_description
-            = meal_size.description
+      = render partial: "meals/meal_size", collection: meal.meal_sizes, as: :meal_size
+      
     .meal_supplementals.col-xs-12.col-sm-12.col-md-12.col-lg-12.hidden
-      - meal.supplementals.each do |supplemental|
-        .col-xs-6.col-sm-6.col-md-4.col-lg-3.meal_supplemental
-          .bold
-            = supplemental.name
-          .prices.pull-right.prices
-            = "+" + supplemental.price.to_s
+      = render partial: "meals/supplemental", collection: meal.supplementals, as: :supplemental
+
       
