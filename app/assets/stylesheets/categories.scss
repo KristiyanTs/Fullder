@@ -7,16 +7,24 @@
 	height:84px;
 	margin-bottom:10px;
 	display: block;
-    border-bottom-left-radius:10px;
-    border-bottom-right-radius:40px;
-    border-top-left-radius:10px;
-    border-top-right-radius:40px;
-    background-color:rgb(248,248,248);
 }
 
 .vcenter {
 	position:absolute;
-	padding:30px;
+  padding-left:10px;
+  color: black;
+  h5{
     font-weight: bold;
-    color: black;
+  }
+  .short_description{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .prices{
+    position: absolute;
+    top:10px;
+    right: 0px;
+    color: grey;
+  }
 }

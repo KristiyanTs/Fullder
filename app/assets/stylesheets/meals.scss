@@ -1,7 +1,10 @@
 .round-picture-right{
-	position: absolute;
+	position: relative;
 	border:1px solid rgb(220,220,220);
-	right:10px;
+  margin-left: calc(100% - 80px);
+}
+.link-style{
+width: calc(100% - 120px);
 }
 
 .link-style:hover {
@@ -16,4 +19,70 @@
 
 .round-picture-middle{
 	border:1px solid rgb(220,220,220);
+}
+
+.meal_size{
+  text-align: center;
+  align-items: stretch;
+  .short_description{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .prices{
+    color: grey;
+  }
+}
+
+.meal_size_active{
+  background-color: #CF000F;
+  color: white;
+  border-radius: 5px;
+  .prices{
+    color: white;
+  }
+}
+
+.bold{
+  font-weight: bold;
+  padding: 0px;
+}
+
+.meal_sizes{
+  min-height: 100px !important;
+  display: flex;
+}
+
+.meal_supplementals{
+  position: absolute;
+  margin-top: 20px;
+  .prices{
+    float: left;
+    display: inline-block;
+  }
+  .bold{
+    float: left;
+    display: inline-block;
+  }
+  .meal_supplemental{
+    margin-top:10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  .prices{
+    color: grey;
+  }
+}
+
+.meal_supplemental_active{
+  background-color: #CF000F;  
+  border-radius: 5px;
+  color: white;
+  .prices{
+    color: white;
+  }
+}
+
+.hidden{
+  display: none;
 }

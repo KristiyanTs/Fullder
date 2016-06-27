@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613185144) do
+ActiveRecord::Schema.define(version: 20160617200855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,10 +46,12 @@ ActiveRecord::Schema.define(version: 20160613185144) do
   add_index "categories", ["working_hour_id"], name: "index_categories_on_working_hour_id", using: :btree
 
   create_table "meal_sizes", force: :cascade do |t|
-    t.integer "meal_id"
-    t.text    "description"
-    t.string  "name"
-    t.decimal "price",       precision: 10, scale: 2
+    t.text     "description"
+    t.string   "name"
+    t.decimal  "price"
+    t.integer  "meal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "meal_sizes", ["meal_id"], name: "index_meal_sizes_on_meal_id", using: :btree
@@ -63,6 +65,9 @@ ActiveRecord::Schema.define(version: 20160613185144) do
     t.string   "meal_avatar_content_type"
     t.integer  "meal_avatar_file_size"
     t.datetime "meal_avatar_updated_at"
+    t.integer  "restaurant_id"
+    t.integer  "menu_id"
+    t.string   "short_description"
   end
 
   add_index "meals", ["category_id"], name: "index_meals_on_category_id", using: :btree
@@ -131,10 +136,12 @@ ActiveRecord::Schema.define(version: 20160613185144) do
   end
 
   create_table "supplementals", force: :cascade do |t|
-    t.integer "meal_id"
-    t.string  "name"
-    t.text    "description"
-    t.decimal "price",       precision: 10, scale: 2
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price"
+    t.integer  "meal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "supplementals", ["meal_id"], name: "index_supplementals_on_meal_id", using: :btree

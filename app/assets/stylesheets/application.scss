@@ -8,6 +8,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html,body {
+    height:100%;
+}
 
 .navbar-inverse{
 	border-color:rgba(0,0,0,0);
