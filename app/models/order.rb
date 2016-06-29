@@ -16,8 +16,10 @@
 
 class Order < ActiveRecord::Base
   belongs_to :cart
+
   has_one :meal
   has_many :supplementals
 
   accepts_nested_attributes_for :meal
+  accepts_nested_attributes_for :supplementals
 end
