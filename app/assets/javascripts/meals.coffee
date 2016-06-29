@@ -1,45 +1,20 @@
-$(document).ready ->
+ready = ->
 
-  removeActiveMeals = ->
-    $('.active_meal').next().addClass 'hidden'
-    $('.active_meal').next().next().addClass 'hidden'
-    $('.active_meal').removeClass 'active_meal'
-    return
-
-  removeActiveMealSizes = ->
-    $('.meal_size_active').removeClass 'meal_size_active'
-    return
-
-  showInactiveMeals = ->
-    $('.meal.hidden').removeClass 'hidden'
-    return
-
-  hideInactiveMeals = ->
-    $('.meal:not(.active_meal)').addClass 'hidden'
-    return
-
-  $('.meal_image').click ->
-    if $(this).parent().hasClass('active_meal')
-      removeActiveMeals()
-      showInactiveMeals()
-    else
-      removeActiveMeals()
-      $(this).parent().addClass 'active_meal'
-      $(this).parent().next().removeClass 'hidden'
-      hideInactiveMeals()
-    return
   $('.meal_size').click ->
-    if $(this).hasClass('meal_size_active')
-      removeActiveMealSizes()
-    else
-      removeActiveMealSizes()
-      $(this).parent().next().removeClass 'hidden'
-      $(this).addClass 'meal_size_active'
+    html_id = $(this).attr('id')
+    meal_size_id = html_id.split('_')[2]
+    $("#order_meal_size_id").val(meal_size_id);
     return
-  $('.meal_supplemental').click ->
-    if $(this).hasClass('meal_supplemental_active')
-      $(this).removeClass 'meal_supplemental_active'
-    else
-      $(this).addClass 'meal_supplemental_active'
+
+  $('.supplemental').click ->
+    html_id = $(this).attr('id')
+    supplemental_id = ", " + html_id.split('_')[1]
+    current_supplementals = $("#order_supplementals_ids").val()
+    $("#order_supplementals_ids").val(current_supplementals + supplemental_id);
     return
-  return
+
+
+
+
+$(document).ready ready
+$(document).on 'page:load', ready

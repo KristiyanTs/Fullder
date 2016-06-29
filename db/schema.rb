@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617200855) do
+ActiveRecord::Schema.define(version: 20160628121120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160617200855) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.integer  "table_number"
+    t.integer  "menu_id"
   end
 
   add_index "carts", ["restaurant_id"], name: "index_carts_on_restaurant_id", using: :btree
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160617200855) do
     t.integer  "restaurant_id"
     t.integer  "menu_id"
     t.string   "short_description"
+    t.integer  "order_id"
   end
 
   add_index "meals", ["category_id"], name: "index_meals_on_category_id", using: :btree
@@ -87,8 +89,11 @@ ActiveRecord::Schema.define(version: 20160617200855) do
     t.integer  "meal_id"
     t.integer  "quantity"
     t.string   "specifications"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "meal_size_id"
+    t.integer  "supplementals_ids"
+    t.integer  "restaurant_id"
   end
 
   add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree

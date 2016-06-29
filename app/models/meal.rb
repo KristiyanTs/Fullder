@@ -14,16 +14,17 @@
 #  restaurant_id            :integer
 #  menu_id                  :integer
 #  short_description        :string
+#  order_id                 :integer
 #
 
 class Meal < ActiveRecord::Base
   before_save :default_values
 
   belongs_to :category
+  belongs_to :order
 
   has_many :meal_sizes, dependent: :destroy
   has_many :supplementals, dependent: :destroy
-  has_many :orders
 
   accepts_nested_attributes_for :meal_sizes,
                                 allow_destroy: true,

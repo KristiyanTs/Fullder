@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :carts
   end
+
+  resources :carts do
+    resources :orders
+  end
 end
