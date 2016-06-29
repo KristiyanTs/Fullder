@@ -9,6 +9,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  table_number  :integer
+#  menu_id       :integer
 #
 
 class Cart < ActiveRecord::Base

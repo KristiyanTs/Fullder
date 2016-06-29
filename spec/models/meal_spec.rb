@@ -14,6 +14,7 @@
 #  restaurant_id            :integer
 #  menu_id                  :integer
 #  short_description        :string
+#  order_id                 :integer
 #
 
 require 'rails_helper'
