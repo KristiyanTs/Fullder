@@ -12,5 +12,5 @@
 .meal_sizes.col-xs-12.col-sm-12.col-md-12.col-lg-12
   = render partial: "meals/meal_size", collection: @meal.meal_sizes, as: :meal_size
 .meal_supplementals.col-xs-12.col-sm-12.col-md-12.col-lg-12
-  = render partial: "meals/supplemental", collection: @meal.supplementals, as: :supplemental
+  = render partial: "meals/supplemental", collection: @meal.supplementals, as: :supplemental, locals: {f: f}
      

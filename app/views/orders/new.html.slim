@@ -5,7 +5,7 @@
 
 .container
   = minimal_form_for [@cart, @order] do |f|
-    = render partial: 'meals/show'
+    = render partial: 'meals/show', locals: {f: f}
     = f.hidden_field :meal_size_id
     / = f.hidden_field :supplementals_ids
     = f.input :specifications, placeholder: 'Any demands? Be concise.'
