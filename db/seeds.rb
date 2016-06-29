@@ -7,9 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # TODO: Discuss #destroy_all method
-User.destroy_all
-Restaurant.destroy_all
-
 
 puts "Generating seeds..."
 
@@ -123,7 +120,7 @@ end
 
 menu_seed.each do |menu_params|
   rest_ids.each do |rest_id|
-    menu_ids << Menu.create(menu_params.merge(restaurant_id: rest_id)).id
+    menu_ids << Menu.find_or_create_by(menu_params.merge(restaurant_id: rest_id)).id
   end
 end
 
@@ -137,20 +134,20 @@ category_seed.each do |category_params|
   end
 end
 
-# meal_seed.each do |meal_params|
-#   category_ids.each do |cat_id|
-#     meal_ids << Meal.find_or_create_by(meal_params
-#       .merge(category_id: cat_id)
-#       .except(:meal_avatar)) do |meal|
-#         meal.meal_avatar = meal_params[:meal_avatar]
-#       end.id
-#   end
-# end
+meal_seed.each do |meal_params|
+  category_ids.each do |cat_id|
+    meal_ids << Meal.find_or_create_by(meal_params
+      .merge(category_id: cat_id)
+      .except(:meal_avatar)) do |meal|
+        meal.meal_avatar = meal_params[:meal_avatar]
+      end.id
+  end
+end
 
-# meal_size_seed.each do |meal_size_params|
-#   meal_ids.each do |meal_id|
-#     meal_size_ids << MealSize.find_or_create_by(meal_size_params).id
-#   end
-# end
+meal_size_seed.each do |meal_size_params|
+  meal_ids.each do |meal_id|
+    meal_size_ids << MealSize.find_or_create_by(meal_size_params).id
+  end
+end
 
 puts 'Done ...'
