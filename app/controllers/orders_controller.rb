@@ -40,6 +40,6 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:restaurant_id, :quantity, :cart_id, :specifications, 
-                                    :meal_id, :meal_size_id, supplementals_ids: [])
+                                    :meal_id, :meal_size_id, supplemental_id: [])
   end
 end

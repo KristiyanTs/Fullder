@@ -13,4 +13,5 @@
 
 class Supplemental < ActiveRecord::Base
   belongs_to :meal
+  belongs_to :order
 end
