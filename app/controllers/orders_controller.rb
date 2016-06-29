@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    debugger
     @order = @cart.orders.new(order_params)
+    debugger
     respond_to do |format|
       if @order.save
         format.html { redirect_to restaurant_category_path(@restaurant, @category, menu_id: @menu), flash: { notice: 'Order was added to your cart.' } }
@@ -40,6 +40,6 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:restaurant_id, :quantity, :cart_id, :specifications, 
-                                    :meal_id, :meal_size_id, supplemental_id: [])
+                                    :meal_id, :meal_size_id, supplemental_ids: [])
   end
 end
