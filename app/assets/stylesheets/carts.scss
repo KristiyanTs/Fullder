@@ -1,0 +1,22 @@
+.cart-row{
+  font-size: 15px;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  padding: 5px;
+  background-color: white;
+  .col-xs-5{
+    padding-left: 15px !important;
+  }
+  .glyphicon-remove{
+    color:#CF000F;
+  }
+}
+
+.cart-row:after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 98%;
+  border-bottom: 1px solid rgb(220,220,220);
+}
