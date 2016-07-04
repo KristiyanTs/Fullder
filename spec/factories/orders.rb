@@ -15,10 +15,10 @@
 
 FactoryGirl.define do
   factory :order do
-    subtotal "9.99"
-    tax "9.99"
-    shipping "9.99"
-    tip "9.99"
-    total "9.99"
+    subtotal '9.99'
+    tax '9.99'
+    shipping '9.99'
+    tip '9.99'
+    total '9.99'
   end
 end
