@@ -1,0 +1,7 @@
+.product_row
+  = link_to product.name, restaurant_product_path(@restaurant, product), class: "product_name"
+  .product_short_description
+    = product.short_description
+  .product_avatar
+    = image_tag product.avatar.url(:small), class: "img-circle"
+hr

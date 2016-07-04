@@ -3,23 +3,31 @@
 # Table name: orders
 #
 #  id              :integer          not null, primary key
-#  cart_id         :integer
-#  meal_id         :integer
-#  quantity        :integer
-#  specifications  :string
+#  order_status_id :integer
+#  subtotal        :decimal(, )
+#  tax             :decimal(, )
+#  shipping        :decimal(, )
+#  tip             :decimal(, )
+#  total           :decimal(, )
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  meal_size_id    :integer
-#  supplemental_id :integer
-#  restaurant_id   :integer
 #
 
 class Order < ActiveRecord::Base
-  belongs_to :cart
+  belongs_to :order_status
+  has_many :order_items
+  before_create :set_order_status
+  before_save :update_subtotal
 
-  has_one :meal
-  has_many :supplementals
+  def subtotal
+    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+  end
+private
+  def set_order_status
+    self.order_status_id = 1
+  end
 
-  accepts_nested_attributes_for :meal
-  accepts_nested_attributes_for :supplementals
+  def update_subtotal
+    self[:subtotal] = subtotal
+  end
 end

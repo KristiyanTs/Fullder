@@ -1,26 +1,25 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = @menu.categories
+    @categories = @restaurant.categories
   end
 
   def show
-    @meals = MealDecorator.decorate_collection(@category.meals)
+    @products = @category.products
   end
 
   def new
-    @category = Category.new
+    @category = @restaurant.categories.build
   end
 
   def edit
   end
 
   def create
-    @category = @menu.categories.new(category_params)
+    @category = @restaurant.categories.new(category_params)
 
     respond_to do |format|
       if @category.save
@@ -59,12 +58,8 @@ class CategoriesController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
-  def set_menu
-    @menu = @restaurant.menus.find(params[:menu_id])
-  end
-
   def set_category
-    @category = @menu.categories.find(params[:id])
+    @category = @restaurant.categories.find(params[:id])
   end
 
   def category_params

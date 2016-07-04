@@ -36,6 +36,11 @@ input{
 }
 
 a, a:active, a:focus {
-  outline: none; 
-  /* Removing the dotted border around links when clicked */
+  outline: none;  /* Removing the dotted border around links when clicked */
+  text-decoration: none;
+}
+
+a:hover{
+  background-color: transparent; 
+  text-decoration: none;
 }
