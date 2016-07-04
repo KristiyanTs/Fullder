@@ -13,9 +13,9 @@
 
 FactoryGirl.define do
   factory :product_size do
-    name "MyString"
+    name 'MyString'
     product nil
-    price "9.99"
-    short_description "MyString"
+    price '9.99'
+    short_description 'MyString'
   end
 end

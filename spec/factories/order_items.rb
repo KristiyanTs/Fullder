@@ -19,8 +19,8 @@ FactoryGirl.define do
     product nil
     order nil
     product_size nil
-    unit_price "9.99"
+    unit_price '9.99'
     quantity 1
-    total_price "9.99"
+    total_price '9.99'
   end
 end
