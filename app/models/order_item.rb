@@ -17,6 +17,7 @@
 class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :product_size
+  belongs_to :order
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
@@ -29,7 +30,6 @@ class OrderItem < ActiveRecord::Base
       self[:unit_price]
     else
       product_size_id.nil? ? product.price : product.price + product.product_sizes.find(product_size_id).price # TODO: check if there is such a size
-
     end
   end
 
