@@ -1,12 +1,4 @@
-- @left_link = restaurant_menu_path(@restaurant, @menu)
-- @left_class = "glyphicon glyphicon-triangle-left"
-- @middle_link = @restaurant
-- @middle_class = "glyphicon glyphicon-info-sign"
-- @right_link = user_cart_path(current_user, current_user.cart)
-- @right_class = "glyphicon glyphicon-shopping-cart"
-
-
 .container
-  ul.unordered-list-properties
-	  = render partial: "meals/meal", collection: @meals, as: :meal
-/ = link_to "new meal", new_restaurant_meal_path(@restaurant, menu_id: @menu, category_id: @category)
+  / = render partial: "products/product_row", collection: @products, as: :product
+  - @products.each do |product| 
+    = render "products/product_row", product: product, order_item: @order_item

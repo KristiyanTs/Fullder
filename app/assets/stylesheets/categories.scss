@@ -1,30 +1,18 @@
-.unordered-list-properties{
-	list-style:none;
-	padding:0px;
-}
-
-.unordered-list-properties li{
-	height:84px;
-	margin-bottom:10px;
-	display: block;
-}
-
-.vcenter {
-	position:absolute;
-  padding-left:10px;
-  color: black;
-  h5{
+.category_row{
+  .category_name{
+    position:absolute;
+    padding-top: 10px;
+    color: black;
     font-weight: bold;
+    font-size:15px;
+    a{
+      color:black;
+    }
   }
-  .short_description{
-    font-style: italic;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  .prices{
-    position: absolute;
-    top:10px;
-    right: 0px;
-    color: grey;
+  .category_avatar{
+    position: relative;
+    border:1px solid rgb(220,220,220);
+    border-radius: 50%;
+    margin-left: calc(100% - 80px);
   }
 }

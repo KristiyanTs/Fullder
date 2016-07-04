@@ -1,0 +1,30 @@
+- @left_link = :back
+- @left_class = "glyphicon glyphicon-triangle-left"
+- @middle_link = cart_path
+- @middle_class = "glyphicon glyphicon-info-sign"
+
+
+
+.container-fluid
+  = render partial: "product_row", locals: {product: @product}
+  = render partial: 'product_buy_form'
+  br
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title data-toggle="collapse" href="#description"
+        | Description
+      #description.panel-collapse.collapse
+        .panel-body
+          = @product.description
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title data-toggle="collapse" href="#ingredients"
+        | Ingredients
+      #ingredients.panel-collapse.collapse
+        .panel-body
+          = @product.description
+
+
+hr
