@@ -116,17 +116,17 @@ end
 p "Created #{Category.count} categories"
 
 
-product_seed.each do |product_params|
-  rest_ids.each do |restaurant_id|
-    product_ids << Product.find_or_create_by(product_params
-      .merge(restaurant_id: restaurant_id)
-      .except(:avatar)) do |product|
-        product.avatar = product_params[:avatar]
-      end.id
-  end
-end
+# product_seed.each do |product_params|
+#   rest_ids.each do |restaurant_id|
+#     product_ids << Product.find_or_create_by(product_params
+#       .merge(restaurant_id: restaurant_id)
+#       .except(:avatar)) do |product|
+#         product.avatar = product_params[:avatar]
+#       end.id
+#   end
+# end
 
-p "Created #{Product.count} products"
+# p "Created #{Product.count} products"
 
 
 puts 'Done ...'

@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :category
 
-  has_many :product_sizes
+  has_many :product_sizes, dependent: :destroy
   has_many :order_items
 
   accepts_nested_attributes_for :product_sizes

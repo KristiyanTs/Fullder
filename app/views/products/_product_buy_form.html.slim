@@ -1,12 +1,14 @@
-.container-fluid
+.container-fluid.buy-form
+  .text-center.pick-option
+    h4 Pick an option
   = minimal_form_for @order_item, remote: true do |f|
     = f.input :quantity, as: :hidden, input_html: {value: '1'}
 
-    = f.input :product_size_id, collection: @product.product_sizes,
-                  as: :radio_buttons,
-                  item_wrapper_class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
-                  wrapper_html: { class: 'col-xs-5 col-sm-6 col-md-3 col-lg-3' }
-
+    .col-xs-5.col-sm-6.col-md-3.col-lg-3.size_holder
+      = f.collection_radio_buttons :product_size_id, @product.product_sizes, :id, :name,
+                                    item_wrapper_class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12 product_size',
+                                    checked: @product.product_sizes.first
+                  
     .col-xs-7.col-sm-6.col-md-3.col-lg-3.size_info
       - @product.product_sizes.each do |size|
         .col-xs-9.col-sm-9.col-md-9.col-lg-9.size_description
@@ -15,4 +17,4 @@
           = product_price(@product, size)
 
     = f.hidden_field :product_id, value: @product.id
-    = f.submit "Add to Cart", class: "btn btn-default col-xs-12 col-sm-12 col-md-3 col-lg-3"
+    = f.submit "Add to Cart", class: "btn col-xs-12 col-sm-12 col-md-3 col-lg-3 buy-button"

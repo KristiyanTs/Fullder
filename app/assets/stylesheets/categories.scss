@@ -1,10 +1,20 @@
 .category_row{
+  margin-top:5px;
+  background-color: white;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  
   .category_name{
     position:absolute;
     padding-top: 10px;
+    padding-left: 10px;
     color: black;
     font-weight: bold;
     font-size:15px;
+    z-index: 1;
+    font-weight: bold;
     a{
       color:black;
     }
