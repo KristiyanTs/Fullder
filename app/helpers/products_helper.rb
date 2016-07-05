@@ -3,6 +3,11 @@ module ProductsHelper
     number_to_currency(product.price + product_size.price)
   end
 
-  def product_size_radio_label
+  def lowest_price(obj)
+    obj.order(:price).first.price
+  end
+
+  def highest_price(obj)
+    obj.order(:price).last.price
   end
 end

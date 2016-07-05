@@ -1,7 +1,10 @@
-- @left_link = :back
+- @left_link = restaurant_category_path(@restaurant, @product.category)
 - @left_class = "glyphicon glyphicon-triangle-left"
 - @middle_link = cart_path
 - @middle_class = "glyphicon glyphicon-info-sign"
+- @right_class = "glyphicon glyphicon-shopping-cart"
+- @right_link = cart_path
+- @right_content = "#{number_to_currency current_order.subtotal}"
 
 
 
@@ -27,4 +30,4 @@
           = @product.description
 
 
-hr
+

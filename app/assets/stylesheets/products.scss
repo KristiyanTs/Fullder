@@ -1,7 +1,14 @@
 .product_row{
-    .product_name{
+  margin-top:5px;
+  background-color: white;
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  .product_name{
     position:absolute;
     padding-top: 10px;
+    padding-left: 10px;
     color: black;
     font-weight: bold;
     font-size:15px;
@@ -10,6 +17,7 @@
   .product_short_description{
     position:absolute;
     padding-top: 30px;
+    padding-left:10px;
     font-style: italic;
     font-size: 12px;
     padding-right: 95px;
@@ -23,13 +31,24 @@
   }
 }
 
+.buy-form{
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  .pick-option{
+    border-bottom: 1px solid rgb(225,225,225);
+    border-bottom-style: dashed;
+  }
+}
+
 input[type="radio"]{
     /* visibility:hidden; */
 }
 
 span.radio{
   color: black;
-  font-weight: bold;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
@@ -39,12 +58,12 @@ span.radio{
 }
 
 .size_description{
-  margin-bottom: 5px;
+  margin-bottom: 12px;
   display: inline;
 }
 
 .product_size_price{
-  margin-bottom: 5px;
+  margin-bottom: 12px;
   display: inline;
 }
 
@@ -56,4 +75,73 @@ span.radio{
 
 .panel{
   position: relative;
+}
+
+input[type=radio] {
+  display:none;
+}
+
+.product_size{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.product_size > label{
+  width: 200px;
+}
+.collection_radio_buttons{
+  width:100%;
+  font-weight: normal;
+}
+
+input[type=radio] + label {
+  display:inline-block;
+  margin:-2px;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+}
+
+input[type=radio]:checked + label {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+  background-color:#e0e0e0;
+}
+
+.size_holder{
+  padding-top:10px;
+}
+
+.buy-button{
+  background-color: #CF000F;
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 7px !important;
+  border-bottom-right-radius: 7px !important;
+  color: white;
+}
+
+input[type="submit"]:hover{
+  color: white;
+  font-weight: bold;
+}
+
+.buy-button:active{
+  background-color: #c4000e;
+}
+
+input[type="submit"]:visited{
+  color: white;
 }

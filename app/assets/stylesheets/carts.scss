@@ -12,6 +12,20 @@
   }
 }
 
+.shopping-cart{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.cart-subtotal{
+  font-size: 15px;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  padding: 5px;
+  background-color: white;
+  margin-top:10px;
+}
+
 .cart-row:after {
   content: '';
   position: absolute;
@@ -20,3 +34,8 @@
   top: 98%;
   border-bottom: 1px solid rgb(220,220,220);
 }
+
+.cart-row:last-of-type:after {
+  width:0%;
+}
+

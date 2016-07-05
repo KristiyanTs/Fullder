@@ -8,3 +8,7 @@
     | There are no items in your shopping cart.
 - else
   = render partial: 'carts/cart_row', collection: @order_items, as: :order_item, show_total: true
+
+  b.cart-subtotal.col-xs-12.text-center
+    |Subtotal:
+    = number_to_currency(current_order.subtotal)
