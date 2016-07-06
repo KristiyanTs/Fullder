@@ -10,16 +10,16 @@
 
 puts "Generating seeds..."
 
-User.create(first_name: 'Kristiyan', last_name: 'Tsvetanov',
+User.find_or_create_by(first_name: 'Kristiyan', last_name: 'Tsvetanov',
             email: 'test1@example.com', password: 'password',
             password_confirmation: 'password', admin: true)
-User.create(first_name: 'Valentina', last_name: 'Latinska',
+User.find_or_create_by(first_name: 'Valentina', last_name: 'Latinska',
             email: 'test2@example.com', password: 'password',
             password_confirmation: 'password')
-User.create(first_name: 'Plamen', last_name: 'Dimitrov',
+User.find_or_create_by(first_name: 'Plamen', last_name: 'Dimitrov',
             email: 'test3@example.com', password: 'password',
             password_confirmation: 'password')
-User.create(first_name: 'Pesho', last_name: 'Petrov',
+User.find_or_create_by(first_name: 'Pesho', last_name: 'Petrov',
             email: 'pesho@abv.bg', password: '123123123',
             password_confirmation: '123123123')
 

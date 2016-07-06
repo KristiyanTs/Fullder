@@ -29,7 +29,7 @@ class OrderItem < ActiveRecord::Base
     if persisted?
       self[:unit_price]
     else
-      product_size_id.nil? ? product.price : product.price + product.product_sizes.find(product_size_id).price # TODO: check if there is such a size
+      product_size_id.nil? ? product.price : product.price + product.product_sizes.find(product_size_id).price
     end
   end
 
