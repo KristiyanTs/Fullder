@@ -6,7 +6,6 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @active_menu = @restaurant.menus.find_by(active: true)
   end
 
   def new
@@ -58,5 +57,5 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :description, :phone_number, :restaurant_avatar)
-    end
+  end
 end

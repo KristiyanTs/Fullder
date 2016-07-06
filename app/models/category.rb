@@ -2,27 +2,23 @@
 #
 # Table name: categories
 #
-#  id                           :integer          not null, primary key
-#  menu_id                      :integer
-#  age_restriction              :boolean
-#  available_all_day            :boolean
-#  created_at                   :datetime         not null
-#  updated_at                   :datetime         not null
-#  working_hour_id              :integer
-#  name                         :string
-#  category_avatar_file_name    :string
-#  category_avatar_content_type :string
-#  category_avatar_file_size    :integer
-#  category_avatar_updated_at   :datetime
+#  id                  :integer          not null, primary key
+#  restaurant_id       :integer
+#  name                :string
+#  age_restriction     :boolean
+#  available_all_day   :boolean
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 
 class Category < ActiveRecord::Base
-  belongs_to :menu
+  belongs_to :restaurant
+  has_many :products
 
-  has_many :meals, dependent: :destroy
-  has_many :working_hours
-
-  has_attached_file :category_avatar, styles: { small: '80x80#' }, default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :category_avatar, content_type: /\Aimage\/.*\Z/
-  accepts_nested_attributes_for :meals
+  has_attached_file :avatar, styles: { small: '80x80#' }, default_url: '/images/:style/missing.png'
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 end

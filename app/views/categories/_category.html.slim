@@ -1,9 +1,0 @@
-ul.unordered-list-properties
-  - @categories.each do |category|
-    li
-      = link_to restaurant_category_path(@restaurant, category, menu_id: @menu.id)
-        .vcenter
-          h5  
-            = category.name
-        = image_tag category.category_avatar.url(:small), class: "img-circle round-picture-right"
-    hr

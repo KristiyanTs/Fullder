@@ -1,6 +1,0 @@
-.container
-	h2 Pick a table
-	= simple_form_for ([current_user, @cart]) do |f|
-		= f.input :table_number
-		= f.hidden_field :restaurant_id, value: params[:restaurant_id]
-		= f.button :submit

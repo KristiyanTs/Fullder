@@ -23,16 +23,10 @@
 #
 
 class User < ActiveRecord::Base
-  has_one :cart, dependent: :destroy
-  has_many :positions, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
-
-  def has_cart?(rest_id)
-    !cart.nil? && cart.restaurant_id = rest_id
-  end
 end

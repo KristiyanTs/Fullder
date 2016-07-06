@@ -1,0 +1,15 @@
+.col-xs-12.cart-row
+  .col-xs-4
+    = image_tag order_item.product.avatar.url(:small), class: "img-circle"
+  .col-xs-5
+    b = order_item.product.name
+    br
+    = order_item.product_size.name
+    br
+    | Quantity: 
+    = order_item.quantity
+  .col-xs-3.text-center
+    = number_to_currency order_item.unit_price
+    br
+    = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-remove" }
+

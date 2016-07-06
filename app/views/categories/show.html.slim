@@ -1,11 +1,12 @@
-- @left_link = restaurant_menu_path(@restaurant, @menu)
+- @left_link = restaurant_categories_path(@restaurant)
 - @left_class = "glyphicon glyphicon-triangle-left"
-- @middle_link = @restaurant
+- @middle_link = cart_path
 - @middle_class = "glyphicon glyphicon-info-sign"
-- @right_link = user_cart_path(current_user, current_user.cart)
 - @right_class = "glyphicon glyphicon-shopping-cart"
-
+- @right_link = cart_path
+- @right_content = "#{number_to_currency current_order.subtotal}"
 
 .container
-	= render 'meals/meal'
-/ = link_to "new meal", new_restaurant_meal_path(@restaurant, menu_id: @menu, category_id: @category)
+  / = render partial: "products/product_row", collection: @products, as: :product
+  - @products.each do |product| 
+    = render "products/product_row", product: product, order_item: @order_item

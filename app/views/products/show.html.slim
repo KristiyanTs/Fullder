@@ -1,0 +1,33 @@
+- @left_link = restaurant_category_path(@restaurant, @product.category)
+- @left_class = "glyphicon glyphicon-triangle-left"
+- @middle_link = cart_path
+- @middle_class = "glyphicon glyphicon-info-sign"
+- @right_class = "glyphicon glyphicon-shopping-cart"
+- @right_link = cart_path
+- @right_content = "#{number_to_currency current_order.subtotal}"
+
+
+
+.container-fluid
+  = render partial: "product_row", locals: {product: @product}
+  = render partial: 'product_buy_form'
+  br
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title data-toggle="collapse" href="#description"
+        | Description
+      #description.panel-collapse.collapse
+        .panel-body
+          = @product.description
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title data-toggle="collapse" href="#ingredients"
+        | Ingredients
+      #ingredients.panel-collapse.collapse
+        .panel-body
+          = @product.description
+
+
+

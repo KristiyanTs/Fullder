@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
+
+  get 'carts/show'
+
   devise_for :users
 
   resources :restaurants do
-    resources :menus do
-      patch :activate
-    end
-
+    resources :products
     resources :categories
-    resources :meals
-    resources :tables
   end
-
-  resources :users do
-    resources :carts
-  end
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 end

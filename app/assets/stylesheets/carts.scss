@@ -1,3 +1,41 @@
-// Place all the styles related to the Carts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.cart-row{
+  font-size: 15px;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  padding: 5px;
+  background-color: white;
+  .col-xs-5{
+    padding-left: 15px !important;
+  }
+  .glyphicon-remove{
+    color:#CF000F;
+  }
+}
+
+.shopping-cart{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.cart-subtotal{
+  font-size: 15px;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  padding: 5px;
+  background-color: white;
+  margin-top:10px;
+}
+
+.cart-row:after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 98%;
+  border-bottom: 1px solid rgb(220,220,220);
+}
+
+.cart-row:last-of-type:after {
+  width:0%;
+}
+
