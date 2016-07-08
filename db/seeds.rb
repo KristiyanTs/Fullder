@@ -10,18 +10,25 @@
 
 puts "Generating seeds..."
 
-User.find_or_create_by(first_name: 'Kristiyan', last_name: 'Tsvetanov',
+
+
+User.delete_all
+User.create!([
+           {first_name: 'Kristiyan', last_name: 'Tsvetanov',
             email: 'test1@example.com', password: 'password',
-            password_confirmation: 'password', admin: true)
-User.find_or_create_by(first_name: 'Valentina', last_name: 'Latinska',
+            password_confirmation: 'password', admin: true},
+           {first_name: 'Valentina', last_name: 'Latinska',
             email: 'test2@example.com', password: 'password',
-            password_confirmation: 'password')
-User.find_or_create_by(first_name: 'Plamen', last_name: 'Dimitrov',
+            password_confirmation: 'password'},
+           {first_name: 'Plamen', last_name: 'Dimitrov',
             email: 'test3@example.com', password: 'password',
-            password_confirmation: 'password')
-User.find_or_create_by(first_name: 'Pesho', last_name: 'Petrov',
+            password_confirmation: 'password'},
+           {first_name: 'Pesho', last_name: 'Petrov',
             email: 'pesho@abv.bg', password: '123123123',
-            password_confirmation: '123123123')
+            password_confirmation: '123123123'}
+])
+
+
 
 p "Created #{User.count} users"
 

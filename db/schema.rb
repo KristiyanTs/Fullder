@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703112215) do
+ActiveRecord::Schema.define(version: 20160708050705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 20160703112215) do
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
 
+  create_table "permissions", force: :cascade do |t|
+    t.string   "subject_class"
+    t.string   "action"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "product_sizes", force: :cascade do |t|
     t.integer  "product_id"
     t.string   "name"
@@ -109,6 +118,15 @@ ActiveRecord::Schema.define(version: 20160703112215) do
     t.datetime "restaurant_avatar_updated_at"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "roles", ["restaurant_id"], name: "index_roles_on_restaurant_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -140,4 +158,5 @@ ActiveRecord::Schema.define(version: 20160703112215) do
   add_foreign_key "product_sizes", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "restaurants"
+  add_foreign_key "roles", "restaurants"
 end
