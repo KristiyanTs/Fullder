@@ -1,0 +1,8 @@
+.role
+  = role.name
+  = link_to 'x', restaurant_role_path(@restaurant, role), method: :delete, data: {confirm: "Are you sure?"}
+  ul.permissions
+    - role.permissions.each do |permission|
+      li
+        = permission.description
+

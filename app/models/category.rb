@@ -14,6 +14,14 @@
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
 #
+# Indexes
+#
+#  index_categories_on_restaurant_id  (restaurant_id)
+#
+# Foreign Keys
+#
+#  fk_rails_ec0260600b  (restaurant_id => restaurants.id)
+#
 
 class Category < ActiveRecord::Base
   belongs_to :restaurant
