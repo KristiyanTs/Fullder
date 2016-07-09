@@ -57,6 +57,7 @@ GEM
     bootstrap-select-rails (1.6.3)
     builder (3.2.2)
     byebug (9.0.5)
+    cancancan (1.15.0)
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
@@ -351,6 +352,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-select-rails
   byebug
+  cancancan
   capybara
   cocoon
   coffee-rails (~> 4.1.0)

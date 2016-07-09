@@ -49,6 +49,7 @@ end
 
 # Use devise for user auth
 gem 'devise'
+gem 'cancancan'
 gem 'figaro'
 # Use pg for database
 gem 'pg'
