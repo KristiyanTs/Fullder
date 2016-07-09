@@ -25,7 +25,6 @@
 class User < ActiveRecord::Base
   has_many :positions
   has_many :roles, through: :positions
-
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

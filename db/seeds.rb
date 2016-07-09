@@ -135,5 +135,107 @@ p "Created #{Category.count} categories"
 
 # p "Created #{Product.count} products"
 
+permission_seed = [
+  {
+    subject_class: "Product",
+    action: "read",
+    name: "Show all products",
+    description: "Allow user to see all products, including the ones which are unactive."
+  },
+  {
+    subject_class: "Product",
+    action: "create",
+    name: "Create new products",
+    description: "Allow user to add new products."
+  },
+  {
+    subject_class: "Product",
+    action: "update",
+    name: "Update products",
+    description: "Allow user to update existing products."
+  },
+  {
+    subject_class: "Product",
+    action: "destroy",
+    name: "Destroy products",
+    description: "Allow user to destroy existing products."
+  },
+  {
+    subject_class: "Category",
+    action: "read",
+    name: "Show all categories",
+    description: "Allow user to see all categories, including the ones which are unactive."
+  },
+  {
+    subject_class: "Category",
+    action: "create",
+    name: "Create new categories",
+    description: "Allow user to add new categories."
+  },
+  {
+    subject_class: "Category",
+    action: "update",
+    name: "Update categories",
+    description: "Allow user to update existing categories."
+  },
+  {
+    subject_class: "Category",
+    action: "destroy",
+    name: "Destroy categories",
+    description: "Allow user to destroy existing categories."
+  },
+  {
+    subject_class: "Role",
+    action: "read",
+    name: "Show all roles",
+    description: "Allow user to see all roles."
+  },
+  {
+    subject_class: "Role",
+    action: "create",
+    name: "Create new roles",
+    description: "Allow user to add new roles."
+  },
+  {
+    subject_class: "Role",
+    action: "update",
+    name: "Update roles",
+    description: "Allow user to update existing roles."
+  },
+  {
+    subject_class: "Role",
+    action: "destroy",
+    name: "Destroy roles",
+    description: "Allow user to destroy existing roles."
+  },
+  {
+    subject_class: "Position",
+    action: "read",
+    name: "Show all employees",
+    description: "Allow user to see all employees, including information about them."
+  },
+  {
+    subject_class: "Position",
+    action: "create",
+    name: "Add new employees",
+    description: "Allow user to add new employees. Be cautious!"
+  },
+  {
+    subject_class: "Position",
+    action: "update",
+    name: "Update employees",
+    description: "Allow user to update information about existing employees. Be cautious!"
+  },
+  {
+    subject_class: "Position",
+    action: "destroy",
+    name: "Dismiss employees",
+    description: "Allow user to dismiss employees. Be cautious!"
+  }
+]
+
+permission_seed.each do |permission_params|
+  Permission.find_or_create_by(permission_params)
+end
 
 puts 'Done ...'

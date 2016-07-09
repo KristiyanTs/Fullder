@@ -352,7 +352,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-select-rails
   byebug
-  cancancan (~> 1.10)
+  cancancan
   capybara
   cocoon
   coffee-rails (~> 4.1.0)
