@@ -60,6 +60,7 @@ gem 'simple_form'
 gem 'draper', '~> 1.3'
 gem 'font-awesome-rails'
 gem 'slim-rails'
+gem 'ransack'
 gem 'cocoon'
 gem 'bootstrap-select-rails'
 gem 'therubyracer', platform: :ruby

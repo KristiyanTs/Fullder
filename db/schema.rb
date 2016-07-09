@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20160708102830) do
     t.datetime "updated_at",    null: false
     t.integer  "permission_id"
     t.integer  "role_id"
-    t.integer  "restaurant_id"
   end
 
   create_table "permissions", force: :cascade do |t|

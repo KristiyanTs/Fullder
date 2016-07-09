@@ -44,13 +44,37 @@ p "Created Order statuses"
 restaurant_seed = [
   {
     name: "KFC",
-    address: "Sofia",
+    address: "Sofia, Lyulin, bul. Dj.Neru",
     description: "Fast food.",
     phone_number: "88888888"
   },
   {
     name: "McDonals",
-    address: "Varna",
+    address: "Varna, bul. 'Vladimir Vazov' 83",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "PizzaHut",
+    address: "Plovdiv, bul. 'Maria Luiza' 12",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy",
+    address: "Varna, Niagara st. 98",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "Subway",
+    address: "Pleven, bul. 'Makedonia' 56",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy",
+    address: "Burgas, Nikola JIschev St. 45",
     description: "Mc OOD",
     phone_number: "99999999"
   }

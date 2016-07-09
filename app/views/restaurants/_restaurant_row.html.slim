@@ -1,0 +1,5 @@
+= button_to restaurant_path(restaurant), class: "restaurant_row btn" do
+  .restaurant_name
+    = link_to restaurant.name, restaurant_path(restaurant), class: "restaurant_name"
+  .restaurant_address
+    = restaurant.address

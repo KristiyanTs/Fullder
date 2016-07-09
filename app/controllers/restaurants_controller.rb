@@ -3,6 +3,8 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
+    @search = Restaurant.search(params[:q])
+    @restaurants = @search.result
   end
 
   def show
