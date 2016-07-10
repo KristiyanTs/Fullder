@@ -64,6 +64,7 @@ gem 'ransack'
 gem 'geokit-rails'
 gem 'geocoder'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'cocoon'
 gem 'bootstrap-select-rails'
 gem 'therubyracer', platform: :ruby

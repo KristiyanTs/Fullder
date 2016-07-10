@@ -12,13 +12,13 @@ class RestaurantsController < ApplicationController
     # else
     #   @restaurants = @search.result.page(params[:page])
     # end
-    
+
     @restaurants = @search.result.page(params[:page])
-    
+
     respond_to do |format|
       format.html
       format.json { render json: @restaurants }
-      format.js { render partial: 'index.erb.js'}
+      format.js { render partial: 'index.erb.js' }
     end
   end
 

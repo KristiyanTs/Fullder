@@ -29,18 +29,16 @@ class Restaurant < ActiveRecord::Base
 
   ransacker :search_name, formatter: proc { |v| v.mb_chars.downcase.to_s } do |parent|
     Arel::Nodes::NamedFunction.new('LOWER',
-      [Arel::Nodes::NamedFunction.new('concat_ws',
-        [Arel::Nodes.build_quoted(' '), parent.table[:name], parent.table[:address], parent.table[:id]])])
+                                   [Arel::Nodes::NamedFunction.new('concat_ws',
+                                                                   [Arel::Nodes.build_quoted(' '), parent.table[:name], parent.table[:address], parent.table[:id]])])
   end
 
-  geocoded_by :address               # can also be an IP address
-  after_validation :geocode, if: :address_changed?          # auto-fetch coordinates
+  geocoded_by :address # can also be an IP address
+  after_validation :geocode, if: :address_changed? # auto-fetch coordinates
 
-  acts_as_mappable :default_units => :kms,
-                   :default_formula => :sphere,
-                   :distance_field_name => :distance,
-                   :lat_column_name => :lat,
-                   :lng_column_name => :lng
-
-  max_paginates_per 5  # for Kaminari
+  acts_as_mappable default_units: :kms,
+                   default_formula: :sphere,
+                   distance_field_name: :distance,
+                   lat_column_name: :lat,
+                   lng_column_name: :lng
 end
