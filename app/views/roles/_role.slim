@@ -1,8 +1,8 @@
 .role
-  = role.name
   = link_to 'x', restaurant_role_path(@restaurant, role), method: :delete, data: {confirm: "Are you sure?"}
+  = role.name
+  = link_to 'Edit', edit_restaurant_role_path(@restaurant, role), data: { target: '#new-role', toggle: 'modal', remote: true }
   ul.permissions
     - role.permissions.each do |permission|
       li
         = permission.description
-

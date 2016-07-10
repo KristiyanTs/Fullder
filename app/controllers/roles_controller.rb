@@ -12,14 +12,16 @@ class RolesController < ApplicationController
 
   def new
     @role = @restaurant.roles.build
-
-
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
     end
   end
 
   def edit
+    @role = @restaurant.roles.find(params[:id])
+    respond_to do |format|
+      format.js { render partial: 'form.js.coffee' }
+    end
   end
 
   def create 
@@ -47,8 +49,16 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to @role, flash: { notice: 'Role was successfully updated.' } }
-        format.json { render :show, status: :ok, location: @role }
+        format.html do
+          redirect_to restaurant_roles_path(@restaurant),
+                      notice: 'Role was successfully updated.',
+                      status: :ok
+        end
+        format.js do
+          render js: "window.location = #{restaurant_roles_path(@restaurant).to_json}",
+                 notice: 'Role was successfully updated.',
+                 status: :ok
+        end
       else
         format.html { render :edit }
         format.json { render json: @role.errors, status: :unprocessable_entity }

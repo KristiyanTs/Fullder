@@ -8,7 +8,7 @@
     = f.input :name
 
     = f.collection_select :permission_ids, Permission.all, :id, :description,
-      { selected: @role.user_ids },
+      { selected: @role.permission_ids },
       { prompt: "Select Permissions", class: 'select-permissions', multiple: true }
 
   .modal-footer
