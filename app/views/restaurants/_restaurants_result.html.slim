@@ -1,0 +1,6 @@
+- if @restaurants.size == 0
+  p.text-center
+    | No restaurants found with this search.
+- else
+  = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
+  = paginate @restaurants, :theme => 'twitter-bootstrap-3'

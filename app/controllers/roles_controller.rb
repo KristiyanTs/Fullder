@@ -64,5 +64,4 @@ class RolesController < ApplicationController
   def role_params
     params.require(:role).permit(:name, :restaurant_id)
   end
-
 end

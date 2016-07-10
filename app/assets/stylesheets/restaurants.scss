@@ -27,3 +27,62 @@
 	background-color: grey;
 	height:150px;
 }
+
+
+
+.search-form{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.search-form input{
+    border: 0;
+    box-shadow: none;
+}
+
+.search-form button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+.search-form button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+.search-form .glyphicon-search{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+
+.restaurant_row{
+  width: 100%;
+  height:80px;
+  margin-top:5px;
+  padding:20px;
+  background-color: white;
+  border-radius: 5px;
+  .restaurant_name{
+    text-align: left;
+    color: black;
+    font-size:20px;
+    z-index: 1;
+  }
+  .restaurant_address{
+    text-align: left;
+    font-style: italic;
+    font-size: 12px;
+    color: black !important;
+  }
+}
+
