@@ -1,10 +1,10 @@
 .container.container-white
   .restaurant-search
-    h4.text-center Search for a restaurant by name or address
+    h4.text-center Search for a restaurant by name, address or id
     .search-form 
       = search_form_for @search do |f|
         .input-group
-          = f.text_field :name_or_address_cont, class: "form-control input"
+          = f.text_field :search_name_cont, class: "form-control input"
           span.input-group-btn
             = button_tag(type: 'submit', class: "btn btn-info btn") do
               i class="glyphicon glyphicon-search"
