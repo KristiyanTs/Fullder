@@ -47,6 +47,9 @@ group :development do
   gem 'spring'
 end
 
+# Multiple select.
+gem "select2-rails"
+
 # Use devise for user auth
 gem 'devise'
 gem 'cancancan'

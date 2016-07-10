@@ -12,18 +12,33 @@ class RolesController < ApplicationController
 
   def new
     @role = @restaurant.roles.build
+    respond_to do |format|
+      format.js { render partial: 'form.js.coffee' }
+    end
   end
 
   def edit
+    @role = @restaurant.roles.find(params[:id])
+    respond_to do |format|
+      format.js { render partial: 'form.js.coffee' }
+    end
   end
 
-  def create
+  def create 
     @role = @restaurant.roles.new(role_params)
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to restaurant_role_path(@restaurant, @role), flash: { notice: 'Role was successfully created.' } }
-        format.json { render :show, status: :created, location: @role }
+        format.html do
+          redirect_to restaurant_roles_path(@restaurant),
+                      notice: 'Role was successfully created.',
+                      status: :created
+        end
+        format.js do
+          render js: "window.location = #{restaurant_roles_path(@restaurant).to_json}",
+                 notice: 'Role was successfully created.',
+                 status: :created
+        end
       else
         format.html { render :new }
         format.json { render json: @role.errors, status: :unprocessable_entity }
@@ -34,8 +49,16 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to @role, flash: { notice: 'Role was successfully updated.' } }
-        format.json { render :show, status: :ok, location: @role }
+        format.html do
+          redirect_to restaurant_roles_path(@restaurant),
+                      notice: 'Role was successfully updated.',
+                      status: :ok
+        end
+        format.js do
+          render js: "window.location = #{restaurant_roles_path(@restaurant).to_json}",
+                 notice: 'Role was successfully updated.',
+                 status: :ok
+        end
       else
         format.html { render :edit }
         format.json { render json: @role.errors, status: :unprocessable_entity }
@@ -62,6 +85,7 @@ class RolesController < ApplicationController
   end
 
   def role_params
-    params.require(:role).permit(:name, :restaurant_id)
+    params.require(:role).permit(:name, :restaurant_id,
+                                 permission_ids: [])
   end
 end

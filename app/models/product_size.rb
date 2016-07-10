@@ -10,6 +10,14 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+# Indexes
+#
+#  index_product_sizes_on_product_id  (product_id)
+#
+# Foreign Keys
+#
+#  fk_rails_f477a9dc4a  (product_id => products.id)
+#
 
 class ProductSize < ActiveRecord::Base
   belongs_to :product
