@@ -1,0 +1,5 @@
+= link_to restaurant_position_path(@restaurant, position), class: "position_row btn" do
+  .position_name
+    = position.user.try(:first_name)
+  .position_role
+    = position.role.try(:name)

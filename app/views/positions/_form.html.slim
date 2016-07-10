@@ -1,6 +1,7 @@
 = simple_form_for [@restaurant, @position] do |f|
-
-  = f.input :email, prompt: "Employee email"
+  - if @editing
+    h4 = @position.user.first_name + " " + @position.user.last_name
+  - else
+    = email_field_tag :email
   = f.association :role, collection: @roles, prompt: "Choose a role", include_blank: false
-  
   = f.button :submit, disable_with: 'Please wait ...'

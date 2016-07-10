@@ -1,3 +1,3 @@
 .container
   h3 Listing employees
-  -if @positions
+  = render partial: "position_row", collection: @positions, as: :position

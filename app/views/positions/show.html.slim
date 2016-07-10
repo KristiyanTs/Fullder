@@ -1,2 +1,10 @@
-.container
-  
+.container.container-white.position_row
+  .position_name
+    = @position.user.first_name + " " + @position.user.last_name
+  .position_role
+    = @position.role.name
+
+.container.container-white.position_show
+  .position_actions
+    = link_to "Dismiss employee", restaurant_position_path(@restaurant, @position), {method: :delete, class: "btn btn-danger" }
+    = link_to "Edit employee", edit_restaurant_position_path(@restaurant, @position), {class: "btn btn-info" }

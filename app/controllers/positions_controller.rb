@@ -17,14 +17,16 @@ class PositionsController < ApplicationController
     @roles = @restaurant.roles
   end
 
-  def edit
+  def edit  
+    @roles = @restaurant.roles
+    @editing = true
   end
 
   def create
-    debugger
     @employee = User.find_by(email: params[:email])
-    params[:user_id] = @employee.id
-    @position = @restaurant.positions.new(positions_params)
+    params[:position][:user_id] = @employee.id
+
+    @position = @restaurant.positions.new(position_params)
 
     respond_to do |format|
       if @position.save
@@ -38,9 +40,8 @@ class PositionsController < ApplicationController
   end
 
   def update
-    debugger
     respond_to do |format|
-      if @position.update(positions_params)
+      if @position.update(position_params)
         format.html { redirect_to @position, flash: { notice: 'Position was successfully updated.' } }
         format.json { render :show, status: :ok, location: @position }
       else
@@ -68,7 +69,7 @@ class PositionsController < ApplicationController
     @position = @restaurant.positions.find(params[:id])
   end
 
-  def positions_params
+  def position_params
     params.require(:position).permit(:role_id, :user_id)
   end
 
