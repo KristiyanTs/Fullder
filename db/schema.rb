@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708102830) do
+ActiveRecord::Schema.define(version: 20160710082954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,8 @@ ActiveRecord::Schema.define(version: 20160708102830) do
     t.string   "restaurant_avatar_content_type"
     t.integer  "restaurant_avatar_file_size"
     t.datetime "restaurant_avatar_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "roles", force: :cascade do |t|

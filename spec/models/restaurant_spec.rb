@@ -13,6 +13,8 @@
 #  restaurant_avatar_content_type :string
 #  restaurant_avatar_file_size    :integer
 #  restaurant_avatar_updated_at   :datetime
+#  latitude                       :float
+#  longitude                      :float
 #
 
 require 'rails_helper'

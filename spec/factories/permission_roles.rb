@@ -7,7 +7,6 @@
 #  updated_at    :datetime         not null
 #  permission_id :integer
 #  role_id       :integer
-#  restaurant_id :integer
 #
 
 FactoryGirl.define do

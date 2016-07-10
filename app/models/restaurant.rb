@@ -13,6 +13,8 @@
 #  restaurant_avatar_content_type :string
 #  restaurant_avatar_file_size    :integer
 #  restaurant_avatar_updated_at   :datetime
+#  latitude                       :float
+#  longitude                      :float
 #
 
 class Restaurant < ActiveRecord::Base
@@ -30,4 +32,15 @@ class Restaurant < ActiveRecord::Base
       [Arel::Nodes::NamedFunction.new('concat_ws',
         [Arel::Nodes.build_quoted(' '), parent.table[:name], parent.table[:address], parent.table[:id]])])
   end
+
+  geocoded_by :address               # can also be an IP address
+  after_validation :geocode, if: :address_changed?          # auto-fetch coordinates
+
+  acts_as_mappable :default_units => :kms,
+                   :default_formula => :sphere,
+                   :distance_field_name => :distance,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
+
+  max_paginates_per 5  # for Kaminari
 end

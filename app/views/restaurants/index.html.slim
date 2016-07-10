@@ -2,12 +2,13 @@
   .restaurant-search
     h4.text-center Search for a restaurant by name, address or id
     .search-form 
-      = search_form_for @search do |f|
+      = search_form_for @search, remote: true do |f|
         .input-group
           = f.text_field :search_name_cont, class: "form-control input"
           span.input-group-btn
             = button_tag(type: 'submit', class: "btn btn-info btn") do
               i class="glyphicon glyphicon-search"
 
-= render partial: "restaurant_row", collection: @restaurants, as: :restaurant
+.restaurants
+  = render partial: "restaurants_result"
             

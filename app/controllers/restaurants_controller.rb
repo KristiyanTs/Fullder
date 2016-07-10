@@ -3,8 +3,23 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
+    @userLocation = request.location
     @search = Restaurant.search(params[:q])
-    @restaurants = @search.result
+
+    # The following code will not work in localhost. Uncomment for production
+    # if @userLocation.present?
+    #   @restaurants = @search.result.page(params[:page]).near([@userLocation.latitude, @userLocation.longitude], 50, order: :distance)
+    # else
+    #   @restaurants = @search.result.page(params[:page])
+    # end
+    
+    @restaurants = @search.result.page(params[:page])
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @restaurants }
+      format.js { render partial: 'index.erb.js'}
+    end
   end
 
   def show
