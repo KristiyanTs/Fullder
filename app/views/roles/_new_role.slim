@@ -1,8 +1,8 @@
 = simple_form_for([@restaurant, @role], remote: true, html: { multipart: true }, authenticity_token: true) do |f|
   .modal-header
+    | Role creation for #{@restaurant.name}
     button.close aria-label="Close" data-dismiss="modal" type="button"
       span aria-hidden="true"  &times;
-      = @restaurant.name
 
   .modal-body
     = f.input :name
