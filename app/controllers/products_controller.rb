@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
   before_action :set_restaurant
   before_action :set_product, only: [:show, :edit, :destroy]
 
+  def index
+    @products = @restaurant.products
+  end
+
   def show
     @order_item = current_order.order_items.new
   end
@@ -12,10 +16,18 @@ class ProductsController < ApplicationController
   def new
     @product = @restaurant.products.build
     @categories = @restaurant.categories
+
+    respond_to do |format|
+      format.js { render partial: 'form.js.coffee' }
+    end
   end
 
   def edit
     @categories = @restaurant.categories
+    
+    respond_to do |format|
+      format.js { render partial: 'form.js.coffee' }
+    end
   end
 
   def create
@@ -23,8 +35,16 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to restaurant_product_path(@restaurant, @product), flash: { notice: 'Product was successfully created.' } }
-        format.json { render :show, status: :created, location: @product }
+        format.html do
+          redirect_to restaurant_products_path(@restaurant),
+                      notice: 'Product was successfully created.',
+                      status: :created
+        end
+        format.js do
+          render js: "window.location = #{restaurant_products_path(@restaurant).to_json}",
+                 notice: 'Product was successfully created.',
+                 status: :created
+        end
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -35,8 +55,16 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, flash: { notice: 'Product was successfully updated.' } }
-        format.json { render :show, status: :ok, location: @product }
+        format.html do
+          redirect_to restaurant_products_path(@restaurant),
+                      notice: 'Product was successfully updated.',
+                      status: :ok
+        end
+        format.js do
+          render js: "window.location = #{restaurant_products_path(@restaurant).to_json}",
+                 notice: 'Product was successfully updated.',
+                 status: :ok
+        end
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }

@@ -1,0 +1,8 @@
+= link_to edit_restaurant_product_path(@restaurant, product), 
+      class: "product_row_dashboard btn", data: { target: '#new-product', toggle: 'modal', remote: true} do
+  .product_name_dashboard
+    = product.name
+  .product_short_description_dashboard
+    = product.short_description
+  .product_avatar_dashboard
+    = image_tag product.avatar.url(:small), class: "img-circle"

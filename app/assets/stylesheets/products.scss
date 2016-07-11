@@ -146,3 +146,38 @@ input[type="submit"]:hover{
 input[type="submit"]:visited{
   color: white;
 }
+
+.product_row_dashboard{
+  margin-top:5px;
+  background-color: white;
+  border-radius: 5px;
+  .product_name_dashboard{
+    position:absolute;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size:15px;
+    z-index: 1;
+  }
+  .product_short_description_dashboard{
+    position:absolute;
+    padding-top: 30px;
+    padding-left:10px;
+    font-style: italic;
+    font-size: 12px;
+    padding-right: 95px;
+    color: black !important;
+  }
+  .product_avatar_dashboard{
+    position: relative;
+    border:1px solid rgb(220,220,220);
+    border-radius: 50%;
+    margin-left: calc(100% - 80px);
+  }
+}
+
+
+.new-product{
+  margin-top: 20px;
+}

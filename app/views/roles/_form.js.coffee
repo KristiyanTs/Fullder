@@ -1,3 +1,3 @@
-$('.modal-content').html("<%= j(render partial: 'new_role').html_safe%>")
+$('.modal-content').html("<%= j(render partial: 'role_form').html_safe%>")
 
 $('.select-permissions').select2 theme: 'bootstrap'
