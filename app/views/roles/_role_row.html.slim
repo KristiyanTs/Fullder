@@ -9,4 +9,4 @@
     = link_to 'Destroy', restaurant_role_path(@restaurant, role), method: :delete, 
                 data: {confirm: "Are you sure?"}, class: "btn btn-danger"
     = link_to 'Edit', edit_restaurant_role_path(@restaurant, role), class: "btn btn-info",
-                data: { target: '#new-role', toggle: 'modal', remote: true}      
+                data: { target: '#role-form', toggle: 'modal', remote: true}      

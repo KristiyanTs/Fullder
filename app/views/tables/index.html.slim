@@ -1,0 +1,17 @@
+.container
+  h3 Listing tables:
+  h4.table_row
+    |This is the place to claim tables.
+
+.container
+  = render partial: "table_row", collection: @tables, as: :table
+  = paginate @tables, theme: 'twitter-bootstrap-3'
+
+.container  
+  .new-table-button
+    = link_to 'Add a table', new_restaurant_table_path, class: 'btn btn-primary btn-lg', 
+                                  data: { target: '#table-form', toggle: 'modal' , remote: true}
+    #table-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog role="document"
+        .modal-content
+          | Please wait ...
