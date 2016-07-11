@@ -1,0 +1,12 @@
+.role_row
+  .role_name
+    = role.name
+  ul.role_permissions
+    - role.permissions.each do |permission|
+      li
+        = permission.description
+  .role_actions
+    = link_to 'Destroy', restaurant_role_path(@restaurant, role), method: :delete, 
+                data: {confirm: "Are you sure?"}, class: "btn btn-danger"
+    = link_to 'Edit', edit_restaurant_role_path(@restaurant, role), class: "btn btn-info",
+                data: { target: '#new-role', toggle: 'modal', remote: true}      
