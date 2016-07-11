@@ -9,7 +9,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @products }
+      format.json { render json: @roles }
       format.js { render partial: 'index.erb.js' }
     end
   end
