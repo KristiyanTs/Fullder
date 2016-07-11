@@ -1,0 +1,15 @@
+.container
+  h3 Listing products
+  h4.position_row
+    | All products in this restaurant are listed here, including the inactive ones. Here you can create, edit and activate products. 
+    | Every product that is updated/created will stay inactive until a manager reviews it.
+  
+  = render partial: "product_row_dashboard", collection: @products, as: :product
+
+  .new-product
+    = link_to 'Add a new product', new_restaurant_product_path, class: 'btn btn-primary btn-lg', 
+                                 data: { target: '#new-product', toggle: 'modal' , remote: true}
+    #new-product.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog role="document"
+        .modal-content
+          | Please wait ...
