@@ -4,9 +4,19 @@
     | All employees in this restaurant are listed here. You can see information about their roles in the restaurant and 
     | adjust them to your needs.
     br If you decide that someone should have more/less permissions you can edit that in the 'Roles' section.
-  
-  = render partial: "position_row", collection: @positions, as: :position
-  = paginate @positions, theme: 'twitter-bootstrap-3'
+    
+    .position-search
+      .search-form 
+        = search_form_for @search, url: "/restaurants/#{@restaurant.id}/positions", method: :get, remote: true do |f|
+          .input-group
+            = f.text_field :user_first_name_or_user_last_name_or_role_name_cont, class: "form-control input", 
+                            placeholder: "Search by employee name or role"
+            span.input-group-btn
+              = button_tag(type: 'submit', class: "btn btn-info btn") do
+                i class="glyphicon glyphicon-search"    
+
+  .positions
+    = render partial: "position_results"                
   
   .new-position
     = link_to 'Add a new employee', new_restaurant_position_path, class: 'btn btn-primary btn-lg', data: { target: '#new-position', toggle: 'modal' , remote: true}

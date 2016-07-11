@@ -3,8 +3,17 @@
   h4.role_row
     | Roles are the functions of employees in a restaurants. For example, a person whose role is a "Waiter" is expected to serve customers at their tables in a restaurant. Here you are adding just the role. In the 'Positions' section you can assign this role to people.
 
-  = render partial: 'role_row', collection: @roles, as: :role
-  = paginate @roles, theme: 'twitter-bootstrap-3'
+    .role-search
+      .search-form 
+        = search_form_for @search, url: "/restaurants/#{@restaurant.id}/roles", method: :get, remote: true do |f|
+          .input-group
+            = f.text_field :name_cont, class: "form-control input", placeholder: "Search by role name"
+            span.input-group-btn
+              = button_tag(type: 'submit', class: "btn btn-info btn") do
+                i class="glyphicon glyphicon-search"
+
+  .roles
+    = render partial: "role_results"
   
   .new-role
     = link_to 'Create a new role', new_restaurant_role_path, class: 'btn btn-primary btn-lg', data: { target: '#new-role', toggle: 'modal' , remote: true}

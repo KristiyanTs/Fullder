@@ -1,0 +1,6 @@
+- if @positions.size == 0
+  p.text-center
+    | No positions found with this search.
+- else
+  = render partial: "position_row", collection: @positions, as: :position
+  = paginate @positions, theme: 'twitter-bootstrap-3'
