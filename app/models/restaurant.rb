@@ -23,6 +23,7 @@ class Restaurant < ActiveRecord::Base
   has_many :roles, dependent: :destroy
   has_many :positions, dependent: :destroy
   has_many :permission_roles, dependent: :destroy
+  has_many :orders
 
   has_attached_file :restaurant_avatar, styles: { large: '300x300' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :restaurant_avatar, content_type: /\Aimage\/.*\Z/

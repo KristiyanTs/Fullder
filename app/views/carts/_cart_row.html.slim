@@ -4,7 +4,7 @@
   .col-xs-5
     b = order_item.product.name
     br
-    = order_item.product_size.name
+    = order_item.product_size.try(:name)
     br
     | Quantity: 
     = order_item.quantity

@@ -3,7 +3,16 @@ class OrderItemsController < ApplicationController
 
   def create
     @order = current_order
-    @order_item = @order.order_items.new(order_item_params)
+    @order_item = OrderItem.new(order_item_params)
+
+    if @order.restaurant_id != @order_item.product.restaurant_id
+      @order.order_items.destroy_all
+      @order.order_items << @order_item
+      @order.restaurant_id = @order_item.product.restaurant_id
+    else
+      @order.order_items << @order_item
+    end
+    
     @order.save
     session[:order_id] = @order.id
   end

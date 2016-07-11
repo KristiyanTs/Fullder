@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20160710082954) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "order_status_id"
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
     t.decimal  "subtotal"
     t.decimal  "tax"
     t.decimal  "shipping"
@@ -65,13 +67,14 @@ ActiveRecord::Schema.define(version: 20160710082954) do
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
+  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "permission_roles", force: :cascade do |t|
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "permission_id"
     t.integer  "role_id"
-    t.integer  "restaurant_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -173,6 +176,8 @@ ActiveRecord::Schema.define(version: 20160710082954) do
   add_foreign_key "order_items", "product_sizes"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "order_statuses"
+  add_foreign_key "orders", "restaurants"
+  add_foreign_key "orders", "users"
   add_foreign_key "product_sizes", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "restaurants"
