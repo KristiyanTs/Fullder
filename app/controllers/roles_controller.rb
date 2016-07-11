@@ -4,7 +4,14 @@ class RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   def index
-    @roles = @restaurant.roles.page(params[:page])
+    @search = @restaurant.roles.search(params[:q])
+    @roles = @search.result.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @products }
+      format.js { render partial: 'index.erb.js' }
+    end
   end
 
   def show

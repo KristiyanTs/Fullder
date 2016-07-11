@@ -6,7 +6,14 @@ class PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :destroy]
 
   def index 
-    @positions = @restaurant.positions.page(params[:page])
+    @search = @restaurant.positions.search(params[:q])
+    @positions = @search.result.includes(:role, :user).page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @products }
+      format.js { render partial: 'index.erb.js' }
+    end
   end
 
   def show
