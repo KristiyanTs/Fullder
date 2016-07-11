@@ -4,7 +4,8 @@
     | Roles are the functions of employees in a restaurants. For example, a person whose role is a "Waiter" is expected to serve customers at their tables in a restaurant. Here you are adding just the role. In the 'Positions' section you can assign this role to people.
 
   = render partial: 'role_row', collection: @roles, as: :role
-
+  = paginate @roles, theme: 'twitter-bootstrap-3'
+  
   .new-role
     = link_to 'Create a new role', new_restaurant_role_path, class: 'btn btn-primary btn-lg', data: { target: '#new-role', toggle: 'modal' , remote: true}
     #new-role.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"

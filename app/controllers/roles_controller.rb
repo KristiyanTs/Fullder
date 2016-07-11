@@ -4,7 +4,7 @@ class RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   def index
-    @roles = @restaurant.roles
+    @roles = @restaurant.roles.page(params[:page])
   end
 
   def show

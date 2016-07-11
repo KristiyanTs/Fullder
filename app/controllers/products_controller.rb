@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :destroy]
 
   def index
-    @products = @restaurant.products
+    @products = @restaurant.products.page(params[:page])
   end
 
   def show

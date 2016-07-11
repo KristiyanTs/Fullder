@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @products = @category.products
+    @products = @category.products.page(params[:page])
   end
 
   def new

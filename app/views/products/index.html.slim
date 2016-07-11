@@ -5,6 +5,7 @@
     | Every product that is updated/created will stay inactive until a manager reviews it.
   
   = render partial: "product_row_dashboard", collection: @products, as: :product
+  = paginate @products, theme: 'twitter-bootstrap-3'
 
   .new-product
     = link_to 'Add a new product', new_restaurant_product_path, class: 'btn btn-primary btn-lg', 
