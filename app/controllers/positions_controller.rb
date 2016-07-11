@@ -15,11 +15,17 @@ class PositionsController < ApplicationController
   def new
     @position = @restaurant.positions.build
     @roles = @restaurant.roles
+    respond_to do |format|
+      format.js { render partial: 'form.js.coffee' }
+    end
   end
 
   def edit  
     @roles = @restaurant.roles
     @editing = true
+    respond_to do |format|
+      format.js { render partial: 'form.js.coffee' }
+    end
   end
 
   def create
@@ -30,8 +36,16 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @position.save
-        format.html { redirect_to restaurant_position_path(@restaurant, @position), flash: { notice: 'Employee was successfully added.' } }
-        format.json { render :show, status: :created, location: @position }
+        format.html do
+          redirect_to restaurant_positions_path(@restaurant),
+                      notice: 'Employee was successfully added.',
+                      status: :created
+        end
+        format.js do
+          render js: "window.location = #{restaurant_positions_path(@restaurant).to_json}",
+                 notice: 'Employee was successfully added.',
+                 status: :created
+        end
       else
         format.html { render :new }
         format.json { render json: @position.errors, status: :unprocessable_entity }
@@ -42,8 +56,16 @@ class PositionsController < ApplicationController
   def update
     respond_to do |format|
       if @position.update(position_params)
-        format.html { redirect_to @position, flash: { notice: 'Position was successfully updated.' } }
-        format.json { render :show, status: :ok, location: @position }
+        format.html do
+          redirect_to restaurant_position_path(@restaurant, @position),
+                      notice: 'Employee status was successfully updated.',
+                      status: :ok
+        end
+        format.js do
+          render js: "window.location = #{restaurant_position_path(@restaurant, @position).to_json}",
+                 notice: 'Employee status was successfully updated.',
+                 status: :ok
+        end
       else
         format.html { render :edit }
         format.json { render json: @position.errors, status: :unprocessable_entity }

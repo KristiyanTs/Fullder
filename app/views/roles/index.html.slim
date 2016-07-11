@@ -1,11 +1,13 @@
-.new-role
-  = link_to 'Create a new role', new_restaurant_role_path, class: 'btn btn-primary btn-lg', data: { target: '#new-role', toggle: 'modal' , remote: true}
-  #new-role.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
-    .modal-dialog role="document"
-      .modal-content
-        | Please wait ...
+.container
+  h3 Listing roles:
+  h4.role_row
+    | Roles are the functions of employees in a restaurants. For example, a person whose role is a "Waiter" is expected to serve customers at their tables in a restaurant. Here you are adding just the role. In the 'Positions' section you can assign this role to people.
 
-h1
-  | Check out all the roles:
+  = render partial: 'role_row', collection: @roles, as: :role
 
-= render partial: 'role', collection: @roles, as: :role
+  .new-role
+    = link_to 'Create a new role', new_restaurant_role_path, class: 'btn btn-primary btn-lg', data: { target: '#new-role', toggle: 'modal' , remote: true}
+    #new-role.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog role="document"
+        .modal-content
+          | Please wait ...
