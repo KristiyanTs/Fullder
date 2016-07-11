@@ -1,8 +1,9 @@
-.product_row{
+a.product_row{
   margin-top:5px;
   background-color: white;
-  border-bottom-right-radius: 40px;
-  border-top-right-radius: 40px;
+  height:80px;
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   .product_name{
@@ -25,9 +26,10 @@
   }
   .product_avatar{
     position: relative;
-    border:1px solid rgb(220,220,220);
+    top:-8px;
+    right: 0px;
     border-radius: 50%;
-    margin-left: calc(100% - 80px);
+    margin-left: calc(100% - 67px);
   }
 }
 
@@ -35,8 +37,10 @@
   background-color: white;
   border-radius: 5px;
   margin-top: 10px;
+  margin-bottom: 20px;
   padding-left: 0px !important;
   padding-right: 0px !important;
+  position: relative;
   .pick-option{
     border-bottom: 1px solid rgb(225,225,225);
     border-bottom-style: dashed;
@@ -180,4 +184,9 @@ input[type="submit"]:visited{
 
 .new-product{
   margin-top: 20px;
+}
+
+.description-panel, .ingredient-panel{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }

@@ -1,5 +1,6 @@
-.product_row
-  = link_to product.name, restaurant_product_path(@restaurant, product), class: "product_name"
+= link_to restaurant_product_path(@restaurant, product), class: "product_row btn col-md-6 col-md-offset-3"
+  .product_name
+    = product.name
   .product_short_description
     = product.short_description
   .product_avatar
