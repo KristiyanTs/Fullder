@@ -152,6 +152,7 @@ input[type="submit"]:visited{
 }
 
 .product_row_dashboard{
+  height:80px;
   margin-top:5px;
   background-color: white;
   border-radius: 5px;
@@ -175,14 +176,15 @@ input[type="submit"]:visited{
   }
   .product_avatar_dashboard{
     position: relative;
+    top:-8px;
     border:1px solid rgb(220,220,220);
     border-radius: 50%;
-    margin-left: calc(100% - 80px);
+    margin-left: calc(100% - 75px);
   }
 }
 
 
-.new-product{
+.new-product, .product-search{
   margin-top: 20px;
 }
 

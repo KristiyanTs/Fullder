@@ -6,7 +6,14 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :destroy]
 
   def index
-    @products = @restaurant.products.page(params[:page])
+    @search = @restaurant.products.includes(:category).search(params[:q])
+    @products = @search.result.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @products }
+      format.js { render partial: 'index.erb.js' }
+    end
   end
 
   def show
