@@ -2,9 +2,20 @@
   h3 Listing products
   h4.position_row
     | All products in this restaurant are listed here, including the inactive ones. Here you can create, edit and activate products. 
-    | Every product that is updated/created will stay inactive until a manager reviews it.
+    | Every product that is updated/created will stay inactive until a manager reviews it. 
+    |In this search form you can look by product name or product category.
+    
+    .product-search
+      .search-form 
+        = search_form_for @search, url: "/restaurants/#{@restaurant.id}/products", method: :get, remote: true do |f|
+          .input-group
+            = f.text_field :name_or_category_name_cont, class: "form-control input"
+            span.input-group-btn
+              = button_tag(type: 'submit', class: "btn btn-info btn") do
+                i class="glyphicon glyphicon-search"
   
-  = render partial: "product_row_dashboard", collection: @products, as: :product
+  .products
+    = render partial: "product_results"
 
   .new-product
     = link_to 'Add a new product', new_restaurant_product_path, class: 'btn btn-primary btn-lg', 

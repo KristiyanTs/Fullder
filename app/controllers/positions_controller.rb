@@ -6,7 +6,7 @@ class PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :destroy]
 
   def index 
-    @positions = @restaurant.positions
+    @positions = @restaurant.positions.page(params[:page])
   end
 
   def show
