@@ -1,0 +1,7 @@
+.container.container-white
+  h3 Choose a table
+  = simple_form_for([@order], authenticity_token: true) do |f|
+    = f.input :table_id, input_html: { value: '' }, label: false
+    = f.button :submit, "Submit", disable_with: 'Please wait ...'
+  = link_to "Skip for now", 
+    restaurant_categories_path(Restaurant.find(session[:restaurant_id])), class: "btn btn-lg btn-default"

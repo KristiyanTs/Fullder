@@ -30,10 +30,8 @@
 class User < ActiveRecord::Base
   has_many :positions
   has_many :roles, through: :positions
-  
-  has_many :tables
-
   has_many :orders
+  has_many :tables
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

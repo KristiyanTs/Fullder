@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    session[:restaurant_id] = @restaurant.id
   end
 
   def new
