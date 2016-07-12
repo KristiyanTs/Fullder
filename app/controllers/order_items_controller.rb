@@ -1,26 +1,24 @@
 class OrderItemsController < ApplicationController
   before_action :authenticate_user!
-
   before_action :set_order
 
   def create
     @order_item = OrderItem.new(order_item_params)
-    
+
     if @order.restaurant_id == @order_item.product.restaurant_id and !@order.table_id.nil?
       @order.order_items << @order_item
       @order.save
     else
+      @order.restaurant_id = @order_item.product.restaurant_id
       @order.order_items.destroy_all
       @order.order_items << @order_item
-      @order.restaurant_id = @order_item.product.restaurant_id
       @order.save
-      
-      session[:order_id] = @order.id
+
       session[:product_id] = @order_item.product.id
 
       respond_to do |format|
-        format.html { redirect_to edit_order_path(current_order)}
-        format.js   { render js: "window.location = #{edit_order_path(current_order).to_json}"}     
+        format.html { redirect_to edit_order_path(@order)}
+        format.js   { render js: "window.location = #{edit_order_path(@order).to_json}"}     
       end
     end
   end

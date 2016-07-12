@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-
   before_action :set_order, except: [:new]
 
   def new
@@ -18,7 +17,6 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        session[:order_id] = @order.id
         format.html { redirect_to restaurant_categories_path(@restaurant) }
         format.json { render :show, status: :ok, location: @restaurant }
       else
