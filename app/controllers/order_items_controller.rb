@@ -5,16 +5,23 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = OrderItem.new(order_item_params)
 
-    if @order.restaurant_id != @order_item.product.restaurant_id
+    if @order.restaurant_id != @order_item.product.restaurant_id or @order.table_id.nil?
       @order.order_items.destroy_all
       @order.order_items << @order_item
       @order.restaurant_id = @order_item.product.restaurant_id
+      session[:restaurant_id] = @order_item.product.restaurant_id
+      session[:product_id] = @order_item.product.id
+      @order.save
+      session[:order_id] = @order.id
+      respond_to do |format|
+        format.html { redirect_to edit_order_path(current_order)}
+        format.js   { render js: "window.location = #{edit_order_path(current_order).to_json}"}     
+      end
     else
       @order.order_items << @order_item
+      @order.save
+      session[:order_id] = @order.id
     end
-    
-    @order.save
-    session[:order_id] = @order.id
   end
 
   def update

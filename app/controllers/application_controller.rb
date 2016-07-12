@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if !session[:order_id].nil?
       Order.find(session[:order_id])
     else
-      Order.new
+      current_user.orders.new
     end
   end
 
