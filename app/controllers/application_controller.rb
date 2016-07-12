@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
   # derive the model name from the controller. egs UsersController will return User
   def self.permission
     name = begin
-    self.name.gsub('Controller', '').singularize.split('::').last.constantize.name
+      self.name.gsub('Controller', '').singularize.split('::').last.constantize.name
     rescue
-    nil
+      nil
     end
   end
 

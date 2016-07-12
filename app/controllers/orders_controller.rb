@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, except: [:new]
 
   def new
-    @order = current_user.orders.new
-    session[:order_id] = @order.id
+    current_order = current_user.orders.new
+    session[:order_id] = current_order.id
   end
 
   def edit
@@ -12,32 +11,33 @@ class OrdersController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(session[:restaurant_id])
-    @order.restaurant_id = @restaurant.id
-    @order.table_id = @restaurant.tables.find_by(number: params[:order][:table_id]).id
+    current_order.restaurant_id = @restaurant.id
+    current_order.table_id = @restaurant.tables.find_by(number: params[:order][:table_id]).id
 
     respond_to do |format|
-      if @order.save
+      if current_order.save
+        session[:order_id] = current_order.id
         format.html { redirect_to restaurant_categories_path(@restaurant) }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.json { render json: current_order.errors, status: :unprocessable_entity }
       end
-    end    
+    end
   end
 
   def update
-    @restaurant = @order.restaurant
+    @restaurant = current_order.restaurant
     params[:order][:table_id] = @restaurant.tables.find_by(number: params[:order][:table_id]).id
 
     respond_to do |format|
-      if @order.update(order_params)
-        session[:order_id] = @order.id
+      if current_order.update(order_params)
+        session[:order_id] = current_order.id
         format.html { redirect_to restaurant_product_path(@restaurant, session[:product_id]) }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.json { render json: current_order.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,8 +47,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:table_id)
   end
-
-  def set_order
-    @order = current_order
-  end 
 end

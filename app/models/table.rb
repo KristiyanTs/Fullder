@@ -23,7 +23,7 @@
 class Table < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :user
-  
+
   has_many :orders
 
   validates_uniqueness_of :number, scope: :restaurant_id

@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
 
   def edit
     @categories = @restaurant.categories
-    
+
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
     end

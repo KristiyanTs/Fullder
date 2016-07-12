@@ -31,8 +31,8 @@ class Restaurant < ActiveRecord::Base
 
   ransacker :search_name, formatter: proc { |v| v.mb_chars.downcase.to_s } do |parent|
     Arel::Nodes::NamedFunction.new('LOWER',
-    [Arel::Nodes::NamedFunction.new('concat_ws',
-    [Arel::Nodes.build_quoted(' '), parent.table[:name], parent.table[:address], parent.table[:id]])])
+                                   [Arel::Nodes::NamedFunction.new('concat_ws',
+                                                                   [Arel::Nodes.build_quoted(' '), parent.table[:name], parent.table[:address], parent.table[:id]])])
   end
 
   geocoded_by :address # can also be an IP address
