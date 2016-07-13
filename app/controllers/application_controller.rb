@@ -15,21 +15,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_restaurant
-    if !session[:restaurant_id].nil?
-      session[:restaurant_id]
-    else
-      redirect_to root_path, notice: 'Where would you like to eat?'
-    end
-  end
-
   # derive the model name from the controller. egs UsersController will return User
   def self.permission
     name = begin
-                    self.name.gsub('Controller', '').singularize.split('::').last.constantize.name
-                  rescue
-                    nil
-                  end
+      self.name.gsub('Controller', '').singularize.split('::').last.constantize.name
+    rescue
+      nil
+    end
   end
 
   def current_user_permissions

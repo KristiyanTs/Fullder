@@ -15,9 +15,10 @@
   .roles
     = render partial: "role_results"
   
-  .new-role
-    = link_to 'Create a new role', new_restaurant_role_path, class: 'btn btn-primary btn-lg', data: { target: '#new-role', toggle: 'modal' , remote: true}
-    #new-role.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+  .new-role-button
+    = link_to 'Create a new role', new_restaurant_role_path, class: 'btn btn-primary btn-lg', 
+                                  data: { target: '#role-form', toggle: 'modal' , remote: true}
+    #role-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
       .modal-dialog role="document"
         .modal-content
           | Please wait ...

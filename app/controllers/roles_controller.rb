@@ -31,7 +31,7 @@ class RolesController < ApplicationController
     end
   end
 
-  def create 
+  def create
     @role = @restaurant.roles.new(role_params)
 
     respond_to do |format|

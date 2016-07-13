@@ -48,7 +48,7 @@ group :development do
 end
 
 # Multiple select.
-gem "select2-rails"
+gem 'select2-rails'
 
 # Use devise for user auth
 gem 'devise'

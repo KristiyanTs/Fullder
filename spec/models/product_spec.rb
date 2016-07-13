@@ -17,6 +17,16 @@
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
 #
+# Indexes
+#
+#  index_products_on_category_id    (category_id)
+#  index_products_on_restaurant_id  (restaurant_id)
+#
+# Foreign Keys
+#
+#  fk_rails_009fa2d872  (restaurant_id => restaurants.id)
+#  fk_rails_fb915499a4  (category_id => categories.id)
+#
 
 require 'rails_helper'
 

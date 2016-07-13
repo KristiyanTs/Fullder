@@ -5,7 +5,7 @@ class PositionsController < ApplicationController
   before_action :set_restaurant
   before_action :set_position, only: [:show, :edit, :destroy]
 
-  def index 
+  def index
     @search = @restaurant.positions.search(params[:q])
     @positions = @search.result.includes(:role, :user).page(params[:page])
 
@@ -27,7 +27,7 @@ class PositionsController < ApplicationController
     end
   end
 
-  def edit  
+  def edit
     @roles = @restaurant.roles
     @editing = true
     respond_to do |format|
@@ -101,5 +101,4 @@ class PositionsController < ApplicationController
   def position_params
     params.require(:position).permit(:role_id, :user_id)
   end
-
 end

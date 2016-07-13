@@ -8,6 +8,14 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
+# Indexes
+#
+#  index_roles_on_restaurant_id  (restaurant_id)
+#
+# Foreign Keys
+#
+#  fk_rails_a5d1cc5ecc  (restaurant_id => restaurants.id)
+#
 
 require 'rails_helper'
 
