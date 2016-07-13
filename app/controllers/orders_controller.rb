@@ -1,40 +1,38 @@
 class OrdersController < ApplicationController
+  include OrdersHelper
+
   before_action :authenticate_user!
+  before_action :set_create_order_params, only: [:create]
+  before_action :set_update_order_params, only: [:update]
 
   def new
-    current_order = current_user.orders.new
-    session[:order_id] = current_order.id
+    @order = Order.new
   end
 
   def edit
   end
 
   def create
-    @restaurant = Restaurant.find(session[:restaurant_id])
-    current_order.restaurant_id = @restaurant.id
-    current_order.table_id = @restaurant.tables.find_by(number: params[:order][:table_id]).id
+    @order = Order.new(order_params)
 
     respond_to do |format|
-      if current_order.save
-        session[:order_id] = current_order.id
+      if @order.save
+        session[:order_id] = @order.id
         format.html { redirect_to restaurant_categories_path(@restaurant) }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit }
-        format.json { render json: current_order.errors, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
-    @restaurant = current_order.restaurant
-    params[:order][:table_id] = @restaurant.tables.find_by(number: params[:order][:table_id]).id
-
     respond_to do |format|
       if current_order.update(order_params)
         session[:order_id] = current_order.id
-        format.html { redirect_to restaurant_product_path(@restaurant, session[:product_id]) }
-        format.json { render :show, status: :ok, location: @restaurant }
+        format.html { redirect_to restaurant_product_path(order_restaurant, session[:product_id]) }
+        format.json { render :show, status: :ok, location: order_restaurant }
       else
         format.html { render :edit }
         format.json { render json: current_order.errors, status: :unprocessable_entity }
@@ -45,6 +43,19 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:table_id)
+    params.require(:order).permit(:table_id, :restaurant_id)
+  end
+
+  def set_create_order_params
+    @restaurant = Restaurant.find(session[:restaurant_id])
+    params[:order][:restaurant_id] = @restaurant.id
+    params[:order][:table_id] = @restaurant.tables.find_by(number: params[:table_number]).id
+    params[:order][:user_id] = current_user.id
+  end
+
+  def set_update_order_params
+    params[:order][:table_id] = order_restaurant.tables.find_by(number: params[:table_number]).id
+    params[:order][:user_id] = current_user.id
+    params[:order][:restaurant_id] = order_restaurant.id
   end
 end

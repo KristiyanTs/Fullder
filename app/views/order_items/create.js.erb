@@ -1,4 +1,4 @@
-<% if @order.errors.any? || @order_item.errors.any? %>
+<% if current_order.errors.any? || @order_item.errors.any? %>
 alert("not valid.")
 <% else %>
   $(".button-right").html("<%= escape_javascript(render 'layouts/footer/cart') %>")

@@ -105,19 +105,37 @@ product_seed = [
   {
     name: "Shopska salata",
     category_id: 2,
+    price: 3.40,
     short_description: "Cucumbers, Tomatoes, Cheese, Olive oil",
     avatar: File.open(File.join(Rails.root, "app/assets/images/shopska_salad.jpg"))
   },
   {
     name: "Duner",
     category_id: 1,
+    price: 3.40,
     short_description: "Bread, Chicken meat, Patatoes, White sauce",
     avatar: File.open(File.join(Rails.root, "app/assets/images/duner.jpg"))
   },
   {
     name: "Shisha",
     category_id: 3,
+    price: 3.40,
     avatar: File.open(File.join(Rails.root, "app/assets/images/shisha.jpg"))
+  }
+]
+
+table_seed = [
+  {
+    number: "1"
+  },
+  {
+    number: "2"
+  },
+  {
+    number: "3"
+  },
+  {
+    number: "4"
   }
 ]
 
@@ -127,6 +145,7 @@ menu_ids = []
 category_ids = []
 product_ids = []
 meal_size_ids = []
+table_ids = []
 
 restaurant_seed.each do |restaurant_params|
   rest_ids << Restaurant.find_or_create_by(restaurant_params).id
@@ -147,17 +166,24 @@ end
 p "Created #{Category.count} categories"
 
 
-# product_seed.each do |product_params|
-#   rest_ids.each do |restaurant_id|
-#     product_ids << Product.find_or_create_by(product_params
-#       .merge(restaurant_id: restaurant_id)
-#       .except(:avatar)) do |product|
-#         product.avatar = product_params[:avatar]
-#       end.id
-#   end
-# end
+product_seed.each do |product_params|
+  rest_ids.each do |rest_id|
+    product_ids << Product.find_or_create_by(product_params
+      .merge(restaurant_id: rest_id)
+      .except(:avatar)) do |prod|
+        prod.avatar = product_params[:avatar]
+      end.id
+  end
+end
 
-# p "Created #{Product.count} products"
+
+p "Created #{Product.count} products"
+
+table_seed.each do |table_params|
+  rest_ids.each do |rest_id|
+    table_ids << Table.find_or_create_by(table_params.merge(restaurant_id: rest_id)).id
+  end
+end
 
 permission_seed = [
   {

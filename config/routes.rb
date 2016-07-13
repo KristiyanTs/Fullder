@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'restaurants#index'
+  
   get 'carts/show'
 
   devise_for :users

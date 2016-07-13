@@ -6,11 +6,14 @@ class OrderItemsController < ApplicationController
   def create
     @order_item = OrderItem.new(order_item_params)
     
-    if has_table_in_this_restaurant?
+    if table_in_this_restaurant?
       current_order.order_items << @order_item
       current_order.save
     else
-      clear_and_add_new_item_to_order
+      clear_order
+      add_item
+
+      session[:order_id] = current_order.id
       session[:product_id] = @order_item.product.id
 
       respond_to do |format|
