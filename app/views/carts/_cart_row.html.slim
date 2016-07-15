@@ -1,15 +1,13 @@
-.col-xs-12.cart-row
-  .col-xs-4
+.cart-row
+  .item_avatar
     = image_tag order_item.product.avatar.url(:small), class: "img-circle"
-  .col-xs-5
+  .item_description
     b = order_item.product.name
-    br
     = order_item.product_size.try(:name)
-    br
-    | Quantity: 
-    = order_item.quantity
-  .col-xs-3.text-center
+  .item_price
     = number_to_currency order_item.unit_price
-    br
-    = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-remove" }
+= link_to "Delete", order_item, {method: :delete, remote: true, class: "btn btn-danger col-xs-6 delete-item" }
+.col-xs-6.quantity-select
+  = form_for order_item, class: "form-horizontal", remote: true do |f|
+    = f.select :quantity, (1..5).to_a, {}, class: "form-control"
 
