@@ -1,44 +1,49 @@
 .cart-row{
   background-color: white;
-  margin-top:40px;
+  margin-top:10px;
   position: relative;
   .item_avatar{
     padding:10px;
   }
-  .item_description{
+  .item_name{
     position: absolute;
     top: 10px;
     left: 110px;
+  }
+  .item_description{
+    position: absolute;
+    top:30px;
+    left: 110px;
+    font-style: italic;
   }
   .item_price{
     position: absolute;
     top: 10px;
     right:20px;
-  }  
-}
-
-.cart-row:first-of-type{
-  margin-top:10px;
-}
-
-#order_item_quantity{
-  border-top-right-radius: 0px !important;
-  border-top-left-radius: 0px !important;
-  border-bottom-left-radius: 0px !important;
-  border-bottom-right-radius: 10px !important;
-}
-
-.quantity-select{
-  margin-bottom: 10px;
-  padding-left: 0px !important;
-  padding-right: 0px !important;  
-}
-
-.delete-item{
-  border-top-right-radius: 0px !important;
-  border-top-left-radius: 0px !important;
-  border-bottom-left-radius: 10px !important;
-  border-bottom-right-radius: 0px !important;
+  }
+  .item_form{
+    position: absolute;
+    bottom: 35px;
+    right: 40px;
+    width: 300px;
+    .order_item_quantity{
+      width: 80px;
+      position: absolute;
+      right: 0px;
+      top:0px;
+    }
+    .order_item_demands{
+      width: 210px;
+      position: absolute;
+      right: 50px;
+      top:0px;
+    }
+  }
+  .delete_button{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
 }
 
 .shopping-cart{

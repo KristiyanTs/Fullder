@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160711185036) do
     t.integer  "quantity"
     t.decimal  "total_price"
     t.string   "choices"
+    t.string   "demands"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "product_size_id"

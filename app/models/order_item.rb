@@ -9,6 +9,7 @@
 #  quantity        :integer
 #  total_price     :decimal(, )
 #  choices         :string
+#  demands         :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  product_size_id :integer
