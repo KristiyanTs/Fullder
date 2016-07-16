@@ -1,5 +1,5 @@
-.category_row
+= link_to restaurant_category_path(@restaurant, category), class: "category_row btn col-xs-12 col-md-6 col-md-offset-3"
   .category_name
-    = link_to category.name, restaurant_category_path(@restaurant, category)
+    = category.name
   .category_avatar
     = image_tag category.avatar.url(:small), class: "img-circle"

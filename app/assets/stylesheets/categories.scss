@@ -1,11 +1,13 @@
-.category_row{
+a.category_row{
   margin-top:5px;
   background-color: white;
-  border-bottom-right-radius: 40px;
-  border-top-right-radius: 40px;
+  height:80px;
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
-  
+  z-index: 1;
+  position: relative;
   .category_name{
     position:absolute;
     padding-top: 10px;
@@ -13,16 +15,11 @@
     color: black;
     font-weight: bold;
     font-size:15px;
-    z-index: 1;
-    font-weight: bold;
-    a{
-      color:black;
-    }
   }
   .category_avatar{
-    position: relative;
-    border:1px solid rgb(220,220,220);
+    position: absolute;
+    top:-1px;
+    right: 0px;
     border-radius: 50%;
-    margin-left: calc(100% - 80px);
   }
 }

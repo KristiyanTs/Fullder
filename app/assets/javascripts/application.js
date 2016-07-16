@@ -14,6 +14,7 @@
 
 $(document).ready(function() {
   /* Activating Best In Place */
+  $(".best_in_place").on("click",function(){}); 
   jQuery(".best_in_place").best_in_place();
   $('.refresh_prices').bind("ajax:success", function(event, new_price, status, xhr){
     currency = $(".button-right a").text().charAt(0);
@@ -21,8 +22,4 @@ $(document).ready(function() {
     $(".button-right a").html(currency + new_price);
     $(".cart-subtotal").html("Subtotal:" + currency + new_price);
   });
-
-  $(".best_in_place").on("click",function(){
-  }); 
-
 });
