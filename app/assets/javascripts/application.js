@@ -20,7 +20,8 @@ $(document).ready(function() {
     new_price = parseFloat(new_price.replace(/"/g,"")).toFixed(2);
     $(".button-right a").html(currency + new_price);
     $(".cart-subtotal").html("Subtotal:" + currency + new_price);
-
-
   });
+
+  $(".best_in_place").on("click",function(){
+  }); 
 });
