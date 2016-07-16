@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
+//= require jquery-ui
+//= require best_in_place.jquery-ui
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-select
@@ -21,3 +24,7 @@
 //= require cocoon
 //= require_tree .
 
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});

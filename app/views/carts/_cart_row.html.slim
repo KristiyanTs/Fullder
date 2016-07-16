@@ -10,7 +10,10 @@
     = number_to_currency order_item.unit_price
   .item_form
     = simple_form_for order_item, remote: true do |f|
-      = f.input :demands, placeholder: "Any demands?", label: false, wrapper_html: { class: 'col-xs-9' }
-      = f.input :quantity, label: false, wrapper_html: { class: 'col-xs-3' }
+      = f.input :demands, placeholder: "Any demands?", label: false, wrapper_html: { class: 'col-xs-9' }, 
+                                                                        input_html: { class: 'auto-submit' }
+      = f.input :quantity, label: false, wrapper_html: { class: 'col-xs-3' }, 
+                                                                        input_html: { class: 'auto-submit' }
+      = f.submit "Submit", class: "submit_button"
   .delete_button
     = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

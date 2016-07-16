@@ -71,6 +71,7 @@ gem 'bootstrap-kaminari-views'
 gem 'cocoon'
 gem 'bootstrap-select-rails'
 gem 'therubyracer', platform: :ruby
+gem 'best_in_place'
 
 group :development do
   gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console
