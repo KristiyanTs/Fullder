@@ -6,6 +6,8 @@ a.product_row{
   border-top-right-radius: 50px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
+  z-index: 1;
+  position: relative;
   .product_name{
     position:absolute;
     padding-top: 10px;
@@ -36,7 +38,7 @@ a.product_row{
 .buy-form{
   background-color: white;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 90px;
   margin-bottom: 20px;
   padding-left: 0px !important;
   padding-right: 0px !important;

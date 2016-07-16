@@ -9,9 +9,8 @@
   .item_price
     = number_to_currency order_item.unit_price
   .item_form
-    = simple_form_for order_item, html: { class: 'form-horizontal' },
-                                           wrapper: :horizontal_form, remote: true do |f|
-      = f.input :demands, placeholder: "Any demands?", label: false
-      = f.input :quantity, label: false
+    = simple_form_for order_item, remote: true do |f|
+      = f.input :demands, placeholder: "Any demands?", label: false, wrapper_html: { class: 'col-xs-9' }
+      = f.input :quantity, label: false, wrapper_html: { class: 'col-xs-3' }
   .delete_button
     = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }
