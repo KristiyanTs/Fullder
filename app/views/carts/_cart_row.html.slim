@@ -9,11 +9,9 @@
   .item_price
     = number_to_currency order_item.unit_price
   .item_form
-    = simple_form_for order_item, remote: true do |f|
-      = f.input :demands, placeholder: "Any demands?", label: false, wrapper_html: { class: 'col-xs-9' }, 
-                                                                        input_html: { class: 'auto-submit' }
-      = f.input :quantity, label: false, wrapper_html: { class: 'col-xs-3' }, 
-                                                                        input_html: { class: 'auto-submit' }
-      = f.submit "Submit", class: "submit_button"
+    .text-center
+      = best_in_place order_item, :demands, :classes => 'bounce_on_success demands_change'
+    = best_in_place order_item, :quantity, classes: 'bounce_on_success refresh_prices quantity_change', as: :select,
+                              :collection => [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5']]                    
   .delete_button
     = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

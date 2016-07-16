@@ -28,7 +28,16 @@ class OrderItemsController < ApplicationController
   def update
     @order_item = current_order.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
-    @order_items = current_order.order_items
+
+    respond_to do |format|
+      if @order_item.update(order_item_params)
+        format.html { redirect_to cart_path, flash: { notice: 'Your order was successfully updated.' } }
+        format.json { render json: current_order.subtotal }
+      else
+        format.html { render :edit }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

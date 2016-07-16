@@ -16,7 +16,6 @@ module OrderItemsHelper
   end
 
   def item_exists?
-
     current_order.order_items.each do |item|
       if @order_item.product_id == item.product_id &&
          @order_item.product_size_id == item.product_size_id &&
