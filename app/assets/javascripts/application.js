@@ -24,4 +24,5 @@ $(document).ready(function() {
 
   $(".best_in_place").on("click",function(){
   }); 
+
 });
