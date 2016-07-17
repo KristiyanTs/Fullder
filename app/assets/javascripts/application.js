@@ -13,9 +13,9 @@
 //= require_tree .
 
 $(document).ready(function() {
-  /* Activating Best In Place */
-  $(".best_in_place").on("click",function(){}); 
+  /* Activating Best In Place */ 
   jQuery(".best_in_place").best_in_place();
+  $(".best_in_place").on("click",function(){});
   $('.refresh_prices').bind("ajax:success", function(event, new_price, status, xhr){
     currency = $(".button-right a").text().charAt(0);
     new_price = parseFloat(new_price.replace(/"/g,"")).toFixed(2);
