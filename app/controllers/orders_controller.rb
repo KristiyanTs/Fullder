@@ -40,6 +40,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    current_order.order_items.destroy_all
+    @order_items = current_order.order_items
+  end
+
   private
 
   def order_params
