@@ -7,6 +7,7 @@ class CreateOrderItems < ActiveRecord::Migration
       t.integer :quantity
       t.decimal :total_price
       t.string :choices
+      t.string :demands
 
       t.timestamps null: false
     end

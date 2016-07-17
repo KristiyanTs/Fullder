@@ -55,7 +55,7 @@ production:
   host:     localhost
   encoding: unicode
   database: FastOrder_production
-  pool:     5
+  pool:     <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %> 
   username: <%= ENV['FASTORDER_DATABASE_USER'] %>
   password: <%= ENV['FASTORDER_DATABASE_PASSWORD'] %>
   template: template0

@@ -21,6 +21,7 @@ gem 'paperclip'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -71,6 +72,7 @@ gem 'bootstrap-kaminari-views'
 gem 'cocoon'
 gem 'bootstrap-select-rails'
 gem 'therubyracer', platform: :ruby
+gem 'best_in_place'
 
 group :development do
   gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console

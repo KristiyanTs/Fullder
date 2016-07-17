@@ -9,6 +9,7 @@
 #  quantity        :integer
 #  total_price     :decimal(, )
 #  choices         :string
+#  demands         :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  product_size_id :integer
@@ -34,6 +35,7 @@ class OrderItem < ActiveRecord::Base
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present
+  validate :size_selected
 
   before_save :finalize
 
@@ -48,11 +50,15 @@ class OrderItem < ActiveRecord::Base
   def total_price
     unit_price * quantity
   end
-
+  
   private
 
   def product_present
     errors.add(:product, 'is not valid or is not active.') if product.nil?
+  end
+
+  def size_selected
+    self[:product_size_id] = product.product_sizes.first.id if product.product_sizes.any? && product_size_id.nil?
   end
 
   def order_present

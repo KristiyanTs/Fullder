@@ -44,8 +44,7 @@ a, a:active, a:focus {
   text-decoration: none;
 }
 
-a:hover{
-  background-color: transparent; 
+a:hover{ 
   text-decoration: none;
 }
 
@@ -58,3 +57,10 @@ a:hover{
   background-color: white;
   padding-bottom:20px;
 }
+
+.container-fluid{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+

@@ -6,6 +6,8 @@ a.product_row{
   border-top-right-radius: 50px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
+  z-index: 1;
+  position: relative;
   .product_name{
     position:absolute;
     padding-top: 10px;
@@ -13,7 +15,6 @@ a.product_row{
     color: black;
     font-weight: bold;
     font-size:15px;
-    z-index: 1;
   }
   .product_short_description{
     position:absolute;
@@ -44,6 +45,12 @@ a.product_row{
   .pick-option{
     border-bottom: 1px solid rgb(225,225,225);
     border-bottom-style: dashed;
+  }
+}
+
+@media (max-width: 1082px) {
+  .buy-form{
+    margin-top:90px;
   }
 }
 

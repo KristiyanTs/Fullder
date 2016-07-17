@@ -166,18 +166,18 @@ end
 p "Created #{Category.count} categories"
 
 
-product_seed.each do |product_params|
-  rest_ids.each do |rest_id|
-    product_ids << Product.find_or_create_by(product_params
-      .merge(restaurant_id: rest_id)
-      .except(:avatar)) do |prod|
-        prod.avatar = product_params[:avatar]
-      end.id
-  end
-end
+# product_seed.each do |product_params|
+#   rest_ids.each do |rest_id|
+#     product_ids << Product.find_or_create_by(product_params
+#       .merge(restaurant_id: rest_id)
+#       .except(:avatar)) do |prod|
+#         prod.avatar = product_params[:avatar]
+#       end.id
+#   end
+# end
 
 
-p "Created #{Product.count} products"
+# p "Created #{Product.count} products"
 
 table_seed.each do |table_params|
   rest_ids.each do |rest_id|

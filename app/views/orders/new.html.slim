@@ -1,8 +1,9 @@
-.container.container-white
+.container.container-white.col-md-6.col-md-offset-3
   h3 Choose a table
   = simple_form_for([@order], authenticity_token: true) do |f|
-    = text_field_tag :table_number, nil, class: 'form-control'
+    = text_field_tag :table_number, nil, class: 'form-control', placeholder: "You can find it on your table."
     = f.input :table_id, as: :hidden
-    = f.button :submit, "Submit", disable_with: 'Please wait ...', class: "col-xs-6 btn-lg"
+    = link_to 'Submit', "", :onclick => "$('#new_order').submit()", 
+                disable_with: 'Please wait ...', class: "btn btn-default submit-table"
     = link_to "Skip for now", 
-      restaurant_categories_path(Restaurant.find(session[:restaurant_id])), class: "btn btn-default col-xs-6 btn-lg"
+      restaurant_categories_path(Restaurant.find(session[:restaurant_id])), class: "btn btn-default skip-table pull-right"
