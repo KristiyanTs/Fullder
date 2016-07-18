@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :positions
     resources :tables
   end
+
+  resource :dashboard, only: [:show]
+
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, only: [:new, :edit, :create, :update, :destroy]
