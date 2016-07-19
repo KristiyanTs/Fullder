@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: tables
@@ -26,5 +27,5 @@ class Table < ActiveRecord::Base
 
   has_many :orders
 
-  validates_uniqueness_of :number, scope: :restaurant_id
+  validates :number, uniqueness: { scope: :restaurant_id }
 end

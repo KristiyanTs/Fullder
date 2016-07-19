@@ -1,0 +1,25 @@
+= render 'layouts/dashboard/dashboard_navbar'
+
+.container.container-white
+  h3 Listing employees
+
+  .search-form 
+    = search_form_for [:dashboard, @restaurant, @search], 
+      method: :get, remote: true do |f|
+      .input-group
+        = f.text_field :user_first_name_or_user_last_name_or_role_name_cont, class: "form-control input", 
+                        placeholder: "Search by employee name or role"
+        span.input-group-btn
+          = button_tag(type: 'submit', class: "btn btn-info btn") do
+            i class="glyphicon glyphicon-search"
+
+  .search-results
+    = render partial: "search_results"
+
+  .new-element
+    = link_to 'Add employee', new_dashboard_restaurant_position_path(@restaurant), class: 'btn btn-primary btn-lg',
+      data: { target: '#element-form', toggle: 'modal' , remote: true}
+    #element-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog role="document"
+        .modal-content
+          | Please wait ...

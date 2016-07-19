@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: order_items
@@ -50,7 +51,7 @@ class OrderItem < ActiveRecord::Base
   def total_price
     unit_price * quantity
   end
-  
+
   private
 
   def product_present

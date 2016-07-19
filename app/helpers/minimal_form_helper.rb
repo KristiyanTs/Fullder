@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'minimal_form_builder'
 module MinimalFormHelper
   def minimal_form_for(object, *args, &block)

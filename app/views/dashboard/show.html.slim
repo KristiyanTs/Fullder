@@ -1,0 +1,7 @@
+.container
+  h2 Dashboard
+  ul.dropdown-menu
+  - current_user.positions.each do |position|
+    li.text-center = link_to position.role.name + " at " + position.restaurant.name, 
+      dashboard_restaurant_path(position.restaurant)    
+

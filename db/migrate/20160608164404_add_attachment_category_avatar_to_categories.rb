@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddAttachmentCategoryAvatarToCategories < ActiveRecord::Migration
   def self.up
     change_table :categories do |t|

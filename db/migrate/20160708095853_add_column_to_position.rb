@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddColumnToPosition < ActiveRecord::Migration
   def change
     add_column :positions, :user_id, :integer

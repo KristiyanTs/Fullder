@@ -1,0 +1,1 @@
+$('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")

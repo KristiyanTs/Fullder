@@ -1,0 +1,14 @@
+tr
+  td = position.user.first_name + " " + position.user.last_name
+  td = position.role.name
+  td 
+    .show
+      = link_to "", dashboard_restaurant_position_path(@restaurant, position),
+        class: "glyphicon glyphicon-info-sign"
+    .edit
+      = link_to "", edit_dashboard_restaurant_position_path(@restaurant, position),
+        class: "glyphicon glyphicon-pencil", data: { target: '#element-form', toggle: 'modal', remote: true}
+    .destroy
+      = link_to "", dashboard_restaurant_position_path(@restaurant, position),
+        {confirm: "Dismiss #{position.user.first_name + ' ' + position.user.last_name}?", method: :delete, 
+          remote: true, class: "glyphicon glyphicon-trash" }

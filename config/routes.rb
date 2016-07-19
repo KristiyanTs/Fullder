@@ -1,20 +1,27 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
-
   root 'restaurants#index'
-  
+
   get 'carts/show'
 
   devise_for :users
 
-  resources :restaurants do
-    resources :products
-    resources :categories
-    resources :roles
-    resources :positions
-    resources :tables
+  resources :restaurants, only: [:index, :show] do
+    resources :products, only: [:index, :show]
+    resources :categories, only: [:index, :show]
   end
 
   resource :dashboard, only: [:show]
+
+  namespace :dashboard do
+    resources :restaurants, except: [:index, :destroy] do
+      resources :products
+      resources :categories
+      resources :roles
+      resources :positions
+      resources :tables
+    end
+  end
 
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]

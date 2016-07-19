@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AddAttachmentAvatarToProducts < ActiveRecord::Migration
   def self.up
     change_table :products do |t|

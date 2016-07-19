@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class MinimalFormBuilder < SimpleForm::FormBuilder
   def input(attribute_name, options = {}, &block)
     type = options.fetch(:as, nil) || default_input_type(
