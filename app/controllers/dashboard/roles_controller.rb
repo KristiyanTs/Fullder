@@ -2,7 +2,7 @@
 class Dashboard::RolesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_restaurant
-  before_action :set_role, except: [:index, :create]
+  before_action :set_role, except: [:index, :create, :new]
 
   def index
     @search = @restaurant.roles.search(params[:q])

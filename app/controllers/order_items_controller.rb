@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.new(order_item_params)
 
     if table_in_this_restaurant?
-      unless item_exists?
+      if !item_exists?
         current_order.order_items << @order_item
         current_order.save
       end

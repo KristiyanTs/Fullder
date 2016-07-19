@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
     @userLocation = request.location
     @search = Restaurant.search(params[:q])
 
-    # The following code will not work in localhost. Uncomment for production
+    # The following code will not work in a localhost. Uncomment for production
     # if @userLocation.present?
     #   @restaurants = @search.result.page(params[:page]).near([@userLocation.latitude, @userLocation.longitude], 50, order: :distance)
     # else

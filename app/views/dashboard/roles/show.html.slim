@@ -3,4 +3,8 @@
 .container.container-white
   h3 = @role.name
 
+  ul
+    - @role.permissions.each do |permission|
+     li = permission.description
+
   
