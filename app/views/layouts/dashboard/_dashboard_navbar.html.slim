@@ -1,0 +1,42 @@
+nav.navbar.navbar-default
+  .container
+    .navbar-header
+      = link_to @restaurant.name, restaurant_path(@restaurant), class: "navbar-brand"
+
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li
+          = link_to "Home", dashboard_restaurant_path(@restaurant)
+        li.dropdown
+          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+            | Manage
+          ul.dropdown-menu
+            - if should_see?(@restaurant.products.new)
+              li
+                = link_to "Products", dashboard_restaurant_products_path(@restaurant)
+            - if should_see?(@restaurant.categories.new)
+              li
+                = link_to "Categories", dashboard_restaurant_categories_path(@restaurant)
+            - if should_see?(@restaurant.roles.new)
+              li
+                = link_to "Roles", dashboard_restaurant_roles_path(@restaurant)
+            - if should_see?(@restaurant.positions.new)
+              li
+                = link_to "Positions", dashboard_restaurant_positions_path(@restaurant)
+            - if should_see?(@restaurant.tables.new)
+              li
+                = link_to "Tables", dashboard_restaurant_tables_path(@restaurant)
+        li
+          a href="#"  Statistics
+        li
+          a href="#"  Orders
+        li
+          a href="#"  Actions
+        li.dropdown
+          a.dropdown-toggle.btn.btn-default aria-expanded="false" aria-hashpopup="true" data-toggle="dropdown" href="#" role="button"
+            = current_user.positions.find_by(restaurant_id: @restaurant).role.name + " at " + @restaurant.name  
+          ul.dropdown-menu
+            - current_user.positions.each do |position|
+              li.text-center = link_to position.role.name + " at " + position.restaurant.name, 
+                dashboard_restaurant_path(position.restaurant)        
+

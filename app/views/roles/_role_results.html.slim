@@ -1,6 +1,0 @@
-- if @roles.size == 0
-  p.text-center
-    | No roles found with this search.
-- else
-  = render partial: 'role_row', collection: @roles, as: :role
-  = paginate @roles, theme: 'twitter-bootstrap-3'

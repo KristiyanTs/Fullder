@@ -1,0 +1,14 @@
+= simple_form_for([:dashboard, @restaurant, @category], remote: true, 
+  html: { multipart: true }, authenticity_token: true) do |f|
+  .modal-header
+    | Category form for #{@restaurant.name}
+    button.close aria-label="Close" data-dismiss="modal" type="button"
+      span aria-hidden="true"  &times;
+
+  .modal-body
+    = f.input :name
+    = f.input :age_restriction
+    = f.input :available_all_day
+
+  .modal-footer
+    = f.button :submit, disable_with: 'Please wait ...'

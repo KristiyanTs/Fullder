@@ -1,0 +1,13 @@
+tr
+  td = category.name
+  td = category.products.count
+  td 
+    .show
+      = link_to "", dashboard_restaurant_category_path(@restaurant, category),
+        class: "glyphicon glyphicon-info-sign"
+    .edit
+      = link_to "", edit_dashboard_restaurant_category_path(@restaurant, category),
+        class: "glyphicon glyphicon-pencil", data: { target: '#element-form', toggle: 'modal', remote: true}
+    .destroy
+      = link_to "", dashboard_restaurant_category_path(@restaurant, category),
+        {confirm: "Are you sure?", method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

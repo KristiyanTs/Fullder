@@ -35,7 +35,7 @@ p "Created #{User.count} users"
 OrderStatus.delete_all
 OrderStatus.create! id: 1, name: "In Progress" # Still in cart before paying
 OrderStatus.create! id: 2, name: "Payed" # Payed, but not delivered to restaurant
-OrderStatus.create! id: 3, name: "Approved" # Delivered to restaurant
+OrderStatus.create! id: 3, name: "Awaiting" # Delivered to restaurant
 OrderStatus.create! id: 4, name: "Ready"  #When out of kitchen
 
 

@@ -1,25 +1,4 @@
-a.category_row{
-  margin-top:5px;
-  background-color: white;
-  height:80px;
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  z-index: 1;
-  position: relative;
-  .category_name{
-    position:absolute;
-    padding-top: 10px;
-    padding-left: 10px;
-    color: black;
-    font-weight: bold;
-    font-size:15px;
-  }
-  .category_avatar{
-    position: absolute;
-    top:-1px;
-    right: 0px;
-    border-radius: 50%;
-  }
+.show, .edit, .destroy{
+  float: left;
+  margin-right: 20px;
 }

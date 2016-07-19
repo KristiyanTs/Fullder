@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateProductSizes < ActiveRecord::Migration
   def change
     create_table :product_sizes do |t|

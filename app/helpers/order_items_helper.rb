@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 module OrderItemsHelper
-
   def table_in_this_restaurant?
     current_order.restaurant_id == @order_item.product.restaurant_id && !current_order.table_id.nil?
   end
@@ -20,11 +20,11 @@ module OrderItemsHelper
       if @order_item.product_id == item.product_id &&
          @order_item.product_size_id == item.product_size_id &&
          @order_item.demands == item.demands
-         item.quantity += @order_item.quantity
-         item.save
-         return true
+        item.quantity += @order_item.quantity
+        item.save
+        return true
        end
     end
-    return false
+    false
   end
 end
