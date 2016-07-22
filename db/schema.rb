@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20160711185036) do
     t.decimal  "total_price"
     t.string   "choices"
     t.string   "demands"
+    t.datetime "received_at"
+    t.datetime "ready_at"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "product_size_id"
@@ -116,8 +118,9 @@ ActiveRecord::Schema.define(version: 20160711185036) do
     t.text     "description"
     t.decimal  "price"
     t.boolean  "active"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "average_prepare_time"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

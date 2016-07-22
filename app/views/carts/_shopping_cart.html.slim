@@ -16,4 +16,4 @@
     |Subtotal:
     = number_to_currency(current_order.subtotal)
     .pull-right
-      = link_to "Checkout", root_path, class: "btn btn-success checkout-order"
+      = link_to "Pay", pay_order_path(current_order), class: "btn btn-success checkout-order"

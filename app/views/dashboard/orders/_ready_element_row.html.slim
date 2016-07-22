@@ -1,0 +1,8 @@
+tr
+  td = item.full_description
+  td = item.quantity
+  td = item.order.table_number
+  td 
+    .mark_ready
+      = link_to "", root_path,
+        class: "glyphicon glyphicon-info-sign"

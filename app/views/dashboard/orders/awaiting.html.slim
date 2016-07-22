@@ -11,5 +11,5 @@
         th Time
         th Actions
     tbody 
-    = render partial: "awaiting_element_row", collection: @ready_items, as: :item
-  = paginate @ready_items, theme: 'twitter-bootstrap-3'
+    = render partial: "awaiting_element_row", collection: @items, as: :item
+  = paginate @items, theme: 'twitter-bootstrap-3'

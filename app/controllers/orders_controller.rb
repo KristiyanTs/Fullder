@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    delete_unpaid_orders
     @order = Order.new(order_params)
 
     respond_to do |format|
@@ -46,10 +47,17 @@ class OrdersController < ApplicationController
     @order_items = current_order.order_items
   end
 
+  def pay
+    @restaurant = current_order.restaurant
+    current_order.update(order_status_id: 3)
+    session[:order_id] = nil
+    redirect_to restaurant_path(@restaurant)
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:table_id, :restaurant_id)
+    params.require(:order).permit(:table_id, :restaurant_id, :user_id)
   end
 
   def set_create_order_params

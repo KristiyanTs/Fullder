@@ -9,6 +9,8 @@ class CreateOrderItems < ActiveRecord::Migration
       t.decimal :total_price
       t.string :choices
       t.string :demands
+      t.datetime :received_at
+      t.datetime :ready_at
 
       t.timestamps null: false
     end

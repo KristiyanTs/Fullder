@@ -288,4 +288,11 @@ permission_seed.each do |permission_params|
   Permission.find_or_create_by(permission_params)
 end
 
+Role.destroy_all
+Role.create! restaurant_id: 1, name: "Manager"
+
+Position.destroy_all
+Position.create! restaurant_id: 1, user_id: 1, role_id: 1
+
+
 puts 'Done ...'

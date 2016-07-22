@@ -20,10 +20,15 @@ Rails.application.routes.draw do
       resources :roles
       resources :positions
       resources :tables
+      resources :orders, only: [:index, :edit, :update]
     end
   end
 
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, only: [:new, :edit, :create, :update, :destroy]
+  resources :orders, only: [:new, :edit, :create, :update, :destroy] do
+    member do
+      get :pay
+    end
+  end
 end

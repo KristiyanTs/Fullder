@@ -9,6 +9,8 @@ class CreateProducts < ActiveRecord::Migration
       t.text :description
       t.decimal :price
       t.boolean :active
+      t.integer :average_prepare_time
+      t.boolean :ready
 
       t.timestamps null: false
     end

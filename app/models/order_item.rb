@@ -11,6 +11,8 @@
 #  total_price     :decimal(, )
 #  choices         :string
 #  demands         :string
+#  received_at     :datetime
+#  ready_at        :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  product_size_id :integer
