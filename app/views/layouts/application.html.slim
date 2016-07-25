@@ -5,7 +5,7 @@ html
       | FastOrder
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    meta[name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"]
     = csrf_meta_tags
     = render 'layouts/header'
   body
