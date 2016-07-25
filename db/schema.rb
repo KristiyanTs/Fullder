@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711185036) do
+ActiveRecord::Schema.define(version: 20160725080611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,10 @@ ActiveRecord::Schema.define(version: 20160711185036) do
     t.integer  "quantity"
     t.decimal  "total_price"
     t.string   "choices"
-    t.string   "demands"
-    t.datetime "received_at"
-    t.datetime "ready_at"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "product_size_id"
+    t.boolean  "ready"
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
@@ -58,8 +56,6 @@ ActiveRecord::Schema.define(version: 20160711185036) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "order_status_id"
-    t.integer  "restaurant_id"
-    t.integer  "user_id"
     t.decimal  "subtotal"
     t.decimal  "tax"
     t.decimal  "shipping"
@@ -71,15 +67,14 @@ ActiveRecord::Schema.define(version: 20160711185036) do
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
-  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
   add_index "orders", ["table_id"], name: "index_orders_on_table_id", using: :btree
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "permission_roles", force: :cascade do |t|
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "permission_id"
     t.integer  "role_id"
+    t.integer  "restaurant_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -118,13 +113,14 @@ ActiveRecord::Schema.define(version: 20160711185036) do
     t.text     "description"
     t.decimal  "price"
     t.boolean  "active"
-    t.integer  "average_prepare_time"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "ready"
+    t.datetime "average_time"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -193,9 +189,7 @@ ActiveRecord::Schema.define(version: 20160711185036) do
   add_foreign_key "order_items", "product_sizes"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "order_statuses"
-  add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "tables"
-  add_foreign_key "orders", "users"
   add_foreign_key "product_sizes", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "restaurants"
