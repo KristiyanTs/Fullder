@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_create_order_params, only: [:create]
   before_action :set_update_order_params, only: [:update]
+  before_action :delete_unpaid_orders, only: [:create]
 
   def new
     @order = Order.new
@@ -14,9 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    delete_unpaid_orders
     @order = Order.new(order_params)
-
     respond_to do |format|
       if @order.save
         session[:order_id] = @order.id

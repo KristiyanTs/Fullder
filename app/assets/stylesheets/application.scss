@@ -48,6 +48,17 @@ html,body {
   .in{
     background-color: #CF000F;
   }
+  .navbar-right{
+    height: 40px;
+    margin-right:20px;
+    li{
+      height: 40px;
+      a{
+        height: 40px;
+        padding-top:10px;
+      }
+    }
+  }
 }
 .collapse {  transition: height 0.01s !important;}
 
