@@ -1,0 +1,3 @@
+#flash_messages.col-xs-12.col-md-8.col-lg-6.col-lg-offset-3.col-md-offset-2
+  -flash.each do |key, value|
+    = content_tag(:div, value, class: "flash alert alert-#{key}")

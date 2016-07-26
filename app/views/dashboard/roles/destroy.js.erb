@@ -1,0 +1,4 @@
+$('#flash_messages').replaceWith("<%= escape_javascript (render partial: 'layouts/flash_messages') %>");
+$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").alert('close');
+});
