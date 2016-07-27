@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160711185036) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "table_id"
+    t.integer  "table_number"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
@@ -119,6 +120,7 @@ ActiveRecord::Schema.define(version: 20160711185036) do
     t.decimal  "price"
     t.boolean  "active"
     t.integer  "average_prepare_time"
+    t.boolean  "ready"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "avatar_file_name"
