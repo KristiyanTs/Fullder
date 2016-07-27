@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class OrdersController < ApplicationController
   include OrdersHelper
-
+  load_and_authorize_resource
   before_action :authenticate_user!
 
   def new
