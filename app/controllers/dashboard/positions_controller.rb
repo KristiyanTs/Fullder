@@ -59,6 +59,7 @@ class Dashboard::PositionsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @position.errors, status: :unprocessable_entity }
+        format.js {render 'layouts/flash_messages'}
       end
     end
   end
@@ -90,7 +91,6 @@ class Dashboard::PositionsController < ApplicationController
       format.json { head :no_content }
       format.js do
         render js: "window.location = #{dashboard_restaurant_positions_path(@restaurant).to_json}",
-               notice: 'Employee was successfully dismissed.',
                status: :ok
       end
     end
