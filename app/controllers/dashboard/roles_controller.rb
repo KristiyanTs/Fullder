@@ -75,10 +75,9 @@ class Dashboard::RolesController < ApplicationController
   end
 
   def destroy
-    @role.destroy
     respond_to do |format|
-      format.html { redirect_to dashboard_restaurant_roles_path(@restaurant), flash: { notice: 'Role was successfully destroyed.' } }
-      format.json { head :no_content }
+      @role.destroy
+      format.html { redirect_to dashboard_restaurant_roles_path(@restaurant) }
       format.js do
         render js: "window.location = #{dashboard_restaurant_roles_path(@restaurant).to_json}",
                notice: 'Role was successfully destroyed.',

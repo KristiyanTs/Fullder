@@ -28,4 +28,15 @@ class Role < ActiveRecord::Base
   has_many :permissions, through: :permission_roles
 
   accepts_nested_attributes_for :permissions
+
+  before_destroy :check_for_positions
+
+  private
+
+  def check_for_positions
+    if positions.any?
+      errors[:base] << "Cannot delete roles which are currently assigned."
+      false
+    end
+  end
 end

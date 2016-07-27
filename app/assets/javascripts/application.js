@@ -22,4 +22,5 @@ $(document).ready(function() {
     $(".button-right a").html(currency + new_price);
     $(".cart-subtotal").html("Subtotal:" + currency + new_price);
   });
+
 });
