@@ -76,16 +76,12 @@ class Dashboard::RolesController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if @role.positions.any?
-        format.js { flash.now[:danger] = @role.name + ' role is currently in use and cannot be deleted.'}
-      else
-        @role.destroy
-        format.html { redirect_to dashboard_restaurant_roles_path(@restaurant) }
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_roles_path(@restaurant).to_json}",
-                 notice: 'Role was successfully destroyed.',
-                 status: :ok
-        end
+      @role.destroy
+      format.html { redirect_to dashboard_restaurant_roles_path(@restaurant) }
+      format.js do
+        render js: "window.location = #{dashboard_restaurant_roles_path(@restaurant).to_json}",
+               notice: 'Role was successfully destroyed.',
+               status: :ok
       end
     end
   end
