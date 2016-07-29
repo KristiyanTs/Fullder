@@ -21,7 +21,8 @@ class OrderItemsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to edit_order_path(current_order) }
-        format.js   { render js: "window.location = #{edit_order_path(current_order).to_json}" }
+        format.js   { render js: "window.location = #{edit_order_path(current_order).to_json}", 
+                             flash: { notice: 'Order was added to your cart.' } }
       end
     end
   end
@@ -32,8 +33,10 @@ class OrderItemsController < ApplicationController
 
     respond_to do |format|
       if @order_item.update(order_item_params)
-        format.html { redirect_to cart_path, flash: { notice: 'Your order was successfully updated.' } }
+        @order_items = current_order.order_items
+        format.html { redirect_to cart_path }
         format.json { render json: current_order.subtotal }
+        format.js   { flash[:notice] = 'Your order was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }

@@ -22,16 +22,20 @@
     top: 10px;
     right:20px;
   }
-  .demands_change{  
-    bottom:0px;
-    font-size:15px;
+  .order_item_demands{
+    width:100%;
+    .demands_update{  
+      bottom:0px;
+      font-size:15px;
+    }
+    input{
+      border: 1px solid rgb(250,250,250);
+    }
   }
-  .quantity_change{
-    position: absolute;
-    right: 20px;
-    top:50px;  
-    max-width: 100px;
-    font-size: 16px;  
+  .quantity-update{
+    position:absolute;
+    right:20px;
+    top:40px;
   }
   .delete_button{
     position: absolute;
@@ -63,7 +67,7 @@
 }
 
 .checkout-order{
-width:80px;
+  width:80px;
 }
 
 

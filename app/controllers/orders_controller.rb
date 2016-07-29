@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   include OrdersHelper
   load_and_authorize_resource
   before_action :authenticate_user!
+  before_action :delete_unpaid_orders, only: [:create]
 
   def new
     @order = Order.new
@@ -12,11 +13,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    delete_unpaid_orders
     params[:order][:restaurant_id] = session[:restaurant_id]
     params[:order][:user_id] = current_user.id
+    
     @order = Order.new(order_params)
-
     respond_to do |format|
       if @order.save
         session[:order_id] = @order.id

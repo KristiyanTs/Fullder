@@ -3,4 +3,4 @@
   = simple_form_for([@order], authenticity_token: true) do |f|
     = f.input :table_number, class: 'form-control', placeholder: "You can find it on your table.", label: false
     = f.input :table_id, as: :hidden
-    = f.submit "Submit", disable_with: 'Please wait ...'
+    = f.submit "Submit", disable_with: 'Please wait ...', class: "btn btn-default center-block"
