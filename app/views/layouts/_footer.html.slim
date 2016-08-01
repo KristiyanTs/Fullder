@@ -4,5 +4,6 @@
       = button_link(@left_link, @left_class, @left_content)
     li.button-middle
       = button_link(@middle_link, @middle_class, @middle_content)
-    li.button-right.cart_button
-      = button_link(@right_link, @right_class, @right_content)
+    - if @restaurant && @restaurant.sells_online
+      li.button-right.cart_button
+        = button_link(@right_link, @right_class, @right_content)

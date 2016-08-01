@@ -6,7 +6,7 @@
   	| Avatar
 
   #menu-button.col-xs-6
-    - if current_order.restaurant_id == @restaurant.id
+    - if !@restaurant.sells_online || current_order.restaurant_id == @restaurant.id
       = link_to restaurant_categories_path(@restaurant), id: "menu-button"
         | Menu
     - else

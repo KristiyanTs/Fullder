@@ -16,12 +16,14 @@
             = size.short_description
           .col-xs-3.col-sm-3.col-md-3.col-lg-3.product_size_price
             = product_price(@product, size)
-      = f.input :demands, placeholder: "Any demands? Please, be concise."
-      = f.hidden_field :product_id, value: @product.id
-      = f.submit "Add to Cart", class: "btn col-xs-12 col-sm-12 col-md-12 col-lg-12 buy-button"
+      - if @restaurant.sells_online
+        = f.input :demands, placeholder: "Any demands? Please, be concise."
+        = f.hidden_field :product_id, value: @product.id
+        = f.submit "Add to Cart", class: "btn col-xs-12 col-sm-12 col-md-12 col-lg-12 buy-button"
   - else
     = minimal_form_for @order_item, remote: true do |f|
-      = f.input :quantity, as: :hidden, input_html: {value: '1'}
-      = f.input :demands, placeholder: "Any demands? Please, be concise."
-      = f.hidden_field :product_id, value: @product.id
-      = f.submit "Add to Cart", class: "btn col-xs-12 col-sm-12 col-md-12 col-lg-12 buy-button"
+      - if @restaurant.sells_online
+        = f.input :quantity, as: :hidden, input_html: {value: '1'}
+        = f.input :demands, placeholder: "Any demands? Please, be concise."
+        = f.hidden_field :product_id, value: @product.id
+        = f.submit "Add to Cart", class: "btn col-xs-12 col-sm-12 col-md-12 col-lg-12 buy-button"

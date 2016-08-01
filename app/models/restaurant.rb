@@ -16,6 +16,7 @@
 #  restaurant_avatar_updated_at   :datetime
 #  latitude                       :float
 #  longitude                      :float
+#  sells_online                   :boolean
 #
 
 class Restaurant < ActiveRecord::Base
