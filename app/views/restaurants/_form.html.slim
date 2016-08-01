@@ -1,5 +1,6 @@
 = simple_form_for @restaurant, html: {multipart: true} do |f|
 	= f.input :restaurant_avatar, as: :file
+  = f.input :sells_online, label: "Let the clients order online?"
 	= f.input :name
 	= f.input :address
 	= f.input :description
