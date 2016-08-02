@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.new(order_item_params)
 
     if table_in_this_restaurant?
-      if !item_exists?
+      unless item_exists?
         current_order.order_items << @order_item
         current_order.save
       end
@@ -21,8 +21,10 @@ class OrderItemsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to edit_order_path(current_order) }
-        format.js   { render js: "window.location = #{edit_order_path(current_order).to_json}", 
-                             flash: { notice: 'Order was added to your cart.' } }
+        format.js   do
+          render js: "window.location = #{edit_order_path(current_order).to_json}",
+                 flash: { notice: 'Order was added to your cart.' }
+        end
       end
     end
   end

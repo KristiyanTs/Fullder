@@ -15,8 +15,7 @@ class Position < ActiveRecord::Base
   belongs_to :role
   belongs_to :user
   belongs_to :restaurant
-  
-  validates :user_id, uniqueness: 
-      {scope: :restaurant_id, message: " should have only one position in this restaurant"}
-  
+
+  validates :user_id, uniqueness:
+      { scope: :restaurant_id, message: ' should have only one position in this restaurant' }
 end

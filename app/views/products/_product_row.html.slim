@@ -7,3 +7,5 @@
     = product_price(product)
   .product_avatar
     = image_tag product.avatar.url(:small), class: "img-circle"
+  .common_allergens
+    = common_alergens(product, current_user)

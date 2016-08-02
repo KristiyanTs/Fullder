@@ -60,8 +60,8 @@ class Order < ActiveRecord::Base
   end
 
   def table_exists?
-    if !Restaurant.find(self.restaurant_id).tables.exists?(number: self[:table_number])
-      errors.add(:table_number, "Table with this number does not exist")
+    unless Restaurant.find(restaurant_id).tables.exists?(number: self[:table_number])
+      errors.add(:table_number, 'Table with this number does not exist')
     end
   end
 

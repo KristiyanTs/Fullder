@@ -6,9 +6,14 @@ module ProductsHelper
 
   def product_price(product)
     if product.product_sizes.any?
-      "From " + number_to_currency(product.price, locale: @restaurant.locale.to_sym)
+      'From ' + number_to_currency(product.price, locale: @restaurant.locale.to_sym)
     else
       number_to_currency(product.price, locale: @restaurant.locale.to_sym)
     end
+  end
+
+  def common_alergens(product, current_user)
+    allergens = product.allergen_list & current_user.allergen_list
+    'Contains ' + allergens.to_sentence if allergens.any?
   end
 end
