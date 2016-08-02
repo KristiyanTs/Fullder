@@ -8,7 +8,8 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white
       = f.input :phone_number, hint: "will be used for reservations"
       = f.input :address, hint: "for home delivery"
       = f.input :locale, priority: ["en-GB"], hint: "the default display language", 
-        collection: [ "en-GB", "en-US", "de", "bg"]                                 
+        collection: [ "en-GB", "en-US", "de", "bg"]  
+      = f.input :allergen_list                             
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p
           | Currently waiting confirmation for: #{resource.unconfirmed_email}
