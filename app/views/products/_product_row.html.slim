@@ -3,5 +3,7 @@
     = product.name
   .product_short_description
     = product.short_description
+  .product_price
+    = product_price(product)
   .product_avatar
     = image_tag product.avatar.url(:small), class: "img-circle"

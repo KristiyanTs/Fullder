@@ -17,6 +17,7 @@
 #  latitude                       :float
 #  longitude                      :float
 #  sells_online                   :boolean
+#  locale                         :string
 #
 
 class Restaurant < ActiveRecord::Base
