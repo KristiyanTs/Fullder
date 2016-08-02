@@ -12,6 +12,7 @@
     = f.input :description
     = f.input :price
     = f.input :ready
+    = f.input :allergen_list
     = f.association :category, collection: @categories, prompt: "Choose a category", include_blank: false
 
     .product_sizes
