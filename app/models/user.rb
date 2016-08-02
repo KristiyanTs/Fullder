@@ -21,6 +21,7 @@
 #  phone_number           :string
 #  address                :string
 #  admin                  :boolean
+#  locale                 :string
 #
 # Indexes
 #

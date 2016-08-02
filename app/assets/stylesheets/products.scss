@@ -10,16 +10,16 @@ a.product_row{
   position: relative;
   .product_name{
     position:absolute;
-    padding-top: 10px;
-    padding-left: 10px;
+    top: 10px;
+    left: 10px;
     color: black;
     font-weight: bold;
     font-size:15px;
   }
   .product_short_description{
     position:absolute;
-    padding-top: 30px;
-    padding-left:10px;
+    top: 30px;
+    left:10px;
     font-style: italic;
     font-size: 12px;
     padding-right: 95px;
@@ -31,6 +31,11 @@ a.product_row{
     right: 0px;
     border-radius: 50%;
     margin-left: calc(100% - 67px);
+  }
+  .product_price{
+    position: absolute;
+    top: 10px;
+    right: 90px;
   }
 }
 
