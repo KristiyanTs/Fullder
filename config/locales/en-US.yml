@@ -1,5 +1,5 @@
 ---
-en:
+en-US:
   activerecord:
     errors:
       messages:
@@ -39,7 +39,7 @@ en:
     - Friday
     - Saturday
     formats:
-      default: "%Y-%m-%d"
+      default: "%m-%d-%Y"
       long: "%B %d, %Y"
       short: "%b %d"
     month_names:
@@ -57,9 +57,9 @@ en:
     - November
     - December
     order:
-    - :year
     - :month
     - :day
+    - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -95,7 +95,7 @@ en:
         other: "%{count} months"
       x_years:
         one: 1 year
-        other: "%{count} years"  
+        other: "%{count} years"
       x_seconds:
         one: 1 second
         other: "%{count} seconds"
@@ -207,7 +207,7 @@ en:
   time:
     am: am
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
-      short: "%d %b %H:%M"
+      default: "%a, %d %b %Y %I:%M:%S %p %Z"
+      long: "%B %d, %Y %I:%M %p"
+      short: "%d %b %I:%M %p"
     pm: pm

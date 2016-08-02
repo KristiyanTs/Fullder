@@ -59,7 +59,7 @@ class Dashboard::PositionsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @position.errors, status: :unprocessable_entity }
-        format.js {render 'layouts/flash_messages'}
+        format.js { render 'layouts/flash_messages' }
       end
     end
   end

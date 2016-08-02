@@ -21,6 +21,7 @@
 #  phone_number           :string
 #  address                :string
 #  admin                  :boolean
+#  locale                 :string
 #
 # Indexes
 #
@@ -40,4 +41,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
+
+  acts_as_taggable
+  acts_as_taggable_on :allergens
 end

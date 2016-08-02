@@ -1,0 +1,12 @@
+.container.container-white
+  = simple_form_for [:dashboard, @restaurant], html: {multipart: true} do |f|
+    = f.input :restaurant_avatar, as: :file
+    = f.input :sells_online, label: "Let the clients order online?"
+    = f.input :locale, priority: ["en-GB"], 
+      collection: [ "en-GB", "en-US", "de", "bg"]
+    = f.input :name
+    = f.input :address
+    = f.input :description
+    = f.input :phone_number
+    = f.input :tag_list, label: "Tags (separated by commas)", placeholder: "sushi, pizza, italian, pasta, etc."
+    = f.button :submit

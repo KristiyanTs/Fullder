@@ -16,6 +16,8 @@
 #  restaurant_avatar_updated_at   :datetime
 #  latitude                       :float
 #  longitude                      :float
+#  sells_online                   :boolean
+#  locale                         :string
 #
 
 class Restaurant < ActiveRecord::Base
@@ -45,4 +47,6 @@ class Restaurant < ActiveRecord::Base
                    distance_field_name: :distance,
                    lat_column_name: :lat,
                    lng_column_name: :lng
+
+  acts_as_taggable
 end

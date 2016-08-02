@@ -12,6 +12,7 @@
 #  price                :decimal(, )
 #  active               :boolean
 #  average_prepare_time :integer
+#  ready                :boolean
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  avatar_file_name     :string
@@ -31,7 +32,6 @@
 #
 
 class Product < ActiveRecord::Base
-  before_create :set_default
   belongs_to :restaurant
   belongs_to :category
 
@@ -45,7 +45,6 @@ class Product < ActiveRecord::Base
   has_attached_file :avatar, styles: { small: '80x80#', large: '250x250#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  def set_default
-    self.ready ||= false
-  end
+  acts_as_taggable
+  acts_as_taggable_on :allergens
 end

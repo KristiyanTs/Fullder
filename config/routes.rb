@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'carts/show'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :restaurants, only: [:index, :show] do
     resources :products, only: [:index, :show]

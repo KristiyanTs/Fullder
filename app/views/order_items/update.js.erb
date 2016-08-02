@@ -1,1 +1,6 @@
-$(".button-right").html("<%= j render 'layouts/footer/cart' %>")
+$(".cart_button").html("<%= j render 'layouts/footer/cart' %>");
+$(".shopping-cart").html("<%= j render 'carts/shopping_cart' %>");
+$('#flash_messages').replaceWith("<%= escape_javascript (render partial: 'layouts/flash_messages') %>");
+$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").alert('close');
+});
