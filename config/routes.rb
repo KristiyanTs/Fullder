@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'restaurants#index'
 
   get 'carts/show'
+  get 'tags/:tag', to: 'restaurants#index', as: :tag
 
   devise_for :users, controllers: { registrations: 'registrations' }
 

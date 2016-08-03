@@ -1,21 +1,45 @@
 .home-page{
   margin-top:-10px;
+  .menu-button{
+    background-image: url('http://www.thevagabondpub.co.uk/wp-content/uploads/2015/01/menu.png');
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-position: center; 
+    height: 150px;
+  }
+  .reservations-button{
+    background-image:  url('http://www.kigaliout.rw/templates/website/img/reservation_2d.png');
+    background-repeat: no-repeat;
+    background-size: 150px;
+    background-position: center; 
+    height: 150px;
+  }
+  .menu-button:hover, .reservations-button:hover{
+    background-color: grey;
+  }
 }
 
 #restaurant-avatar{
-	background-color: black;
-	height:150px;
-	color:white;
-  font-size: 20px;
-  padding: 20px;
-}
-
-#working-hours-button{
-	background-color: red;
-	height:150px;
-  color:white;
-  font-size: 20px;
-  padding: 20px;
+  position: relative;
+  img{
+    width: 100%;
+  }
+  max-height: 50%;
+  overflow: hidden;
+  .restaurant_name{
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    font-size: 20px;
+    color: white;
+  }
+  .restaurant_address{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-family: italic;
+    color: white;
+  }
 }
 
 #reservations-button{
@@ -26,29 +50,12 @@
   padding: 20px;
 }
 
-#reviews-button{
-	background-color: yellow;
-	height:150px;
-  color:white;
-  font-size: 20px;
-  padding: 20px;
-}
-
-#menu-button{
-	background-color: grey;
-	height:150px;
-  color:white;
-  font-size: 20px;
-  padding: 10px;
-}
-
-
-
 .search-form{
-    padding: 3px;
-    border: solid 1px #E4E4E4;
-    border-radius: 6px;
-    background-color: #fff;
+  margin-top: 15px;  
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 6px;
+  background-color: #fff;
 }
 
 .search-form input{
@@ -77,8 +84,6 @@
 	padding-bottom: 10px;
 }
 
-
-
 .restaurant_row{
   width: 100%;
   height:80px;
@@ -106,8 +111,8 @@
   }
 }
 
-
 .restaurants{
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+

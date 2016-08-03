@@ -34,7 +34,7 @@ nav.navbar.navbar-default
           a href="#"  Actions
         li.dropdown
           a.dropdown-toggle.btn.btn-default aria-expanded="false" aria-hashpopup="true" data-toggle="dropdown" href="#" role="button"
-            = current_user.positions.find_by(restaurant_id: @restaurant).role.name + " at " + @restaurant.name  
+            = current_user.positions.find_by(restaurant_id: @restaurant).role.name + " at " + @restaurant.name
           ul.dropdown-menu
             - current_user.positions.each do |position|
               li.text-center = link_to position.role.name + " at " + position.restaurant.name, 
