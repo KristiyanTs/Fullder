@@ -30,7 +30,7 @@
 #  fk_rails_f1a29ddd47  (product_id => products.id)
 #
 
-class OrderItem < ActiveRecord::Base
+class OrderItem < ApplicationRecord
   belongs_to :product
   belongs_to :product_size
   belongs_to :order

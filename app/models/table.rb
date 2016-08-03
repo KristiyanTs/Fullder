@@ -21,7 +21,7 @@
 #  fk_rails_7b7f01e20c  (user_id => users.id)
 #
 
-class Table < ActiveRecord::Base
+class Table < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
 

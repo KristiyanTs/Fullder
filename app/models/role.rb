@@ -18,7 +18,7 @@
 #  fk_rails_a5d1cc5ecc  (restaurant_id => restaurants.id)
 #
 
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   belongs_to :restaurant
 
   has_many :positions

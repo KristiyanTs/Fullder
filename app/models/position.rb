@@ -11,7 +11,7 @@
 #  restaurant_id :integer
 #
 
-class Position < ActiveRecord::Base
+class Position < ApplicationRecord
   belongs_to :role
   belongs_to :user
   belongs_to :restaurant

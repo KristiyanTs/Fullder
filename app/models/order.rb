@@ -32,7 +32,7 @@
 #  fk_rails_f868b47f6a  (user_id => users.id)
 #
 
-class Order < ActiveRecord::Base
+class Order < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
   belongs_to :order_status

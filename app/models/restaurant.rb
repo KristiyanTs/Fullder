@@ -20,7 +20,7 @@
 #  locale                         :string
 #
 
-class Restaurant < ActiveRecord::Base
+class Restaurant < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :roles, dependent: :destroy

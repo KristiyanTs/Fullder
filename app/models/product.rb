@@ -31,7 +31,7 @@
 #  fk_rails_fb915499a4  (category_id => categories.id)
 #
 
-class Product < ActiveRecord::Base
+class Product < ApplicationRecord
   belongs_to :restaurant
   belongs_to :category
 

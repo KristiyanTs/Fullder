@@ -10,6 +10,6 @@
 #  updated_at :datetime         not null
 #
 
-class ProductChoice < ActiveRecord::Base
+class ProductChoice < ApplicationRecord
   belongs_to :product
 end

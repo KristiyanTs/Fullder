@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.3.0'
 
-gem 'rails', '4.2.6'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'bootstrap-sass'
@@ -62,7 +62,9 @@ gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'simple_form'
-gem 'draper', '~> 1.3'
+# Draper dependency in rails 5
+gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
+gem 'draper', github: 'audionerd/draper', branch: 'rails5' 
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'ransack'

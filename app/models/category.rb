@@ -24,7 +24,7 @@
 #  fk_rails_ec0260600b  (restaurant_id => restaurants.id)
 #
 
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   belongs_to :restaurant
   has_many :products
 
