@@ -9,10 +9,10 @@
   .item_price
     = number_to_currency order_item.unit_price
   .item_form
-    .text-center
-      = best_in_place order_item, :demands, :classes => 'bounce_on_success demands_change', 
-                                                :place_holder => "---"
-    = best_in_place order_item, :quantity, classes: 'bounce_on_success refresh_prices quantity_change', as: :select,
-                              :collection => [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5']]                    
+    = simple_form_for order_item, remote: true do |f|
+      = f.select :quantity, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], { selected: order_item.quantity }, 
+      onchange: "$('#order_item_quantity').submit();", label: false, class: "quantity-update"
+      = f.input :demands, label: false, class: "demands-update", onchange: "$('#order_item_quantity').submit();",
+        placeholder: "Click to add demands."               
   .delete_button
     = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

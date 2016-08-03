@@ -18,7 +18,7 @@
 #  fk_rails_a5d1cc5ecc  (restaurant_id => restaurants.id)
 #
 
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   belongs_to :restaurant
 
   has_many :positions
@@ -35,7 +35,7 @@ class Role < ActiveRecord::Base
 
   def check_for_positions
     if positions.any?
-      errors[:base] << "Cannot delete roles which are currently assigned."
+      errors[:base] << 'Cannot delete roles which are currently assigned.'
       false
     end
   end

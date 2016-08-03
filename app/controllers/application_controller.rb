@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include CanCan::ControllerAdditions # When using rails-api, you have to manually include the controller methods for CanCan
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to restaurant_path(1), alert: exception.message
+    redirect_to root_path, alert: exception.message
   end
 
   def current_order

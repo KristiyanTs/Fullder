@@ -18,7 +18,7 @@ class Dashboard::RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, flash: { notice: 'Restaurant was successfully created.' } }
+        format.html { redirect_to edit_dashboard_restaurant_path(@restaurant), flash: { notice: 'Restaurant was successfully created.' } }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new }
@@ -30,8 +30,8 @@ class Dashboard::RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to @restaurant, flash: { notice: 'Restaurant was successfully updated.' } }
-        format.json { render :show, status: :ok, location: @restaurant }
+        format.html { redirect_to edit_dashboard_restaurant_path(@restaurant), flash: { notice: 'Restaurant was successfully updated.' } }
+        format.json { render :edit, status: :ok, location: @restaurant }
       else
         format.html { render :edit }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
@@ -46,6 +46,6 @@ class Dashboard::RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :description, :phone_number, :restaurant_avatar)
+    params.require(:restaurant).permit(:name, :tag_list, :address, :description, :phone_number, :restaurant_avatar, :locale, :sells_online)
   end
 end

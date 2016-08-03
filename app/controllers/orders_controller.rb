@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 class OrdersController < ApplicationController
   include OrdersHelper
-
+  load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_create_order_params, only: [:create]
-  before_action :set_update_order_params, only: [:update]
+  before_action :delete_unpaid_orders, only: [:create]
 
   def new
     @order = Order.new
@@ -14,16 +13,17 @@ class OrdersController < ApplicationController
   end
 
   def create
-    delete_unpaid_orders
-    @order = Order.new(order_params)
+    params[:order][:restaurant_id] = session[:restaurant_id]
+    params[:order][:user_id] = current_user.id
 
+    @order = Order.new(order_params)
     respond_to do |format|
       if @order.save
         session[:order_id] = @order.id
-        format.html { redirect_to restaurant_categories_path(@restaurant) }
-        format.json { render :show, status: :ok, location: @restaurant }
+        format.html { redirect_to restaurant_categories_path(session[:restaurant_id]) }
+        format.json { render :show, status: :ok, location: session[:restaurant_id] }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
@@ -31,6 +31,8 @@ class OrdersController < ApplicationController
 
   def update
     respond_to do |format|
+      params[:order][:restaurant_id] = current_order.restaurant_id
+      params[:order][:user_id] = current_user.id
       if current_order.update(order_params)
         session[:order_id] = current_order.id
         format.html { redirect_to restaurant_product_path(order_restaurant, session[:product_id]) }
@@ -57,19 +59,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:table_id, :restaurant_id, :user_id)
-  end
-
-  def set_create_order_params
-    @restaurant = Restaurant.find(session[:restaurant_id])
-    params[:order][:restaurant_id] = @restaurant.id
-    params[:order][:table_id] = @restaurant.tables.find_by(number: params[:table_number]).id
-    params[:order][:user_id] = current_user.id
-  end
-
-  def set_update_order_params
-    params[:order][:table_id] = order_restaurant.tables.find_by(number: params[:table_number]).id
-    params[:order][:user_id] = current_user.id
-    params[:order][:restaurant_id] = order_restaurant.id
+    params.require(:order).permit(:table_number, :restaurant_id, :user_id, :table_id)
   end
 end

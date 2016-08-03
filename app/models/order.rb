@@ -15,6 +15,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  table_id        :integer
+#  table_number    :integer
 #
 # Indexes
 #
@@ -31,7 +32,7 @@
 #  fk_rails_f868b47f6a  (user_id => users.id)
 #
 
-class Order < ActiveRecord::Base
+class Order < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
   belongs_to :order_status
@@ -39,8 +40,10 @@ class Order < ActiveRecord::Base
 
   has_many :order_items, dependent: :destroy
 
+  validate :table_exists?
   before_create :set_order_status
   before_save :update_subtotal
+  before_save :set_table
 
   def subtotal
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
@@ -54,5 +57,15 @@ class Order < ActiveRecord::Base
 
   def update_subtotal
     self[:subtotal] = subtotal
+  end
+
+  def table_exists?
+    unless Restaurant.find(restaurant_id).tables.exists?(number: self[:table_number])
+      errors.add(:table_number, 'Table with this number does not exist')
+    end
+  end
+
+  def set_table
+    self[:table_id] = Restaurant.find(self[:restaurant_id]).tables.find_by(number: self[:table_number]).id
   end
 end
