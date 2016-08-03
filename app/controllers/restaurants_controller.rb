@@ -14,7 +14,8 @@ class RestaurantsController < ApplicationController
     #   @restaurants = @search.result.page(params[:page])
     # end
 
-    @restaurants = @search.result.page(params[:page])
+    @restaurants = @search.result.includes(:tags).page(params[:page])
+    
 
     respond_to do |format|
       format.html

@@ -78,7 +78,7 @@ a:hover{
 .container-white{
   border-radius:5px;
   background-color: white;
-  padding-bottom:20px;
+  padding-bottom:15px;
 }
 
 .container-fluid{
@@ -90,4 +90,8 @@ a:hover{
   position: fixed;
   top:40px;
   z-index:1000;
+}
+
+.pagination{
+  padding-bottom: 30px;
 }
