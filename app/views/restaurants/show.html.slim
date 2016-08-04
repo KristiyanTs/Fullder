@@ -1,23 +1,20 @@
 - @left_link = @restaurant
 - @left_class = "glyphicon glyphicon-triangle-left"
 
-.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.home-page
+.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.home-page.container-white
   #restaurant-avatar
-  	| Avatar
+    .restaurant_name
+      = @restaurant.name
+    .restaurant_address
+      = @restaurant.address
+  	= image_tag @restaurant.restaurant_avatar.url(:large)
 
-  #menu-button.col-xs-6
-    - if !@restaurant.sells_online || current_order.restaurant_id == @restaurant.id
-      = link_to restaurant_categories_path(@restaurant), id: "menu-button"
-        | Menu
-    - else
-      = link_to new_order_path, id: "menu-button"
-        | Menu
 
-  #working-hours-button.col-xs-6
-  	| Working hours
+  - if !@restaurant.sells_online || current_order.restaurant_id == @restaurant.id
+    = link_to "", restaurant_categories_path(@restaurant), class: "menu-button col-xs-6"
+  - else
+    = link_to "", new_order_path, class: "menu-button xol-xs-6"
 
-  #reservations-button.col-xs-6
-  	| Reservations
+  = link_to "", root_path, class: "reservations-button col-xs-6"
 
-  #reviews-button.col-xs-6
-  	| Reviews
+
