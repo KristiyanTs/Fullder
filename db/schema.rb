@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802081645) do
+ActiveRecord::Schema.define(version: 20160804082551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +26,8 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.index ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
   end
-
-  add_index "categories", ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -44,11 +42,19 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "product_size_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
+    t.index ["product_size_id"], name: "index_order_items_on_product_size_id", using: :btree
   end
 
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
-  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
-  add_index "order_items", ["product_size_id"], name: "index_order_items_on_product_size_id", using: :btree
+  create_table "order_options", force: :cascade do |t|
+    t.integer  "order_item_id"
+    t.integer  "product_option_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["order_item_id"], name: "index_order_options_on_order_item_id", using: :btree
+    t.index ["product_option_id"], name: "index_order_options_on_product_option_id", using: :btree
+  end
 
   create_table "order_statuses", force: :cascade do |t|
     t.string   "name"
@@ -69,12 +75,11 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.datetime "updated_at",      null: false
     t.integer  "table_id"
     t.integer  "table_number"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
+    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
+    t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
-
-  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
-  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
-  add_index "orders", ["table_id"], name: "index_orders_on_table_id", using: :btree
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "permission_roles", force: :cascade do |t|
     t.datetime "created_at",    null: false
@@ -100,6 +105,14 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.integer  "restaurant_id"
   end
 
+  create_table "product_options", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_options_on_product_id", using: :btree
+  end
+
   create_table "product_sizes", force: :cascade do |t|
     t.integer  "product_id"
     t.string   "name"
@@ -107,9 +120,8 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.string   "short_description"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.index ["product_id"], name: "index_product_sizes_on_product_id", using: :btree
   end
-
-  add_index "product_sizes", ["product_id"], name: "index_product_sizes_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.integer  "restaurant_id"
@@ -127,10 +139,9 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
-
-  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-  add_index "products", ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
@@ -154,9 +165,8 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_roles_on_restaurant_id", using: :btree
   end
-
-  add_index "roles", ["restaurant_id"], name: "index_roles_on_restaurant_id", using: :btree
 
   create_table "tables", force: :cascade do |t|
     t.integer  "number"
@@ -164,37 +174,34 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_tables_on_restaurant_id", using: :btree
+    t.index ["user_id"], name: "index_tables_on_user_id", using: :btree
   end
-
-  add_index "tables", ["restaurant_id"], name: "index_tables_on_restaurant_id", using: :btree
-  add_index "tables", ["user_id"], name: "index_tables_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
-    t.integer  "taggable_id"
     t.string   "taggable_type"
-    t.integer  "tagger_id"
+    t.integer  "taggable_id"
     t.string   "tagger_type"
+    t.integer  "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context", using: :btree
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
   end
-
-  add_index "taggings", ["context"], name: "index_taggings_on_context", using: :btree
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
-  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
-  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
-  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
-  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -215,19 +222,21 @@ ActiveRecord::Schema.define(version: 20160802081645) do
     t.string   "address"
     t.boolean  "admin"
     t.string   "locale"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "categories", "restaurants"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "product_sizes"
   add_foreign_key "order_items", "products"
+  add_foreign_key "order_options", "order_items"
+  add_foreign_key "order_options", "product_options"
   add_foreign_key "orders", "order_statuses"
   add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "tables"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_options", "products"
   add_foreign_key "product_sizes", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "restaurants"
