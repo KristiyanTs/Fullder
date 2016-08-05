@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160804082551) do
     t.decimal  "unit_price"
     t.integer  "quantity"
     t.decimal  "total_price"
-    t.string   "choices"
     t.string   "demands"
     t.datetime "received_at"
     t.datetime "ready_at"
