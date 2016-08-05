@@ -7,7 +7,6 @@ class CreateOrderItems < ActiveRecord::Migration
       t.decimal :unit_price
       t.integer :quantity
       t.decimal :total_price
-      t.string :choices
       t.string :demands
       t.datetime :received_at
       t.datetime :ready_at
