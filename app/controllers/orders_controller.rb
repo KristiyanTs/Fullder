@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   before_action :delete_unpaid_orders, only: [:create]
 
   def new
+    debugger
     @order = Order.new
   end
 
@@ -13,6 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    debugger
     params[:order][:restaurant_id] = session[:restaurant_id]
     params[:order][:user_id] = current_user.id
 
