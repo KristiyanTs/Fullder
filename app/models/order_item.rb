@@ -35,6 +35,10 @@ class OrderItem < ApplicationRecord
   belongs_to :product_size
   belongs_to :order
 
+  has_many :order_options
+  has_many :product_options, through: :order_options
+  accepts_nested_attributes_for :product_options
+
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present

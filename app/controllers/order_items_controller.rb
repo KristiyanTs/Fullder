@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class OrderItemsController < ApplicationController
   include OrderItemsHelper
 
@@ -55,6 +54,6 @@ class OrderItemsController < ApplicationController
   private
 
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id, :product_size_id, :demands)
+    params.require(:order_item).permit(:quantity, :product_id, :product_size_id, :demands, product_option_ids: [])
   end
 end

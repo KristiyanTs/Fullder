@@ -21,6 +21,12 @@
       .links
         = link_to_add_association 'Add size', f, :product_sizes
 
+    .product_options
+      = f.simple_fields_for :product_options do |product_option|
+        = render 'product_option_fields', f: product_option
+      .links
+        = link_to_add_association 'Add option', f, :product_options
+
         
   .modal-footer     
     = f.button :submit, disable_with: 'Please wait ...'

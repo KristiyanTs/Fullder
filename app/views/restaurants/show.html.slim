@@ -10,10 +10,11 @@
   	= image_tag @restaurant.restaurant_avatar.url(:large)
 
 
-  - if !@restaurant.sells_online || current_order.restaurant_id == @restaurant.id
+  - if (@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online
     = link_to "", restaurant_categories_path(@restaurant), class: "menu-button col-xs-6"
   - else
-    = link_to "", new_order_path, class: "menu-button xol-xs-6"
+    = link_to "", new_order_path(restaurant_id: @restaurant), class: "menu-button xol-xs-6"
+
 
   = link_to "", root_path, class: "reservations-button col-xs-6"
 
