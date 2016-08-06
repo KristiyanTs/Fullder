@@ -22,4 +22,13 @@
 
 class WorkingTime < ApplicationRecord
   belongs_to :restaurant
+
+  def active_now?
+    from = Date.today - (Date.today.wday - time.from_day ) % 7
+    to   = from + (time.to_day - from.wday) % 7
+    from = Time.new(from.year, from.month, from.day, time.from_time.hour, time.from_time.min, 0)
+    to   = Time.new(to.year, to.month, to.day, time.to_time.hour, time.to_time.min, 0)
+
+    Time.now.between?(from, to)
+  end
 end
