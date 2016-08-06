@@ -52,4 +52,19 @@ class Restaurant < ApplicationRecord
                    lng_column_name: :lng
 
   acts_as_taggable
+
+  def working?
+    now = Time.now
+    date = Date.today
+    works = false
+    self.working_times.each do |time|
+      from = date - (date.wday - time.from_day ) % 7
+      to   = from + (time.to_day - from.wday) % 7
+      from = Time.new(from.year, from.month, from.day, time.from_time.hour, time.from_time.min, 0)
+      to   = Time.new(to.year, to.month, to.day, time.to_time.hour, time.to_time.min, 0)
+
+      works ||= now.between?(from, to)
+    end
+    return works
+  end
 end
