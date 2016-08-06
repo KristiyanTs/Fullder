@@ -31,7 +31,7 @@ class Restaurant < ApplicationRecord
   has_many :tables, dependent: :destroy
   has_many :working_times, dependent: :destroy
 
-  accepts_nested_attributes_for :working_times
+  accepts_nested_attributes_for :working_times, allow_destroy: true
 
   has_attached_file :restaurant_avatar, styles: { large: '1500x1500' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :restaurant_avatar, content_type: /\Aimage\/.*\Z/
