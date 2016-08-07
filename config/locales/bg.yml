@@ -51,6 +51,12 @@ bg:
     working_times:
       add: Добави график
       remove: Премахни график
+  views:
+    pagination:
+      first: Първа
+      last: Последна
+      previous: Минала
+      next: Следваща
     
   activerecord:
     models:
@@ -219,7 +225,7 @@ bg:
     currency:
       format:
         delimiter: " "
-        format: "%n %u"
+        format: "%n%u"
         precision: 2
         separator: ","
         significant: false

@@ -51,3 +51,9 @@ en:
     working_times:
       add: Add working time
       remove: Remove working time
+  views:
+    pagination:
+      first: First
+      last: Last
+      previous: Prev
+      next: Next
