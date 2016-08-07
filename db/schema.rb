@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804082551) do
+ActiveRecord::Schema.define(version: 20160805212742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160804082551) do
     t.decimal  "unit_price"
     t.integer  "quantity"
     t.decimal  "total_price"
-    t.string   "choices"
     t.string   "demands"
     t.datetime "received_at"
     t.datetime "ready_at"
@@ -226,6 +225,17 @@ ActiveRecord::Schema.define(version: 20160804082551) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "working_times", force: :cascade do |t|
+    t.time     "from_time"
+    t.time     "to_time"
+    t.integer  "from_day"
+    t.integer  "to_day"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_working_times_on_restaurant_id", using: :btree
+  end
+
   add_foreign_key "categories", "restaurants"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "product_sizes"
@@ -243,4 +253,5 @@ ActiveRecord::Schema.define(version: 20160804082551) do
   add_foreign_key "roles", "restaurants"
   add_foreign_key "tables", "restaurants"
   add_foreign_key "tables", "users"
+  add_foreign_key "working_times", "restaurants"
 end

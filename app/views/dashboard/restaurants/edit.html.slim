@@ -8,5 +8,13 @@
     = f.input :address
     = f.input :description
     = f.input :phone_number
-    = f.input :tag_list, label: "Tags (separated by commas)", placeholder: "sushi, pizza, italian, pasta, etc."
+    = f.input :tag_list, label: "Tags (separated by commas)", placeholder: "sushi, pizza, italian, pasta, etc.", 
+               input_html: {value: @restaurant.tag_list.to_s}
+
+    .working_times
+      = f.simple_fields_for :working_times do |working_time|
+        = render 'working_time_fields', f: working_time
+      .links
+        = link_to_add_association 'Add working time', f, :working_times
+
     = f.button :submit

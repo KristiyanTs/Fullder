@@ -1,5 +1,7 @@
 - @left_link = @restaurant
 - @left_class = "glyphicon glyphicon-triangle-left"
+- new_order_button = new_order_path
+- menu_button = restaurant_categories_path(@restaurant)
 
 .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.home-page.container-white
   #restaurant-avatar
@@ -10,11 +12,7 @@
   	= image_tag @restaurant.restaurant_avatar.url(:large)
 
 
-  - if (@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online
-    = link_to "", restaurant_categories_path(@restaurant), class: "menu-button col-xs-6"
-  - else
-    = link_to "", new_order_path(restaurant_id: @restaurant), class: "menu-button xol-xs-6"
-
+  = link_to "",((@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online ? menu_button : new_order_button), class: "menu-button col-xs-6"
 
   = link_to "", root_path, class: "reservations-button col-xs-6"
 

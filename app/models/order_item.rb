@@ -9,7 +9,6 @@
 #  unit_price      :decimal(, )
 #  quantity        :integer
 #  total_price     :decimal(, )
-#  choices         :string
 #  demands         :string
 #  received_at     :datetime
 #  ready_at        :datetime
