@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805212742) do
+ActiveRecord::Schema.define(version: 20160807131956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20160805212742) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.integer  "restaurant_id"
+    t.index ["restaurant_id"], name: "index_images_on_restaurant_id", using: :btree
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -167,6 +178,21 @@ ActiveRecord::Schema.define(version: 20160805212742) do
     t.index ["restaurant_id"], name: "index_roles_on_restaurant_id", using: :btree
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.string   "schedulable_type"
+    t.integer  "schedulable_id"
+    t.date     "date"
+    t.time     "time"
+    t.string   "rule"
+    t.string   "interval"
+    t.text     "day"
+    t.text     "day_of_week"
+    t.datetime "until"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tables", force: :cascade do |t|
     t.integer  "number"
     t.integer  "restaurant_id"
@@ -237,6 +263,7 @@ ActiveRecord::Schema.define(version: 20160805212742) do
   end
 
   add_foreign_key "categories", "restaurants"
+  add_foreign_key "images", "restaurants"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "product_sizes"
   add_foreign_key "order_items", "products"
