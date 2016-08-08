@@ -8,6 +8,7 @@
 //= require bootstrap/dropdown
 //= require select2-full
 //= require cocoon
+//= require slick.min
 //= require_tree .
 
 $(document).ready(function() {
