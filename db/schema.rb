@@ -15,16 +15,6 @@ ActiveRecord::Schema.define(version: 20160807131956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "category_translations", force: :cascade do |t|
-    t.integer  "category_id", null: false
-    t.string   "locale",      null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "name"
-    t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
-    t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
-  end
-
   create_table "categories", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.string   "name"
@@ -37,6 +27,16 @@ ActiveRecord::Schema.define(version: 20160807131956) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
+  end
+
+  create_table "category_translations", force: :cascade do |t|
+    t.integer  "category_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+    t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
   end
 
   create_table "images", force: :cascade do |t|

@@ -6,9 +6,9 @@ module RestaurantsHelper
 
   def status(obj)
     if obj.working?
-      "Open"
+      I18n.t 'restaurant.open'
     else  
-      "Closed"
+      I18n.t 'restaurant.closed'
     end
   end
 end

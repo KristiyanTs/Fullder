@@ -3,6 +3,9 @@ bg:
     no-results: "Няма намерени резултати."
   restaurant:
     search-placeholder: "име на ресторант, адрес или id" 
+    working-time: Работно време
+    open: Отворено
+    closed: Затворено
   product:
     contains: "Съдържа "
     price-from: "От "

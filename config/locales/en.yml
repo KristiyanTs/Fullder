@@ -3,6 +3,9 @@ en:
     no-results: "No results found."
   restaurant:
     search-placeholder: "restaurant name, address or id" 
+    working-time: Hours
+    open: Open
+    closed: Closed
   product:
     contains: "Contains "
     price-from: "From "
