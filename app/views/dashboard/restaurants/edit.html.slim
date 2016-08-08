@@ -1,19 +1,20 @@
 .container.container-white
   = simple_form_for [:dashboard, @restaurant], html: {multipart: true} do |f|
     = f.input :restaurant_avatar, as: :file
-
-    .pictures
-      = f.simple_fields_for :images do |image|
-        = render 'image_fields', f: image
-      .links
-        = link_to_add_association 'Add image', f, :images
         
     = f.input :sells_online
-    = f.input :locale, priority: ["en-GB"], 
-      collection: [ "en-GB", "en-US", "de", "bg"]
+    
+    = f.collection_check_boxes :language_ids, Language.all, :id, :name, 
+      { selected: @restaurant.language_ids, item_wrapper_tag: "p" }
+
+    = f.input :locale, priority: [["United Kingdom", "en-GB"]], 
+      collection: [ ["United Kingdom", "en-GB"], ["United States","en-US"], ["Germany", "de"], ["Bulgaria" ,"bg"]]
+    
     = f.input :name
     = f.input :address
-    = f.input :description
+    - @restaurant.languages.each do |language|
+      - I18n.with_locale(language.locale.to_sym)
+        = f.input :description
     = f.input :phone_number
 
     .working_times
@@ -21,6 +22,12 @@
         = render 'working_time_fields', f: working_time
       .links
         = link_to_add_association f, :working_times
+
+    .pictures
+      = f.simple_fields_for :images do |image|
+        = render 'image_fields', f: image
+      .links
+        = link_to_add_association 'Add image', f, :images
 
     = f.input :tag_list, input_html: {value: @restaurant.tag_list.to_s}
     = f.button :submit

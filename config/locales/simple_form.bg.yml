@@ -12,6 +12,7 @@ bg:
         last_name: 'Фамилия'
         phone_number: 'Телефонен номер'
         locale: 'Място'
+        language: Език
         allergen_list: 'Алергени, разделени със запетайки'
         age_restriction: 'Изисква проверка на възрастта?'
         available_all_day: 'Продава се постоянно?'

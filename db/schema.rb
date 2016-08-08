@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807131956) do
+ActiveRecord::Schema.define(version: 20160808134433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,22 @@ ActiveRecord::Schema.define(version: 20160807131956) do
     t.datetime "pic_updated_at"
     t.integer  "restaurant_id"
     t.index ["restaurant_id"], name: "index_images_on_restaurant_id", using: :btree
+  end
+
+  create_table "language_joins", force: :cascade do |t|
+    t.integer  "language_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["language_id"], name: "index_language_joins_on_language_id", using: :btree
+    t.index ["restaurant_id"], name: "index_language_joins_on_restaurant_id", using: :btree
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -302,6 +318,8 @@ ActiveRecord::Schema.define(version: 20160807131956) do
 
   add_foreign_key "categories", "restaurants"
   add_foreign_key "images", "restaurants"
+  add_foreign_key "language_joins", "languages"
+  add_foreign_key "language_joins", "restaurants"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "product_sizes"
   add_foreign_key "order_items", "products"

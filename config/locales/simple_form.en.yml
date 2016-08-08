@@ -13,6 +13,7 @@ en:
         last_name: 'Last name'
         phone_number: 'Phone number'
         locale: 'Country'
+        language: Language
         allergen_list: 'Allergens'
         age_restriction: 'Age restriction'
         available_all_day: 'Available all day'

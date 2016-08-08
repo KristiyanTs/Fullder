@@ -28,8 +28,10 @@ class Dashboard::RestaurantsController < ApplicationController
   end
 
   def update
+    debugger
     respond_to do |format|
       if @restaurant.update(restaurant_params)
+        debugger
         format.html { redirect_to edit_dashboard_restaurant_path(@restaurant), flash: { notice: 'Restaurant was successfully updated.' } }
         format.json { render :edit, status: :ok, location: @restaurant }
       else
@@ -46,7 +48,7 @@ class Dashboard::RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :tag_list, :address, :description, :phone_number, 
+    params.require(:restaurant).permit(:name, :tag_list, :address, :description, :phone_number,  
                                        :restaurant_avatar, :locale, :sells_online,
                                        working_times_attributes: [:id, :from_time, :to_time, :from_day, :to_day, :restaurant_id, :_destroy],
                                        images_attributes: [:id, :pic, :restaurant_id, :_destroy])
