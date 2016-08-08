@@ -1,5 +1,10 @@
 - @left_link = @restaurant
 - @left_class = "glyphicon glyphicon-triangle-left"
+- new_order_button = new_order_path
+- menu_button = restaurant_categories_path(@restaurant)
+link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" type="text/css"
+script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javascript" 
+
 
 .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.home-page.container-white
   #restaurant-avatar
@@ -10,12 +15,23 @@
   	= image_tag @restaurant.restaurant_avatar.url(:large)
 
 
-  - if (@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online
-    = link_to "", restaurant_categories_path(@restaurant), class: "menu-button col-xs-6"
-  - else
-    = link_to "", new_order_path(restaurant_id: @restaurant), class: "menu-button xol-xs-6"
-
+  = link_to "",((@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online ? menu_button : new_order_button), class: "menu-button col-xs-6"
 
   = link_to "", root_path, class: "reservations-button col-xs-6"
 
 
+.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-2
+  #working-times.col-xs-12.col-md-4
+    h3.text-center Hours
+    - @restaurant.working_times.order('from_day ASC').each do |time|
+      .schedule-day.col-xs-6.text-center
+        = Date::DAYNAMES[time.from_day]
+      .schedule-time.col-xs-6.text-center
+        = time.from_time.to_formatted_s(:time)   + "-" + time.to_time.to_formatted_s(:time)  
+      br
+
+.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-3
+  #restaurant-image-gallery
+    - @restaurant.images.each do |image|
+      .gallery-image
+        = image_tag image.pic.url(:medium)

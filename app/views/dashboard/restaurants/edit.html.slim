@@ -1,6 +1,13 @@
 .container.container-white
   = simple_form_for [:dashboard, @restaurant], html: {multipart: true} do |f|
     = f.input :restaurant_avatar, as: :file
+
+    .pictures
+      = f.simple_fields_for :images do |image|
+        = render 'image_fields', f: image
+      .links
+        = link_to_add_association 'Add image', f, :images
+        
     = f.input :sells_online, label: "Let the clients order online?"
     = f.input :locale, priority: ["en-GB"], 
       collection: [ "en-GB", "en-US", "de", "bg"]
@@ -8,5 +15,13 @@
     = f.input :address
     = f.input :description
     = f.input :phone_number
-    = f.input :tag_list, label: "Tags (separated by commas)", placeholder: "sushi, pizza, italian, pasta, etc."
+    = f.input :tag_list, label: "Tags (separated by commas)", placeholder: "sushi, pizza, italian, pasta, etc.", 
+               input_html: {value: @restaurant.tag_list.to_s}
+
+    .working_times
+      = f.simple_fields_for :working_times do |working_time|
+        = render 'working_time_fields', f: working_time
+      .links
+        = link_to_add_association 'Add working time', f, :working_times
+
     = f.button :submit

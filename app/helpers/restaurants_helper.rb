@@ -3,4 +3,12 @@ module RestaurantsHelper
   def search_hint
     # "You can also try with tags like " + Restaurant.tag_counts_on(:tags).to_sentence
   end
+
+  def status(obj)
+    if obj.working?
+      "Open"
+    else  
+      "Closed"
+    end
+  end
 end
