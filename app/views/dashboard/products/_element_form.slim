@@ -1,7 +1,7 @@
 = simple_form_for([:dashboard, @restaurant, @product], remote: true, 
   html: { multipart: true }, authenticity_token: true) do |f|
   .modal-header
-    | Product form for #{@restaurant.name}
+    = (t 'dashboard.product-form-title') + @restaurant.name
     button.close aria-label="Close" data-dismiss="modal" type="button"
       span aria-hidden="true"  &times;
 
@@ -19,13 +19,13 @@
       = f.simple_fields_for :product_sizes do |product_size|
         = render 'product_size_fields', f: product_size
       .links
-        = link_to_add_association 'Add size', f, :product_sizes
+        = link_to_add_association f, :product_sizes
 
     .product_options
       = f.simple_fields_for :product_options do |product_option|
         = render 'product_option_fields', f: product_option
       .links
-        = link_to_add_association 'Add option', f, :product_options
+        = link_to_add_association f, :product_options
 
         
   .modal-footer     

@@ -1,5 +1,5 @@
 .container.container-white
-  h3 Choose a table
+  h3 = t 'order.choose-table'
   = simple_form_for([current_order], authenticity_token: true) do |f|
     = f.input :table_number, class: 'form-control', placeholder: "You can find it on your table.", label: false
     = f.input :table_id, as: :hidden

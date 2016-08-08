@@ -173,6 +173,8 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
+    i18n-debug (1.1.0)
+      i18n (< 1)
     interception (0.5)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -423,6 +425,7 @@ DEPENDENCIES
   guard-rspec
   haml2slim
   html2haml
+  i18n-debug
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

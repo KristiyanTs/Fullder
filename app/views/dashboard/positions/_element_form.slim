@@ -1,7 +1,7 @@
 = simple_form_for([:dashboard, @restaurant, @position], remote: true, 
   html: { multipart: true }, authenticity_token: true) do |f|
   .modal-header
-    | Employee form for #{@restaurant.name}
+    = (t 'dashboard.position-form-title') + @restaurant.name
     button.close aria-label="Close" data-dismiss="modal" type="button"
       span aria-hidden="true"  &times;
 

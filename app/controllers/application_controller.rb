@@ -2,6 +2,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_order
+  before_action :set_locale
   include CanCan::ControllerAdditions # When using rails-api, you have to manually include the controller methods for CanCan
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -36,5 +37,9 @@ class ApplicationController < ActionController::Base
   # load the permissions for the current user so that UI can be manipulated
   def load_permissions
     @current_permissions = current_user.role.permissions.collect { |i| [i.subject_class, i.action] }
+  end
+
+  def set_locale
+    I18n.locale = current_user.locale || I18n.default_locale
   end
 end
