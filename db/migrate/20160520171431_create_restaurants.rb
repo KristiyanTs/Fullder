@@ -1,6 +1,5 @@
-# frozen_string_literal: true
 class CreateRestaurants < ActiveRecord::Migration
-  def change
+  def up
     create_table :restaurants do |t|
       t.string :name
       t.string :address
@@ -9,5 +8,11 @@ class CreateRestaurants < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    Restaurant.create_translation_table! description: :text
+  end
+
+  def down
+    drop_table :restaurants
+    Restaurant.drop_translation_table!
   end
 end

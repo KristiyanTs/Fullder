@@ -58,4 +58,6 @@ class Restaurant < ApplicationRecord
   def working?
     working_times.any?(&:active_now?)
   end
+  
+  translates :description
 end

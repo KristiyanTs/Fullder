@@ -15,6 +15,16 @@ ActiveRecord::Schema.define(version: 20160807131956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "category_translations", force: :cascade do |t|
+    t.integer  "category_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+    t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
+  end
+
   create_table "categories", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.string   "name"
@@ -115,12 +125,33 @@ ActiveRecord::Schema.define(version: 20160807131956) do
     t.integer  "restaurant_id"
   end
 
+  create_table "product_option_translations", force: :cascade do |t|
+    t.integer  "product_option_id", null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
+    t.index ["locale"], name: "index_product_option_translations_on_locale", using: :btree
+    t.index ["product_option_id"], name: "index_product_option_translations_on_product_option_id", using: :btree
+  end
+
   create_table "product_options", force: :cascade do |t|
     t.string   "name"
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_options_on_product_id", using: :btree
+  end
+
+  create_table "product_size_translations", force: :cascade do |t|
+    t.integer  "product_size_id",   null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
+    t.string   "short_description"
+    t.index ["locale"], name: "index_product_size_translations_on_locale", using: :btree
+    t.index ["product_size_id"], name: "index_product_size_translations_on_product_size_id", using: :btree
   end
 
   create_table "product_sizes", force: :cascade do |t|
@@ -133,6 +164,18 @@ ActiveRecord::Schema.define(version: 20160807131956) do
     t.index ["product_id"], name: "index_product_sizes_on_product_id", using: :btree
   end
 
+  create_table "product_translations", force: :cascade do |t|
+    t.integer  "product_id",        null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
+    t.string   "short_description"
+    t.text     "description"
+    t.index ["locale"], name: "index_product_translations_on_locale", using: :btree
+    t.index ["product_id"], name: "index_product_translations_on_product_id", using: :btree
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.integer  "category_id"
@@ -143,14 +186,24 @@ ActiveRecord::Schema.define(version: 20160807131956) do
     t.boolean  "active"
     t.integer  "average_prepare_time"
     t.boolean  "ready"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
+  end
+
+  create_table "restaurant_translations", force: :cascade do |t|
+    t.integer  "restaurant_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "description"
+    t.index ["locale"], name: "index_restaurant_translations_on_locale", using: :btree
+    t.index ["restaurant_id"], name: "index_restaurant_translations_on_restaurant_id", using: :btree
   end
 
   create_table "restaurants", force: :cascade do |t|

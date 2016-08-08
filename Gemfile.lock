@@ -10,14 +10,13 @@ GIT
       request_store (~> 1.0)
 
 GIT
-  remote: https://github.com/rails/activemodel-serializers-xml
-  revision: 570ee7ed33d60e44ca1f3ccbec3d1fbf61d52cbf
+  remote: git://github.com/globalize/globalize.git
+  revision: 51aa34b34ef6b00b8e6e307ac9145eeffade833c
   specs:
-    activemodel-serializers-xml (1.0.1)
-      activemodel (> 5.x)
-      activerecord (> 5.x)
-      activesupport (> 5.x)
-      builder (~> 3.1)
+    globalize (5.1.0)
+      activemodel (>= 4.2, < 5.1)
+      activerecord (>= 4.2, < 5.1)
+      request_store (~> 1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -50,6 +49,11 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.0.0)
       activesupport (= 5.0.0)
+    activemodel-serializers-xml (1.0.1)
+      activemodel (> 5.x)
+      activerecord (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.0.0)
       activemodel (= 5.0.0)
       activesupport (= 5.0.0)
@@ -67,7 +71,7 @@ GEM
       rake (>= 10.4, < 12.0)
     arel (7.1.1)
     ast (2.3.0)
-    autoprefixer-rails (6.4.0)
+    autoprefixer-rails (6.4.0.1)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -398,7 +402,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel-serializers-xml!
+  activemodel-serializers-xml
   acts-as-taggable-on (~> 4.0)
   annotate
   better_errors
@@ -420,6 +424,7 @@ DEPENDENCIES
   font-awesome-rails
   geocoder
   geokit-rails
+  globalize!
   guard-bundler
   guard-rails
   guard-rspec

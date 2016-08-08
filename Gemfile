@@ -63,9 +63,8 @@ gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'simple_form'
-# Draper dependency in rails 5
-gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
-gem 'draper', github: 'audionerd/draper', branch: 'rails5' 
+# Draper and globalize dependency in rails 5
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'ransack'
@@ -78,6 +77,8 @@ gem 'bootstrap-select-rails'
 gem 'therubyracer', platform: :ruby
 gem 'rails-i18n', '~> 5.0.0'
 gem 'acts-as-taggable-on', '~> 4.0'
+gem 'globalize', github: 'globalize/globalize'
+gem 'activemodel-serializers-xml'
 
 group :development do
   gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console

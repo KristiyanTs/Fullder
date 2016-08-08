@@ -13,8 +13,8 @@
 #  active               :boolean
 #  average_prepare_time :integer
 #  ready                :boolean
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
+#  created_at           :datetime
+#  updated_at           :datetime
 #  avatar_file_name     :string
 #  avatar_content_type  :string
 #  avatar_file_size     :integer
@@ -49,4 +49,6 @@ class Product < ApplicationRecord
 
   acts_as_taggable
   acts_as_taggable_on :allergens
+
+  translates :name, :short_description, :description
 end
