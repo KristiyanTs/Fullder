@@ -56,11 +56,6 @@ class Restaurant < ApplicationRecord
   acts_as_taggable
 
   def working?
-
-    self.working_times.each do |time|
-      return true if time.active_now?
-    end
-    
-    return false
+    working_times.any?(&:active_now?)
   end
 end

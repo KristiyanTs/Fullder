@@ -178,21 +178,6 @@ ActiveRecord::Schema.define(version: 20160807131956) do
     t.index ["restaurant_id"], name: "index_roles_on_restaurant_id", using: :btree
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.string   "schedulable_type"
-    t.integer  "schedulable_id"
-    t.date     "date"
-    t.time     "time"
-    t.string   "rule"
-    t.string   "interval"
-    t.text     "day"
-    t.text     "day_of_week"
-    t.datetime "until"
-    t.integer  "count"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tables", force: :cascade do |t|
     t.integer  "number"
     t.integer  "restaurant_id"
