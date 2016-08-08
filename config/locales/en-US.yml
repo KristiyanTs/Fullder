@@ -1,5 +1,66 @@
 ---
 en-US:
+  search:
+    no-results: "No results found."
+  restaurant:
+    search-placeholder: "restaurant name, address or id" 
+    working-time: Hours
+    open: Open
+    closed: Closed
+  product:
+    contains: "Contains "
+    price-from: "From "
+    pick-variation: "Pick a variation"
+    pick-choices: "Pick choices"
+  user:
+    cancel-account: Cancel account 
+  order:
+    demands-placeholder: "Any demands? Please, be concise."
+    add-to-cart: "Add to Cart"
+    choose-table: "Choose a table"
+  navbar:
+    home: "Home"
+    manage: "Manage"
+    products: "Products"
+    categories: "Categories"
+    roles: "Roles"
+    positions: "Positions"
+    tables: "Tables"
+    statistics: "Statistics"
+    profile: "Profile"
+    logout: "Exit"
+    register: "Register"
+    enter: "Enter"
+  dashboard:
+    category-form-title: "Category form for "
+    product-form-title: "Product form for "
+    role-form-title: "Role form for "
+    position-form-title: "Position form for "
+    table-form-title: "Table form for "
+  helpers:
+    submit:
+      user:
+        create: "Add %{model}"
+        update: "Save Changes"
+  cocoon:
+    defaults:
+      add: "Add record"
+      remove: "Remove record"
+    product_options:
+      add: "Add option"
+      remove: "Remove option"  
+    product_sizes:
+      add: "Add variation"
+      remove: "Remove variation"
+    working_times:
+      add: Add working time
+      remove: Remove working time
+  views:
+    pagination:
+      first: First
+      last: Last
+      previous: Prev
+      next: Next
   activerecord:
     errors:
       messages:

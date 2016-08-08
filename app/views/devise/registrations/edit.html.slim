@@ -7,8 +7,8 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white
       = f.input :email, required: true, autofocus: true
       = f.input :phone_number
       = f.input :address
-      = f.input :locale, priority: ["en-GB"], 
-        collection: [ "en-GB", "en-US", "de", "bg", "en"]  
+      = f.input :locale, priority: [["United Kingdom", "en-GB"]], 
+        collection: [ ["United Kingdom", "en-GB"], ["United States","en-US"], ["Germany", "de"], ["Bulgaria" ,"bg"]]  
       = f.input :allergen_list, input_html: {value: current_user.allergen_list.to_s}
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p
