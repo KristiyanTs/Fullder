@@ -78,7 +78,6 @@ gem 'therubyracer', platform: :ruby
 gem 'rails-i18n', '~> 5.0.0'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'globalize', github: 'globalize/globalize'
-gem 'globalize-accessors'
 gem 'activemodel-serializers-xml'
 
 

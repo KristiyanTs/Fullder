@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(version: 20160808134433) do
     t.string   "address"
     t.text     "description"
     t.string   "phone_number"
+    t.string   "country"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "restaurant_avatar_file_name"
@@ -236,7 +237,6 @@ ActiveRecord::Schema.define(version: 20160808134433) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "sells_online"
-    t.string   "locale"
   end
 
   create_table "roles", force: :cascade do |t|

@@ -8,6 +8,7 @@
 #  address                        :string
 #  description                    :text
 #  phone_number                   :string
+#  country                        :string
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #  restaurant_avatar_file_name    :string
@@ -17,7 +18,6 @@
 #  latitude                       :float
 #  longitude                      :float
 #  sells_online                   :boolean
-#  locale                         :string
 #
 
 class Restaurant < ApplicationRecord
