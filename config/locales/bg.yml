@@ -57,6 +57,9 @@ bg:
     title: Роля
     roles: Роля
     categories: Категории
+  rating:
+    ambiance: Атмосфера
+    products: Качество на продуктите
 
 
   helpers:

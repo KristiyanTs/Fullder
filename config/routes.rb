@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resources :products, only: [:index, :show]
     resources :categories, only: [:index, :show]
+    put :favorite, on: :member
   end
 
   resource :dashboard, only: [:show]

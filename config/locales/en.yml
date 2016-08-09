@@ -58,6 +58,9 @@ en:
     title: Title
     roles: Roles
     categories: Category
+  rating:
+    ambiance: Ambiance
+    products: Goods qualiy
 
   helpers:
     submit:

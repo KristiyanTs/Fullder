@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808134433) do
+ActiveRecord::Schema.define(version: 20160809140142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.float    "avg",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.integer  "restaurant_id"
@@ -37,6 +46,15 @@ ActiveRecord::Schema.define(version: 20160808134433) do
     t.string   "name"
     t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
     t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
   create_table "images", force: :cascade do |t|
@@ -115,6 +133,14 @@ ActiveRecord::Schema.define(version: 20160808134433) do
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
     t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.float    "overall_avg",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "permission_roles", force: :cascade do |t|
@@ -212,6 +238,29 @@ ActiveRecord::Schema.define(version: 20160808134433) do
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
 
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.float    "stars",         null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+    t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string   "cacheable_type"
+    t.integer  "cacheable_id"
+    t.float    "avg",            null: false
+    t.integer  "qty",            null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
+  end
+
   create_table "restaurant_translations", force: :cascade do |t|
     t.integer  "restaurant_id", null: false
     t.string   "locale",        null: false
@@ -305,6 +354,19 @@ ActiveRecord::Schema.define(version: 20160808134433) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.boolean  "vote",          default: false, null: false
+    t.string   "voteable_type",                 null: false
+    t.integer  "voteable_id",                   null: false
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
+    t.index ["voter_id", "voter_type", "voteable_id", "voteable_type"], name: "fk_one_vote_per_user_per_entity", unique: true, using: :btree
+    t.index ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
+  end
+
   create_table "working_times", force: :cascade do |t|
     t.time     "from_time"
     t.time     "to_time"
@@ -317,6 +379,8 @@ ActiveRecord::Schema.define(version: 20160808134433) do
   end
 
   add_foreign_key "categories", "restaurants"
+  add_foreign_key "favorites", "restaurants"
+  add_foreign_key "favorites", "users"
   add_foreign_key "images", "restaurants"
   add_foreign_key "language_joins", "languages"
   add_foreign_key "language_joins", "restaurants"
