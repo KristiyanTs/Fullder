@@ -1,7 +1,7 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
 .container.container-white
-  h3 Listing roles
+  h3 = t 'dashboard.role-index-title'
 
   .search-form 
     = search_form_for [:dashboard, @restaurant, @search], 
@@ -17,7 +17,7 @@
     = render partial: "search_results"
 
   .new-element
-    = link_to 'Add role', new_dashboard_restaurant_role_path(@restaurant), class: 'btn btn-primary btn-lg',
+    = link_to (t 'button.add-role'), new_dashboard_restaurant_role_path(@restaurant), class: 'btn btn-primary btn-lg',
       data: { target: '#element-form', toggle: 'modal' , remote: true}
     #element-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
       .modal-dialog role="document"

@@ -1,4 +1,11 @@
 bg:
+  button:
+    wait: Моля, изчакайте...
+    add-category: Добави категория
+    add-product: Добави продукт
+    add-role: Добави роля
+    add-position: Добави служител
+    add-table: Добави маса
   search:
     no-results: "Няма намерени резултати."
   restaurant:
@@ -26,6 +33,8 @@ bg:
     positions: "Позиции"
     tables: "Маси"
     statistics: "Статистики"
+    active-orders: Поръчки
+    actions: Настройки
     profile: "Профил"
     logout: "Изход"
     register: "Регистрация"
@@ -36,6 +45,20 @@ bg:
     role-form-title: "Формуляр за роля в "
     position-form-title: "Формуляр за позиция в "
     table-form-title: "Формуляр за маса в "
+    category-index-title: Категории
+    product-index-title: Продукти
+    role-index-title: Роли
+    position-index-title: Служители
+    table-index-title: Маси
+    name: Име
+    products: Продукти
+    actions: Настройки
+    number: Номер
+    title: Роля
+    roles: Роля
+    categories: Категории
+
+
   helpers:
     submit:
       user:

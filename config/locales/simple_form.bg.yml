@@ -12,7 +12,7 @@ bg:
         last_name: 'Фамилия'
         phone_number: 'Телефонен номер'
         locale: 'Място'
-        language: Език
+        language: Език / Language
         allergen_list: 'Алергени, разделени със запетайки'
         age_restriction: 'Изисква проверка на възрастта?'
         available_all_day: 'Продава се постоянно?'
@@ -28,6 +28,8 @@ bg:
         tag_list: 'Тагове, разделени със запетайки'
         permission_ids: 'Разрешения'
         number: 'Номер'
+      user:
+        locale: Език / Language
     hints:
       defaults:
         current_password: сегащната парола е нужна, за да потвърдите промените

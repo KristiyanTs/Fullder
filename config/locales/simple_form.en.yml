@@ -29,6 +29,8 @@ en:
         tag_list: 'Tags, separated by commas'
         permission_ids: 'Permissions'
         number: 'Number'
+      user:
+        locale: Language
     hints:
       defaults:
         current_password: we need your current password to confirm your changes

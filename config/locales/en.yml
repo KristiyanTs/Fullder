@@ -1,5 +1,12 @@
 ---
 en:
+  button:
+    wait: Please, wait...
+    add-category: Add category
+    add-product: Add product
+    add-role: Add role
+    add-position: Add employee
+    add-table: Add table
   search:
     no-results: "No results found."
   restaurant:
@@ -27,6 +34,8 @@ en:
     positions: "Positions"
     tables: "Tables"
     statistics: "Statistics"
+    active-orders: "Active orders"
+    actions: Actions
     profile: "Profile"
     logout: "Exit"
     register: "Register"
@@ -37,6 +46,19 @@ en:
     role-form-title: "Role form for "
     position-form-title: "Position form for "
     table-form-title: "Table form for "
+    category-index-title: Listing categories
+    product-index-title: Listing products
+    role-index-title: Listing roles
+    position-index-title: Listing employees
+    table-index-title: Listing tables
+    name: Name
+    products: Products
+    actions: Actions
+    number: Number
+    title: Title
+    roles: Roles
+    categories: Category
+
   helpers:
     submit:
       user:
