@@ -22,4 +22,6 @@ class ProductOption < ApplicationRecord
 
   has_many :order_options
   has_many :order_items, through: :order_options
+
+  translates :name
 end

@@ -1,4 +1,6 @@
 .nested-fields
+  - if f.object.pic.exists?
+    = image_tag f.object.pic.url(:medium), class: "center-block img-rounded"
   = f.input :pic, as: :file
   = f.input :_destroy, as: :hidden
   = link_to_remove_association "remove picture", f

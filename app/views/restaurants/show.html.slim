@@ -15,20 +15,25 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
   	= image_tag @restaurant.restaurant_avatar.url(:large)
 
 
-  = link_to "",((@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online ? menu_button : new_order_button), class: "menu-button col-xs-6"
+  = link_to (t 'restaurant.menu'),((@restaurant.sells_online && \
+    current_order.restaurant_id == @restaurant.id) || \
+    !@restaurant.sells_online ? menu_button : new_order_button), 
+    class: "menu-button col-xs-6 text-center"
 
-  = link_to "", root_path, class: "reservations-button col-xs-6"
-
+  = link_to (t 'restaurant.reserve'), root_path, class: "reservations-button col-xs-6 text-center"
 
 .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-2
   #working-times.col-xs-12.col-md-4
-    h3.text-center Hours
+    h3.text-center = t 'restaurant.working-time'
     - @restaurant.working_times.order('from_day ASC').each do |time|
       .schedule-day.col-xs-6.text-center
-        = Date::DAYNAMES[time.from_day]
+        = I18n.t(:"date.day_names")[time.from_day]
       .schedule-time.col-xs-6.text-center
         = time.from_time.to_formatted_s(:time)   + "-" + time.to_time.to_formatted_s(:time)  
       br
+    hr.hidden-lg.hidden-md
+  #favorites.col-xs-12.col-md-4
+    = render 'layouts/favorite'
 
 .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-3
   #restaurant-image-gallery

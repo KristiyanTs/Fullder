@@ -1,6 +1,116 @@
----
 bg:
+  button:
+    wait: Моля, изчакайте...
+    add-category: Добави категория
+    add-product: Добави продукт
+    add-role: Добави роля
+    add-position: Добави служител
+    add-table: Добави маса
+  search:
+    no-results: "Няма намерени резултати."
+  restaurant:
+    search-placeholder: "име на ресторант, адрес или id" 
+    working-time: Работно време
+    open: Отворено
+    closed: Затворено
+    thank-you: Благодаря!
+    add-to-favorites: Добави в любими!
+    menu: Меню
+    reserve: Резервирай
+    update: Редактирай ресторант
+  product:
+    contains: "Съдържа "
+    price-from: "От "
+    pick-variation: "Избери вид"
+    pick-choices: "Избери опции"
+  user:
+    cancel-account: Изтриване на акаунт
+  order:
+    demands-placeholder: "Имате ли изисквания?"
+    add-to-cart: "Добави"
+    choose-table: "Изберете маса"
+  navbar:
+    home: "Начало"
+    manage: "Управлявай"
+    products: "Продукти"
+    categories: "Категории"
+    roles: "Роли"
+    positions: "Позиции"
+    tables: "Маси"
+    statistics: "Статистики"
+    active-orders: Поръчки
+    actions: Настройки
+    profile: "Профил"
+    logout: "Изход"
+    register: "Регистрация"
+    enter: "Влез"
+  dashboard:
+    category-form-title: "Формуляр за категория в "
+    product-form-title: "Формуляр за продукт в "
+    role-form-title: "Формуляр за роля в "
+    position-form-title: "Формуляр за позиция в "
+    table-form-title: "Формуляр за маса в "
+    category-index-title: Категории
+    product-index-title: Продукти
+    role-index-title: Роли
+    position-index-title: Служители
+    table-index-title: Маси
+    name: Име
+    products: Продукти
+    settings: Настройки
+    number: Номер
+    title: Роля
+    roles: Роля
+    categories: Категории
+  cocoon:
+    defaults:
+      add: "Добави данни"
+      remove: "Изтрии данни"
+    product_options:
+      add: "Добави вид"
+      remove: "Изтрии вид"  
+    product_sizes:
+      add: "Добави опция"
+      remove: "Изтрии опция"
+    working_times:
+      add: Добави график
+      remove: Премахни график
+  views:
+    pagination:
+      first: Първа
+      last: Последна
+      previous: Минала
+      next: Следваща
+    
   activerecord:
+    models:
+      user:
+        one: 'Потребител'
+        other: 'Потребители'
+      category:
+        one: 'Категория'
+        other: 'Категории'
+      order:
+        one: 'Поръчка'
+        other: 'Поръчки'
+      permission:
+        one: 'Разрешение'
+        other: 'Разрешения'
+      position:
+        one: 'позиция'
+        other: 'Позиции'
+      product:
+        one: 'Продукт'
+        other: 'Продукти'
+      restaurant:
+        one: 'Ресторант'
+        other: 'Ресторанти'
+      role:
+        one: 'Роля'
+        other: 'Роли'
+      table:
+        one: 'Маса'
+        other: 'Маси'        
     errors:
       messages:
         record_invalid: 'имаше грешки: %{errors}'
@@ -135,11 +245,14 @@ bg:
       create: Създай %{model}
       submit: Запази %{model}
       update: Обнови %{model}
+      order:
+        create: Въведи
+        update: Коригирай
   number:
     currency:
       format:
         delimiter: " "
-        format: "%n %u"
+        format: "%n%u"
         precision: 2
         separator: ","
         significant: false

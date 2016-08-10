@@ -1,24 +1,25 @@
 container.col-xs-12.col-md-6.col-md-offset-3.container-white
   h2
-    | Edit #{resource_name.to_s.humanize}
+    = t 'navbar.profile'
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     = f.error_notification
     .form-inputs
       = f.input :email, required: true, autofocus: true
-      = f.input :phone_number, hint: "will be used for reservations"
-      = f.input :address, hint: "for home delivery"
-      = f.input :locale, priority: ["en-GB"], hint: "the default display language", 
-        collection: [ "en-GB", "en-US", "de", "bg"]  
-      = f.input :allergen_list, input_html: {value: current_user.allergen_list.to_s}                          
+      = f.input :phone_number
+      = f.input :address
+      = f.input :locale, priority: [["English", "en"]], 
+        collection: [ ["English", "en"], ["Bulgarian","bg"], ["German", "de"]],
+        html: {value: current_user.locale || I18n.locale}  
+      = f.input :allergen_list, input_html: {value: current_user.allergen_list.to_s}
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p
           | Currently waiting confirmation for: #{resource.unconfirmed_email}
-      = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
+      = f.input :password, autocomplete: "off", required: false
       = f.input :password_confirmation, required: false
-      = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+      = f.input :current_password, required: true
     .form-actions
-      = f.button :submit, "Update"
-  h3 Cancel my account
+      = f.button :submit
+  hr
+  h3 = t 'user.cancel-account'
   p
-    | Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-  = link_to "Back", :back
+    | #{link_to "#{t 'user.cancel-account'}", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}

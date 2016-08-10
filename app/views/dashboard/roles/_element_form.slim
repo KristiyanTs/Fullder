@@ -1,7 +1,7 @@
 = simple_form_for([:dashboard, @restaurant, @role], remote: true, 
   html: { multipart: true }, authenticity_token: true) do |f|
   .modal-header
-    | Role form for #{@restaurant.name}
+    = (t 'dashboard.role-form-title') + @restaurant.name
     button.close aria-label="Close" data-dismiss="modal" type="button"
       span aria-hidden="true"  &times;
 
@@ -11,4 +11,4 @@
       { selected: @role.permission_ids, item_wrapper_tag: "p" }
 
   .modal-footer
-    = f.button :submit, disable_with: 'Please wait ...'
+    = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
   $('#restaurant-image-gallery').slick({
     autoplay: true,
     variableWidth: true,
@@ -7,4 +7,4 @@ $(document).ready(function() {
     centerMode: true,
     centerPadding: '60px'
   });
-});
+})

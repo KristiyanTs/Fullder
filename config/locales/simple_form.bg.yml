@@ -1,0 +1,49 @@
+bg:
+  simple_form:
+    labels:
+      defaults:
+        name: 'Име'
+        email: 'Имейл'
+        password: 'Парола'
+        password_confirmation: 'Потвърди паролата'
+        current_password: 'Сегашна парола'
+        address: 'Адрес'
+        first_name: 'Първо име'
+        last_name: 'Фамилия'
+        phone_number: 'Телефонен номер'
+        locale: 'Място'
+        language: Език / Language
+        allergen_list: 'Алергени, разделени със запетайки'
+        age_restriction: 'Изисква проверка на възрастта?'
+        available_all_day: 'Продава се постоянно?'
+        role: 'Роля'
+        avatar: 'Аватар'
+        short_description: 'Кратко описание'
+        description: 'Описание'
+        price: 'Цена'
+        ready: 'Готово ли е?(Може да бъде сервирано без подготовка)'
+        category: 'Категория'
+        restaurant_avatar: 'Главна снимка'
+        sells_online: 'Желаете ли да продавате през FastOrder?'
+        tag_list: 'Тагове, разделени със запетайки'
+        permission_ids: 'Разрешения'
+        number: 'Номер'
+      user:
+        locale: Език / Language
+    hints:
+      defaults:
+        current_password: сегащната парола е нужна, за да потвърдите промените
+        phone_number: ще бъде ползван за резервации
+        allergen_list: разделени със запетаи
+        address: за доставки
+      user:
+        edit:
+          password: остави полето празно, ако не желаете да я промените
+    placeholders:
+        defaults:
+          table_number: Номер на масата Ви
+    required:
+      text: 'задължително'
+      mark: '*'
+    error_notification:
+      default_message: "Моля, прегледайте следните проблеми:"

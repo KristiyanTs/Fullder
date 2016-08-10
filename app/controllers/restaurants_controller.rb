@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurant, only: [:show]
+  before_action :set_restaurant, only: [:show, :favorite]
 
   def index
     @userLocation = request.location
@@ -26,6 +26,24 @@ class RestaurantsController < ApplicationController
 
   def show
     session[:restaurant_id] = @restaurant.id
+  end
+
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorite_restaurants << @restaurant
+      respond_to do |format|
+        format.html
+        format.js { render partial: 'favorite.js.erb' }
+      end
+    else
+      current_user.favorite_restaurants.delete(@restaurant)
+      respond_to do |format|
+        format.html
+        format.js { render partial: 'favorite.js.erb' }
+      end
+    end
+
   end
 
   private

@@ -10,14 +10,13 @@ GIT
       request_store (~> 1.0)
 
 GIT
-  remote: https://github.com/rails/activemodel-serializers-xml
-  revision: 570ee7ed33d60e44ca1f3ccbec3d1fbf61d52cbf
+  remote: git://github.com/globalize/globalize.git
+  revision: 51aa34b34ef6b00b8e6e307ac9145eeffade833c
   specs:
-    activemodel-serializers-xml (1.0.1)
-      activemodel (> 5.x)
-      activerecord (> 5.x)
-      activesupport (> 5.x)
-      builder (~> 3.1)
+    globalize (5.1.0)
+      activemodel (>= 4.2, < 5.1)
+      activerecord (>= 4.2, < 5.1)
+      request_store (~> 1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -50,6 +49,11 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.0.0)
       activesupport (= 5.0.0)
+    activemodel-serializers-xml (1.0.1)
+      activemodel (> 5.x)
+      activerecord (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (5.0.0)
       activemodel (= 5.0.0)
       activesupport (= 5.0.0)
@@ -67,7 +71,7 @@ GEM
       rake (>= 10.4, < 12.0)
     arel (7.1.1)
     ast (2.3.0)
-    autoprefixer-rails (6.4.0)
+    autoprefixer-rails (6.4.0.1)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -173,6 +177,8 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
+    i18n-debug (1.1.0)
+      i18n (< 1)
     interception (0.5)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -280,7 +286,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
     rake (11.2.2)
-    ransack (1.8.1)
+    ransack (1.8.2)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
@@ -396,7 +402,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel-serializers-xml!
+  activemodel-serializers-xml
   acts-as-taggable-on (~> 4.0)
   annotate
   better_errors
@@ -418,11 +424,13 @@ DEPENDENCIES
   font-awesome-rails
   geocoder
   geokit-rails
+  globalize!
   guard-bundler
   guard-rails
   guard-rspec
   haml2slim
   html2haml
+  i18n-debug
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
@@ -444,6 +452,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  responders
   rspec-rails
   rubocop
   sass-rails (~> 5.0)

@@ -5,7 +5,7 @@
         .input-group
           = f.text_field :search_name_cont, 
             class: "form-control input restaurant-search-input", 
-            placeholder: "restaurant name, address or id",
+            placeholder: "#{t 'restaurant.search-placeholder'}",
             title: "#{search_hint}"
           span.input-group-btn
             = button_tag(type: 'submit', class: "btn btn-info btn") do

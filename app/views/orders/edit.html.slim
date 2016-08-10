@@ -1,6 +1,6 @@
 .container.container-white
-  h3 Choose a table
+  h3.text-center = t 'order.choose-table'
   = simple_form_for([current_order], authenticity_token: true) do |f|
     = f.input :table_number, class: 'form-control', placeholder: "You can find it on your table.", label: false
     = f.input :table_id, as: :hidden
-    = f.submit "Submit", disable_with: 'Please wait ...', class: "btn btn-default center-block"
+    = f.submit disable_with: 'Please wait ...', class: "btn btn-default center-block"
