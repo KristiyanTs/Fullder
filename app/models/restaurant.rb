@@ -21,6 +21,8 @@
 #
 
 class Restaurant < ApplicationRecord
+  acts_as_taggable
+
   has_many :categories, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :roles, dependent: :destroy
@@ -54,8 +56,6 @@ class Restaurant < ApplicationRecord
                    distance_field_name: :distance,
                    lat_column_name: :lat,
                    lng_column_name: :lng
-
-  acts_as_taggable
 
   def working?
     working_times.any?(&:active_now?)

@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20160812093658) do
     t.decimal  "unit_price"
     t.integer  "quantity"
     t.decimal  "total_price"
+    t.string   "choices"
     t.string   "demands"
     t.datetime "received_at"
     t.datetime "ready_at"
@@ -276,10 +277,10 @@ ActiveRecord::Schema.define(version: 20160812093658) do
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
-    t.string   "taggable_type"
     t.integer  "taggable_id"
-    t.string   "tagger_type"
+    t.string   "taggable_type"
     t.integer  "tagger_id"
+    t.string   "tagger_type"
     t.string   "context",       limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context", using: :btree
