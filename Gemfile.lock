@@ -452,6 +452,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify
+  responders
   rspec-rails
   rubocop
   sass-rails (~> 5.0)

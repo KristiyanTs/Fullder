@@ -1,0 +1,9 @@
+- if !current_user.favorite_restaurants.exists?(@restaurant)
+  h3 Add to favorites!
+  = link_to "", favorite_restaurant_path(@restaurant, type: "favorite"), 
+    method: :put, remote: true, class: "glyphicon glyphicon-heart notfavorite"
+-else
+  h3 Thank you!
+  = link_to "", favorite_restaurant_path(@restaurant, type: "unfavorite"), 
+    method: :put, remote: true, class: "glyphicon glyphicon-heart favorite"
+h4 = @restaurant.favorited_by.count

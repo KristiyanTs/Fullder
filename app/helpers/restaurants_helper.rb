@@ -11,4 +11,5 @@ module RestaurantsHelper
       I18n.t 'restaurant.closed'
     end
   end
+
 end

@@ -34,13 +34,13 @@ class RestaurantsController < ApplicationController
       current_user.favorite_restaurants << @restaurant
       respond_to do |format|
         format.html
-        format.js { render partial: 'index.erb.js' }
+        format.js { render partial: 'favorite.js.erb' }
       end
     else
       current_user.favorite_restaurants.delete(@restaurant)
       respond_to do |format|
         format.html
-        format.js { render partial: 'index.erb.js' }
+        format.js { render partial: 'favorite.js.erb' }
       end
     end
 

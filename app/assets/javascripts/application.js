@@ -1,7 +1,6 @@
 //= require jquery
-//= require jquery_ujs
 //= require jquery.turbolinks
-//= require turbolinks
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-select
 //= require bootstrap/alert
@@ -9,9 +8,10 @@
 //= require select2-full
 //= require cocoon
 //= require slick.min
+//= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
   $(".alert").fadeTo(2000, 500).slideUp(500, function(){
       $(".alert").alert('close');
   });
@@ -19,4 +19,4 @@ $(document).ready(function() {
     placement: "bottom",
     trigger: "focus"
   });
-});
+})
