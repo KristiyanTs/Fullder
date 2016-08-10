@@ -17,6 +17,7 @@ bg:
     add-to-favorites: Добави в любими!
     menu: Меню
     reserve: Резервирай
+    update: Редактирай ресторант
   product:
     contains: "Съдържа "
     price-from: "От "
@@ -56,7 +57,7 @@ bg:
     table-index-title: Маси
     name: Име
     products: Продукти
-    actions: Настройки
+    settings: Настройки
     number: Номер
     title: Роля
     roles: Роля

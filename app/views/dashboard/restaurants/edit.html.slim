@@ -1,30 +1,34 @@
-.container.container-white
-  = simple_form_for [:dashboard, @restaurant], html: {multipart: true} do |f|
+= render 'layouts/dashboard/dashboard_navbar'
 
+.container.container-white
+  h2.text-center = t 'restaurant.update'
+  = simple_form_for [:dashboard, @restaurant], html: {multipart: true, class: "col-md-8 col-md-offset-2"} do |f|
+    - if @restaurant.restaurant_avatar.exists?
+      = image_tag @restaurant.restaurant_avatar.url(:thumb), class: "center-block img-rounded"
     = f.input :restaurant_avatar, as: :file
+    = f.input :name
     = f.input :sells_online
     / = f.collection_check_boxes :language_ids, Language.all, :id, :name, 
       { selected: @restaurant.language_ids, item_wrapper_tag: "p" }
-
     = f.input :country, priority: [["United Kingdom", "en-GB"]], 
       collection: [ ["United Kingdom", "en-GB"], ["United States","en-US"], ["Germany", "de"], ["Bulgaria" ,"bg"]]
-    
-    = f.input :name
     = f.input :address
-    = f.input :description
     = f.input :phone_number
-
-    .working_times
-      = f.simple_fields_for :working_times do |working_time|
-        = render 'working_time_fields', f: working_time
-      .links
-        = link_to_add_association f, :working_times
-
-    .pictures
+    = f.input :description
+    .pictures.col-md-6
       = f.simple_fields_for :images do |image|
         = render 'image_fields', f: image
       .links
         = link_to_add_association 'Add image', f, :images
 
+    .working_times.col-md-6
+      = f.simple_fields_for :working_times do |working_time|
+        = render 'working_time_fields', f: working_time
+      .links
+        = link_to_add_association f, :working_times
+
+    br
+    br
+    hr
     = f.input :tag_list, input_html: {value: @restaurant.tag_list.to_s}
     = f.button :submit

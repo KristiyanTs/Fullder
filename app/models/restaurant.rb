@@ -40,7 +40,7 @@ class Restaurant < ApplicationRecord
   accepts_nested_attributes_for :images, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :languages, reject_if: :all_blank, allow_destroy: true
 
-  has_attached_file :restaurant_avatar, styles: { large: '1500x1500' }, default_url: '/images/:style/missing.png'
+  has_attached_file :restaurant_avatar, styles: { large: '1500x1500', thumb: '250x250' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :restaurant_avatar, content_type: /\Aimage\/.*\Z/
 
   ransacker :search_name, formatter: proc { |v| v.mb_chars.downcase.to_s } do |parent|

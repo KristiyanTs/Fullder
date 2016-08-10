@@ -16,8 +16,9 @@ en:
     closed: Closed
     thank-you: "Thank you!"
     add-to-favorites: Add to favorites!
-    menu: Меню
-    reserve: Резервирай
+    menu: Menu
+    reserve: Reserve
+    update: Update restaurant
   product:
     contains: "Contains "
     price-from: "From "
@@ -39,7 +40,7 @@ en:
     tables: "Tables"
     statistics: "Statistics"
     active-orders: "Active orders"
-    actions: Actions
+    settings: Settings
     profile: "Profile"
     logout: "Exit"
     register: "Register"
