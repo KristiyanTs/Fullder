@@ -31,8 +31,6 @@ class Restaurant < ApplicationRecord
   has_many :tables, dependent: :destroy
   has_many :working_times, dependent: :destroy
   has_many :images, dependent: :destroy
-  has_many :language_joins
-  has_many :languages, through: :language_joins
   has_many :favorites
   has_many :favorited_by, through: :favorites, source: :user
 

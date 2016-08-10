@@ -8,8 +8,6 @@
     = f.input :restaurant_avatar, as: :file
     = f.input :name
     = f.input :sells_online
-    / = f.collection_check_boxes :language_ids, Language.all, :id, :name, 
-      { selected: @restaurant.language_ids, item_wrapper_tag: "p" }
     = f.input :country, priority: [["United Kingdom", "en-GB"]], 
       collection: [ ["United Kingdom", "en-GB"], ["United States","en-US"], ["Germany", "de"], ["Bulgaria" ,"bg"]]
     = f.input :address
