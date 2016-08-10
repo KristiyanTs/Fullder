@@ -13,6 +13,10 @@ bg:
     working-time: Работно време
     open: Отворено
     closed: Затворено
+    thank-you: Благодаря!
+    add-to-favorites: Добави в любими!
+    menu: Меню
+    reserve: Резервирай
   product:
     contains: "Съдържа "
     price-from: "От "
@@ -57,16 +61,6 @@ bg:
     title: Роля
     roles: Роля
     categories: Категории
-  rating:
-    ambiance: Атмосфера
-    products: Качество на продуктите
-
-
-  helpers:
-    submit:
-      user:
-        create: "Добави %{model}"
-        update: "Запази промените"
   cocoon:
     defaults:
       add: "Добави данни"
@@ -250,6 +244,9 @@ bg:
       create: Създай %{model}
       submit: Запази %{model}
       update: Обнови %{model}
+      order:
+        create: Въведи
+        update: Коригирай
   number:
     currency:
       format:

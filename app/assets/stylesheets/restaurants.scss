@@ -1,18 +1,29 @@
 .home-page{
   margin-top:-10px;
+  padding-bottom: 0px !important;
   .menu-button{
-    background-image: url('http://www.thevagabondpub.co.uk/wp-content/uploads/2015/01/menu.png');
+    background-image: url('menu.png');
     background-repeat: no-repeat;
     background-size: 200px;
     background-position: center; 
     height: 150px;
+    line-height: 160px;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
   }
   .reservations-button{
-    background-image:  url('http://www.kigaliout.rw/templates/website/img/reservation_2d.png');
+    background-image:  url('menu.png');
     background-repeat: no-repeat;
-    background-size: 150px;
+    background-size: 200px;
     background-position: center; 
     height: 150px;
+    line-height: 160px;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
   }
   .menu-button:hover, .reservations-button:hover{
     background-color: grey;

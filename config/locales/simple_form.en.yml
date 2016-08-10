@@ -39,6 +39,9 @@ en:
       user:
         edit:
           password: leave it blank if you don't want to change it
+    placeholders:
+        defaults:
+          table_number: You can find it on your table
     required:
       text: 'required'
       mark: '*'

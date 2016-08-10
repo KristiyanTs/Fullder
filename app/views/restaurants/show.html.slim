@@ -15,10 +15,9 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
   	= image_tag @restaurant.restaurant_avatar.url(:large)
 
 
-  = link_to "",((@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online ? menu_button : new_order_button), class: "menu-button col-xs-6"
+  = link_to (t 'restaurant.menu'),((@restaurant.sells_online && current_order.restaurant_id == @restaurant.id) || !@restaurant.sells_online ? menu_button : new_order_button), class: "menu-button col-xs-6 text-center"
 
-  = link_to "", root_path, class: "reservations-button col-xs-6"
-
+  = link_to (t 'restaurant.reserve'), root_path, class: "reservations-button col-xs-6 text-center"
 
 .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-2
   #working-times.col-xs-12.col-md-4
@@ -38,5 +37,3 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
     - @restaurant.images.each do |image|
       .gallery-image
         = image_tag image.pic.url(:medium)
-
-

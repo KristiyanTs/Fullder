@@ -39,6 +39,9 @@ bg:
       user:
         edit:
           password: остави полето празно, ако не желаете да я промените
+    placeholders:
+        defaults:
+          table_number: Номер на масата Ви
     required:
       text: 'задължително'
       mark: '*'
