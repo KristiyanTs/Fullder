@@ -81,7 +81,6 @@ bg:
       last: Последна
       previous: Минала
       next: Следваща
-    
   activerecord:
     models:
       user:
@@ -248,6 +247,8 @@ bg:
       order:
         create: Въведи
         update: Коригирай
+      user:
+        update: Потвърди промените
   number:
     currency:
       format:
