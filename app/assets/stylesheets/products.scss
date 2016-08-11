@@ -58,6 +58,13 @@ a.product_row{
   .form-container{
     background-color: white;
     margin-top: 10px;
+    .max-options{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border-radius: 5px;
+      padding: 5px;
+    }
   }
 
   .group-name{
@@ -74,10 +81,8 @@ a.product_row{
     padding-right: 0px !important;
   }
 
+  .collection_radio_buttons, .collection_check_boxes, 
   .product_size > label, .product_option > label{
-    width: 100%;
-  }
-  .collection_radio_buttons, .collection_check_boxes{
     width:100%;
     font-weight: normal;
   }
@@ -172,21 +177,9 @@ a.product_row{
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/* .panel{
+.panel{
   position: relative;
-} */
-
+}
 
 .product_row_dashboard{
   height:80px;
