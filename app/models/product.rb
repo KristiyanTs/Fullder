@@ -36,11 +36,13 @@ class Product < ApplicationRecord
   belongs_to :category
 
   has_many :product_sizes, dependent: :destroy
-  has_many :product_options, dependent: :destroy
+  has_many :product_option_groups, dependent: :destroy
+  has_many :product_options, through: :product_option_groups
   has_many :order_items
 
   accepts_nested_attributes_for :product_sizes, allow_destroy: true
-  accepts_nested_attributes_for :product_options, allow_destroy: true
+  #accepts_nested_attributes_for :product_options, allow_destroy: true
+  accepts_nested_attributes_for :product_option_groups, allow_destroy: true
 
   default_scope { where(active: true) }
 

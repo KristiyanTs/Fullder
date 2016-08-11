@@ -21,7 +21,7 @@
 #  phone_number           :string
 #  address                :string
 #  admin                  :boolean
-#  locale                 :string
+#  locale                 :string           default("en")
 #
 # Indexes
 #

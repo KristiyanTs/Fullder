@@ -8,7 +8,7 @@
 #  address                        :string
 #  description                    :text
 #  phone_number                   :string
-#  country                        :string
+#  country                        :string           default("en-GB")
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #  restaurant_avatar_file_name    :string

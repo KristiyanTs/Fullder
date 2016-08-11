@@ -79,6 +79,9 @@ en:
     working_times:
       add: Add working time
       remove: Remove working time
+    product_option_groups:
+      add: Add product option group
+      remove: Remove product option group
   views:
     pagination:
       first: First

@@ -2,7 +2,7 @@ class CreateProductOptions < ActiveRecord::Migration[5.0]
   def up
     create_table :product_options do |t|
       t.string :name
-      t.references :product, foreign_key: true
+      t.references :product_option_group, foreign_key: true
 
       t.timestamps
     end

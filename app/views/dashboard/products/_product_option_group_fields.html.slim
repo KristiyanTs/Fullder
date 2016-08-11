@@ -1,0 +1,11 @@
+.nested-fields
+  = f.input :name
+  = f.input :maximum
+  = f.input :_destroy, as: :hidden
+  = link_to_remove_association f
+
+  .product_options
+    = f.simple_fields_for :product_options do |product_option|
+      = render 'product_option_fields', f: product_option
+    .links
+      = link_to_add_association f, :product_options
