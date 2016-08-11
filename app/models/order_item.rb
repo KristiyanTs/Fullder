@@ -36,7 +36,7 @@ class OrderItem < ApplicationRecord
 
   has_many :orders_product_groups
   has_many :product_option_groups, through: :orders_product_groups
-  accepts_nested_attributes_for :product_option_groups
+  accepts_nested_attributes_for :orders_product_groups
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present

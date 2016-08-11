@@ -56,7 +56,7 @@ class OrderItemsController < ApplicationController
 
   def order_item_params
     params.require(:order_item).permit(:quantity, :product_id, :product_size_id, :demands,
-                                    product_option_groups_attributes: [ 
-                                    product_options_ids: []])
+                   product_option_groups_attributes: [:id,
+                   product_option_ids: []])
   end
 end
