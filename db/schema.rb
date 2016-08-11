@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809140142) do
+ActiveRecord::Schema.define(version: 20160811132947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,15 @@ ActiveRecord::Schema.define(version: 20160809140142) do
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
     t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "orders_product_groups", force: :cascade do |t|
+    t.integer  "order_item_id"
+    t.integer  "product_option_group_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["order_item_id"], name: "index_orders_product_groups_on_order_item_id", using: :btree
+    t.index ["product_option_group_id"], name: "index_orders_product_groups_on_product_option_group_id", using: :btree
   end
 
   create_table "permission_roles", force: :cascade do |t|
@@ -341,6 +350,8 @@ ActiveRecord::Schema.define(version: 20160809140142) do
   add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "tables"
   add_foreign_key "orders", "users"
+  add_foreign_key "orders_product_groups", "order_items"
+  add_foreign_key "orders_product_groups", "product_option_groups"
   add_foreign_key "product_option_groups", "products"
   add_foreign_key "product_options", "product_option_groups"
   add_foreign_key "product_sizes", "products"

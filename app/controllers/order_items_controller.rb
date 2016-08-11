@@ -4,6 +4,7 @@ class OrderItemsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    debugger
     @order_item = OrderItem.new(order_item_params)
 
     if table_in_this_restaurant?
@@ -54,6 +55,8 @@ class OrderItemsController < ApplicationController
   private
 
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id, :product_size_id, :demands, product_option_ids: [])
+    params.require(:order_item).permit(:quantity, :product_id, :product_size_id, :demands,
+                                    product_option_groups_attributes: [ 
+                                    product_options_ids: []])
   end
 end

@@ -23,8 +23,9 @@
         h4.text-center = group.name
         .max-options = "max " + group.maximum.to_s
         .col-xs-12.option_holder.padding-top-small
-          = f.collection_check_boxes :product_option_ids, group.product_options, :id, :name,
-            item_wrapper_class: "col-xs-6 col-sm-6 col-md-4 col-lg-3 product_option #{group.maximum.to_s}"  
+          = f.fields_for :product_option_groups, group do |groups|
+            = groups.collection_check_boxes :product_option_ids, group.product_options, :id, :name,
+              item_wrapper_class: "col-xs-6 col-sm-6 col-md-4 col-lg-3 product_option #{group.maximum.to_s}"  
 
 
   - if @restaurant.sells_online

@@ -22,6 +22,8 @@ class ProductOptionGroup < ApplicationRecord
   belongs_to :product
 
   has_many :product_options, dependent: :destroy
+  has_many :order_items_product_option_groups
+  has_many :order_items, through: :order_items_product_option_groups
 
   accepts_nested_attributes_for :product_options, allow_destroy: true
 

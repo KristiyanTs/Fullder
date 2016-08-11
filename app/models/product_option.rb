@@ -20,8 +20,5 @@
 class ProductOption < ApplicationRecord
   belongs_to :product_option_group
 
-  has_many :order_options
-  has_many :order_items, through: :order_options
-
   translates :name
 end

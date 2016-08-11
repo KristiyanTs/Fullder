@@ -34,14 +34,15 @@ class OrderItem < ApplicationRecord
   belongs_to :product_size
   belongs_to :order
 
-  has_many :order_options
-  has_many :product_options, through: :order_options
-  accepts_nested_attributes_for :product_options
+  has_many :orders_product_groups
+  has_many :product_option_groups, through: :orders_product_groups
+  accepts_nested_attributes_for :product_option_groups
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present
   validate :size_selected
+  # validate :options_allowed?
 
   before_save :finalize
 
@@ -74,5 +75,9 @@ class OrderItem < ApplicationRecord
   def finalize
     self[:unit_price] = unit_price
     self[:total_price] = quantity * self[:unit_price]
+  end
+
+  def options_allowed?
+    product_option_groups.any?{|group| group.maximum > group.product_options.count}
   end
 end
