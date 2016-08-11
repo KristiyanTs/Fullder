@@ -15,8 +15,14 @@
 
 html,body {
   height:100%;
-  padding-top:25px;
+  padding-top: 0;
+  margin: 0;
   background-color: rgb(240,240,240);
+}
+
+body{
+  padding-bottom: 50px;
+  padding-top: 40px;
 }
 
 .header {
@@ -58,6 +64,9 @@ html,body {
         height: 40px;
         padding-top:10px;
       }
+      a:hover{
+        background-color: rgb(177,0,15);
+      }
     }
   }
 }
@@ -94,10 +103,16 @@ a:hover{
   z-index:1000;
 }
 
-.pagination{
-  padding-bottom: 30px;
+
+.center-pagination{
+  text-align: center;
+  .pagination{
+    padding-bottom: 30px;
+    display: inline-block;
+  }
 }
 
+
 .space{
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }

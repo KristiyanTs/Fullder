@@ -36,6 +36,7 @@ en:
         current_password: we need your current password to confirm your changes
         phone_number: will be used for reservations
         allergen_list: separated by commas
+        address: for home delivery
       user:
         edit:
           password: leave it blank if you don't want to change it

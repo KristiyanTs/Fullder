@@ -239,6 +239,8 @@ en:
       order:
         create: submit
         update: update table
+      user:
+        update: Update account
   number:
     currency:
       format:

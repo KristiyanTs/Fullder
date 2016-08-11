@@ -10,16 +10,19 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white
       = f.input :locale, priority: [["English", "en"]], 
         collection: [ ["English", "en"], ["Bulgarian","bg"], ["German", "de"]],
         html: {value: current_user.locale || I18n.locale}  
+      hr
       = f.input :allergen_list, input_html: {value: current_user.allergen_list.to_s}
+      hr
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p
           | Currently waiting confirmation for: #{resource.unconfirmed_email}
       = f.input :password, autocomplete: "off", required: false
       = f.input :password_confirmation, required: false
       = f.input :current_password, required: true
-    .form-actions
-      = f.button :submit
-  hr
-  h3 = t 'user.cancel-account'
-  p
-    | #{link_to "#{t 'user.cancel-account'}", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+    .form-actions.space
+      = f.button :submit, class: "center-block"
+  hr.space
+
+  h3.text-center = t 'user.cancel-account'
+  p = link_to "#{t 'user.cancel-account'}", registration_path(resource_name), 
+    data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger center-block space"
