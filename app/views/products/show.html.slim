@@ -6,12 +6,8 @@
 - @right_link = cart_path
 - @right_content = "#{number_to_currency current_order.subtotal}"
 
-
-
-.container-fluid
-  = render partial: "product_row", locals: {product: @product}
-  = render partial: 'product_buy_form'
-  br
+= render partial: "product_row", locals: {product: @product}
+= render partial: 'product_buy_form'
 
   / .panel.panel-default.col-md-6.col-md-offset-3.description-panel
     .panel-heading
