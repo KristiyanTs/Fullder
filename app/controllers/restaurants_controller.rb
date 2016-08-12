@@ -20,7 +20,6 @@ class RestaurantsController < ApplicationController
         Restaurant.all
       end.page(params[:page])
 
-
     respond_to do |format|
       format.html
       format.json { render json: @restaurants }
@@ -34,20 +33,16 @@ class RestaurantsController < ApplicationController
 
   def favorite
     type = params[:type]
-    if type == "favorite"
+    if type == 'favorite'
       current_user.favorite_restaurants << @restaurant
-      respond_to do |format|
-        format.html
-        format.js { render partial: 'favorite.js.erb' }
-      end
     else
       current_user.favorite_restaurants.delete(@restaurant)
-      respond_to do |format|
-        format.html
-        format.js { render partial: 'favorite.js.erb' }
-      end
     end
 
+    respond_to do |format|
+      format.html
+      format.js { render partial: 'favorite.js.erb' }
+    end
   end
 
   private

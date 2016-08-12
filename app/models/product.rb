@@ -13,8 +13,8 @@
 #  active               :boolean
 #  average_prepare_time :integer
 #  ready                :boolean
-#  created_at           :datetime
-#  updated_at           :datetime
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #  avatar_file_name     :string
 #  avatar_content_type  :string
 #  avatar_file_size     :integer
