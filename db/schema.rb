@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20160812093658) do
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
   end
 
+  create_table "category_translations", force: :cascade do |t|
+    t.integer  "category_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+    t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "restaurant_id"
@@ -102,7 +112,6 @@ ActiveRecord::Schema.define(version: 20160812093658) do
     t.decimal  "unit_price"
     t.integer  "quantity"
     t.decimal  "total_price"
-    t.string   "choices"
     t.string   "demands"
     t.datetime "received_at"
     t.datetime "ready_at"
@@ -167,6 +176,18 @@ ActiveRecord::Schema.define(version: 20160812093658) do
     t.index ["user_id"], name: "index_positions_on_user_id", using: :btree
   end
 
+  create_table "product_translations", force: :cascade do |t|
+    t.integer  "product_id",        null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
+    t.string   "short_description"
+    t.text     "description"
+    t.index ["locale"], name: "index_product_translations_on_locale", using: :btree
+    t.index ["product_id"], name: "index_product_translations_on_product_id", using: :btree
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.integer  "category_id"
@@ -177,8 +198,8 @@ ActiveRecord::Schema.define(version: 20160812093658) do
     t.boolean  "active"
     t.integer  "average_prepare_time"
     t.boolean  "ready"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -255,10 +276,10 @@ ActiveRecord::Schema.define(version: 20160812093658) do
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
-    t.integer  "taggable_id"
     t.string   "taggable_type"
-    t.integer  "tagger_id"
+    t.integer  "taggable_id"
     t.string   "tagger_type"
+    t.integer  "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context", using: :btree

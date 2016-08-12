@@ -3,12 +3,13 @@
 .container.container-white
   h3 = t 'dashboard.category-index-title'
 
-  .search-form 
-    = search_form_for [:dashboard, @restaurant, @search], 
-      method: :get, remote: true do |f|
+  .search-form
+    = form_tag dashboard_restaurant_categories_path(@restaurant),
+      method: :get, remote: true do
       .input-group
-        = f.text_field :name_cont, class: "form-control input", 
-                        placeholder: "Search by category name"
+        = text_field_tag :search, params[:search],
+                         class: "form-control input",
+                         placeholder: "Search by category name"
         span.input-group-btn
           = button_tag(type: 'submit', class: "btn btn-info btn") do
             i class="glyphicon glyphicon-search"

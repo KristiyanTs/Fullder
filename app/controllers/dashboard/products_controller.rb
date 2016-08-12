@@ -7,8 +7,11 @@ class Dashboard::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :destroy]
 
   def index
-    @search = @restaurant.products.includes(:category).search(params[:q])
-    @products = @search.result.page(params[:page])
+    @products = @restaurant.products
+                           .includes(:category)
+                           .page(params[:page])
+
+    @products = @products.search(params[:search])
 
     respond_to do |format|
       format.html

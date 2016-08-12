@@ -6,6 +6,10 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = @restaurant.categories
+
+    if params[:params]
+      @categories.search(params[:search])
+    end
   end
 
   def show
