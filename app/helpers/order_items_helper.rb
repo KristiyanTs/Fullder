@@ -18,7 +18,7 @@ module OrderItemsHelper
   def item_exists?
     current_order.order_items.each do |item|
       if @order_item.product_id == item.product_id &&
-         @order_item.product_size_id == item.product_size_id &&
+         @order_item.size_id == item.size_id &&
          @order_item.demands == item.demands
         item.quantity += @order_item.quantity
         item.save

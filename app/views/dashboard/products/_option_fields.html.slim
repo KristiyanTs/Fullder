@@ -1,4 +1,4 @@
 .nested-fields
   = f.input :name, placeholder: "sauces, flavours, etc."
   = f.input :_destroy, as: :hidden
-  = link_to_remove_association "remove option", f
+  = link_to_remove_association f

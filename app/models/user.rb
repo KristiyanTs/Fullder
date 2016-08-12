@@ -14,6 +14,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  locale                 :string           default("en")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  first_name             :string
@@ -21,7 +22,6 @@
 #  phone_number           :string
 #  address                :string
 #  admin                  :boolean
-#  locale                 :string           default("en")
 #
 # Indexes
 #

@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :product_option do
+  factory :option do
     name "MyString"
-    product nil
+    group nil
   end
 end

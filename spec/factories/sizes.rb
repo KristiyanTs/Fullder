@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :product_option_group do
-    type ""
+  factory :size do
     name "MyString"
-    maximum 1
+    price "9.99"
+    description "MyString"
     product nil
   end
 end

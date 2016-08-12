@@ -4,13 +4,11 @@ class OrderItemsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    debugger
     @order_item = OrderItem.new(order_item_params)
 
     if table_in_this_restaurant?
       unless item_exists?
-        current_order.order_items << @order_item
-        current_order.save
+        add_item
       end
     else
       clear_order
@@ -55,8 +53,8 @@ class OrderItemsController < ApplicationController
   private
 
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id, :product_size_id, :demands,
-                   product_option_groups_attributes: [:id,
-                   product_option_ids: []])
+    params.require(:order_item).permit(:quantity, :product_id, :size_id, :demands,
+                   groups_attributes: [:id,
+                   option_ids: []])
   end
 end

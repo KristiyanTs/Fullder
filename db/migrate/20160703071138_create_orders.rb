@@ -5,11 +5,13 @@ class CreateOrders < ActiveRecord::Migration
       t.references :order_status, index: true, foreign_key: true
       t.references :restaurant, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
+      t.references :table, index: true, foreign_key: true
       t.decimal :subtotal
       t.decimal :tax
       t.decimal :shipping
       t.decimal :tip
       t.decimal :total
+      t.integer :table_number
 
       t.timestamps null: false
     end

@@ -3,7 +3,7 @@
     = image_tag order_item.product.avatar.url(:small), class: "img-circle"
   .item_name
     b = order_item.product.name + " "
-    = order_item.product_size.try(:name)
+    = order_item.size.try(:name)
   .item_description
     = order_item.product.short_description
   .item_price

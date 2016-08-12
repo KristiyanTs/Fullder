@@ -16,22 +16,16 @@
     = f.association :category, collection: @categories, prompt: "Choose a category", include_blank: false
 
     .product_sizes
-      = f.simple_fields_for :product_sizes do |product_size|
-        = render 'product_size_fields', f: product_size
+      = f.simple_fields_for :sizes do |size|
+        = render 'size_fields', f: size
       .links
-        = link_to_add_association f, :product_sizes
-
-    / .product_options
-    /   = f.simple_fields_for :product_options do |product_option|
-    /     = render 'product_option_fields', f: product_option
-    /   .links
-    /     = link_to_add_association f, :product_options
+        = link_to_add_association f, :sizes
 
     .product_option_groups
-      = f.simple_fields_for :product_option_groups do |product_option_group|
-        = render 'product_option_group_fields', f: product_option_group
+      = f.simple_fields_for :groups do |group|
+        = render 'group_fields', f: group
       .links
-        = link_to_add_association f, :product_option_groups
+        = link_to_add_association f, :groups
 
 
         

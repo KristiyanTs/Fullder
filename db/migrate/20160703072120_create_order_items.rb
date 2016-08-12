@@ -4,6 +4,7 @@ class CreateOrderItems < ActiveRecord::Migration
     create_table :order_items do |t|
       t.references :product, index: true, foreign_key: true
       t.references :order, index: true, foreign_key: true
+      t.references :size, index: true, foreign_key: true
       t.decimal :unit_price
       t.integer :quantity
       t.decimal :total_price

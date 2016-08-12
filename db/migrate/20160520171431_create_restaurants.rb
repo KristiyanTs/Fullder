@@ -6,6 +6,9 @@ class CreateRestaurants < ActiveRecord::Migration
       t.text :description
       t.string :phone_number
       t.string :country, default: "en-GB"
+      t.float :latitude
+      t.float :longitude
+      t.boolean :sells_online
 
       t.timestamps null: false
     end
