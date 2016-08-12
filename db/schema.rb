@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811215716) do
+ActiveRecord::Schema.define(version: 20160812093658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,15 +67,6 @@ ActiveRecord::Schema.define(version: 20160811215716) do
     t.index ["product_id"], name: "index_groups_on_product_id", using: :btree
   end
 
-  create_table "groups_order_items", force: :cascade do |t|
-    t.integer  "group_id"
-    t.integer  "order_item_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["group_id"], name: "index_groups_order_items_on_group_id", using: :btree
-    t.index ["order_item_id"], name: "index_groups_order_items_on_order_item_id", using: :btree
-  end
-
   create_table "images", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.datetime "created_at",       null: false
@@ -103,6 +94,15 @@ ActiveRecord::Schema.define(version: 20160811215716) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_options_on_group_id", using: :btree
+  end
+
+  create_table "options_order_items", force: :cascade do |t|
+    t.integer  "option_id"
+    t.integer  "order_item_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["option_id"], name: "index_options_order_items_on_option_id", using: :btree
+    t.index ["order_item_id"], name: "index_options_order_items_on_order_item_id", using: :btree
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -337,10 +337,10 @@ ActiveRecord::Schema.define(version: 20160811215716) do
   add_foreign_key "favorites", "restaurants"
   add_foreign_key "favorites", "users"
   add_foreign_key "groups", "products"
-  add_foreign_key "groups_order_items", "groups"
-  add_foreign_key "groups_order_items", "order_items"
   add_foreign_key "images", "restaurants"
   add_foreign_key "options", "groups"
+  add_foreign_key "options_order_items", "options"
+  add_foreign_key "options_order_items", "order_items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "order_items", "sizes"

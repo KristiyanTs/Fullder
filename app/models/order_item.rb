@@ -34,15 +34,15 @@ class OrderItem < ApplicationRecord
   belongs_to :product
   belongs_to :size
 
-  has_many :groups_order_items, dependent: :destroy
-  has_many :groups, through: :groups_order_items
-  accepts_nested_attributes_for :groups
+  has_many :options_order_items, dependent: :destroy
+  has_many :options, through: :options_order_items
+  accepts_nested_attributes_for :options
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present
   validate :size_selected
-  # validate :options_allowed?
+  validate :options_allowed?
 
   before_save :finalize
 
@@ -78,6 +78,10 @@ class OrderItem < ApplicationRecord
   end
 
   def options_allowed?
-    groups.any?{|gr| gr.maximum > gr.options.count}
+    options.each do |option|
+      if options.where(group_id: option.group.id).count > option.group.maximum
+        errors.add(:product_id, message: 'Do not exceed the maximum for options!')
+      end
+    end
   end
 end

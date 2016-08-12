@@ -20,5 +20,7 @@
 class Option < ApplicationRecord
   belongs_to :group
 
+  has_many :options_order_items
+
   translates :name
 end
