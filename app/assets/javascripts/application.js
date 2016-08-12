@@ -8,6 +8,7 @@
 //= require select2-full
 //= require cocoon
 //= require slick.min
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .
 

@@ -3,45 +3,46 @@
 #
 # Table name: order_items
 #
-#  id              :integer          not null, primary key
-#  product_id      :integer
-#  order_id        :integer
-#  unit_price      :decimal(, )
-#  quantity        :integer
-#  total_price     :decimal(, )
-#  demands         :string
-#  received_at     :datetime
-#  ready_at        :datetime
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  product_size_id :integer
+#  id          :integer          not null, primary key
+#  product_id  :integer
+#  order_id    :integer
+#  size_id     :integer
+#  unit_price  :decimal(, )
+#  quantity    :integer
+#  total_price :decimal(, )
+#  demands     :string
+#  received_at :datetime
+#  ready_at    :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 # Indexes
 #
-#  index_order_items_on_order_id         (order_id)
-#  index_order_items_on_product_id       (product_id)
-#  index_order_items_on_product_size_id  (product_size_id)
+#  index_order_items_on_order_id    (order_id)
+#  index_order_items_on_product_id  (product_id)
+#  index_order_items_on_size_id     (size_id)
 #
 # Foreign Keys
 #
-#  fk_rails_d2069138be  (product_size_id => product_sizes.id)
+#  fk_rails_28971b9eb6  (size_id => sizes.id)
 #  fk_rails_e3cb28f071  (order_id => orders.id)
 #  fk_rails_f1a29ddd47  (product_id => products.id)
 #
 
 class OrderItem < ApplicationRecord
-  belongs_to :product
-  belongs_to :product_size
   belongs_to :order
+  belongs_to :product
+  belongs_to :size
 
-  has_many :order_options
-  has_many :product_options, through: :order_options
-  accepts_nested_attributes_for :product_options
+  has_many :options_order_items, dependent: :destroy
+  has_many :options, through: :options_order_items
+  accepts_nested_attributes_for :options
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
   validate :order_present
   validate :size_selected
+  validate :options_allowed?
 
   before_save :finalize
 
@@ -49,7 +50,7 @@ class OrderItem < ApplicationRecord
     if persisted?
       self[:unit_price]
     else
-      product_size_id.nil? ? product.price : product.price + product.product_sizes.find(product_size_id).price
+      size_id.nil? ? product.price : product.price + product.sizes.find(size_id).price
     end
   end
 
@@ -64,7 +65,7 @@ class OrderItem < ApplicationRecord
   end
 
   def size_selected
-    self[:product_size_id] = product.product_sizes.first.id if product.product_sizes.any? && product_size_id.nil?
+    self[:size_id] = product.sizes.first.id if product.sizes.any? && size_id.nil?
   end
 
   def order_present
@@ -74,5 +75,13 @@ class OrderItem < ApplicationRecord
   def finalize
     self[:unit_price] = unit_price
     self[:total_price] = quantity * self[:unit_price]
+  end
+
+  def options_allowed?
+    options.each do |option|
+      if options.where(group_id: option.group.id).count > option.group.maximum
+        errors.add(:product_id, message: 'Do not exceed the maximum for options!')
+      end
+    end
   end
 end

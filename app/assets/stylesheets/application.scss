@@ -12,17 +12,15 @@
 @import "select2-bootstrap";
 @import "slick";
 @import "slick-theme";
+@import "jquery-ui";
 
 html,body {
-  height:100%;
   padding-top: 0;
-  margin: 0;
   background-color: rgb(240,240,240);
-}
-
-body{
-  padding-bottom: 50px;
-  padding-top: 40px;
+  min-height: 600px;
+  margin-bottom: 100px;
+  margin-top: 20px;
+  clear: both;
 }
 
 .header {

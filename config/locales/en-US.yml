@@ -46,10 +46,10 @@ en-US:
     defaults:
       add: "Add record"
       remove: "Remove record"
-    product_options:
+    options:
       add: "Add option"
       remove: "Remove option"  
-    product_sizes:
+    sizes:
       add: "Add variation"
       remove: "Remove variation"
     working_times:

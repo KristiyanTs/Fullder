@@ -1,32 +1,33 @@
-.container-fluid.buy-form.col-md-6.col-md-offset-3
-  = minimal_form_for @order_item, remote: true do |f|
-    = f.input :quantity, as: :hidden, input_html: {value: '1'}
-    - if @product.product_sizes.any?
-      .text-center.pick-option
-        h4 = t 'product.pick-variation'
+= minimal_form_for @order_item, html: { class: 'new-order-item' }, remote: true do |f|
+  = f.input :quantity, as: :hidden, input_html: {value: '1'}
 
-        .col-xs-5.col-sm-6.col-md-3.col-lg-3.size_holder
-          = f.collection_radio_buttons :product_size_id, @product.product_sizes, :id, :name,
-                                        item_wrapper_class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12 product_size',
-                                        checked: @product.product_sizes.first
-                      
-        .col-xs-7.col-sm-6.col-md-9.col-lg-9.size_info
-          - @product.product_sizes.each do |size|
-            .col-xs-6.col-sm-9.col-md-9.col-lg-9.size_description
-              = size.short_description
-            .col-xs-6.col-sm-3.col-md-3.col-lg-3.product_size_price
-              = product_size_price(@product, size)
+  - if @product.sizes.any?
+    .col-xs-12.col-md-6.col-md-offset-3.form-container
+      h4.text-center = t 'product.pick-variation'
+      .col-xs-5.col-sm-6.col-md-3.col-lg-3.padding-top-small
+        = f.collection_radio_buttons :size_id, @product.sizes, :id, :name,
+                                      item_wrapper_class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12 product_size',
+                                      checked: @product.sizes.first
+                    
+      .col-xs-7.col-sm-6.col-md-9.col-lg-9.size_info
+        - @product.sizes.each do |size|
+          .col-xs-6.col-sm-9.col-md-9.col-lg-9.size_description
+            = size.description
+          .col-xs-6.col-sm-3.col-md-3.col-lg-3.product_size_price
+            = size_price(@product, size)  
+
+  - @product.groups.each do |group|
+    .col-xs-12.col-md-6.col-md-offset-3.form-container
+      h4.text-center = group.name
+      .max-options = "max " + group.maximum.to_s
+      .col-xs-12.option_holder.padding-top-small
+        = f.collection_check_boxes :option_ids, group.options, :id, :name,          
+          item_wrapper_class: "col-xs-6 col-sm-6 col-md-4 col-lg-3 product_option #{group.maximum.to_s}"
 
 
-    - if @product.product_options.any?
-      .text-center.pick-choice
-        h4 = t 'product.pick-choices'
-        .col-xs-12.option_holder
-          = f.collection_check_boxes :product_option_ids, @product.product_options, :id, :name,
-                                      item_wrapper_class: 'col-xs-6 col-sm-6 col-md-4 col-lg-3 product_option'
-
-    - if @restaurant.sells_online
-      = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}"
+  - if @restaurant.sells_online
+    .col-xs-12.col-md-6.col-md-offset-3.form-container
+      = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'padding-top-small' }
       = f.hidden_field :product_id, value: @product.id
-      = f.submit "#{t 'order.add-to-cart'}", class: "btn col-xs-12 col-sm-12 col-md-12 col-lg-12 buy-button"
+    = f.submit "#{t 'order.add-to-cart'}", class: "btn col-xs-12 col-md-6 col-md-offset-3 buy-button"
    

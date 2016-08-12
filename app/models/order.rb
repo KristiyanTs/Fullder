@@ -7,15 +7,15 @@
 #  order_status_id :integer
 #  restaurant_id   :integer
 #  user_id         :integer
+#  table_id        :integer
 #  subtotal        :decimal(, )
 #  tax             :decimal(, )
 #  shipping        :decimal(, )
 #  tip             :decimal(, )
 #  total           :decimal(, )
+#  table_number    :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  table_id        :integer
-#  table_number    :integer
 #
 # Indexes
 #

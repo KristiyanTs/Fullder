@@ -66,10 +66,10 @@ bg:
     defaults:
       add: "Добави данни"
       remove: "Изтрии данни"
-    product_options:
+    options:
       add: "Добави вид"
       remove: "Изтрии вид"  
-    product_sizes:
+    sizes:
       add: "Добави опция"
       remove: "Изтрии опция"
     working_times:

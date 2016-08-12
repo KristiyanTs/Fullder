@@ -80,7 +80,7 @@ gem 'acts-as-taggable-on', '~> 4.0'
 gem 'globalize', github: 'globalize/globalize'
 gem 'activemodel-serializers-xml'
 gem 'responders'
-
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console

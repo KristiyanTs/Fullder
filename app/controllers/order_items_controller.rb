@@ -5,25 +5,30 @@ class OrderItemsController < ApplicationController
 
   def create
     @order_item = OrderItem.new(order_item_params)
+    respond_to do |format|
+      if @order_item.valid?
+        if table_in_this_restaurant?
+          add_item
 
-    if table_in_this_restaurant?
-      unless item_exists?
-        current_order.order_items << @order_item
-        current_order.save
-      end
-    else
-      clear_order
-      add_item
+          format.html
+          format.js
+        else
+          clear_order
+          add_item
 
-      session[:order_id] = current_order.id
-      session[:product_id] = @order_item.product.id
+          session[:order_id] = current_order.id
+          session[:product_id] = @order_item.product.id
 
-      respond_to do |format|
-        format.html { redirect_to edit_order_path(current_order) }
-        format.js   do
-          render js: "window.location = #{edit_order_path(current_order).to_json}",
-                 flash: { notice: 'Order was added to your cart.' }
+          format.html { redirect_to edit_order_path(current_order) }
+          format.js do
+            render js: "window.location = #{edit_order_path(current_order).to_json}",
+                   flash: { notice: 'Order was added to your cart.' }
+          end
         end
+      else
+        flash[:error] = @order_item.errors.full_messages.to_sentence
+        debugger
+        format.js { render 'layouts/flash_messages' }
       end
     end
   end
@@ -54,6 +59,7 @@ class OrderItemsController < ApplicationController
   private
 
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id, :product_size_id, :demands, product_option_ids: [])
+    params.require(:order_item).permit(:quantity, :product_id, :size_id, :demands,
+                                       option_ids: [])
   end
 end
