@@ -4,8 +4,7 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :favorite]
 
   def index
-    @userLocation = request.location
-    @search = Restaurant.search(params[:q])
+    # @user_location = request.location
 
     # The following code will not work in a localhost. Uncomment for production
     # if @userLocation.present?
@@ -14,8 +13,13 @@ class RestaurantsController < ApplicationController
     #   @restaurants = @search.result.page(params[:page])
     # end
 
-    byebug
-    @restaurants = @search.result.page(params[:page])
+    @restaurants =
+      if params[:search]
+        Restaurant.search_word(params[:search])
+      else
+        Restaurant.all
+      end.page(params[:page])
+
 
     respond_to do |format|
       format.html
