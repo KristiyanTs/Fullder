@@ -3,14 +3,15 @@
 .container.container-white
   h3 = t 'dashboard.role-index-title'
 
-  .search-form 
-    = search_form_for [:dashboard, @restaurant, @search], 
-      method: :get, remote: true do |f|
+  .search-form
+    = form_tag dashboard_restaurant_roles_path(@restaurant),
+    remote: true, method: 'get', id: 'roles-search' do
       .input-group
-        = f.text_field :name_cont, class: "form-control input", 
-                        placeholder: "Search by role title"
+        = text_field_tag :search, params[:search],
+                         class: "form-control input",
+                         placeholder: "Search by role title"
         span.input-group-btn
-          = button_tag(type: 'submit', class: "btn btn-info btn") do
+          = button_tag class: 'btn btn-info' do
             i class="glyphicon glyphicon-search"
 
   .search-results

@@ -8,15 +8,14 @@ class Dashboard::ProductsController < ApplicationController
 
   def index
     @products = @restaurant.products
-                           .includes(:category)
                            .page(params[:page])
 
-    @products = @products.search(params[:search])
+    @products = @products.search(params[:search]) if params[:search]
 
     respond_to do |format|
       format.html
       format.json { render json: @products }
-      format.js { render partial: 'index.erb.js' }
+      format.js { render partial: 'index' }
     end
   end
 

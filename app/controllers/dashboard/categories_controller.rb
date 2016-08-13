@@ -10,10 +10,11 @@ class Dashboard::CategoriesController < ApplicationController
     @categories = @restaurant.categories
 
     if params[:search]
-      @categories = @categories.search_word(params[:search])
+      @categories = @categories.search(params[:search])
     end
 
     @categories = @categories.page(params[:page])
+
     respond_to do |format|
       format.html
       format.json { render json: @categories }

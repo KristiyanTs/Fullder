@@ -3,16 +3,6 @@
 .container.container-white
   h3 = t 'dashboard.table-index-title'
 
-  .search-form 
-    = search_form_for [:dashboard, @restaurant, @search], 
-      method: :get, remote: true do |f|
-      .input-group
-        = f.text_field :number_cont, class: "form-control input", 
-                        placeholder: "Search by table number or current waiter"
-        span.input-group-btn
-          = button_tag(type: 'submit', class: "btn btn-info btn") do
-            i class="glyphicon glyphicon-search"
-
   .search-results
     = render partial: "search_results"
 

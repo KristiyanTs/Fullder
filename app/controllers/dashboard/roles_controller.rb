@@ -5,13 +5,17 @@ class Dashboard::RolesController < ApplicationController
   before_action :set_role, except: [:index, :create, :new]
 
   def index
-    @search = @restaurant.roles.search(params[:q])
-    @roles = @search.result.page(params[:page])
+    @roles = @restaurant.roles
 
+    if params[:search]
+      @roles = @roles.search(params[:search])
+    end
+
+    @roles = @roles.page(params[:page])
     respond_to do |format|
       format.html
       format.json { render json: @roles }
-      format.js { render partial: 'index.erb.js' }
+      format.js { render partial: 'index' }
     end
   end
 
