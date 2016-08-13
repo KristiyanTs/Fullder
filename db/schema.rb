@@ -266,6 +266,7 @@ ActiveRecord::Schema.define(version: 20160812093658) do
 
   create_table "tables", force: :cascade do |t|
     t.integer  "number"
+    t.integer  "capacity"
     t.integer  "restaurant_id"
     t.integer  "user_id"
     t.datetime "created_at",    null: false

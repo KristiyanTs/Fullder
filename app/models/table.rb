@@ -5,6 +5,7 @@
 #
 #  id            :integer          not null, primary key
 #  number        :integer
+#  capacity      :integer
 #  restaurant_id :integer
 #  user_id       :integer
 #  created_at    :datetime         not null
@@ -28,4 +29,10 @@ class Table < ApplicationRecord
   has_many :orders
 
   validates :number, uniqueness: { scope: :restaurant_id }
+
+  scope :search, lambda { |keyword|
+    if keyword
+      where(capacity: keyword)
+    end
+  }
 end

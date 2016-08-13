@@ -7,7 +7,9 @@ class Dashboard::TablesController < ApplicationController
   before_action :set_table, only: [:show, :edit, :destroy]
 
   def index
-    @tables = @restaurant.tables.page(params[:page])
+    @tables = @restaurant.tables
+                         .search(params[:search])
+                         .page(params[:page])
 
     respond_to do |format|
       format.html

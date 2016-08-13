@@ -3,6 +3,18 @@
 .container.container-white
   h3 = t 'dashboard.table-index-title'
 
+  .search-form
+    = form_tag dashboard_restaurant_tables_path(@restaurant),
+               remote: true, method: 'get', id: 'tables-search' do
+      .input-group
+        = text_field_tag :search, params[:search],
+                         class: 'form-control input',
+                         placeholder: "Search by table size"
+
+        span.input-group-btn
+          = button_tag class: 'btn btn-info' do
+            i class="glyphicon glyphicon-search"
+
   .search-results
     = render partial: "search_results"
 
