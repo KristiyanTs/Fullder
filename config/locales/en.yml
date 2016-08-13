@@ -45,6 +45,7 @@ en:
     logout: "Exit"
     register: "Register"
     enter: "Enter"
+    dashboard: Dashboard
   dashboard:
     category-form-title: "Category form for "
     product-form-title: "Product form for "

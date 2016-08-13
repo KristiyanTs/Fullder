@@ -16,8 +16,7 @@
 
 html,body {
   padding-top: 0;
-  background-image: url("saga.png");
-  background-repeat: repeat;
+  background-color: rgb(250,250,250);
   min-height: 600px;
   margin-bottom: 100px;
   margin-top: 25px;
@@ -54,6 +53,9 @@ html,body {
   }
   .in, .collapsing{
     background-color: #CF000F;
+  }
+  .navbar-collapse{
+    border-top: 1px solid rgb(240,240,240);
   }
   .navbar-right{
     margin-right:20px;

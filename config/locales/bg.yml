@@ -39,11 +39,12 @@ bg:
     tables: "Маси"
     statistics: "Статистики"
     active-orders: Поръчки
-    actions: Настройки
+    settings: Настройки
     profile: "Профил"
     logout: "Изход"
     register: "Регистрация"
     enter: "Влез"
+    dashboard: Панел
   dashboard:
     category-form-title: "Формуляр за категория в "
     product-form-title: "Формуляр за продукт в "
