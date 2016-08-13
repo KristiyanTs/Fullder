@@ -1,6 +1,9 @@
 tr
+  td
+    = table.capacity
+    span.glyphicon.glyphicon-user.capacity-seats
   td = table.number
-  td 
+  td
     .show
       = link_to "", dashboard_restaurant_table_path(@restaurant, table),
         class: "glyphicon glyphicon-info-sign"

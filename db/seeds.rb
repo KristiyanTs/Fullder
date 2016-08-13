@@ -124,19 +124,22 @@ product_seed = [
 
 table_seed = [
   {
-    number: "1"
+    number: '1',
+    capacity: '6'
   },
   {
-    number: "2"
+    number: '2',
+    capacity: '6'
   },
   {
-    number: "3"
+    number: '3',
+    capacity: '4'
   },
   {
-    number: "4"
+    number: '4',
+    capacity: '3'
   }
 ]
-
 
 rest_ids = []
 menu_ids = []
