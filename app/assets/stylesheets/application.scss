@@ -16,7 +16,8 @@
 
 html,body {
   padding-top: 0;
-  background-color: rgb(240,240,240);
+  background-image: url("saga.png");
+  background-repeat: repeat;
   min-height: 600px;
   margin-bottom: 100px;
   margin-top: 25px;
@@ -113,4 +114,8 @@ a:hover{
 
 .space{
   margin-bottom: 20px;
+}
+
+.container-min-height{
+  min-height: 600px;
 }

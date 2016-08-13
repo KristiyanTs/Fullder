@@ -3,7 +3,7 @@ script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markercl
 
 - @left_link = @restaurant
 - @left_class = "glyphicon glyphicon-triangle-left"
-- new_order_button = new_order_path
+- new_order_button = new_order_path(restaurant_id: @restaurant.id)
 - menu_button = restaurant_categories_path(@restaurant)
 link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" type="text/css"
 script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javascript" 
@@ -30,7 +30,7 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
     h3.text-center = t 'restaurant.working-time'
     - @restaurant.working_times.order('from_day ASC').each do |time|
       .schedule-day.col-xs-6.text-center
-        = I18n.t(:"date.day_names")[time.from_day]
+        = I18n.t(:"date.abbr_day_names")[time.from_day].upcase
       .schedule-time.col-xs-6.text-center
         = time.from_time.to_formatted_s(:time)   + "-" + time.to_time.to_formatted_s(:time)  
       br
