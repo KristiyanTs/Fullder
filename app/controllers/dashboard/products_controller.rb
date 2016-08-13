@@ -7,13 +7,15 @@ class Dashboard::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :destroy]
 
   def index
-    @search = @restaurant.products.includes(:category).search(params[:q])
-    @products = @search.result.page(params[:page])
+    @products = @restaurant.products
+                           .page(params[:page])
+
+    @products = @products.search(params[:search]) if params[:search]
 
     respond_to do |format|
       format.html
       format.json { render json: @products }
-      format.js { render partial: 'index.erb.js' }
+      format.js { render partial: 'index' }
     end
   end
 

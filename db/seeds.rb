@@ -28,8 +28,6 @@ User.create!([
             password_confirmation: '123123123'}
 ])
 
-
-
 p "Created #{User.count} users"
 
 OrderStatus.delete_all

@@ -21,6 +21,8 @@
 #
 
 class Restaurant < ApplicationRecord
+  acts_as_taggable
+
   has_many :categories, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :roles, dependent: :destroy
@@ -35,18 +37,16 @@ class Restaurant < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
 
   accepts_nested_attributes_for :working_times, allow_destroy: true
-  accepts_nested_attributes_for :images, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :images, reject_if: :all_blank,
+                                allow_destroy: true
 
-  has_attached_file :restaurant_avatar, styles: { large: '1500x1500', thumb: '250x250' }, default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :restaurant_avatar, content_type: /\Aimage\/.*\Z/
-
-  ransacker :search_name, formatter: proc { |v| v.mb_chars.downcase.to_s } do |parent|
-    Arel::Nodes::NamedFunction.new('LOWER',
-                                   [Arel::Nodes::NamedFunction.new('concat_ws',
-                                                                   [Arel::Nodes.build_quoted(' '), parent.tags[:name], parent.table[:name], parent.table[:address], parent.table[:id]])])
-  end
+  has_attached_file :restaurant_avatar, styles: { large: '1500x1500' },
+                    default_url: '/images/:style/missing.png'
+  validates_attachment_content_type :restaurant_avatar,
+                                    content_type: /\Aimage\/.*\Z/
 
   geocoded_by :address # can also be an IP address
+
   after_validation :geocode, if: :address_changed? # auto-fetch coordinates
 
   acts_as_mappable default_units: :kms,
@@ -55,11 +55,15 @@ class Restaurant < ApplicationRecord
                    lat_column_name: :lat,
                    lng_column_name: :lng
 
-  acts_as_taggable
+  scope :search_word, -> (keyword) do
+    keyword = "%#{keyword}%"
+    where('restaurants.name ilike ? or restaurants.address ilike ?',
+          keyword, keyword)
+  end
 
   def working?
     working_times.any?(&:active_now?)
   end
-  
+
   translates :description
 end

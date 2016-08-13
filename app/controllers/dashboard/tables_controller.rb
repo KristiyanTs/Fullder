@@ -7,13 +7,12 @@ class Dashboard::TablesController < ApplicationController
   before_action :set_table, only: [:show, :edit, :destroy]
 
   def index
-    @search = @restaurant.tables.search(params[:q])
-    @tables = @search.result.page(params[:page])
+    @tables = @restaurant.tables.page(params[:page])
 
     respond_to do |format|
       format.html
       format.json { render json: @tables }
-      format.js { render partial: 'index.erb.js' }
+      format.js { render partial: 'index' }
     end
   end
 

@@ -52,4 +52,10 @@ class Product < ApplicationRecord
   acts_as_taggable_on :allergens
 
   translates :name, :short_description, :description
+
+  scope :search, -> (keyword) do
+    keyword = "%#{keyword}%"
+    where('products.name ilike ?',
+          keyword)
+  end
 end

@@ -1,18 +1,15 @@
 .container.container-white
   .restaurant-search
-    .search-form 
-      = search_form_for @search, remote: true do |f|
+    .search-form
+      = form_tag restaurants_path, remote: true, method: 'get', id: 'restaurants-search' do
         .input-group
-          = f.text_field :search_name_cont, 
-            class: "form-control input restaurant-search-input", 
-            placeholder: "#{t 'restaurant.search-placeholder'}",
-            title: "#{search_hint}"
+          = text_field_tag :search, params[:search],
+                           class: "form-control input restaurant-search-input",
+                           placeholder: "#{t 'restaurant.search-placeholder'}",
+                           title: "#{search_hint}"
           span.input-group-btn
-            = button_tag(type: 'submit', class: "btn btn-info btn") do
+            = button_tag name: nil, class: "btn btn-info" do
               i class="glyphicon glyphicon-search"
-    
-
 
 .restaurants.col-md-8.col-md-offset-2
   = render partial: "restaurants_result"
-            

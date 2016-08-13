@@ -7,13 +7,18 @@ class Dashboard::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @search = @restaurant.categories.search(params[:q])
-    @categories = @search.result.page(params[:page])
+    @categories = @restaurant.categories
+
+    if params[:search]
+      @categories = @categories.search(params[:search])
+    end
+
+    @categories = @categories.page(params[:page])
 
     respond_to do |format|
       format.html
       format.json { render json: @categories }
-      format.js { render partial: 'index.erb.js' }
+      format.js { render partial: 'index' }
     end
   end
 

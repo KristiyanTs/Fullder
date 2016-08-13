@@ -7,13 +7,17 @@ class Dashboard::PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :destroy]
 
   def index
-    @search = @restaurant.positions.search(params[:q])
-    @positions = @search.result.includes(:role, :user).page(params[:page])
+    @positions = @restaurant.positions
 
+    if params[:search]
+      @positions = @positions.search(params[:search])
+    end
+
+    @positions = @positions.page(params[:page])
     respond_to do |format|
       format.html
       format.json { render json: @positions }
-      format.js { render partial: 'index.erb.js' }
+      format.js { render partial: 'index' }
     end
   end
 
