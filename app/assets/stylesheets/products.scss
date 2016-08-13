@@ -63,6 +63,7 @@ a.product_row{
       right: 10px;
       border-radius: 5px;
       padding: 5px;
+      font-size: 12px;
     }
   }
 
@@ -220,5 +221,7 @@ a.product_row{
 .description-panel, .ingredient-panel{
   padding-left: 0px !important;
   padding-right: 0px !important;
+  margin-top: 10px;
+  margin-bottom: 0px !important;
 }
 

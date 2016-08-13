@@ -5,8 +5,6 @@
     = restaurant.address
   .restaurant_number
     = restaurant.phone_number
-  .restaurant_status
-    = status(restaurant)
   .restaurant_favorites
     - if restaurant.favorited_by.count>0
       h5.glyphicon.glyphicon-heart = restaurant.favorited_by.count 

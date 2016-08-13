@@ -9,6 +9,8 @@
 //= require cocoon
 //= require slick.min
 //= require jquery-ui
+//= require underscore
+//= require gmaps/google
 //= require turbolinks
 //= require_tree .
 

@@ -26,6 +26,10 @@ class RestaurantsController < ApplicationController
 
   def show
     session[:restaurant_id] = @restaurant.id
+    @hash = Gmaps4rails.build_markers(@restaurant) do |res, marker|
+      marker.lat res.latitude
+      marker.lng res.longitude
+    end
   end
 
   def favorite
