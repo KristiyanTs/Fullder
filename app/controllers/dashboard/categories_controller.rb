@@ -10,8 +10,7 @@ class Dashboard::CategoriesController < ApplicationController
     @categories = @restaurant.categories
 
     if params[:search]
-      debugger
-      @categories = @categories.search(params[:search])
+      @categories = @categories.search_word(params[:search])
     end
 
     @categories = @categories.page(params[:page])
