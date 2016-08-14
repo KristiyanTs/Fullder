@@ -3,5 +3,5 @@
     = image_tag f.object.pic.url(:medium), class: "center-block img-rounded"
     = link_to_remove_association f
   = f.input :_destroy, as: :hidden
-  = f.input :pic, as: :file
+  = f.input :pic, as: :file, label: false
   hr
