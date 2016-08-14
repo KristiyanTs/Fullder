@@ -13,13 +13,15 @@
 @import "slick";
 @import "slick-theme";
 @import "jquery-ui";
+@import "jquery.timepicker";
 
 html,body {
   padding-top: 0;
-  background-color: rgb(240,240,240);
+  background-image: url("agsquare.png");
+  background-repeat: repeat;
   min-height: 600px;
   margin-bottom: 100px;
-  margin-top: 20px;
+  margin-top: 25px;
   clear: both;
 }
 
@@ -54,12 +56,15 @@ html,body {
   .in, .collapsing{
     background-color: #CF000F;
   }
+  .navbar-collapse{
+    border-top: 1px solid rgb(240,240,240);
+  }
   .navbar-right{
     margin-right:20px;
     li{
       height: 40px;
       a{
-        height: 40px;
+        height: 38px;
         padding-top:10px;
       }
       a:hover{
@@ -113,4 +118,8 @@ a:hover{
 
 .space{
   margin-bottom: 20px;
+}
+
+.container-min-height{
+  min-height: 600px;
 }

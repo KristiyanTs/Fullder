@@ -9,6 +9,9 @@
 //= require cocoon
 //= require slick.min
 //= require jquery-ui
+//= require underscore
+//= require gmaps/google
+//= require jquery.timepicker.js
 //= require turbolinks
 //= require_tree .
 
@@ -20,4 +23,5 @@ document.addEventListener("turbolinks:load", function() {
     placement: "bottom",
     trigger: "focus"
   });
+  $('.time-picker').timepicker();
 })

@@ -1,9 +1,10 @@
 .nested-fields
-  = f.input :from_time, as: :time
-  = f.input :from_day, priority: ["Monday", 1], 
+  = f.input :from_time, as: :string, wrapper_html: {class: "col-md-6"}, input_html: {class: "time-picker", value: "10:00"}
+  = f.input :from_day, priority: ["Monday", 1], wrapper_html: {class: "col-md-6"},
       collection: [ ["Monday", 1], ["Tuesday", 2], ["Wednesday", 3], ["Thursday", 4], ["Friday", 5], ["Saturday", 6], ["Sunday", 0] ]
-  = f.input :to_time
-  = f.input :to_day, priority: ["Monday", 1], 
+  = f.input :to_time, as: :string, wrapper_html: {class: "col-md-6"}, input_html: {class: "time-picker", value: "22:00"}
+  = f.input :to_day, priority: ["Monday", 1], wrapper_html: {class: "col-md-6"}, 
       collection: [ ["Monday", 1], ["Tuesday", 2], ["Wednesday", 3], ["Thursday", 4], ["Friday", 5], ["Saturday", 6], ["Sunday", 0] ]
   = f.input :_destroy, as: :hidden
-  = link_to_remove_association "remove working time", f
+  = link_to_remove_association f
+  hr

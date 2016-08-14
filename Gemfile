@@ -80,6 +80,8 @@ gem 'globalize', github: 'globalize/globalize'
 gem 'activemodel-serializers-xml'
 gem 'responders'
 gem 'jquery-ui-rails'
+gem 'gmaps4rails'
+gem 'jquery-timepicker-rails'
 
 group :development do
   gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console

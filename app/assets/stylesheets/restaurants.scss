@@ -102,7 +102,8 @@
   margin-top:5px;
   padding:20px;
   background-color: white;
-  border-radius: 5px;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
   .restaurant_name{
     text-align: left;
     color: black;
@@ -135,6 +136,16 @@
   }
 }
 
+.restaurant-row-menu{
+  position: relative;
+  width: 100%;
+  height:80px;
+  margin-top:5px;
+  padding:30px;
+  background-color: rgb(250,250,250);
+  color: black;
+}
+
 .restaurants{
   padding-left: 0px !important;
   padding-right: 0px !important;
@@ -142,6 +153,9 @@
 
 .home-page-2, .home-page-3{
   margin-top: 10px;
+  #google-map{
+    margin-top: 10px;
+  }
 }
 
 #favorites{

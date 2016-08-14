@@ -31,4 +31,9 @@ class WorkingTime < ApplicationRecord
 
     Time.now.between?(from, to)
   end
+
+  def closest_from_time
+    from = Date.today - (Date.today.wday - from_day ) % 7
+    from = Time.new(from.year, from.month, from.day, from_time.hour, from_time.min, 0)
+  end
 end
