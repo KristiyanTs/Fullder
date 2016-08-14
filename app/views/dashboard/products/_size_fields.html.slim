@@ -1,6 +1,7 @@
 .nested-fields
-  = f.input :name, placeholder: "e.g. small, medium, large"
+  = f.input :name, placeholder: "e.g. small, medium, large", 
+                   hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.name}}")
   = f.input :price
-  = f.input :description
+  = f.input :description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.description}}")
   = f.input :_destroy, as: :hidden
   = link_to_remove_association f

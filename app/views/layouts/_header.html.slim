@@ -6,8 +6,8 @@
       span.icon-bar
       span.icon-bar
     a.navbar-brand[href="/" style="color: white;"]
-      b Cater
-      |Me
+      b Fast
+      | Order
 
   #main-navbar-collapse.collapse.navbar-collapse
     ul.nav.navbar-nav.navbar-right
@@ -19,7 +19,7 @@
           li
             = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
               class: "glyphicon glyphicon-eye-open"
-        - if @restaurant && @restaurant.sells_online
+        - if @right_link && @restaurant.sells_online
           li.cart_button
             = button_link(@right_link, @right_class, @right_content)
         li

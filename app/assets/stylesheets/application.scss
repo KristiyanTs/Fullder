@@ -16,7 +16,8 @@
 
 html,body {
   padding-top: 0;
-  background-color: rgb(250,250,250);
+  background-image: url("agsquare.png");
+  background-repeat: repeat;
   min-height: 600px;
   margin-bottom: 100px;
   margin-top: 25px;
@@ -62,7 +63,7 @@ html,body {
     li{
       height: 40px;
       a{
-        height: 40px;
+        height: 38px;
         padding-top:10px;
       }
       a:hover{

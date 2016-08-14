@@ -1,5 +1,5 @@
 .nested-fields
-  = f.input :name
+  = f.input :name, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.name}}")
   = f.input :maximum
   = f.input :_destroy, as: :hidden
   = link_to_remove_association f

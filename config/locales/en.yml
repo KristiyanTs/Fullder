@@ -83,6 +83,9 @@ en:
     groups:
       add: Add product option group
       remove: Remove product option group
+    images:
+      add: Add image
+      remove: Delete image
   views:
     pagination:
       first: First

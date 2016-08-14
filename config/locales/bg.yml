@@ -76,6 +76,9 @@ bg:
     working_times:
       add: Добави график
       remove: Премахни график
+    images:
+      add: Добави снимка
+      remove: Изтрий снимката
   views:
     pagination:
       first: Първа
