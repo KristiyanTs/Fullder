@@ -18,14 +18,16 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
-#  locale                 :string           default("en")
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  admin                  :boolean          default(FALSE)
 #  first_name             :string
 #  last_name              :string
 #  phone_number           :string
 #  address                :string
-#  admin                  :boolean
+#  locale                 :string           default("en")
+#  provider               :string
+#  uid                    :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #
@@ -44,10 +46,35 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :omniauthable, :omniauth_providers => [:google_oauth2, :facebook]
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
 
   acts_as_taggable
   acts_as_taggable_on :allergens
+
+  def self.from_omniauth(access_token)
+      data = access_token.info
+      user = User.where(:email => data["email"]).first
+      unless user
+          user = User.create(
+             email: data["email"],
+             password: Devise.friendly_token[0,20]
+          )
+      end
+      user
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
 end

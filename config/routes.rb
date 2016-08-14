@@ -1,11 +1,10 @@
-# frozen_string_literal: true
 Rails.application.routes.draw do
   root 'restaurants#index'
 
   get 'carts/show'
   get 'tags/:tag', to: 'restaurants#index', as: :tag
 
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :restaurants, only: [:index, :show] do
     resources :products, only: [:index, :show]
