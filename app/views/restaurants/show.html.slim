@@ -1,6 +1,9 @@
+script src=("//maps.google.com/maps/api/js?v=3.23&key=AIzaSyA29rpRdgUXPQoVfAhO5KlO4cV55CMSMi0 ") 
+script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" 
+
 - @left_link = @restaurant
 - @left_class = "glyphicon glyphicon-triangle-left"
-- new_order_button = new_order_path
+- new_order_button = new_order_path(restaurant_id: @restaurant.id)
 - menu_button = restaurant_categories_path(@restaurant)
 link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" type="text/css"
 script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javascript" 
@@ -27,7 +30,7 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
     h3.text-center = t 'restaurant.working-time'
     - @restaurant.working_times.order('from_day ASC').each do |time|
       .schedule-day.col-xs-6.text-center
-        = I18n.t(:"date.day_names")[time.from_day]
+        = I18n.t(:"date.abbr_day_names")[time.from_day].upcase
       .schedule-time.col-xs-6.text-center
         = time.from_time.to_formatted_s(:time)   + "-" + time.to_time.to_formatted_s(:time)  
       br
@@ -40,3 +43,25 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
     - @restaurant.images.each do |image|
       .gallery-image
         = image_tag image.pic.url(:medium)
+
+.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.google-map.home-page-3
+  #map style=("width: 100%; height: 300px;") 
+
+
+
+javascript:
+  handler = Gmaps.build('Google');
+  handler.buildMap({ 
+    provider: {
+      disableDefaultUI: true,
+      rotateControl: true,
+      streetViewControl: true,
+      streetViewControlOptions: true
+    }, 
+    internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(#{raw @hash.to_json});
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(17);
+    }
+  );

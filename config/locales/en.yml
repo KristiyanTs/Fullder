@@ -45,6 +45,7 @@ en:
     logout: "Exit"
     register: "Register"
     enter: "Enter"
+    dashboard: Dashboard
   dashboard:
     category-form-title: "Category form for "
     product-form-title: "Product form for "
@@ -82,6 +83,9 @@ en:
     groups:
       add: Add product option group
       remove: Remove product option group
+    images:
+      add: Add image
+      remove: Delete image
   views:
     pagination:
       first: First

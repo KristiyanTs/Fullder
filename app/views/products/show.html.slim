@@ -9,7 +9,9 @@
 = render partial: "product_row", locals: {product: @product}
 = render partial: 'product_buy_form'
 
-  / .panel.panel-default.col-md-6.col-md-offset-3.description-panel
+
+- if !@product.description.blank?
+  .panel.panel-default.col-md-6.col-md-offset-3.description-panel
     .panel-heading
       h4.panel-title data-toggle="collapse" href="#description"
         | Description
@@ -17,13 +19,14 @@
         .panel-body
           = @product.description
 
-  / .panel.panel-default.col-md-6.col-md-offset-3.ingredient-panel
+-if @product.allergen_list.any?
+  .panel.panel-default.col-md-6.col-md-offset-3.ingredient-panel
     .panel-heading
       h4.panel-title data-toggle="collapse" href="#ingredients"
-        | Ingredients
+        | Allergens
       #ingredients.panel-collapse.collapse
         .panel-body
-          = @product.description
+          = @product.allergen_list.to_s
 
 
 

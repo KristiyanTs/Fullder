@@ -1,13 +1,14 @@
-= link_to restaurant_path(restaurant), class: "restaurant_row btn" do
+= link_to restaurant_path(restaurant), class: "restaurant_row btn col-xs-9 col-md-10" do  
   .restaurant_name
     = restaurant.name
   .restaurant_address
     = restaurant.address
   .restaurant_number
     = restaurant.phone_number
-  .restaurant_status
-    = status(restaurant)
   .restaurant_favorites
     - if restaurant.favorited_by.count>0
       h5.glyphicon.glyphicon-heart = restaurant.favorited_by.count 
-      
+= link_to (t 'restaurant.menu'),((restaurant.sells_online && \
+  current_order.restaurant_id == restaurant.id) || \
+  !restaurant.sells_online || !restaurant.working? ? restaurant_categories_path(restaurant) : new_order_path(restaurant_id: restaurant.id)),  
+  class: "restaurant-row-menu col-xs-3 col-md-2 text-center"

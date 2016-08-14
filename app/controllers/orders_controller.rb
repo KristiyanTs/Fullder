@@ -12,15 +12,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    params[:order][:restaurant_id] = session[:restaurant_id]
+    params[:order][:restaurant_id] = params[:restaurant_id]
     params[:order][:user_id] = current_user.id
 
     @order = Order.new(order_params)
     respond_to do |format|
       if @order.save
         session[:order_id] = @order.id
-        format.html { redirect_to restaurant_categories_path(session[:restaurant_id]) }
-        format.json { render :show, status: :ok, location: session[:restaurant_id] }
+        format.html { redirect_to restaurant_categories_path(params[:restaurant_id]) }
+        format.json { render :show, status: :ok, location: params[:restaurant_id] }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }

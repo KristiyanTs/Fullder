@@ -1,4 +1,4 @@
 .nested-fields
-  = f.input :name, placeholder: "sauces, flavours, etc."
+  = f.input :name, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.name}}")
   = f.input :_destroy, as: :hidden
   = link_to_remove_association f

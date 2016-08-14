@@ -27,7 +27,6 @@ class OrderItemsController < ApplicationController
         end
       else
         flash[:error] = @order_item.errors.full_messages.to_sentence
-        debugger
         format.js { render 'layouts/flash_messages' }
       end
     end
