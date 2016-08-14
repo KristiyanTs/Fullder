@@ -14,6 +14,10 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #  locale                 :string           default("en")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -38,9 +42,9 @@ class User < ApplicationRecord
   has_many :favorite_restaurants, through: :favorites, source: :restaurant
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
 
