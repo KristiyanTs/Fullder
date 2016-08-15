@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: working_times
@@ -24,7 +25,7 @@ class WorkingTime < ApplicationRecord
   belongs_to :restaurant
 
   def active_now?
-    from = Date.today - (Date.today.wday - from_day ) % 7
+    from = Date.today - (Date.today.wday - from_day) % 7
     to   = from + (to_day - from.wday) % 7
     from = Time.new(from.year, from.month, from.day, from_time.hour, from_time.min, 0)
     to   = Time.new(to.year, to.month, to.day, to_time.hour, to_time.min, 0)
@@ -33,7 +34,7 @@ class WorkingTime < ApplicationRecord
   end
 
   def closest_from_time
-    from = Date.today - (Date.today.wday - from_day ) % 7
+    from = Date.today - (Date.today.wday - from_day) % 7
     from = Time.new(from.year, from.month, from.day, from_time.hour, from_time.min, 0)
   end
 end

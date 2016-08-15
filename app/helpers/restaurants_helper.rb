@@ -4,12 +4,7 @@ module RestaurantsHelper
     # "You can also try with tags like " + Restaurant.tag_counts_on(:tags).to_sentence
   end
 
-  def status obj
-    if obj.working?
-      obj.working_times.select(&:active_now?)
-    else
-
-    end
+  def status(obj)
+    obj.working_times.select(&:active_now?) if obj.working?
   end
-
 end

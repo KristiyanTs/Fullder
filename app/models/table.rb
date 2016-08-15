@@ -31,8 +31,6 @@ class Table < ApplicationRecord
   validates :number, uniqueness: { scope: :restaurant_id }
 
   scope :search, lambda { |keyword|
-    if keyword
-      where(capacity: keyword)
-    end
+    where(capacity: keyword) if keyword
   }
 end
