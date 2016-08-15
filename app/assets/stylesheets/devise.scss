@@ -1,0 +1,44 @@
+.login-actions{
+  padding: 0px !important;
+  .checkbox{
+    position: absolute;
+    top: 2px;
+    left: 0px;
+  }
+  .user_remember_me{
+    width: 130px;
+  }
+  .forgot-password{
+    padding: 0px;
+    height: 40px;
+    width: 130px;
+    a{
+      position: absolute;
+      top: 12px;
+      right: 0px;
+      font-size: 15px; 
+    }
+  }
+}
+
+.login-or{
+  position:  absolute;
+  text-align: center;
+  top: -40px;
+  font-size: 30px;
+  background-color: white;
+  color: rgb(200,200,200);
+}
+
+.fa-lock, .fa-user{
+  width: 15px;
+}
+
+.login-options{
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgb(230,230,230);
+}
+
+.omb_btn-facebook {background: #3b5998; color: white;}
+.omb_btn-twitter {background: #00aced; color: white;}
+.omb_btn-google {background: #c32f10; color: white;}

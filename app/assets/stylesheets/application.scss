@@ -14,11 +14,11 @@
 @import "slick-theme";
 @import "jquery-ui";
 @import "jquery.timepicker";
+@import "font-awesome";
 
 html,body {
   padding-top: 0;
-  background-image: url("agsquare.png");
-  background-repeat: repeat;
+  background-color: rgb(245,245,245);
   min-height: 600px;
   margin-bottom: 100px;
   margin-top: 25px;
