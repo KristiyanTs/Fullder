@@ -10,4 +10,5 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
       = f.input :email, required: true, autofocus: true, placeholder: "Enter your email", label: false
     = f.button :submit, "Send me reset password instructions", class: "col-xs-12 btn btn-primary"
 .container.col-xs-12.col-md-6.col-md-offset-3.login-footer
-  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "space"
+  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+  = link_to " Log in", new_session_path(resource_name)

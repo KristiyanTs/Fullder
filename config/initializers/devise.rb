@@ -247,7 +247,6 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, '243580691184-l4dpdlrsm44prpcll51bt2k8ncu43ofc.apps.googleusercontent.com', 'LynkYgNyjd3QWAzLvAbH0ouQ', {}
   config.omniauth :twitter, 'IVaK8lWPMus8YdDgIcWheRhS5', ' YVis365IzDghcLPl9IQgZXv7YXv8yHFqvHz5i8JIue9gxkFRQD', {}
 
-
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
