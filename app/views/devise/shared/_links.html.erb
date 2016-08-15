@@ -13,11 +13,6 @@
 - if devise_mapping.confirmable? && controller_name != 'confirmations' 
   .col-xs-12.text-center = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) 
 
-
-- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' 
-  .col-xs-12.text-center = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) 
-
-
 - if devise_mapping.omniauthable? 
   - resource_class.omniauth_providers.each do |provider| 
     .col-xs-12 = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) 

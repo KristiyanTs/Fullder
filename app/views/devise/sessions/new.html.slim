@@ -1,4 +1,4 @@
-container.col-xs-12.col-md-6.col-md-offset-3.container-white
+container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
   h3.text-center.space
     |Log in or 
     = link_to "Sign up", root_path
@@ -31,4 +31,5 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white
       = f.input :remember_me, as: :boolean, wrapper_html: {class: "col-xs-6"}
       .col-xs-6.forgot-password.pull-right
         = link_to "Forgot password?", new_password_path(resource_name)
-  / = render "devise/shared/links"
+.container.col-xs-12.col-md-6.col-md-offset-3.login-footer
+  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "space"

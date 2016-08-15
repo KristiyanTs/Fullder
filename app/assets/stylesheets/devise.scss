@@ -42,3 +42,20 @@
 .omb_btn-facebook {background: #3b5998; color: white;}
 .omb_btn-twitter {background: #00aced; color: white;}
 .omb_btn-google {background: #c32f10; color: white;}
+
+.login-footer{
+  background-color: rgb(220,220,220);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 30px;
+  a{
+    margin-top: 10px;
+    padding-top: 20px;
+    line-height: 30px;
+  }
+}
+
+.login-container{
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
