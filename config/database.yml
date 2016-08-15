@@ -60,4 +60,3 @@ production:
   password: <%= ENV['FASTORDER_DATABASE_PASSWORD'] %>
   template: template0
   url:  <%= ENV["DATABASE_URL"] %>
-  pool: ENV['RAILS_MAX_THREADS']
