@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateRestaurants < ActiveRecord::Migration
   def up
     create_table :restaurants do |t|
@@ -5,7 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :address
       t.text :description
       t.string :phone_number
-      t.string :country, default: "en-GB"
+      t.string :country, default: 'en-GB'
       t.float :latitude
       t.float :longitude
       t.boolean :sells_online

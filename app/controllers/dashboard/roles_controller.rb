@@ -7,9 +7,7 @@ class Dashboard::RolesController < ApplicationController
   def index
     @roles = @restaurant.roles
 
-    if params[:search]
-      @roles = @roles.search(params[:search])
-    end
+    @roles = @roles.search(params[:search]) if params[:search]
 
     @roles = @roles.page(params[:page])
     respond_to do |format|

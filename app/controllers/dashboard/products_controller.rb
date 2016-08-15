@@ -109,6 +109,6 @@ class Dashboard::ProductsController < ApplicationController
                                     :category_id, :avatar, :tag_list, :allergen_list,
                                     sizes_attributes: [:id, :name, :price, :description, :product_id, :_destroy],
                                     groups_attributes: [:id, :name, :maximum, :product_id, :_destroy,
-                                    options_attributes: [:id, :name, :group_id, :_destroy]])
+                                                        options_attributes: [:id, :name, :group_id, :_destroy]])
   end
 end

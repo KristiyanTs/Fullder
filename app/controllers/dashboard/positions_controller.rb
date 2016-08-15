@@ -9,9 +9,7 @@ class Dashboard::PositionsController < ApplicationController
   def index
     @positions = @restaurant.positions
 
-    if params[:search]
-      @positions = @positions.search(params[:search])
-    end
+    @positions = @positions.search(params[:search]) if params[:search]
 
     @positions = @positions.page(params[:page])
     respond_to do |format|

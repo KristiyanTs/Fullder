@@ -31,15 +31,15 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      ##Manual
+      # #Manual
       t.boolean :admin, default: false
       t.string :first_name
       t.string :last_name
       t.string :phone_number
       t.string :address
-      t.string :locale, default: "en"
-      t.string :provider #for omniauth
-      t.string :uid #for omniauth
+      t.string :locale, default: 'en'
+      t.string :provider # for omniauth
+      t.string :uid # for omniauth
 
       t.timestamps null: false
     end

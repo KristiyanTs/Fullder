@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class OmniauthCallbackDecorator < ApplicationDecorator
   delegate_all
 
@@ -9,5 +10,4 @@ class OmniauthCallbackDecorator < ApplicationDecorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
-
 end

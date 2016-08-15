@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateOptions < ActiveRecord::Migration[5.0]
   def up
     create_table :options do |t|

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateSizes < ActiveRecord::Migration[5.0]
   def up
     create_table :sizes do |t|
