@@ -1,0 +1,36 @@
+container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
+  h3.text-center.space
+    |Log in or 
+    = link_to "Sign up", new_user_registration_path
+  hr
+  .col-xs-12.space.login-options
+    .col-xs-4.col-sm-4
+      = link_to omniauth_authorize_path(:user, :facebook), class: "btn btn-lg btn-block omb_btn-facebook text-center" do
+        i.fa.fa-facebook.visible-xs
+        span.hidden-xs Facebook 
+    .col-xs-4.col-sm-4
+      = link_to omniauth_authorize_path(:user, :twitter), class: "btn btn-lg btn-block omb_btn-twitter" do
+        i.fa.fa-twitter.visible-xs
+        span.hidden-xs Twitter
+    .col-xs-4.col-sm-4
+      = link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn btn-lg btn-block omb_btn-google" do
+        i.fa.fa-google-plus.visible-xs
+        span.hidden-xs Google+
+  .col-xs-4.col-xs-offset-4.col-md-2.col-md-offset-5.login-or or
+
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .input-group.col-xs-12.space
+      span.input-group-addon
+        i.fa.fa-user
+      = f.input :email, required: false, autofocus: true, placeholder: "Email", label: false
+    .input-group.col-xs-12.space
+      span.input-group-addon
+        i.fa.fa-lock
+      = f.input :password, required: false, placeholder: "Password", label: false, wrapper: false
+    = f.button :submit, "Log in", class: "col-xs-12 btn btn-primary"
+    .col-xs-12.login-actions
+      = f.input :remember_me, as: :boolean, wrapper_html: {class: "col-xs-6"}
+      .col-xs-6.forgot-password.pull-right
+        = link_to "Forgot password?", new_password_path(resource_name)
+.container.col-xs-12.col-md-6.col-md-offset-3.login-footer
+  = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "space"

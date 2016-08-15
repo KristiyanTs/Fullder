@@ -83,6 +83,7 @@ gem 'gmaps4rails'
 gem 'jquery-timepicker-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 
 group :development do
   gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console
