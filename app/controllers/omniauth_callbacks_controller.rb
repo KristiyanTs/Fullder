@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 class OmniauthCallbacksController < ApplicationController
   def facebook
-    if request.env["omniauth.auth"].info.email.blank?
-      redirect_to "/users/auth/facebook?auth_type=rerequest&scope=email"
-    end
+    redirect_to "/users/auth/facebook?auth_type=rerequest&scope=email" if (request.env['omniauth.auth'].info.email.blank? || request.env['omniauth.auth'].info.email.nil?)
     @user = User.from_omniauth(request.env['omniauth.auth'])
     if @user.persisted?
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Facebook'
