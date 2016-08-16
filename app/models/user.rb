@@ -58,7 +58,7 @@ class User < ApplicationRecord
     data = access_token.info
     user = User.where(email: data['email']).first
     unless user
-      data['email'] = data['nickname'] + "@changemeplease.com" if data['email'].nil?
+      data['email'] = "changeme@please.com" if data['email'].nil?
       user = User.create(
         email: data['email'],
         password: Devise.friendly_token[0, 20]
