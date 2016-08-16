@@ -14,16 +14,16 @@ puts "Generating seeds..."
 
 User.delete_all
 User.create!([
-           {first_name: 'Kristiyan', last_name: 'Tsvetanov',
+           {name: 'Kristiyan Tsvetanov',
             email: 'test1@example.com', password: 'password',
             password_confirmation: 'password', admin: true},
-           {first_name: 'Valentina', last_name: 'Latinska',
+           {name: 'Valentina Latinska',
             email: 'test2@example.com', password: 'password',
             password_confirmation: 'password'},
-           {first_name: 'Plamen', last_name: 'Dimitrov',
+           {name: 'Plamen Dimitrov',
             email: 'test3@example.com', password: 'password',
             password_confirmation: 'password'},
-           {first_name: 'Pesho', last_name: 'Petrov',
+           {name: 'Pesho Speshno',
             email: 'pesho@abv.bg', password: '123123123',
             password_confirmation: '123123123'}
 ])
@@ -288,12 +288,5 @@ permission_seed = [
 permission_seed.each do |permission_params|
   Permission.find_or_create_by(permission_params)
 end
-
-Role.destroy_all
-Role.create! restaurant_id: 1, name: "Manager"
-
-Position.destroy_all
-Position.create! restaurant_id: 1, user_id: 1, role_id: 1
-
 
 puts 'Done ...'

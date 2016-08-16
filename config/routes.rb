@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'carts/show'
   get 'tags/:tag', to: 'restaurants#index', as: :tag
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks',
+                                    registrations: 'registrations' }
 
   resources :restaurants, only: [:index, :show] do
     resources :products, only: [:index, :show]

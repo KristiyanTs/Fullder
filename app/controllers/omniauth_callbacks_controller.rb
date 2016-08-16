@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class OmniauthCallbacksController < ApplicationController
   def facebook
-    redirect_to "/users/auth/facebook?auth_type=rerequest&scope=email" if (request.env['omniauth.auth'].info.email.blank? || request.env['omniauth.auth'].info.email.nil?)
+    puts request.env['omniauth.auth']
     @user = User.from_omniauth(request.env['omniauth.auth'])
     if @user.persisted?
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Facebook'
@@ -13,6 +13,7 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def google_oauth2
+    puts request.env['omniauth.auth']
     @user = User.from_omniauth(request.env['omniauth.auth'])
     if @user.persisted?
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'

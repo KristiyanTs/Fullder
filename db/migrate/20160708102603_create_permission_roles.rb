@@ -4,6 +4,7 @@ class CreatePermissionRoles < ActiveRecord::Migration
     create_table :permission_roles do |t|
       t.references :permission, index: true, foreign_key: true
       t.references :role, index: true, foreign_key: true
+      t.references :restaurant, index: true, foreign_key: true
 
       t.timestamps null: false
     end

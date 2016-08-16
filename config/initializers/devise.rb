@@ -244,7 +244,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, '759879177448494', '71d333a14b0299fba332961d77a603c7', scope: 'email', info_fields: 'email,name'
-  config.omniauth :google_oauth2, '243580691184-l4dpdlrsm44prpcll51bt2k8ncu43ofc.apps.googleusercontent.com', 'LynkYgNyjd3QWAzLvAbH0ouQ', {}
+  config.omniauth :google_oauth2, '243580691184-l4dpdlrsm44prpcll51bt2k8ncu43ofc.apps.googleusercontent.com', 'LynkYgNyjd3QWAzLvAbH0ouQ', scope: "email,profile,offline", prompt: "consent"
   config.omniauth :twitter, '9IHEbQsgBI8IkSL6HNq2bJFFr', 'hyDOqhdOkV1zlPr1zvAckd8LiScOaw6feVWSBD8Sm7nKe43Egh', {}
 
   # ==> Warden configuration

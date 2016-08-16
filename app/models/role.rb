@@ -21,10 +21,10 @@
 class Role < ApplicationRecord
   belongs_to :restaurant
 
-  has_many :positions
+  has_many :positions, dependent: :destroy
   has_many :users, through: :positions
 
-  has_many :permission_roles
+  has_many :permission_roles, dependent: :destroy
   has_many :permissions, through: :permission_roles
 
   accepts_nested_attributes_for :permissions
