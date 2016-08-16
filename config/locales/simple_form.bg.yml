@@ -24,7 +24,7 @@ bg:
         ready: 'Готово ли е?(Може да бъде сервирано без подготовка)'
         category: 'Категория'
         restaurant_avatar: 'Главна снимка'
-        sells_online: 'Желаете ли да продавате през FastOrder?'
+        sells_online: 'Желаете ли да продавате през OmniMenu?'
         tag_list: 'Тагове, разделени със запетайки'
         permission_ids: 'Разрешения'
         number: 'Номер'

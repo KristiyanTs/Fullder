@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Dashboard::RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurant, except: [:create]
+  before_action :set_restaurant, except: [:create, :new]
 
   def show
   end

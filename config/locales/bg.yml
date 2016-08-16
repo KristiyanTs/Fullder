@@ -18,6 +18,7 @@ bg:
     menu: Меню
     reserve: Резервирай
     update: Редактирай ресторант
+    create: Създай ресторант
   product:
     contains: "Съдържа "
     price-from: "От "

@@ -19,6 +19,7 @@ en:
     menu: Menu
     reserve: Reserve
     update: Update restaurant
+    create: Create restaurant
   product:
     contains: "Contains "
     price-from: "From "

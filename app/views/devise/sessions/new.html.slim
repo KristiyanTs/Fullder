@@ -9,7 +9,7 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
         i.fa.fa-facebook.visible-xs
         span.hidden-xs Facebook 
     .col-xs-4.col-sm-4
-      = link_to omniauth_authorize_path(:user, :twitter), class: "btn btn-lg btn-block omb_btn-twitter" do
+      = link_to user_twitter_omniauth_authorize_path, class: "btn btn-lg btn-block omb_btn-twitter" do
         i.fa.fa-twitter.visible-xs
         span.hidden-xs Twitter
     .col-xs-4.col-sm-4

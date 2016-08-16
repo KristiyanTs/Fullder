@@ -25,7 +25,7 @@ en:
         ready: 'Is the product ready?(Does not require any preparation)'
         category: 'Category'
         restaurant_avatar: 'Restaurant avatar'
-        sells_online: 'Would you like to sell via FastOrder?'
+        sells_online: 'Would you like to sell via OmniMenu?'
         tag_list: 'Tags, separated by commas'
         permission_ids: 'Permissions'
         number: 'Number'

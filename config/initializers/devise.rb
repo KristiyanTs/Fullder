@@ -13,7 +13,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'support@fastorder.com'
+  config.mailer_sender = 'support@omnimenu.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -243,9 +243,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, '759879177448494', '71d333a14b0299fba332961d77a603c7', scope: 'email,public_profile', info_fields: 'name,email'
+  config.omniauth :facebook, '759879177448494', '71d333a14b0299fba332961d77a603c7', {}
   config.omniauth :google_oauth2, '243580691184-l4dpdlrsm44prpcll51bt2k8ncu43ofc.apps.googleusercontent.com', 'LynkYgNyjd3QWAzLvAbH0ouQ', {}
-  config.omniauth :twitter, 'IVaK8lWPMus8YdDgIcWheRhS5', ' YVis365IzDghcLPl9IQgZXv7YXv8yHFqvHz5i8JIue9gxkFRQD', {}
+  config.omniauth :twitter, '9IHEbQsgBI8IkSL6HNq2bJFFr', 'hyDOqhdOkV1zlPr1zvAckd8LiScOaw6feVWSBD8Sm7nKe43Egh', {}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
