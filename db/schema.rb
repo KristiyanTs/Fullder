@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160812093658) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "restaurant_id"
+    t.integer  "supercategory_id"
     t.string   "name"
     t.boolean  "age_restriction"
     t.boolean  "available_all_day"
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160812093658) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
+    t.index ["supercategory_id"], name: "index_categories_on_supercategory_id", using: :btree
   end
 
   create_table "category_translations", force: :cascade do |t|
@@ -150,9 +152,11 @@ ActiveRecord::Schema.define(version: 20160812093658) do
   create_table "permission_roles", force: :cascade do |t|
     t.integer  "permission_id"
     t.integer  "role_id"
+    t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["permission_id"], name: "index_permission_roles_on_permission_id", using: :btree
+    t.index ["restaurant_id"], name: "index_permission_roles_on_restaurant_id", using: :btree
     t.index ["role_id"], name: "index_permission_roles_on_role_id", using: :btree
   end
 
@@ -355,6 +359,7 @@ ActiveRecord::Schema.define(version: 20160812093658) do
   add_foreign_key "orders", "tables"
   add_foreign_key "orders", "users"
   add_foreign_key "permission_roles", "permissions"
+  add_foreign_key "permission_roles", "restaurants"
   add_foreign_key "permission_roles", "roles"
   add_foreign_key "positions", "restaurants"
   add_foreign_key "positions", "roles"

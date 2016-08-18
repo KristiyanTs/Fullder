@@ -31,6 +31,8 @@ en:
         number: 'Number'
       user:
         locale: Language
+      category:
+        supercategory: "Supercategory. Example: 'Alcoholic drinks' -> 'Drinks'"
     hints:
       defaults:
         current_password: we need your current password to confirm your changes
