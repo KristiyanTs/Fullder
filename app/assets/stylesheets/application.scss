@@ -21,6 +21,7 @@ html,body {
   min-height: 600px;
   margin-bottom: 100px;
   margin-top: 25px;
+  background-color: rgb(235,235,235);
   clear: both;
 }
 
@@ -54,10 +55,9 @@ html,body {
   }
   .in, .collapsing{
     background-color: #CF000F;
+    border-top: 1px solid white;
   }
-  .navbar-collapse{
-    border-top: 1px solid rgb(240,240,240);
-  }
+
   .navbar-right{
     margin-right:20px;
     li{

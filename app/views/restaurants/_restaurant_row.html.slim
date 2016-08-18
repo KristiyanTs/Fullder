@@ -12,3 +12,5 @@
   current_order.restaurant_id == restaurant.id) || \
   !restaurant.sells_online || !restaurant.working? ? restaurant_categories_path(restaurant) : new_order_path(restaurant_id: restaurant.id)),  
   class: "restaurant-row-menu col-xs-3 col-md-2 text-center"
+= link_to "tel:" + restaurant.phone_number, class: "col-xs-3 visible-xs restaurant-row-call text-center"
+  i.fa.fa-phone
