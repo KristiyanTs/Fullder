@@ -31,7 +31,7 @@ class Category < ApplicationRecord
   belongs_to :supercategory, class_name: "Category"
 
   has_many :products
-  has_many :subcategories, class_name: "Category", foreign_key: "supercategory_id"
+  has_many :subcategories, class_name: "Category", foreign_key: "supercategory_id", dependent: :destroy
 
   has_attached_file :avatar, styles: { small: '80x80#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
