@@ -33,8 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       # #Manual
       t.boolean :admin, default: false
-      t.string :first_name
-      t.string :last_name
+      t.string :name
       t.string :phone_number
       t.string :address
       t.string :locale, default: 'en'

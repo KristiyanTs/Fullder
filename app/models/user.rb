@@ -19,8 +19,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE)
-#  first_name             :string
-#  last_name              :string
+#  name                   :string
 #  phone_number           :string
 #  address                :string
 #  locale                 :string           default("en")
@@ -40,7 +39,7 @@ class User < ApplicationRecord
   has_many :roles, through: :positions
   has_many :orders
   has_many :tables
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_restaurants, through: :favorites, source: :restaurant
 
   # Include default devise modules. Others available are:
@@ -54,15 +53,18 @@ class User < ApplicationRecord
   acts_as_taggable
   acts_as_taggable_on :allergens
 
-  def self.from_omniauth(access_token)
-    data = access_token.info
-    user = User.where(email: data['email']).first
+  def self.from_omniauth(token)
+    user = User.find_by(uid: token['uid'])
     unless user
-      data['email'] = data['nickname'] + "@changemeplease.com" if data['email'].nil?
-      user = User.create(
-        email: data['email'],
+      user = User.new(
+        name: token.info['name'],
+        provider: token['provider'],
+        uid: token['uid'],
+        email: token.info['email'] || SecureRandom.hex(5) + "@changemeplease.com",
         password: Devise.friendly_token[0, 20]
       )
+      user.skip_confirmation! unless token.info['email'].nil?
+      user.save!
     end
     user
   end
@@ -71,11 +73,4 @@ class User < ApplicationRecord
     super && provider.blank?
   end
 
-  def update_with_password(params, *options)
-    if encrypted_password.blank?
-      update_attributes(params, *options)
-    else
-      super
-    end
-  end
 end

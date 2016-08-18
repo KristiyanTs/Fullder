@@ -316,8 +316,7 @@ ActiveRecord::Schema.define(version: 20160812093658) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "admin",                  default: false
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "name"
     t.string   "phone_number"
     t.string   "address"
     t.string   "locale",                 default: "en"

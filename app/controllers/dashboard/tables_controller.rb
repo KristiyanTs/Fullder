@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class Dashboard::TablesController < ApplicationController
   load_and_authorize_resource
-
   before_action :authenticate_user!
   before_action :set_restaurant
   before_action :set_table, only: [:show, :edit, :destroy]

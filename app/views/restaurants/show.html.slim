@@ -50,18 +50,20 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
 
 
 javascript:
-  handler = Gmaps.build('Google');
-  handler.buildMap({ 
-    provider: {
-      disableDefaultUI: true,
-      rotateControl: true,
-      streetViewControl: true,
-      streetViewControlOptions: true
-    }, 
-    internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers(#{raw @hash.to_json});
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      handler.getMap().setZoom(17);
-    }
-  );
+  setTimeout(function() {
+    handler = Gmaps.build('Google');
+    handler.buildMap({ 
+      provider: {
+        disableDefaultUI: true,
+        rotateControl: true,
+        streetViewControl: true,
+        streetViewControlOptions: true
+      }, 
+      internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(#{raw @hash.to_json});
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(17);
+      }
+    );
+  }, 800);
