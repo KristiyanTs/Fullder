@@ -30,6 +30,8 @@ bg:
         number: 'Номер'
       user:
         locale: Език / Language
+      category:
+        supercategory: "Надкатегория. Пример: 'алкохолни напитки' -> 'напитки'"
     hints:
       defaults:
         current_password: сегащната парола е нужна, за да потвърдите промените

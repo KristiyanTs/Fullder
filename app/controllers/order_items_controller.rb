@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class OrderItemsController < ApplicationController
   include OrderItemsHelper
-
   load_and_authorize_resource
   before_action :authenticate_user!
 

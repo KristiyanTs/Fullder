@@ -7,5 +7,7 @@
 - @right_content = "#{number_to_currency current_order.subtotal}"
 
 .container
+  - @subcategories.each do |subcategory|
+    = render 'category_row', category: subcategory
   - @products.each do |product| 
     = render "products/product_row", product: product, order_item: @order_item

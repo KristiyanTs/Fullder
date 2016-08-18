@@ -102,6 +102,6 @@ class Dashboard::CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name, :age_restriction, :available_all_day, :category_avatar)
+    params.require(:category).permit(:name, :age_restriction, :available_all_day, :category_avatar, :supercategory_id)
   end
 end

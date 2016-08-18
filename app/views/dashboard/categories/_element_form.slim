@@ -9,6 +9,7 @@
     = f.input :name, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.name}}")
     = f.input :age_restriction
     = f.input :available_all_day
+    = f.association :supercategory, collection: @restaurant.categories, prompt: "Choose a supercategory or leave it blank", include_blank: false
 
   .modal-footer
     = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"
