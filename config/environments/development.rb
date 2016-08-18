@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -28,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -41,7 +40,7 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = false
+  config.assets.debug = true
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true

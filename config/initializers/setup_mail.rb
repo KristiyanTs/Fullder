@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  address: 'smtp.sendgrid.net',
+  address: 'smtp.gmail.com',
   port: '587',
   authentication: :plain,
-  user_name: 'app54934768@heroku.com',
-  password: 'n8uzwfpf4283',
-  domain: 'heroku.com',
+  user_name: 'omnimenu2016@gmail.com',
+  password: 'kris2016',
+  domain: 'omnimenu.org',
   enable_starttls_auto: true
 }
