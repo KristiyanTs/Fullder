@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820083628) do
+
+ActiveRecord::Schema.define(version: 20160819171659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -226,6 +227,18 @@ ActiveRecord::Schema.define(version: 20160820083628) do
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.integer  "user_id"
+    t.integer  "table_id"
+    t.datetime "from_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id", using: :btree
+    t.index ["table_id"], name: "index_reservations_on_table_id", using: :btree
+    t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
+  end
+
   create_table "restaurant_translations", force: :cascade do |t|
     t.integer  "restaurant_id", null: false
     t.string   "locale",        null: false
@@ -382,6 +395,9 @@ ActiveRecord::Schema.define(version: 20160820083628) do
   add_foreign_key "positions", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "restaurants"
+  add_foreign_key "reservations", "restaurants"
+  add_foreign_key "reservations", "tables"
+  add_foreign_key "reservations", "users"
   add_foreign_key "roles", "restaurants"
   add_foreign_key "sizes", "products"
   add_foreign_key "tables", "restaurants"

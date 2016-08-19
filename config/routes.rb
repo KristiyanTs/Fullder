@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resources :products, only: [:index, :show]
     resources :categories, only: [:index, :show]
+    resources :reservations, only: [:new, :create] 
     put :favorite, on: :member
   end
 
