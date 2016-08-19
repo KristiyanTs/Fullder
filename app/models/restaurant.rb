@@ -56,9 +56,8 @@ class Restaurant < ApplicationRecord
                    lng_column_name: :lng
 
   scope :search_word, -> (keyword) do
-    keyword = "%#{keyword}%"
-    where('restaurants.name ilike ? or restaurants.address ilike ?',
-          keyword, keyword)
+    keywords = keyword.split(/\W+/)
+    return tagged_with(keywords)
   end
 
   def working?
