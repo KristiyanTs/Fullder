@@ -57,19 +57,7 @@ class Restaurant < ApplicationRecord
 
   scope :search_word, -> (keyword) do
     keywords = keyword.split(/\W+/)
-    if keywords.size <= 1
-      word = "%#{keyword}%"
-      from_columns = where('restaurants.name ilike ? or restaurants.address ilike ?', word, word)
-      from_tags = tagged_with(keywords)
-      return (from_tags.or(from_columns))
-    else
-      result = Restaurant.all
-      keywords.each do |word|
-        word = "%#{word}%"
-        result = result.merge(where('restaurants.name ilike ? or restaurants.address ilike ?', word, word))
-      end
-      return (result.or(tagged_with(keywords)))
-    end
+    return tagged_with(keywords)
   end
 
   def working?
