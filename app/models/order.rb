@@ -60,12 +60,12 @@ class Order < ApplicationRecord
   end
 
   def table_exists?
-    unless Restaurant.find(restaurant_id).tables.exists?(number: self[:table_number])
+    unless Restaurant.friendly.find(restaurant_id).tables.exists?(number: self[:table_number])
       errors.add(:table_number, 'Table with this number does not exist')
     end
   end
 
   def set_table
-    self[:table_id] = Restaurant.find(self[:restaurant_id]).tables.find_by(number: self[:table_number]).id
+    self[:table_id] = Restaurant.friendly.find(self[:restaurant_id]).tables.find_by(number: self[:table_number]).id
   end
 end

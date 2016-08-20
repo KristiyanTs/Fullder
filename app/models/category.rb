@@ -15,10 +15,12 @@
 #  avatar_content_type :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  slug                :string
 #
 # Indexes
 #
 #  index_categories_on_restaurant_id     (restaurant_id)
+#  index_categories_on_slug              (slug) UNIQUE
 #  index_categories_on_supercategory_id  (supercategory_id)
 #
 # Foreign Keys
@@ -27,6 +29,9 @@
 #
 
 class Category < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :restaurant
   belongs_to :supercategory, class_name: "Category"
 

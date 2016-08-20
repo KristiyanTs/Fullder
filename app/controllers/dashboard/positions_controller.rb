@@ -100,7 +100,7 @@ class Dashboard::PositionsController < ApplicationController
   private
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
   end
 
   def set_position
