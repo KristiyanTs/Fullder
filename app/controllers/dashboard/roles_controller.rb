@@ -96,7 +96,7 @@ class Dashboard::RolesController < ApplicationController
   end
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
   end
 
   def role_params

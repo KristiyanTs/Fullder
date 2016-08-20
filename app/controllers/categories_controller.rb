@@ -16,10 +16,10 @@ class CategoriesController < ApplicationController
   private
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
   end
 
   def set_category
-    @category = @restaurant.categories.find(params[:id])
+    @category = @restaurant.categories.friendly.find(params[:id])
   end
 end

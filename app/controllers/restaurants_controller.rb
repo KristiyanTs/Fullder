@@ -52,6 +52,6 @@ class RestaurantsController < ApplicationController
   private
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.friendly.find(params[:id])
   end
 end

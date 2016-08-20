@@ -18,9 +18,17 @@
 #  restaurant_avatar_content_type :string
 #  restaurant_avatar_file_size    :integer
 #  restaurant_avatar_updated_at   :datetime
+#  slug                           :string
+#
+# Indexes
+#
+#  index_restaurants_on_slug  (slug) UNIQUE
 #
 
 class Restaurant < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slugged_candidates, use: :slugged
+
   acts_as_taggable
 
   has_many :categories, dependent: :destroy
@@ -62,6 +70,15 @@ class Restaurant < ApplicationRecord
 
   def working?
     working_times.any?(&:active_now?)
+  end
+
+  def slugged_candidates
+    [
+      :name,
+      [:name, :address],
+      [:name, :longitude, :latitude],
+      [:name, :address, :longitude, :latitude]
+    ]
   end
 
   translates :description
