@@ -26,15 +26,55 @@ gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Multiple select.
+gem 'select2-rails'
+# Use devise for user auth
+gem 'devise'
+# Authorization
+gem 'cancancan'
+# Heroku deploy
+gem 'figaro'
+# Use pg for database
+gem 'pg'
+# Use puma for server
+gem 'puma'
+# Simple forms
+gem 'simple_form'
+# Decorate models for views
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+# Awesome fonts for webpage(adds cool icons and stuff)
+gem 'font-awesome-rails'
+# Slim template engine
+gem 'slim-rails'
+# Use google geokits api
+gem 'geokit-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
+# Use paging
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+# Easier nested forms.
+gem 'cocoon'
+# JavaScript embedded interpreter for ruby
+gem 'therubyracer', platform: :ruby
+# Localization
+gem 'rails-i18n', '~> 5.0.0'
+gem 'globalize', github: 'globalize/globalize'
+gem 'activemodel-serializers-xml'
+# Model tags
+gem 'acts-as-taggable-on', '~> 4.0'
+# Respond gem for different types of requests
+gem 'responders'
+# UI stuff
+gem 'jquery-ui-rails'
+gem 'jquery-timepicker-rails'
+gem 'bootstrap-select-rails'
+# Login with facebook google and twitter
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+# Use friendly urls
+gem 'friendly_id'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,52 +82,9 @@ group :development, :test do
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-# Multiple select.
-gem 'select2-rails'
-
-# Use devise for user auth
-gem 'devise'
-gem 'cancancan'
-gem 'figaro'
-# Use pg for database
-gem 'pg'
-# Use puma for server
-gem 'puma'
-gem 'pundit'
-gem 'simple_form'
-# Draper and globalize dependency in rails 5
-gem 'draper', github: 'audionerd/draper', branch: 'rails5'
-gem 'font-awesome-rails'
-gem 'slim-rails'
-gem 'geokit-rails'
-gem 'geocoder'
-gem 'kaminari'
-gem 'bootstrap-kaminari-views'
-gem 'cocoon'
-gem 'bootstrap-select-rails'
-gem 'therubyracer', platform: :ruby
-gem 'rails-i18n', '~> 5.0.0'
-gem 'acts-as-taggable-on', '~> 4.0'
-gem 'globalize', github: 'globalize/globalize'
-gem 'activemodel-serializers-xml'
-gem 'responders'
-gem 'jquery-ui-rails'
-gem 'gmaps4rails'
-gem 'jquery-timepicker-rails'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-twitter'
-gem 'friendly_id'
-
-group :development do
-  gem 'annotate' # to annotate(the schema of all models) just write "annotate" in the console
+  gem 'web-console', '~> 2.0'
+  gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
   gem 'guard-bundler'
