@@ -234,6 +234,8 @@ ActiveRecord::Schema.define(version: 20160819171659) do
     t.datetime "from_time"
     t.string   "contact_number"
     t.string   "contact_name"
+    t.integer  "seats"
+    t.string   "requirements"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id", using: :btree

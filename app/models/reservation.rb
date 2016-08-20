@@ -9,6 +9,8 @@
 #  from_time      :datetime
 #  contact_number :string
 #  contact_name   :string
+#  seats          :integer
+#  requirements   :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

@@ -2,11 +2,9 @@ h2 OmniMenu
 p Hello, #{@user.name||@user.email},
 p Your reservation at #{@restaurant.name}, has been sent. 
 p You will be contaceted shortly!
-p
 hr
 p Reservation information:
-p Who: #{@reservation.contact_number}
+p Who: #{@reservation.contact_name} #{@reservation.contact_number}
 p When: #{@reservation.from_time}
 p Where: #{@restaurant.address}
 p What: #{@reservation.seats} seats
-p Reserved by: #{@reservation.contact_name}
