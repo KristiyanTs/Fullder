@@ -2,13 +2,15 @@
 #
 # Table name: reservations
 #
-#  id            :integer          not null, primary key
-#  restaurant_id :integer
-#  user_id       :integer
-#  table_id      :integer
-#  from_time     :datetime
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id             :integer          not null, primary key
+#  restaurant_id  :integer
+#  user_id        :integer
+#  table_id       :integer
+#  from_time      :datetime
+#  contact_number :string
+#  contact_name   :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 # Indexes
 #
@@ -27,4 +29,10 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
   belongs_to :table
+
+  validate :user_confirmed?
+
+  def user_confirmed?
+    user.confirmed?
+  end
 end

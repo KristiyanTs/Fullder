@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        ReservationMailer.confirming_reservation(current_user, @restaurant).deliver_now
+        ReservationMailer.confirming_reservation(current_user, @restaurant, @reservation).deliver_now
         format.html do
           redirect_to restaurant_path(@restaurant),
                       notice: 'Reservation was successfully created.',
