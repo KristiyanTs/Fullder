@@ -1,0 +1,16 @@
+tr
+  td
+    = reservation.seats
+    span.glyphicon.glyphicon-user.capacity-seats
+  td = (reservation.table.try(:number) || "Assign")
+  td = reservation.from_time
+  td
+    .show
+      = link_to "", dashboard_restaurant_reservation_path(@restaurant, reservation),
+        class: "glyphicon glyphicon-info-sign"
+    .edit
+      = link_to "", edit_dashboard_restaurant_reservation_path(@restaurant, reservation),
+        class: "glyphicon glyphicon-pencil", data: { target: '#element-form', toggle: 'modal', remote: true}
+    .destroy
+      = link_to "", dashboard_restaurant_reservation_path(@restaurant, reservation),
+        {confirm: "Are you sure?", method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

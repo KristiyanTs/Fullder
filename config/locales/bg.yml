@@ -46,6 +46,7 @@ bg:
     register: "Регистрация"
     enter: "Влез"
     dashboard: Панел
+    reservations: Резервации
   dashboard:
     category-form-title: "Формуляр за категория в "
     product-form-title: "Формуляр за продукт в "

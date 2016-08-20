@@ -1,0 +1,16 @@
+= simple_form_for([:dashboard, @restaurant, @reservation], remote: true, 
+  html: { multipart: true }, authenticity_token: true) do |f|
+  .modal-header
+    = (t 'dashboard.reservation-form-title') + @restaurant.name
+    button.close aria-label="Close" data-dismiss="modal" type="button"
+      span aria-hidden="true"  &times;
+
+  .modal-body
+    = f.input :from_time
+    = f.input :seats
+    = f.input :contact_number
+    = f.input :contact_name
+    = f.input :requirements
+
+  .modal-footer
+    = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"

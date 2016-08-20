@@ -26,6 +26,9 @@ nav.navbar.navbar-default
             - if should_see?(@restaurant.tables.new)
               li
                 = link_to "#{t 'navbar.tables'}", dashboard_restaurant_tables_path(@restaurant)
+            - if should_see?(@restaurant.reservations.new)
+              li
+                = link_to "#{t 'navbar.reservations'}", dashboard_restaurant_reservations_path(@restaurant)
         li
           a href="#"  
             = t 'navbar.statistics'

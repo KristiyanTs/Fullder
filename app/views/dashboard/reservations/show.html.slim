@@ -1,0 +1,10 @@
+= render 'layouts/dashboard/dashboard_navbar'
+
+.container.container-white
+  h3 Reservation info
+  p = @reservation.contact_name
+  p = @reservation.contact_number
+  p = @reservation.seats
+  p = @reservation.from_time
+
+  

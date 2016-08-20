@@ -37,4 +37,8 @@ class Reservation < ApplicationRecord
   def user_confirmed?
     user.confirmed?
   end
+
+  scope :search, lambda { |keyword|
+    where(seats: keyword) if keyword
+  }
 end

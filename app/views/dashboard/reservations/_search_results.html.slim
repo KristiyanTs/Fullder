@@ -1,0 +1,14 @@
+- if @reservations.size == 0
+  p.text-center
+    = t "search.no-results"
+- else
+  table.table.table-striped
+    thead
+      tr
+        th People
+        th Table number
+        th Time
+        th Actions
+    tbody
+      = render partial: "element_row", collection: @reservations, as: :reservation
+  = paginate @reservations, theme: 'twitter-bootstrap-3'
