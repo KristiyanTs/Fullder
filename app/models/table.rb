@@ -27,6 +27,7 @@ class Table < ApplicationRecord
   belongs_to :user
 
   has_many :orders
+  has_many :reservations
 
   validates :number, uniqueness: { scope: :restaurant_id }
 

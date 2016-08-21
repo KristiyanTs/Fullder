@@ -1,0 +1,27 @@
+= render 'layouts/dashboard/dashboard_navbar'
+
+.container.container-white
+  h3 = t 'dashboard.reservation-index-title'
+
+  .search-form
+    = form_tag dashboard_restaurant_reservations_path(@restaurant),
+               remote: true, method: 'get', id: 'reservations-search' do
+      .input-group
+        = text_field_tag :search, params[:search],
+                         class: 'form-control input',
+                         placeholder: "Search by people count"
+
+        span.input-group-btn
+          = button_tag class: 'btn btn-info' do
+            i class="glyphicon glyphicon-search"
+
+  .search-results
+    = render partial: "search_results"
+
+  .new-element
+    = link_to (t 'button.add-reservation'), new_dashboard_restaurant_reservation_path(@restaurant), class: 'btn btn-primary btn-lg',
+      data: { target: '#element-form', toggle: 'modal' , remote: true}
+    #element-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog role="document"
+        .modal-content
+          = t 'button.wait'

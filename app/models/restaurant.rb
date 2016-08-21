@@ -43,6 +43,7 @@ class Restaurant < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_by, through: :favorites, source: :user
+  has_many :reservations
 
   accepts_nested_attributes_for :working_times, allow_destroy: true
   accepts_nested_attributes_for :images, reject_if: :all_blank,

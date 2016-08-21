@@ -32,6 +32,12 @@ bg:
         locale: Език / Language
       category:
         supercategory: "Надкатегория. Пример: 'алкохолни напитки' -> 'напитки'"
+      reservation:
+        from_time: Дата и час
+        seats: Места
+        contact_number: Номер за връзка
+        contact_name: Име на резервацията
+        requirements: Изисквания
     hints:
       defaults:
         current_password: сегащната парола е нужна, за да потвърдите промените

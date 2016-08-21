@@ -46,24 +46,32 @@ bg:
     register: "Регистрация"
     enter: "Влез"
     dashboard: Панел
+    reservations: Резервации
   dashboard:
     category-form-title: "Формуляр за категория в "
     product-form-title: "Формуляр за продукт в "
     role-form-title: "Формуляр за роля в "
     position-form-title: "Формуляр за позиция в "
     table-form-title: "Формуляр за маса в "
+    reservation-form-title: Формуляр за резервация в 
     category-index-title: Категории
     product-index-title: Продукти
     role-index-title: Роли
     position-index-title: Служители
     table-index-title: Маси
+    reservation-index-title: Резервации
     name: Име
     products: Продукти
-    settings: Настройки
-    number: Номер
+    actions: Настройки
+    number: Номер на маса
     title: Роля
     roles: Роля
     categories: Категории
+    time: Час
+    seats: Места
+    confirmed: Потвърдена
+  reservation:
+    reserve-table-header: Резервирай маса
   cocoon:
     defaults:
       add: "Добави данни"
@@ -80,6 +88,29 @@ bg:
     images:
       add: Добави снимка
       remove: Изтрий снимката
+  mailer:
+    confirming_reservation:
+      line1: Здравей, 
+      line2-1: Твоята резервация в
+      line2-2: беше изпратена
+      line3: Ще се свържем с Вас скоро!
+      line4: Информация за резервацията
+      line5: Кой
+      line6: Кога
+      line7: Къде
+      line8-1: Какво
+      line8-2: места
+    confirmed_reservation:
+      line1: Здравей, 
+      line2-1: Твоята резервация в
+      line2-2: беше одобрена от служител.
+      line3: Информация за резервацията
+      line4: Кой
+      line5: Кога
+      line6: Къде
+      line7-1: Какво
+      line7-2: места
+      line8: Очакваме Ви!
   views:
     pagination:
       first: Първа
@@ -114,7 +145,10 @@ bg:
         other: 'Роли'
       table:
         one: 'Маса'
-        other: 'Маси'        
+        other: 'Маси'  
+      reservation:
+        one: Резервация
+        other: Резервации      
     errors:
       messages:
         record_invalid: 'имаше грешки: %{errors}'

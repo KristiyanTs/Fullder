@@ -99,7 +99,7 @@ class Dashboard::TablesController < ApplicationController
   end
 
   def set_table
-    @product = @restaurant.tables.find(params[:id])
+    @table = @restaurant.tables.find(params[:id])
   end
 
   def table_params

@@ -12,6 +12,8 @@
 //= require underscore
 //= require gmaps/google
 //= require jquery.timepicker.js
+//= require moment
+//= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
 

@@ -33,6 +33,12 @@ en:
         locale: Language
       category:
         supercategory: "Supercategory. Example: 'Alcoholic drinks' -> 'Drinks'"
+      reservation:
+        from_time: Time
+        seats: How many people
+        contact_number: Contact number
+        contact_name: Contact name
+        requirements: Requirements
     hints:
       defaults:
         current_password: we need your current password to confirm your changes
