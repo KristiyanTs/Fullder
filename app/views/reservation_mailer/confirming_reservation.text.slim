@@ -1,11 +1,11 @@
-OmniMenu
+= I18n.with_locale(@user.locale) do 
+  |OmniMenu
+  |#{t 'mailer.confirming_reservation.line1'} #{@user.name||@user.email},
+  |#{t 'mailer.confirming_reservation.line2-1'} #{@restaurant.name}, #{t 'mailer.confirming_reservation.line2-2'}. 
+  |#{t 'mailer.confirming_reservation.line3'}
 
-Hello, #{@user.name||@user.email},
-Your reservation at #{@restaurant.name}, has been sent. 
-You will be contaceted shortly!
-
-Reservation information:
-Who: #{@reservation.contact_name} #{@reservation.contact_number}
-When: #{@reservation.from_time}
-Where: #{@restaurant.address}
-What: #{@reservation.seats} seats
+  |#{t 'mailer.confirming_reservation.line4'}:
+  |#{t 'mailer.confirming_reservation.line5'}: #{@reservation.contact_name} #{@reservation.contact_number}
+  |#{t 'mailer.confirming_reservation.line6'}: #{@reservation.from_time}
+  |#{t 'mailer.confirming_reservation.line7'}: #{@restaurant.address}
+  |#{t 'mailer.confirming_reservation.line8-1'}: #{@reservation.seats} #{t 'mailer.confirming_reservation.line8-2'}

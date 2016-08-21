@@ -88,6 +88,29 @@ bg:
     images:
       add: Добави снимка
       remove: Изтрий снимката
+  mailer:
+    confirming_reservation:
+      line1: Здравей, 
+      line2-1: Твоята резервация в
+      line2-2: беше изпратена
+      line3: Ще се свържем с Вас скоро!
+      line4: Информация за резервацията
+      line5: Кой
+      line6: Кога
+      line7: Къде
+      line8-1: Какво
+      line8-2: места
+    confirmed_reservation:
+      line1: Здравей, 
+      line2-1: Твоята резервация в
+      line2-2: беше одобрена от служител.
+      line3: Информация за резервацията
+      line4: Кой
+      line5: Кога
+      line6: Къде
+      line7-1: Какво
+      line7-2: места
+      line8: Очакваме Ви!
   views:
     pagination:
       first: Първа

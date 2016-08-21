@@ -1,11 +1,12 @@
-h2 OmniMenu
-p Hello, #{@user.name||@user.email},
-p Your reservation at #{@restaurant.name}, has been confirmed by an employee.
-hr
-p Reservation information:
-p Who: #{@reservation.contact_name} #{@reservation.contact_number}
-p When: #{@reservation.from_time}
-p Where: #{@restaurant.address}
-p What: #{@reservation.seats} seats
-hr
-p We are expecting you!
+= I18n.with_locale(@user.locale) do 
+  h2 OmniMenu
+  p #{t 'mailer.line1'} #{@user.name||@user.email},
+  p #{t 'mailer.line2-1'} #{@restaurant.name}, #{t 'mailer.line2-2'}
+  hr
+  p #{t 'mailer.line3'}
+  p #{t 'mailer.line4'}: #{@reservation.contact_name} #{@reservation.contact_number}
+  p #{t 'mailer.line5'}: #{@reservation.from_time}
+  p #{t 'mailer.line6'}: #{@restaurant.address}
+  p #{t 'mailer.line7-1'}: #{@reservation.seats} #{t 'mailer.line7-2'}
+  hr
+  p #{t 'mailer.line8'}
