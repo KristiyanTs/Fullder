@@ -11,6 +11,7 @@
 #  contact_name   :string
 #  seats          :integer
 #  requirements   :string
+#  confirmed      :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
@@ -35,7 +36,7 @@ class Reservation < ApplicationRecord
   validate :user_confirmed?
 
   def user_confirmed?
-    user.confirmed?
+    errors.add(:user, 'has not confirmed an email.') if !user.confirmed?
   end
 
   scope :search, lambda { |keyword|

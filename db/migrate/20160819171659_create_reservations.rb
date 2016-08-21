@@ -9,6 +9,7 @@ class CreateReservations < ActiveRecord::Migration[5.0]
       t.string :contact_name
       t.integer :seats
       t.string :requirements
+      t.boolean :confirmed, default: false
 
       t.timestamps
     end

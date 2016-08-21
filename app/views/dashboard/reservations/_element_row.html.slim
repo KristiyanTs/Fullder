@@ -5,6 +5,12 @@ tr
   td = (reservation.table.try(:number) || "Assign")
   td = reservation.from_time
   td
+    - if reservation.confirmed
+      i.fa.fa-thumbs-o-up.center aria-hidden="true"
+    - else
+      i.fa.fa-spinner aria-hidden="true"
+
+  td
     .show
       = link_to "", dashboard_restaurant_reservation_path(@restaurant, reservation),
         class: "glyphicon glyphicon-info-sign"

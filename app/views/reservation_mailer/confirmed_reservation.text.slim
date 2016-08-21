@@ -1,0 +1,12 @@
+OmniMenu
+
+Hello, #{@user.name||@user.email},
+Your reservation at #{@restaurant.name}, has been confirmed by and employee. 
+
+Reservation information:
+Who: #{@reservation.contact_name} #{@reservation.contact_number}
+When: #{@reservation.from_time}
+Where: #{@restaurant.address}
+What: #{@reservation.seats} seats
+
+We are expecting you!

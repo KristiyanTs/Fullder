@@ -6,7 +6,7 @@
       span aria-hidden="true"  &times;
 
   .modal-body
-    = f.input :from_time
+    = f.input :from_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
     = f.input :seats
     = f.input :contact_number
     = f.input :contact_name
@@ -16,3 +16,14 @@
 
   .modal-footer
     = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"
+    
+javascript:
+  $(function () {
+    $('#datetimepicker').datetimepicker({
+      inline: true,
+      sideBySide: true,
+      inline: true,
+      ignoreReadonly: true,
+      format: 'YYYY-MM-DD HH:mm'
+    });
+  });

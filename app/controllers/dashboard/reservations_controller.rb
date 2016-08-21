@@ -59,6 +59,11 @@ class Dashboard::ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
+
+        ReservationMailer.confirmed_reservation(@reservation.user, @restaurant, @reservation).deliver_now if 
+          @reservation.user
+        @reservation.update(confirmed: true)
+        
         format.html do
           redirect_to dashboard_restaurant_reservations_path(@restaurant),
                       notice: 'Reservation was successfully updated.',

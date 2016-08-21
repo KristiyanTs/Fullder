@@ -5,6 +5,13 @@ class ReservationMailer < ApplicationMailer
     @user = user
     @restaurant = restaurant
     @reservation = reservation
-    mail(to: @user.email, subject: "Confirming reservation")
+    mail(to: @user.email, subject: "Confirmation awaiting")
+  end
+
+  def confirmed_reservation(user, restaurant, reservation)
+    @user = user
+    @restaurant = restaurant
+    @reservation = reservation
+    mail(to: @user.email, subject: "Confirmed reservation")
   end
 end
