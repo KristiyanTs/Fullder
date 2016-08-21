@@ -11,6 +11,8 @@
     = f.input :contact_number
     = f.input :contact_name
     = f.input :requirements
+    = f.association :table, collection: @tables, prompt: "Assign a table", include_blank: false,
+      label_method: lambda { |table| "Table #{table.number} - #{table.capacity} people" }
 
   .modal-footer
     = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"

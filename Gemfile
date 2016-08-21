@@ -75,11 +75,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 # Use friendly urls
 gem 'friendly_id'
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 group :development do
   gem 'spring'
@@ -108,6 +105,7 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'rspec-rails'
   gem 'rubocop', require: false
+  gem 'byebug'
 end
 
 group :production do

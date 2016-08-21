@@ -28,6 +28,7 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def edit
+    @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats)
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
     end
