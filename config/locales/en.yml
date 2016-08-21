@@ -53,19 +53,26 @@ en:
     product-form-title: "Product form for "
     role-form-title: "Role form for "
     position-form-title: "Position form for "
+    reservation-form-title: Reservation form for
     table-form-title: "Table form for "
     category-index-title: Listing categories
     product-index-title: Listing products
     role-index-title: Listing roles
     position-index-title: Listing employees
     table-index-title: Listing tables
+    reservation-index-title: Listing reservations
     name: Name
     products: Products
     actions: Actions
-    number: Number
+    number: Table number
     title: Title
     roles: Roles
     categories: Category
+    time: Time
+    seats: Seats
+    confirmed: confirmed
+  reservation:
+    reserve-table-header: Reserve a table
   rating:
     ambiance: Ambiance
     products: Goods qualiy

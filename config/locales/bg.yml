@@ -53,18 +53,25 @@ bg:
     role-form-title: "Формуляр за роля в "
     position-form-title: "Формуляр за позиция в "
     table-form-title: "Формуляр за маса в "
+    reservation-form-title: Формуляр за резервация в 
     category-index-title: Категории
     product-index-title: Продукти
     role-index-title: Роли
     position-index-title: Служители
     table-index-title: Маси
+    reservation-index-title: Резервации
     name: Име
     products: Продукти
-    settings: Настройки
-    number: Номер
+    actions: Настройки
+    number: Номер на маса
     title: Роля
     roles: Роля
     categories: Категории
+    time: Час
+    seats: Места
+    confirmed: Потвърдена
+  reservation:
+    reserve-table-header: Резервирай маса
   cocoon:
     defaults:
       add: "Добави данни"
@@ -115,7 +122,10 @@ bg:
         other: 'Роли'
       table:
         one: 'Маса'
-        other: 'Маси'        
+        other: 'Маси'  
+      reservation:
+        one: Резервация
+        other: Резервации      
     errors:
       messages:
         record_invalid: 'имаше грешки: %{errors}'

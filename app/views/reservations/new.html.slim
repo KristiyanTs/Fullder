@@ -1,5 +1,5 @@
 .container.container-white.col-md-6.col-md-offset-3
-  h2 Reserve a table
+  h2 = t 'reservation.reserve-table-header'
   = simple_form_for [@restaurant, @reservation] do |f|
     = f.input :from_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
     = f.input :seats
