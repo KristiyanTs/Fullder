@@ -7,21 +7,17 @@ class RestaurantsController < ApplicationController
     @user_location = request.location
 
     # The following code will not work in a localhost. Uncomment for production
-    if @userLocation.present?
-      @restaurants =
-        if params[:search]
-          Restaurant.near([@userLocation.latitude, @userLocation.longitude], 50, order: :distance).search_word(params[:search])
-        else
-          Restaurant.near([@userLocation.latitude, @userLocation.longitude], 50, order: :distance)
-        end.page(params[:page])
-    else
-      @restaurants =
-        if params[:search]
-          Restaurant.search_word(params[:search])
-        else
-          Restaurant.all
-        end.page(params[:page])
-    end
+    @restaurants =
+      if @user_location.blank?
+        Restaurant.all
+      else
+        Restaurant.near([@user_location.latitude, @user_location.longitude],
+                        50,
+                        order: :distance)
+      end
+
+    @restaurants = @restaurants.search_word(params[:search]) if params[:search]
+    @restaurants = @restaurants.page(params[:page])
 
     respond_to do |format|
       format.html

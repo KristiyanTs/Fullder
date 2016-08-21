@@ -46,7 +46,6 @@ class Restaurant < ApplicationRecord
                                     content_type: /\Aimage\/.*\Z/
 
   geocoded_by :address # can also be an IP address
-
   after_validation :geocode, if: :address_changed? # auto-fetch coordinates
 
   acts_as_mappable default_units: :kms,
@@ -57,7 +56,7 @@ class Restaurant < ApplicationRecord
 
   scope :search_word, -> (keyword) do
     keywords = keyword.split(/\W+/)
-    return tagged_with(keywords)
+    tagged_with(keywords)
   end
 
   def working?
