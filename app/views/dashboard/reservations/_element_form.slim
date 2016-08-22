@@ -7,6 +7,7 @@
 
   .modal-body
     = f.input :from_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
+    = f.input :duration
     = f.input :seats
     = f.input :contact_number
     = f.input :contact_name
