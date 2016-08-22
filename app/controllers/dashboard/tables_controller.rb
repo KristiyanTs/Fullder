@@ -18,6 +18,7 @@ class Dashboard::TablesController < ApplicationController
   end
 
   def show
+    @reservations = @table.reservations.page(params[:page])
   end
 
   def new

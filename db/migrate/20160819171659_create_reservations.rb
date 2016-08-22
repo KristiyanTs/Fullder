@@ -5,6 +5,7 @@ class CreateReservations < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.references :table, foreign_key: true
       t.datetime :from_time
+      t.time :duration
       t.string :contact_number
       t.string :contact_name
       t.integer :seats

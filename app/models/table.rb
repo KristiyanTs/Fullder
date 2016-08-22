@@ -34,4 +34,11 @@ class Table < ApplicationRecord
   scope :search, lambda { |keyword|
     where(capacity: keyword) if keyword
   }
+
+  def occupied?(appointment)
+    reservations.each do |reservation|
+      return true if appointment.between?(reservation.from_time, reservation.from_time + (reservation.duration.seconds_since_midnight/60).minutes)
+    end 
+    false
+  end 
 end
