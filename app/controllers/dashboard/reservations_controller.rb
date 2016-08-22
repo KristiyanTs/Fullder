@@ -30,7 +30,7 @@ class Dashboard::ReservationsController < ApplicationController
 
   def edit
     @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats).reject { |table| table.occupied?(@reservation.from_time)}
-    debugger
+    
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
     end
