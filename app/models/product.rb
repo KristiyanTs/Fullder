@@ -47,6 +47,11 @@ class Product < ApplicationRecord
 
   has_attached_file :avatar, styles: { small: '80x80#', large: '250x250#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates :name, presence: true
+  validates :category_id, presence: true
+  validates :short_description, presence: true
+  validates :price, presence: true
+
 
   acts_as_taggable
   acts_as_taggable_on :allergens
