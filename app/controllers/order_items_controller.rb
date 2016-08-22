@@ -3,10 +3,6 @@ class OrderItemsController < ApplicationController
   include OrderItemsHelper
   before_action :authenticate_user!
 
-  def new
-
-  end
-
   def create
     @order_item = OrderItem.new(order_item_params)
     respond_to do |format|
