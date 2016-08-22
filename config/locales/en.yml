@@ -76,6 +76,8 @@ en:
     confirmed: confirmed
   reservation:
     reserve-table-header: Reserve a table
+  cart:
+    send-order: Order
   rating:
     ambiance: Ambiance
     products: Goods qualiy

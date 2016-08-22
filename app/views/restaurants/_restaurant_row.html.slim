@@ -9,7 +9,7 @@
     - if restaurant.favorited_by.count>0
       h5.glyphicon.glyphicon-heart = restaurant.favorited_by.count 
 = link_to (t 'restaurant.menu'),((restaurant.sells_online && \
-  current_order.restaurant_id == restaurant.slug) || \
+  current_order.restaurant_id == restaurant.id) || \
   !restaurant.sells_online ? restaurant_categories_path(restaurant) : new_order_path(restaurant_id: restaurant.slug)),  
   class: "restaurant-row-menu col-xs-3 col-md-2 text-center"
 = link_to "tel:" + restaurant.phone_number, class: "col-xs-3 visible-xs restaurant-row-call text-center"

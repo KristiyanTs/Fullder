@@ -75,6 +75,8 @@ bg:
     confirmed: Потвърдена
   reservation:
     reserve-table-header: Резервирай маса
+  cart:
+    send-order: Поръчай
   cocoon:
     defaults:
       add: "Добави данни"

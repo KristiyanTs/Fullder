@@ -61,7 +61,6 @@ class Order < ApplicationRecord
   end
 
   def table_exists?
-    debugger
     if self[:table_number] && !Restaurant.find(restaurant_id).tables.exists?(number: self[:table_number])
       errors.add(:table_number, 'Table with this number does not exist')
     end
