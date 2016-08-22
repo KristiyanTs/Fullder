@@ -3,9 +3,8 @@
     ul
       - @order_item.errors.full_messages.each do |msg|
         li= msg
-- if @order_items.size == 0
-  p.text-center
-    | There are no items in your shopping cart.
+- if @order_items.empty?
+  p.text-center = t 'cart.empty'
 - else
   = render partial: 'carts/cart_row', collection: @order_items, as: :order_item, show_total: true
 

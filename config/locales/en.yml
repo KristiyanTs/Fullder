@@ -10,7 +10,7 @@ en:
   search:
     no-results: "No results found."
   restaurant:
-    search-placeholder: "restaurant name, address or id" 
+    search-placeholder: "search restaurants by name, place or tag" 
     working-time: Hours
     open: Open
     closed: Closed
@@ -25,6 +25,8 @@ en:
     price-from: "From "
     pick-variation: "Pick a variation"
     pick-choices: "Pick choices"
+    ingredients: Състав
+    description: Описание
   user:
     cancel-account: Cancel account 
   order:
@@ -78,6 +80,7 @@ en:
     reserve-table-header: Reserve a table
   cart:
     send-order: Order
+    empty: Your cart is empty
   rating:
     ambiance: Ambiance
     products: Goods qualiy
