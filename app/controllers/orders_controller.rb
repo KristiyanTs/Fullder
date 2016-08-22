@@ -13,10 +13,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    params[:order][:restaurant_id] = params[:restaurant_id]
+    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
     params[:order][:user_id] = current_user.id
 
-    @order = Order.new(order_params)
+    @order = @restaurant.orders.new(order_params)
     respond_to do |format|
       if @order.save
         session[:order_id] = @order.id
@@ -31,8 +31,8 @@ class OrdersController < ApplicationController
 
   def update
     respond_to do |format|
-      params[:order][:restaurant_id] = current_order.restaurant_id
-      params[:order][:user_id] = current_user.id
+      # params[:order][:restaurant_id] = current_order.restaurant_id
+      # params[:order][:user_id] = current_user.id
       if current_order.update(order_params)
         session[:order_id] = current_order.id
         format.html { redirect_to restaurant_product_path(order_restaurant, session[:product_id]) }
@@ -59,6 +59,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:table_number, :restaurant_id, :user_id, :table_id)
+    params.require(:order).permit(:table_number, :restaurant_id, :user_id, :table_id, :address)
   end
 end

@@ -30,6 +30,9 @@ bg:
     demands-placeholder: "Имате ли изисквания?"
     add-to-cart: "Добави"
     choose-table: "Изберете маса"
+    choose-address: Или изберете адрес за доставка
+    table: Маса
+    delivery: Доставка
   navbar:
     home: "Начало"
     manage: "Управлявай"

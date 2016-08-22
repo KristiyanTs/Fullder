@@ -51,6 +51,8 @@ en:
     placeholders:
         defaults:
           table_number: You can find it on your table
+        order:
+          address: Address for delivery
     required:
       text: 'required'
       mark: '*'

@@ -31,6 +31,9 @@ en:
     demands-placeholder: "Any demands? Please, be concise."
     add-to-cart: "Add to Cart"
     choose-table: "Choose a table"
+    choose-address: Or select an address for delivery
+    table: Table
+    delivery: Delivery
   navbar:
     home: "Home"
     manage: "Manage"

@@ -1,0 +1,6 @@
+h3.text-center = t 'order.choose-table'
+= simple_form_for([@order], authenticity_token: true) do |f|
+  = f.input :table_number, class: 'form-control', label: false
+  = f.input :table_id, as: :hidden
+  = hidden_field_tag 'restaurant_id', params[:restaurant_id]
+  = f.submit disable_with: 'Please wait ...', class: "btn btn-default center-block"

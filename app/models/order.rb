@@ -14,6 +14,7 @@
 #  tip             :decimal(, )
 #  total           :decimal(, )
 #  table_number    :integer
+#  address         :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -60,12 +61,15 @@ class Order < ApplicationRecord
   end
 
   def table_exists?
-    unless Restaurant.friendly.find(restaurant_id).tables.exists?(number: self[:table_number])
+    debugger
+    if self[:table_number] && !Restaurant.find(restaurant_id).tables.exists?(number: self[:table_number])
       errors.add(:table_number, 'Table with this number does not exist')
     end
   end
 
   def set_table
-    self[:table_id] = Restaurant.friendly.find(self[:restaurant_id]).tables.find_by(number: self[:table_number]).id
+    if self[:table_number]
+      self[:table_id] = Restaurant.friendly.find(self[:restaurant_id]).tables.find_by(number: self[:table_number]).id
+    end
   end
 end
