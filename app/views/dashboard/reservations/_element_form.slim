@@ -7,7 +7,7 @@
 
   .modal-body
     = f.input :from_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
-    = f.input :duration
+    = f.input :duration, as: :string, input_html: {class: "time-picker", value: "03:00"}
     = f.input :seats
     = f.input :contact_number
     = f.input :contact_name
@@ -20,6 +20,7 @@
     
 javascript:
   $(function () {
+    $('.time-picker').timepicker({ 'timeFormat': 'H:i'});
     $('#datetimepicker').datetimepicker({
       inline: true,
       sideBySide: true,

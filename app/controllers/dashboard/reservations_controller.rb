@@ -21,6 +21,7 @@ class Dashboard::ReservationsController < ApplicationController
 
   def new
     @reservation = @restaurant.reservations.build
+    @tables = @restaurant.tables.order(:capacity)
 
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
@@ -28,7 +29,8 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def edit
-    @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats)
+    @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats).reject { |table| table.occupied?(@reservation.from_time)}
+    debugger
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
     end
@@ -39,6 +41,9 @@ class Dashboard::ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
+        
+        @reservation.update(confirmed: true)
+
         format.html do
           redirect_to dashboard_restaurant_reservations_path(@restaurant),
                       notice: 'Reservation was successfully created.',
@@ -97,7 +102,7 @@ class Dashboard::ReservationsController < ApplicationController
   private
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
   end
 
   def set_reservation
