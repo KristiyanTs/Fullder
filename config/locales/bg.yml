@@ -9,7 +9,7 @@ bg:
   search:
     no-results: "Няма намерени резултати."
   restaurant:
-    search-placeholder: "име на ресторант, адрес или id" 
+    search-placeholder: "търсете ресторанти по име, място или таг" 
     working-time: Работно време
     open: Отворено
     closed: Затворено
@@ -24,12 +24,17 @@ bg:
     price-from: "От "
     pick-variation: "Избери вид"
     pick-choices: "Избери опции"
+    ingredients: Състав
+    description: Описание
   user:
     cancel-account: Изтриване на акаунт
   order:
     demands-placeholder: "Имате ли изисквания?"
     add-to-cart: "Добави"
     choose-table: "Изберете маса"
+    choose-address: Или изберете адрес за доставка
+    table: Маса
+    delivery: Доставка
   navbar:
     home: "Начало"
     manage: "Управлявай"
@@ -72,6 +77,9 @@ bg:
     confirmed: Потвърдена
   reservation:
     reserve-table-header: Резервирай маса
+  cart:
+    send-order: Поръчай
+    empty: Количката Ви е празна
   cocoon:
     defaults:
       add: "Добави данни"

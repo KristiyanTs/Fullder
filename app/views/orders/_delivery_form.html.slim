@@ -1,0 +1,5 @@
+h3.text-center = t 'order.choose-addres'
+= simple_form_for([@order], authenticity_token: true) do |f|
+  = f.input :address, label: false, hint: false, input_html: {value: current_user.address || ""}
+  = hidden_field_tag 'restaurant_id', params[:restaurant_id]
+  = f.submit disable_with: 'Please wait ...', class: "btn btn-default center-block"

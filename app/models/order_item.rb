@@ -40,7 +40,6 @@ class OrderItem < ApplicationRecord
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :product_present
-  validate :order_present
   validate :size_selected
   validate :options_allowed?
 
@@ -66,10 +65,6 @@ class OrderItem < ApplicationRecord
 
   def size_selected
     self[:size_id] = product.sizes.first.id if product.sizes.any? && size_id.nil?
-  end
-
-  def order_present
-    errors.add(:order, 'is not a valid order.') if order.nil?
   end
 
   def finalize

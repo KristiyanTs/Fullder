@@ -3,7 +3,7 @@ script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markercl
 
 - @left_link = @restaurant
 - @left_class = "glyphicon glyphicon-triangle-left"
-- new_order_button = new_order_path(restaurant_id: @restaurant.id)
+- new_order_button = new_order_path(restaurant_id: @restaurant.slug)
 - menu_button = restaurant_categories_path(@restaurant)
 link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" type="text/css"
 script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javascript" 
@@ -16,7 +16,6 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
     .restaurant_address
       = @restaurant.address
   	= image_tag @restaurant.restaurant_avatar.url(:large)
-
 
   = link_to (t 'restaurant.menu'),((@restaurant.sells_online && \
     current_order.restaurant_id == @restaurant.id) || \

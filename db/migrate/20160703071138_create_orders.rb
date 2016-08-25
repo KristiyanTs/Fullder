@@ -12,6 +12,7 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :tip
       t.decimal :total
       t.integer :table_number
+      t.string :address
 
       t.timestamps null: false
     end

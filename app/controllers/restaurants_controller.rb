@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class RestaurantsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:favorite]
   before_action :set_restaurant, only: [:show, :favorite]
 
   def index

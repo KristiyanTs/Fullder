@@ -48,7 +48,9 @@ gem 'font-awesome-rails'
 gem 'slim-rails'
 # Use google geokits api
 gem 'geokit-rails'
+# For geo location
 gem 'geocoder'
+# Displaying things on google maps
 gem 'gmaps4rails'
 # Use paging
 gem 'kaminari'
@@ -59,7 +61,9 @@ gem 'cocoon'
 gem 'therubyracer', platform: :ruby
 # Localization
 gem 'rails-i18n', '~> 5.0.0'
+# Translating object fields
 gem 'globalize', github: 'globalize/globalize'
+# This is needed by globalize
 gem 'activemodel-serializers-xml'
 # Model tags
 gem 'acts-as-taggable-on', '~> 4.0'
@@ -69,13 +73,14 @@ gem 'responders'
 gem 'jquery-ui-rails'
 gem 'jquery-timepicker-rails'
 gem 'bootstrap-select-rails'
-# Login with facebook google and twitter
+# Login with facebook, google and twitter
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 # Use friendly urls
 gem 'friendly_id'
 gem 'momentjs-rails', '>= 2.9.0'
+# Use jquery datetime picker
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 group :development do

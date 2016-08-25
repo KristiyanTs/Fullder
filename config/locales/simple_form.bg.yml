@@ -50,6 +50,8 @@ bg:
     placeholders:
         defaults:
           table_number: Номер на масата Ви
+        order:
+          address: Адрес за доставка
     required:
       text: 'задължително'
       mark: '*'

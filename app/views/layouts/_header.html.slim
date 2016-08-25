@@ -20,7 +20,7 @@
             li
               = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
                 class: "glyphicon glyphicon-eye-open"
-          - if @right_link && @restaurant.sells_online
+          - if @right_link && @restaurant&.sells_online
             li.cart_button
               = button_link(@right_link, @right_class, @right_content)
           li
