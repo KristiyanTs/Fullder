@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20160820083628) do
     t.string   "demands"
     t.boolean  "payed",         default: false
     t.boolean  "ready",         default: false
+    t.boolean  "delivered",     default: false
     t.datetime "received_at"
     t.datetime "ready_at"
     t.datetime "created_at",                    null: false

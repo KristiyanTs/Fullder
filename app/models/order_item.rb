@@ -14,6 +14,7 @@
 #  demands       :string
 #  payed         :boolean          default(FALSE)
 #  ready         :boolean          default(FALSE)
+#  delivered     :boolean          default(FALSE)
 #  received_at   :datetime
 #  ready_at      :datetime
 #  created_at    :datetime         not null

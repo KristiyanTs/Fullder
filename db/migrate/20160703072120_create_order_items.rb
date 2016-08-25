@@ -12,6 +12,7 @@ class CreateOrderItems < ActiveRecord::Migration
       t.string :demands
       t.boolean :payed, default: false
       t.boolean :ready, default: false
+      t.boolean :delivered, default: false
       t.datetime :received_at
       t.datetime :ready_at
 

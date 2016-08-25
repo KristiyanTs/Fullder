@@ -31,14 +31,15 @@ nav.navbar.navbar-default
                 = link_to "#{t 'navbar.reservations'}", dashboard_restaurant_reservations_path(@restaurant)
             - if should_see?(@restaurant.orders.new)
               li
-                = link_to "#{t 'navbar.delivered_orders'}", dashboard_restaurant_orders_path(@restaurant, order_status: "delivered")
+                = link_to "#{t 'navbar.delivered_orders'}", 
+                  dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered")
         li
           a href="#"  
             = t 'navbar.statistics'
         li
-          = link_to "#{t 'navbar.unready-orders'}", dashboard_restaurant_orders_path(@restaurant, order_status: "unready")
+          = link_to "#{t 'navbar.unready-orders'}", dashboard_restaurant_order_items_path(@restaurant, order_status: "unready")
         li
-          = link_to "#{t 'navbar.ready-orders'}", dashboard_restaurant_orders_path(@restaurant, order_status: "ready")
+          = link_to "#{t 'navbar.ready-orders'}", dashboard_restaurant_order_items_path(@restaurant, order_status: "ready")
         li
           = link_to "#{t 'navbar.settings'}", edit_dashboard_restaurant_path(@restaurant)
 
