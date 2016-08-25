@@ -14,4 +14,12 @@ module OrderItemsHelper
     current_order.order_items << @order_item
     current_order.save
   end
+
+  def option_names(item)
+    names = []
+    item.options.each do |opt|
+      names << opt.name
+    end
+    names
+  end
 end

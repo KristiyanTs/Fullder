@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   def pay
     @restaurant = current_order.restaurant
     current_order.update(payed: true)
-    current_order.order_items.update_all(payed: true)
+    current_order.order_items.update_all(payed: true, received_at: Time.now)
     session[:order_id] = nil
     redirect_to restaurant_path(@restaurant)
   end

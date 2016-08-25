@@ -1,8 +1,8 @@
-# frozen_string_literal: true
 class Dashboard::OrdersController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_restaurant
+  before_action :set_order_item, only: [:update, :show]
 
   def index
     @orders = @restaurant.order_items.where(payed: true)
@@ -25,9 +25,23 @@ class Dashboard::OrdersController < ApplicationController
 
   end
 
+  def update
+    if !@order_item.ready
+      @order_item.update(ready: true)
+    elsif @order_item.ready && !@order_item.delivered
+      @order_item.update(delivered: true)
+    else
+      notice[:error] = "No such action."
+    end
+  end
+
   private
 
   def set_restaurant
     @restaurant = Restaurant.friendly.find(params[:restaurant_id])
+  end
+
+  def set_order_item
+    @order_item = @restaurant.order_items.find(params[:id])
   end
 end

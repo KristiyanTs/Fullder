@@ -1,7 +1,0 @@
-tr
-  td = item.product.name
-  td = item.order.table_number || item.order.address
-  td 
-    .show
-      = link_to "", dashboard_restaurant_order_path(@restaurant, item),
-        class: "glyphicon glyphicon-info-sign"
