@@ -81,6 +81,7 @@ en:
   cart:
     send-order: Order
     empty: Your cart is empty
+    add-demands: Click to add demands
   rating:
     ambiance: Ambiance
     products: Goods qualiy

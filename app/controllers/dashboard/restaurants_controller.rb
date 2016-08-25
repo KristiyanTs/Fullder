@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Dashboard::RestaurantsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :find_by => :slug
   before_action :authenticate_user!
   before_action :set_restaurant, except: [:create, :new]
 
@@ -29,6 +29,7 @@ class Dashboard::RestaurantsController < ApplicationController
   end
 
   def update
+    debugger
     respond_to do |format|
       if @restaurant.update(restaurant_params)
         format.html { redirect_to edit_dashboard_restaurant_path(@restaurant), flash: { notice: 'Restaurant was successfully updated.' } }

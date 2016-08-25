@@ -80,6 +80,7 @@ bg:
   cart:
     send-order: Поръчай
     empty: Количката Ви е празна
+    add-demands: Добавете изисквания тук
   cocoon:
     defaults:
       add: "Добави данни"
