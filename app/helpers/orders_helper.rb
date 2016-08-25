@@ -5,7 +5,7 @@ module OrdersHelper
   end
 
   def delete_unpaid_orders
-    current_user.orders.where(order_status_id: '1').destroy_all
+    current_user.orders.where(payed: false).destroy_all
   end
 
   def table_number

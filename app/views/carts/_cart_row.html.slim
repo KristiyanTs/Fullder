@@ -13,6 +13,6 @@
       = f.select :quantity, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], { selected: order_item.quantity }, 
       onchange: "$('#order_item_quantity').submit();", label: false, class: "quantity-update"
       = f.input :demands, label: false, class: "demands-update", onchange: "$('#order_item_quantity').submit();",
-        placeholder: '#{t "cart.add-demands"}'               
+        placeholder: "#{t 'cart.add-demands'}"               
   .delete_button
     = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

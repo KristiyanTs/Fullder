@@ -44,7 +44,9 @@ bg:
     positions: "Позиции"
     tables: "Маси"
     statistics: "Статистики"
-    active-orders: Поръчки
+    ready-orders: Готови поръчки
+    unready-orders: Неготови поръчки
+    delivered_orders: Доставени поръчки
     settings: Настройки
     profile: "Профил"
     logout: "Изход"

@@ -1,8 +1,0 @@
-tr
-  td = item.full_description
-  td = item.demands
-  td = time_ago_in_words(item.updated_at)
-  td 
-    .mark_ready
-      = link_to "", root_path,
-        class: "glyphicon glyphicon-info-sign"

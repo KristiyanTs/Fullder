@@ -29,7 +29,6 @@ class Dashboard::RestaurantsController < ApplicationController
   end
 
   def update
-    debugger
     respond_to do |format|
       if @restaurant.update(restaurant_params)
         format.html { redirect_to edit_dashboard_restaurant_path(@restaurant), flash: { notice: 'Restaurant was successfully updated.' } }

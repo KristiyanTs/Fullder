@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :tables
       resources :orders, only: [:index, :edit, :update]
       resources :reservations
+      resources :orders
     end
   end
 

@@ -2,15 +2,27 @@
 class Dashboard::OrdersController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
-
   before_action :set_restaurant
 
   def index
-    @ready_items = @restaurant.orders.where(order_status_id: '3').collect(&:order_items).where(ready: true)
-    @ready_items = OrderItem.where(id: @ready_items.map(&:ids)).page(params[:page]).decorate
+    @orders = @restaurant.order_items.where(payed: true)
 
-    @awaiting_items = @restaurant.orders.where(order_status_id: '3').collect(&:order_items).where(ready: false)
-    @awaiting_items = OrderItem.where(id: @awaiting_items.map(&:ids)).page(params[:page]).decorate
+    if params[:order_status] == 'unready'
+      @orders = @orders.where(ready: false).page(params[:page])
+
+    elsif params[:order_status] == 'ready'
+      @orders = @orders.where('ready=? AND delivered=?', true, false).page(params[:page])
+
+    elsif params[:order_status] == 'delivered'
+      @orders = @orders.where('ready=? AND delivered=?', true, true).page(params[:page])
+
+    else
+      @orders = @orders.page(params[:page])
+    end
+  end
+
+  def show
+
   end
 
   private

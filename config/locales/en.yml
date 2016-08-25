@@ -45,7 +45,9 @@ en:
     positions: "Positions"
     tables: "Tables"
     statistics: "Statistics"
-    active-orders: "Active orders"
+    ready-orders: Ready orders
+    unready-orders: Unready orders
+    delivered_orders: Delivered orders
     settings: Settings
     profile: "Profile"
     logout: "Exit"

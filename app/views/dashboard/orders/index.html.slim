@@ -1,15 +1,14 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
 .container.container-white
-  h3 Listing awaiting orders 
+  h3 Listing recent orders 
 
   table.table.table-striped
     thead
       tr
-        th Product
-        th Demands
-        th Time
-        th Actions
-    tbody 
-    = render partial: "awaiting_element_row", collection: @ready_items, as: :item
-  = paginate @ready_items, theme: 'twitter-bootstrap-3'
+        th = t 'dashboard.product'
+        th = t 'dashboard.delivery'
+        th = t 'dashboard.actions'
+    tbody
+      = render partial: "element_row", collection: @orders, as: :item
+  = paginate @orders, theme: 'twitter-bootstrap-3'

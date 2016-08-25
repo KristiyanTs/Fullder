@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20160820083628) do
   end
 
   create_table "order_items", force: :cascade do |t|
+    t.integer  "restaurant_id"
     t.integer  "product_id"
     t.integer  "order_id"
     t.integer  "size_id"
@@ -129,23 +130,19 @@ ActiveRecord::Schema.define(version: 20160820083628) do
     t.integer  "quantity"
     t.decimal  "total_price"
     t.string   "demands"
+    t.boolean  "payed",         default: false
+    t.boolean  "ready",         default: false
     t.datetime "received_at"
     t.datetime "ready_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
+    t.index ["restaurant_id"], name: "index_order_items_on_restaurant_id", using: :btree
     t.index ["size_id"], name: "index_order_items_on_size_id", using: :btree
   end
 
-  create_table "order_statuses", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade do |t|
-    t.integer  "order_status_id"
     t.integer  "restaurant_id"
     t.integer  "user_id"
     t.integer  "table_id"
@@ -156,9 +153,9 @@ ActiveRecord::Schema.define(version: 20160820083628) do
     t.decimal  "total"
     t.integer  "table_number"
     t.string   "address"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
+    t.boolean  "payed",         default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
     t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -388,8 +385,8 @@ ActiveRecord::Schema.define(version: 20160820083628) do
   add_foreign_key "options_order_items", "order_items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
+  add_foreign_key "order_items", "restaurants"
   add_foreign_key "order_items", "sizes"
-  add_foreign_key "orders", "order_statuses"
   add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "tables"
   add_foreign_key "orders", "users"

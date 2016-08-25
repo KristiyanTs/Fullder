@@ -49,9 +49,11 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    current_order.update(order_status_id: 3)
+    @restaurant = current_order.restaurant
+    current_order.update(payed: true)
+    current_order.order_items.update_all(payed: true)
     session[:order_id] = nil
-    redirect_to restaurant_path(current_order.restaurant)
+    redirect_to restaurant_path(@restaurant)
   end
 
   private
