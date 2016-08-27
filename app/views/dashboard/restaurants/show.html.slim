@@ -1,2 +1,6 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
+= form_tag dashboard_restaurant_import_path(@restaurant), multipart: true do
+  = file_field_tag :file
+  = submit_tag 'Import'
+

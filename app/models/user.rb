@@ -58,7 +58,8 @@ class User < ApplicationRecord
     user = User.find_by(uid: token['uid'])
     unless user
       user = User.new(
-        name: token.info['name'],
+        first_name: token.info['name'].split(' ')[0],
+        last_name: token.info['name'].split(' ')[1],
         provider: token['provider'],
         uid: token['uid'],
         email: token.info['email'] || SecureRandom.hex(5) + "@changemeplease.com",
@@ -72,6 +73,10 @@ class User < ApplicationRecord
 
   def password_required?
     super && provider.blank?
+  end
+
+  def name
+    first_name + last_name
   end
 
 end

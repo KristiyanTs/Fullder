@@ -63,4 +63,31 @@ class Product < ApplicationRecord
     where('products.name ilike ?',
           keyword)
   end
+
+  def self.import!(restaurant_id, file_name)
+    debugger
+    file_path = Rails.root.join('tmp/menu_import', file_name)
+    File.open(file_path, 'rb') do |file|
+      sheet = open_spreadsheet(file_name, file_path)
+      headers = sheet.row[2]
+      puts sheet, restaurant_id, headers
+      file.unlink
+      file.delete
+    end
+  end
+
+  def self.open_spreadsheet(file_name, file_path)
+    case File.extname(file_name)
+    when '.csv' then Roo::Csv.new(file_path,
+                                  packed: nil,
+                                  file_warning: :ignore)
+    when '.xls' then Roo::Excel.new(file_path,
+                                    packed: nil,
+                                    file_warning: :ignore)
+    when '.xlsx' then Roo::Excelx.new(file_path,
+                                      packed: nil,
+                                      file_warning: :ignore)
+    else raise "Unknown file type: #{file_name}"
+    end
+  end
 end
