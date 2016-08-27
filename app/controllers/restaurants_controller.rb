@@ -23,7 +23,7 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @restaurants }
-      format.js { render partial: 'index' }
+      format.js { }
     end
   end
 
