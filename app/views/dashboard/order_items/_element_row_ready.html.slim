@@ -1,14 +1,13 @@
-- @items.each do |item|
-  tr.item class="row-#{item.id}"
-    td 
-      h4 = item.product.name
-      h5 = item.size.try(:name)
-      h5 = option_names(item).to_sentence
-    td = time_ago_in_words(item.ready_at)
-    td = item.try(:demands)
-    td = delivery_destination(item)
-    td 
-      = link_to "Show", dashboard_restaurant_order_item_path(@restaurant, item),
-        class: "btn btn-default"
-      = link_to "Delivered", dashboard_restaurant_order_item_path(@restaurant, item),
-        {method: :patch, remote: true, class: "btn btn-success" }
+tr.item class="row-#{item.id}"
+  td 
+    h4 = item.product.name
+    h5 = item.size.try(:name)
+    h5 = option_names(item).to_sentence
+  td = time_ago_in_words(item.ready_at)
+  td = item.try(:demands)
+  td = delivery_destination(item)
+  td 
+    = link_to "Show", dashboard_restaurant_order_item_path(@restaurant, item),
+      class: "btn btn-default"
+    = link_to "Delivered", dashboard_restaurant_order_item_path(@restaurant, item),
+      {method: :patch, remote: true, class: "btn btn-success" }

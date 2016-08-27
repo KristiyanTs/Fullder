@@ -1,4 +1,4 @@
-$("<%=j render partial: @partial_name, object: @items %>")
+$("<%=j render partial: @partial_name, collection: @items, as: :item %>")
   .appendTo($(".infinite-table table"));
 
 <% if @items.last_page? %>

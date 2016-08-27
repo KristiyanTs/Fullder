@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
         Restaurant.search_word(params[:search])
       else
         Restaurant.all
-      end.page(params[:page])
+      end.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html

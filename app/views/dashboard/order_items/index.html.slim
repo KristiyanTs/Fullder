@@ -2,4 +2,4 @@
 
 .container.container-white.order-items
   = render layout: "table_#{session[:order_status]}" do
-    = render partial: "element_row_#{session[:order_status]}", object: @items
+    = render partial: "element_row_#{session[:order_status]}", collection: @items, as: :item
