@@ -2,7 +2,6 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
-      t.references :order_status, index: true, foreign_key: true
       t.references :restaurant, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
       t.references :table, index: true, foreign_key: true
@@ -13,6 +12,7 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :total
       t.integer :table_number
       t.string :address
+      t.boolean :payed, default: false
 
       t.timestamps null: false
     end

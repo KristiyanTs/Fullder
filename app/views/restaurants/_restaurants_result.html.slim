@@ -2,6 +2,7 @@
   p.text-center
     = t "search.no-results"
 - else
-  = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
-  .center-pagination
-    = paginate @restaurants, theme: 'twitter-bootstrap-3'
+  .infinite-scroll
+    = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
+    .pagination.hidden
+      = link_to_next_page(@restaurants, 'Next Page', remote: true)

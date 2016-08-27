@@ -30,15 +30,6 @@ User.create!([
 
 p "Created #{User.count} users"
 
-OrderStatus.delete_all
-OrderStatus.create! id: 1, name: "In Progress" # Still in cart before paying
-OrderStatus.create! id: 2, name: "Payed" # Payed, but not delivered to restaurant
-OrderStatus.create! id: 3, name: "Awaiting" # Delivered to restaurant
-OrderStatus.create! id: 4, name: "Ready"  #When out of kitchen
-
-
-p "Created Order statuses"
-
 restaurant_seed = [
   {
     name: "KFC",
@@ -152,7 +143,7 @@ restaurant_seed.each do |restaurant_params|
   rest_ids << Restaurant.find_or_create_by(restaurant_params).id
 end
 
-p "Created #{Restaurant.count} restaurant"
+p "Created #{Restaurant.count} restaurants"
 
 category_seed.each do |category_params|
   rest_ids.each do |rest_id|

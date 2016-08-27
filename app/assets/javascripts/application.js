@@ -5,6 +5,7 @@
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/dropdown
+//= require jquery.infinite-pages
 //= require select2-full
 //= require cocoon
 //= require slick.min
