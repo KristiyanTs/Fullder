@@ -35,9 +35,18 @@ class Reservation < ApplicationRecord
   belongs_to :table
 
   validate :user_confirmed?
+  validate :table_free?
 
   def user_confirmed?
-    errors.add(:user, 'has not confirmed an email.') if (user && !user.confirmed?) 
+    errors.add(:user, 'has not confirmed an email.') if (user && !user.confirmed?)
+  end
+
+  def table_free?
+    if table
+      if table.occupied?(start_time)
+        errors.add(:table, 'Table taken.')
+      end
+    end
   end
 
   scope :search, lambda { |keyword|

@@ -32,14 +32,29 @@
 require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
-  describe "taken table" do 
-    it "can't save if the table is taken" do 
+  describe "taken table" do
+    it "can't save if the table is taken" do
       table = create(:table)
-      reservation = create(:reservation, start_time: Time.now + 1.hour, end_time: Time.now + 4.hours)
+      reservation = build(:reservation, start_time: Time.now + 1.hour, end_time: Time.now + 4.hours)
       taken_reservation = create(:reservation)
       table.reservations << [taken_reservation, reservation]
 
-      expect(table.taken_table).to raise_error("This table is taken")
+      reservation.save
+      expect(table.reservations.size).to be 1
+    end
+  end
+
+  describe "reservation" do
+    it "can't have end_time before start_time" do
+      reservation = build(:reservation, start_time: Time.now, end_time: Time.now - 1.hour)
+
+      expect(table.save).to be_falsy
+    end
+
+    it "can't have end_time longer than 24 hours" do
+      reservation = build(:reservatoin, start_time: Time.now, end_time: Time.now + 25.hours)
+
+      expect(table.save).to be_falsy
     end
   end
 end
