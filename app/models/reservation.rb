@@ -6,8 +6,8 @@
 #  restaurant_id  :integer
 #  user_id        :integer
 #  table_id       :integer
-#  from_time      :datetime
-#  duration       :time
+#  start_time     :datetime
+#  end_time       :datetime
 #  contact_number :string
 #  contact_name   :string
 #  seats          :integer

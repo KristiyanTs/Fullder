@@ -14,13 +14,19 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  first_name             :string
-#  last_name              :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  admin                  :boolean          default(FALSE)
+#  name                   :string
 #  phone_number           :string
 #  address                :string
-#  admin                  :boolean
+#  locale                 :string           default("en")
+#  provider               :string
+#  uid                    :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #
