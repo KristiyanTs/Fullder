@@ -10,11 +10,10 @@ class CreateOrderItems < ActiveRecord::Migration
       t.integer :quantity
       t.decimal :total_price
       t.string :demands
-      t.boolean :payed, default: false
-      t.boolean :ready, default: false
-      t.boolean :delivered, default: false
+      t.string :status
       t.datetime :received_at
       t.datetime :ready_at
+      t.datetime :delivered_at
 
       t.timestamps null: false
     end

@@ -5,19 +5,13 @@ class Dashboard::OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:update, :show]
 
   def index
-    @items = @restaurant.order_items.where(payed: true)
-
-    if params[:order_status] == 'unready'
-      @items = @items.where(ready: false).page(params[:page])
-
-    elsif params[:order_status] == 'ready'
-      @items = @items.where('ready=? AND delivered=?', true, false).page(params[:page])
-
-    elsif params[:order_status] == 'delivered'
-      @items = @items.where('ready=? AND delivered=?', true, true).page(params[:page])
-
-    else
-      @items = @items.page(params[:page])
+    session[:order_status] = params[:order_status] || session[:order_status]
+    @items = @restaurant.order_items.where(status: session[:order_status]).page(params[:page]).per(15)
+    respond_to do |format|
+      format.html {}
+      format.js {
+        @partial_name = "element_row_#{session[:order_status]}"
+      }
     end
   end
 
@@ -26,12 +20,11 @@ class Dashboard::OrderItemsController < ApplicationController
   end
 
   def update
-    if !@order_item.ready
-      @order_item.update(ready: true, ready_at: Time.now)
-    elsif @order_item.ready && !@order_item.delivered
-      @order_item.update(delivered: true)
-    else
-      notice[:error] = "No such action."
+    @order_item.next_status
+    @items = @restaurant.order_items.where(status: session[:order_status]).page(params[:page])
+
+    respond_to do |format|
+      format.js {}
     end
   end
 

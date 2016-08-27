@@ -12,11 +12,10 @@
 #  quantity      :integer
 #  total_price   :decimal(, )
 #  demands       :string
-#  payed         :boolean          default(FALSE)
-#  ready         :boolean          default(FALSE)
-#  delivered     :boolean          default(FALSE)
+#  status        :string
 #  received_at   :datetime
 #  ready_at      :datetime
+#  delivered_at  :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -36,6 +35,7 @@
 #
 
 class OrderItem < ApplicationRecord
+  ORDER_STATUSES = %w(unpaid unready ready delivered).freeze
   belongs_to :order
   belongs_to :product
   belongs_to :size
@@ -49,8 +49,10 @@ class OrderItem < ApplicationRecord
   validate :product_present
   validate :size_selected
   validate :options_allowed?
+  validate :allowed_status?
 
   before_save :finalize
+  before_save :check_status
 
   def unit_price
     if persisted?
@@ -62,6 +64,18 @@ class OrderItem < ApplicationRecord
 
   def total_price
     unit_price * quantity
+  end
+
+  def next_status
+    self.received_at = Time.now if self.status == 'unpaid'
+    self.ready_at = Time.now if self.status == 'unready'
+    self.delivered_at = Time.now if self.status == 'ready'
+
+    return false if ORDER_STATUSES.index(self.status) == ORDER_STATUSES.length-1
+
+    next_index = ORDER_STATUSES.index(self.status) + 1
+
+    self.update(status: ORDER_STATUSES[next_index])    
   end
 
   private
@@ -85,5 +99,13 @@ class OrderItem < ApplicationRecord
         errors.add(:product_id, message: 'Do not exceed the maximum for options!')
       end
     end
+  end
+
+  def allowed_status?
+    ORDER_STATUSES.include?(status)
+  end
+
+  def check_status
+    status = 'ready' if status == 'unready' && product.ready
   end
 end

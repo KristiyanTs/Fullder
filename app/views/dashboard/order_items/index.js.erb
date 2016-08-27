@@ -1,0 +1,9 @@
+$("<%=j render partial: @partial_name, object: @items %>")
+  .appendTo($(".infinite-table table"));
+
+<% if @items.last_page? %>
+  $('.pagination').html("You reached the end!");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@items, 'Next Page', remote: true) %>");
+<% end %>

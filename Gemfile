@@ -82,6 +82,8 @@ gem 'friendly_id'
 gem 'momentjs-rails', '>= 2.9.0'
 # Use jquery datetime picker
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+# For kaminari infinite pages
+gem 'jquery-infinite-pages'
 
 group :development do
   gem 'spring'

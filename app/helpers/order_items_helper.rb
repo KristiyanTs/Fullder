@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 module OrderItemsHelper
   def table_in_this_restaurant?
     current_order.restaurant_id == @order_item.product.restaurant_id && !current_order.table_id.nil?
@@ -25,7 +24,7 @@ module OrderItemsHelper
 
   def delivery_destination(item)
     if item.order.table_number
-      (t 'order.table') + " " + item.order.table_number.to_s
+      (t 'order.table') + " " + item.order.table_number.to_s 
     else
       (t 'order.delivery') + " " + item.order.address
     end

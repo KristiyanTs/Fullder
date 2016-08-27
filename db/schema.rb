@@ -130,13 +130,12 @@ ActiveRecord::Schema.define(version: 20160820083628) do
     t.integer  "quantity"
     t.decimal  "total_price"
     t.string   "demands"
-    t.boolean  "payed",         default: false
-    t.boolean  "ready",         default: false
-    t.boolean  "delivered",     default: false
+    t.string   "status"
     t.datetime "received_at"
     t.datetime "ready_at"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "delivered_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
     t.index ["restaurant_id"], name: "index_order_items_on_restaurant_id", using: :btree

@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+document.addEventListener 'turbolinks:load', ->
+  $('.infinite-table').infinitePages
+    loading: ->
+      $(this).text('Loading next page...')
+    error: ->
+      $(this).button('There was an error, please try again')
