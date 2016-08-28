@@ -1,9 +1,14 @@
-$("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
-  .appendTo($(".infinite-scroll"));
-
-<% if @restaurants.last_page? %>
-  $('.pagination').html("That's all, folks!");
+<% if !@scrolling %>
+  $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
 <% else %>
-  $('.pagination')
-    .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true) %>");
-<% end %>
+
+  $("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
+    .appendTo($(".infinite-scroll"));
+
+  <% if @restaurants.last_page? %>
+    $('.pagination').html("That's all, folks!");
+  <% else %>
+    $('.pagination')
+      .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true) %>");
+  <% end %>
+<% end%>

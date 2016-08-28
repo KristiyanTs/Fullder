@@ -35,6 +35,6 @@ class Position < ApplicationRecord
     keyword = "%#{keyword}%"
     joins(:user, :role)
       .where('users.first_name ilike ? or users.last_name ilike ? or roles.name ilike ?',
-             keyword, keyword, keyword)
+             keyword, keyword, keyword) if keyword
   end
 end

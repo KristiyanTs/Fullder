@@ -6,10 +6,8 @@ class Dashboard::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :destroy]
 
   def index
-    @products = @restaurant.products
+    @products = @restaurant.products.search(params[:search])
                            .page(params[:page])
-
-    @products = @products.search(params[:search]) if params[:search]
 
     respond_to do |format|
       format.html

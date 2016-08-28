@@ -42,6 +42,6 @@ class Role < ApplicationRecord
 
   scope :search, -> (keyword) do
     keyword = "%#{keyword}%"
-    where('roles.name ilike ?', keyword)
+    where('roles.name ilike ?', keyword) if keyword
   end
 end

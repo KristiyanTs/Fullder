@@ -7,10 +7,8 @@ class Dashboard::RolesController < ApplicationController
 
   def index
     @roles = @restaurant.roles
-
-    @roles = @roles.search(params[:search]) if params[:search]
-
-    @roles = @roles.page(params[:page])
+    @roles = @roles.search(params[:search]).page(params[:page])
+    
     respond_to do |format|
       format.html
       format.json { render json: @roles }

@@ -7,9 +7,7 @@ class Dashboard::CategoriesController < ApplicationController
 
   def index
     @categories = @restaurant.categories
-
-    @categories = @categories.search(params[:search]) if params[:search]
-
+    @categories = @categories.search(params[:search])
     @categories = @categories.page(params[:page])
 
     respond_to do |format|

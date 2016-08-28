@@ -45,6 +45,6 @@ class Category < ApplicationRecord
 
   scope :search, -> (keyword) do
     keyword = "%#{keyword}%"
-    with_translations.where('categories.name ilike ?', keyword)
+    with_translations.where('categories.name ilike ?', keyword) if keyword
   end
 end
