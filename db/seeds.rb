@@ -66,6 +66,114 @@ restaurant_seed = [
     address: "Sofia, bul. Vitosha 18",
     description: "Mc OOD",
     phone_number: "99999999"
+  },
+  {
+    name: "KFC",
+    address: "Burgas, bul. Transportna 8",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "McDonals",
+    address: "Plovdiv, bul. Svoboda 69",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "Nikola",
+    address: "Ruse, Bulgaria",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy2",
+    address: "Bulgaria, Pancharevo",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "Subwayche",
+    address: "Pleven, Bulgaria",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy3",
+    address: "Vidin, Bulgaria",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "KFC4",
+    address: "Sofia, bul. Slivnitsa 172",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "McDonals8",
+    address: "Sofia, bul. Maria Luiza 23",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "PizzaHut1",
+    address: "Sofia, bul. Aleksandar Stamboliisky 101",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy2",
+    address: "Sofia, ul. Angel Kanchev 11",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "Subway3",
+    address: "Varna, ul. Akademik Andrei Saharov 2",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy4",
+    address: "Sofia, bul. Vitosha 18",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "KFC5",
+    address: "Burgas, bul. Transportna 8",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "McDonals6",
+    address: "Plovdiv, bul. Svoboda 69",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "Nikola7",
+    address: "Ruse, Bulgaria",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy28",
+    address: "Bulgaria, Pancharevo",
+    description: "Mc OOD",
+    phone_number: "99999999"
+  },
+  {
+    name: "Subwayche9",
+    address: "Pleven, Bulgaria",
+    description: "Fast food.",
+    phone_number: "88888888"
+  },
+  {
+    name: "Raffy31",
+    address: "Vidin, Bulgaria",
+    description: "Mc OOD",
+    phone_number: "99999999"
   }
 ]
 

@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   include OrdersHelper
   load_and_authorize_resource
   before_action :authenticate_user!
+  before_action :set_restaurant, only: [:new, :create]
   before_action :delete_unpaid_orders, only: [:create]
 
   def new
@@ -12,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
     params[:order][:user_id] = current_user.id
 
     @order = @restaurant.orders.new(order_params)
@@ -57,6 +57,9 @@ class OrdersController < ApplicationController
   end
 
   private
+  def set_restaurant
+    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
+  end
 
   def order_params
     params.require(:order).permit(:table_number, :restaurant_id, :user_id, :table_id, :address)

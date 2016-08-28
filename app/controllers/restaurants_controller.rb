@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
       end
 
     @restaurants = @restaurants.by_distance(origin: [@user_location.latitude, @user_location.longitude]) if !@user_location.blank?
-    @restaurants = @restaurants.page(params[:page])
+    @restaurants = @restaurants.page(params[:page]).per(15)
 
     respond_to do |format|
       format.html
