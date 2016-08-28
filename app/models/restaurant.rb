@@ -58,12 +58,11 @@ class Restaurant < ApplicationRecord
 
   after_validation :geocode, if: :address_changed? # auto-fetch coordinates
 
-  acts_as_mappable default_units: :kms,
-                   default_formula: :sphere,
-                   distance_field_name: :distance,
-                   lat_column_name: :lat,
-                   lng_column_name: :lng
-
+  acts_as_mappable :default_units => :kms,
+                   :default_formula => :flat,
+                   :lat_column_name => :latitude,
+                   :lng_column_name => :longitude
+  
   scope :search_word, -> (keyword) do
     keywords = keyword.split(/\W+/)
     return tagged_with(keywords)

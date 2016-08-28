@@ -4,21 +4,17 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :favorite]
 
   def index
-    # @user_location = request.location
-
-    # The following code will not work in a localhost. Uncomment for production
-    # if @userLocation.present?
-    #   @restaurants = @search.result.page(params[:page]).near([@userLocation.latitude, @userLocation.longitude], 50, order: :distance)
-    # else
-    #   @restaurants = @search.result.page(params[:page])
-    # end
+    @user_location = request.location
 
     @restaurants =
-      if params[:search]
-        Restaurant.search_word(params[:search])
-      else
+      if params[:search].blank?
         Restaurant.all
-      end.page(params[:page]).per(10)
+      else
+        Restaurant.search_word(params[:search])
+      end
+
+    @restaurants = @restaurants.by_distance(origin: [@user_location.latitude, @user_location.longitude]) if !@user_location.blank?
+    @restaurants = @restaurants.page(params[:page]).per(15)
 
     respond_to do |format|
       format.html
