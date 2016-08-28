@@ -25,6 +25,8 @@ bg:
         category: 'Категория'
         restaurant_avatar: 'Главна снимка'
         sells_online: 'Желаете ли да продавате през OmniMenu?'
+        accepts_reservations: 'Желаете ли да получавате резервации през OmniMenu?'
+        accepts_deliveries: 'Желаете ли да по получавате поръчки за доставки през OmniMenu?'
         tag_list: 'Тагове, разделени със запетайки'
         permission_ids: 'Разрешения'
         number: 'Номер'

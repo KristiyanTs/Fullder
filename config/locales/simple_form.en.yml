@@ -26,6 +26,8 @@ en:
         category: 'Category'
         restaurant_avatar: 'Restaurant avatar'
         sells_online: 'Would you like to sell via OmniMenu?'
+        accepts_reservations: Would you like to accept reservations through OmniMenu?
+        accepts_deliveries: Would you like to accept orders for home delivery through OmniMenu?
         tag_list: 'Tags, separated by commas'
         permission_ids: 'Permissions'
         number: 'Number'
