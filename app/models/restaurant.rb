@@ -64,9 +64,9 @@ class Restaurant < ApplicationRecord
                    :lng_column_name => :longitude
   
   scope :search, -> (keyword) do
-    if keyword
-      keywords = keyword.split(/\W+/)
-      return tagged_with(keywords)
+    unless keyword.blank?
+      keywords = keyword.split(/\W+/) 
+      tagged_with(keywords)
     end
   end
 

@@ -1,1 +1,0 @@
-$('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
