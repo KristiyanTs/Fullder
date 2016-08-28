@@ -30,7 +30,7 @@
 
 class Category < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :scoped], scope: :restaurant
 
   belongs_to :restaurant
   belongs_to :supercategory, class_name: "Category"

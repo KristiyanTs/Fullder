@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 class Dashboard::RestaurantsController < ApplicationController
-  load_and_authorize_resource :find_by => :slug
+  load_and_authorize_resource find_by: :slug
   before_action :authenticate_user!
-  before_action :set_restaurant, except: [:create, :new]
+  before_action :set_restaurant, except: [:create, :new, :import]
 
   def show
   end
@@ -19,13 +19,28 @@ class Dashboard::RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to edit_dashboard_restaurant_path(@restaurant), flash: { notice: 'Restaurant was successfully created.' } }
+        format.html do
+          redirect_to edit_dashboard_restaurant_path(@restaurant),
+                      flash: { notice: 'Restaurant was successfully created.' }
+        end
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def import
+    upload = params[:file]
+    File.open(Rails.root.join('tmp/menu_import', upload.original_filename), 'wb') do |file|
+      file.write(upload.read)
+    end
+
+    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
+    MenuImportWorker.perform_async(@restaurant.id, upload.original_filename)
+    redirect_to dashboard_restaurant_path(@restaurant),
+                notice: 'File was uploaded and is being processed.'
   end
 
   def update

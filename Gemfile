@@ -84,6 +84,12 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 # For kaminari infinite pages
 gem 'jquery-infinite-pages'
+# Async jobs
+gem 'sidekiq'
+# Web interface for sidekiq
+gem 'sinatra', github: 'sinatra', require: false
+# Parse spreadsheets
+gem 'roo'
 
 group :development do
   gem 'spring'

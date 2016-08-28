@@ -1,5 +1,8 @@
 # frozen_string_literal: true
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web, at: '/sidekiq'
   root 'restaurants#index'
 
   get 'carts/show'
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resources :products, only: [:index, :show]
     resources :categories, only: [:index, :show]
-    resources :reservations, only: [:new, :create] 
+    resources :reservations, only: [:new, :create]
     put :favorite, on: :member
   end
 
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     resources :restaurants, except: [:index, :destroy] do
+      post :import
       resources :products
       resources :categories
       resources :roles
