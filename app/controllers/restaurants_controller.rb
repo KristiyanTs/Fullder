@@ -6,13 +6,7 @@ class RestaurantsController < ApplicationController
   def index
     @user_location = request.location
 
-    @restaurants =
-      if params[:search].blank?
-        Restaurant.all
-      else
-        Restaurant.search_word(params[:search])
-      end
-
+    @restaurants = Restaurant.all.search(params[:search])
     @restaurants = @restaurants.by_distance(origin: [@user_location.latitude, @user_location.longitude]) if !@user_location.blank?
     @restaurants = @restaurants.page(params[:page]).per(15)
 

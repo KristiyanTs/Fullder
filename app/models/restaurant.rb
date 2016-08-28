@@ -63,9 +63,11 @@ class Restaurant < ApplicationRecord
                    :lat_column_name => :latitude,
                    :lng_column_name => :longitude
   
-  scope :search_word, -> (keyword) do
-    keywords = keyword.split(/\W+/)
-    return tagged_with(keywords)
+  scope :search, -> (keyword) do
+    if keyword
+      keywords = keyword.split(/\W+/)
+      return tagged_with(keywords)
+    end
   end
 
   def working?
