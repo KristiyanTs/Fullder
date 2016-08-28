@@ -32,13 +32,12 @@ class Dashboard::RestaurantsController < ApplicationController
   end
 
   def import
-    debugger
     upload = params[:file]
     File.open(Rails.root.join('tmp/menu_import', upload.original_filename), 'wb') do |file|
       file.write(upload.read)
     end
+
     @restaurant = Restaurant.friendly.find(params[:restaurant_id])
-    Product.import!(@restaurant.id, upload.original_filename)
     MenuImportWorker.perform_async(@restaurant.id, upload.original_filename)
     redirect_to dashboard_restaurant_path(@restaurant),
                 notice: 'File was uploaded and is being processed.'
