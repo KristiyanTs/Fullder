@@ -52,7 +52,7 @@ en:
           password: leave it blank if you don't want to change it
     placeholders:
         defaults:
-          table_number: You can find it on your table
+          table_number: Table number
         order:
           address: Address for delivery
     required:

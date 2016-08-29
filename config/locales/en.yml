@@ -20,13 +20,16 @@ en:
     reserve: Reserve
     update: Update restaurant
     create: Create restaurant
+    reserve: Reserve
+    order: Order
+    deliver: Delivery
   product:
     contains: "Contains "
     price-from: "From "
     pick-variation: "Pick a variation"
     pick-choices: "Pick choices"
-    ingredients: Състав
-    description: Описание
+    ingredients: Ingredients
+    description: Description
   user:
     cancel-account: Cancel account 
   order:
