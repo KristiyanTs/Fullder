@@ -18,8 +18,6 @@ development:
   encoding: unicode
   database: FastOrder_development
   pool:     5
-  username: pguser
-  password: 12345678
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -46,8 +44,6 @@ test:
   encoding: unicode
   database: FastOrder_test
   pool:     5
-  username: pguser
-  password: 12345678
   template: template0
 
 production:

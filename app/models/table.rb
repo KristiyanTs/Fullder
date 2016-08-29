@@ -35,10 +35,9 @@ class Table < ApplicationRecord
     where(capacity: keyword) if keyword
   }
 
-  def occupied?(appointment)
-    reservations.each do |reservation|
-      return true if appointment.between?(reservation.from_time, reservation.from_time + (reservation.duration.seconds_since_midnight/60).minutes)
-    end 
-    false
-  end 
+  def occupied?(time)
+    reservations.any? do |reservation|
+      time.between?(reservation.start_time, reservation.end_time)
+    end
+  end
 end
