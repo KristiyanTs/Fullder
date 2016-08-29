@@ -44,17 +44,21 @@ RSpec.describe Reservation, type: :model do
     end
   end
 
-  describe "reservation" do
+  describe 'reservation' do
     it "can't have end_time before start_time" do
-      reservation = build(:reservation, start_time: Time.now, end_time: Time.now - 1.hour)
+      reservation = build(:reservation,
+                          start_time: Time.zone.now,
+                          end_time: Time.zone.now - 1.hour)
 
-      expect(table.save).to be_falsy
+      expect(reservation.save).to be_falsy
     end
 
     it "can't have end_time longer than 24 hours" do
-      reservation = build(:reservatoin, start_time: Time.now, end_time: Time.now + 25.hours)
+      reservation = build(:reservation,
+                          start_time: Time.zone.now,
+                          end_time: Time.zone.now + 25.hours)
 
-      expect(table.save).to be_falsy
+      expect(reservation.save).to be_falsy
     end
   end
 end

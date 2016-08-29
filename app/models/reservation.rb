@@ -36,20 +36,21 @@ class Reservation < ApplicationRecord
 
   validate :user_confirmed?
   validate :table_free?
+  validate :end_time_edge_cases
 
   def user_confirmed?
-    errors.add(:user, 'has not confirmed an email.') if (user && !user.confirmed?)
+    errors.add(:user, 'has not confirmed an email.') if user && !user.confirmed?
   end
 
   def table_free?
-    if table
-      if table.occupied?(start_time)
-        errors.add(:table, 'Table taken.')
-      end
-    end
+    errors.add(:table, 'Table taken.') if table && table.occupied?(start_time)
   end
 
   scope :search, lambda { |keyword|
     where(seats: keyword) if keyword
   }
+
+  def end_time_edge_cases
+    errors.add(:end_time, 'End time should be within 24 hours after start time.') unless end_time.between?(start_time, start_time + 24.hours)
+  end
 end
