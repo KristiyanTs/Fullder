@@ -75,8 +75,4 @@ class User < ApplicationRecord
     super && provider.blank?
   end
 
-  def name
-    first_name + last_name
-  end
-
 end

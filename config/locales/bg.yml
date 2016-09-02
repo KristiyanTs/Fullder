@@ -19,6 +19,9 @@ bg:
     reserve: Резервирай
     update: Редактирай ресторант
     create: Създай ресторант
+    reserve: Резервирай
+    order: Поръчай
+    deliver: Доставки
   product:
     contains: "Съдържа "
     price-from: "От "

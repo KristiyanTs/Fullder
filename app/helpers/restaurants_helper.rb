@@ -7,4 +7,5 @@ module RestaurantsHelper
   def status(obj)
     obj.working_times.select(&:active_now?) if obj.working?
   end
+
 end

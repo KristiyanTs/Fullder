@@ -19,6 +19,8 @@
 #  restaurant_avatar_file_size    :integer
 #  restaurant_avatar_updated_at   :datetime
 #  slug                           :string
+#  accepts_reservations           :boolean
+#  accepts_deliveries             :boolean
 #
 # Indexes
 #

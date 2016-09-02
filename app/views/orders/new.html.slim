@@ -2,11 +2,13 @@
   ul.nav.nav-tabs
     li.active
       a data-toggle="tab" href="#table" = t 'order.table'
-    li
-      a data-toggle="tab" href="#delivery" = t 'order.delivery'
+    - if @restaurant.accepts_deliveries
+      li
+        a data-toggle="tab" href="#delivery" = t 'order.delivery'
 
   .tab-content
     #table.tab-pane.fade.in.active
       = render 'table_form'
+    - if @restaurant.accepts_deliveries
     #delivery.tab-pane.fade
       = render 'delivery_form'
