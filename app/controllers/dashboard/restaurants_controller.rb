@@ -40,7 +40,7 @@ class Dashboard::RestaurantsController < ApplicationController
     @restaurant = Restaurant.friendly.find(params[:restaurant_id])
     MenuImportWorker.perform_async(@restaurant.id, upload.original_filename)
     redirect_to dashboard_restaurant_path(@restaurant),
-                notice: 'File was uploaded and is being processed.'
+                notice: 'File was uploaded successfully and is being processed.'
   end
 
   def update
