@@ -12,12 +12,18 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+
 development:
-  adapter:  postgresql
+  <<: *default
   host:     localhost
   encoding: unicode
   database: FastOrder_development
-  pool:     5
   username: pguser
   password: 12345678
   template: template0
@@ -41,22 +47,33 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter:  postgresql
+  <<: *default
   host:     localhost
   encoding: unicode
   database: FastOrder_test
-  pool:     5
   username: pguser
   password: 12345678
   template: template0
 
+# production:
+#   adapter:  postgresql
+#   host:     localhost
+#   encoding: unicode
+#   database: FastOrder_production
+#   pool:     <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %> 
+#   username: <%= ENV['FASTORDER_DATABASE_USER'] %>
+#   password: <%= ENV['FASTORDER_DATABASE_PASSWORD'] %>
+#   template: template0
+#   url:  <%= ENV["DATABASE_URL"] %>
+
+staging:
+  <<: *default
+  database: ruby_thursday_staging
+  username: deploy
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+
 production:
-  adapter:  postgresql
-  host:     localhost
-  encoding: unicode
-  database: FastOrder_production
-  pool:     <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %> 
-  username: <%= ENV['FASTORDER_DATABASE_USER'] %>
-  password: <%= ENV['FASTORDER_DATABASE_PASSWORD'] %>
-  template: template0
-  url:  <%= ENV["DATABASE_URL"] %>
+  <<: *default
+  database: ruby_thursday_production
+  username: deploy
+  password: <%= ENV["DATABASE_PASSWORD"] %>
