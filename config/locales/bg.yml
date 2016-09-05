@@ -9,7 +9,7 @@ bg:
   search:
     no-results: "Няма намерени резултати."
   restaurant:
-    search-placeholder: "търсете ресторанти по име, място или таг" 
+    search-placeholder: "търсете по име, място или таг" 
     working-time: Работно време
     open: Отворено
     closed: Затворено

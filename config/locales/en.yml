@@ -10,7 +10,7 @@ en:
   search:
     no-results: "No results found."
   restaurant:
-    search-placeholder: "search restaurants by name, place or tag" 
+    search-placeholder: "search by name, place or tag" 
     working-time: Hours
     open: Open
     closed: Closed

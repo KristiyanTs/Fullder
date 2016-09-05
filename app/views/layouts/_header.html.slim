@@ -1,32 +1,33 @@
-.header.navbar-fixed-top
-  .navbar-header
-    button.navbar-toggle.collapsed aria-expanded="false" data-target="#main-navbar-collapse" data-toggle="collapse" type="button" 
-      span.sr-only Toggle navigation
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
-    a.navbar-brand[href="/" style="color: white;"]
-      b Full
-      | or
-      b der
-
-  #main-navbar-collapse.collapse.navbar-collapse
-    ul.nav.navbar-nav.navbar-right
-      - if user_signed_in?
-        - if current_user.positions.count>1
+/! Navigation
+nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
+  .container
+    /! Brand and toggle get grouped for better mobile display
+    .navbar-header.page-scroll
+      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+        span.sr-only Toggle navigation
+        | Menu 
+        i.fa.fa-bars
+      a.navbar-brand href="/"  Fullder
+    /! Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          - if current_user.positions.count>1
+            li
+              = link_to " #{t 'navbar.dashboard'}", dashboard_path
+          - if current_user.positions.count == 1
+            li
+              = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
+                class: "glyphicon glyphicon-eye-open"
+          - if @right_link && @restaurant&.sells_online
+            li.cart_button
+              = button_link(@right_link, @right_class, @right_content)
           li
-            = link_to " #{t 'navbar.dashboard'}", dashboard_path, class: "glyphicon glyphicon-eye-open"
-        - if current_user.positions.count == 1
+            = link_to " #{t 'navbar.profile'}", edit_user_registration_path
           li
-            = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
-              class: "glyphicon glyphicon-eye-open"
-        - if @right_link && @restaurant&.sells_online
-          li.cart_button
-            = button_link(@right_link, @right_class, @right_content)
-        li
-          = link_to " #{t 'navbar.profile'}", edit_user_registration_path, class: "glyphicon glyphicon-user"
-        li
-          = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out"
-      - else 
-        li
-          = link_to " #{t 'navbar.enter'}", new_user_session_path, class: "glyphicon glyphicon-log-in"
+            = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete
+        - else 
+          li
+            = link_to " #{t 'navbar.enter'}", new_user_session_path
+    /! /.navbar-collapse
+  /! /.container-fluid

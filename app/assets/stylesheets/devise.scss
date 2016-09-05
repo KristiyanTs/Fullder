@@ -6,15 +6,16 @@
     left: 0px;
   }
   .user_remember_me{
-    width: 130px;
+    width: 140px;
+    font-size: 16px !important;
   }
   .forgot-password{
     padding: 0px;
     height: 40px;
-    width: 130px;
+    width: 120px;
     a{
       position: absolute;
-      top: 12px;
+      top: 15px;
       right: 0px;
       font-size: 15px; 
     }
@@ -37,6 +38,10 @@
 .login-options{
   padding-bottom: 30px;
   border-bottom: 2px solid rgb(230,230,230);
+  a{
+    font-size: 25px;
+    font-weight: bold;
+  }
 }
 
 .omb_btn-facebook {background: #3b5998; color: white;}
@@ -58,6 +63,13 @@
 .login-container{
   border-bottom-right-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
+  input{
+    font-size: 20px !important;
+    height: 40px;
+  }
+  input.boolean{
+    height: 20px;
+  }
 }
 
 .new_user{
@@ -67,5 +79,23 @@
     margin-bottom: 10px;
     margin-left: 45px;
     color:  grey;
+  }
+}
+
+/* Specail setting for large screens */
+@media (min-width: 768px) {
+  .login-container{
+
+    h3{
+      font-size: 40px;
+    }
+    input{
+      font-size: 24px !important;
+      height: 50px;
+    }
+    .user_remember_me{
+      width: 180px;
+    }
+
   }
 }
