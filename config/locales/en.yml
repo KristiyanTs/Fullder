@@ -50,7 +50,7 @@ en:
     statistics: "Statistics"
     ready-orders: Ready orders
     unready-orders: Unready orders
-    delivered_orders: Delivered orders
+    delivered-orders: Delivered orders
     settings: Settings
     profile: "Profile"
     logout: "Exit"

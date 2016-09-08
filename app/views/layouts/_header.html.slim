@@ -1,33 +1,55 @@
-/! Navigation
-nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
-  .container
-    /! Brand and toggle get grouped for better mobile display
-    .navbar-header.page-scroll
-      button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
-        span.sr-only Toggle navigation
-        | Menu 
-        i.fa.fa-bars
-      a.navbar-brand href="/"  Fullder
-    /! Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
-        - if user_signed_in?
-          - if current_user.positions.count>1
+- if params[:controller].start_with?("dashboard")
+  nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom-dashboard
+      .container
+        .navbar-header.page-scroll
+          button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+            span.sr-only Toggle navigation
+            | Menu 
+            i.fa.fa-bars
+          a.navbar-brand href="/"  Fullder
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            - if current_user.positions.count>1
+              li
+                = link_to " #{t 'navbar.dashboard'}", dashboard_path
+            - if current_user.positions.count == 1
+              li
+                = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
+                  class: "glyphicon glyphicon-eye-open"
+            - if @right_link && @restaurant&.sells_online
+              li.cart_button
+                = button_link(@right_link, @right_class, @right_content)
             li
-              = link_to " #{t 'navbar.dashboard'}", dashboard_path
-          - if current_user.positions.count == 1
+              = link_to " #{t 'navbar.profile'}", edit_user_registration_path
             li
-              = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
-                class: "glyphicon glyphicon-eye-open"
-          - if @right_link && @restaurant&.sells_online
-            li.cart_button
-              = button_link(@right_link, @right_class, @right_content)
-          li
-            = link_to " #{t 'navbar.profile'}", edit_user_registration_path
-          li
-            = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete
-        - else 
-          li
-            = link_to " #{t 'navbar.enter'}", new_user_session_path
-    /! /.navbar-collapse
-  /! /.container-fluid
+              = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete
+
+- else
+  nav#mainNav.navbar.navbar-default.navbar-fixed-top.navbar-custom
+    .container
+      .navbar-header.page-scroll
+        button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+          span.sr-only Toggle navigation
+          | Menu 
+          i.fa.fa-bars
+        a.navbar-brand href="/"  Fullder
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            - if current_user.positions.count>1
+              li
+                = link_to " #{t 'navbar.dashboard'}", dashboard_path
+            - if current_user.positions.count == 1
+              li
+                = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
+                  class: "glyphicon glyphicon-eye-open"
+            - if @right_link && @restaurant&.sells_online
+              li.cart_button
+                = button_link(@right_link, @right_class, @right_content)
+            li
+              = link_to " #{t 'navbar.profile'}", edit_user_registration_path
+            li
+              = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete
+          - else 
+            li
+              = link_to " #{t 'navbar.enter'}", new_user_session_path
