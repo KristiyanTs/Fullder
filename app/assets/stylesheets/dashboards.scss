@@ -114,12 +114,6 @@
   background: none;
 }
 
-#main_icon{
-  position: absolute;
-  top: 20px;
-  color: white;
-}
-
 .button-icon{
   position: absolute;
   right: 15px;
@@ -162,7 +156,7 @@
       position: relative;
     }
     #main_icon{
-      right: 15px !important;
+      right: -10px !important;
     }
   }
   #wrapper.active #sidebar-wrapper {
@@ -171,7 +165,7 @@
     transition: all .4s ease 0s;
   }
   #main_icon{
-    right: -35px;
+    right: -70px;
   }
 }
 
@@ -193,9 +187,8 @@
     font-size: 35px !important;
   }
   #main_icon{
-    top: 13px;
-    right: 21px;
     font-size: 27px;
+    right: -10px !important;
   }
 }
 
