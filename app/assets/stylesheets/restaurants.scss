@@ -1,6 +1,32 @@
 .home-page{
   margin-top:-10px;
   padding-bottom: 0px !important;
+
+  /* Restaurant header */
+  #restaurant-avatar{
+    position: relative;
+    max-height: 50%;
+    overflow: hidden;
+    img{
+      width: 100%;
+    }
+    .restaurant_name{
+      position: absolute;
+      bottom: 40px;
+      right: 20px;
+      font-size: 20px;
+      color: white;
+    }
+    .restaurant_address{
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-family: italic;
+      color: white;
+    }
+  }
+
+  /* Menu button  */
   .menu-button{
     background-image: url('menu.png');
     background-repeat: no-repeat;
@@ -12,7 +38,10 @@
     text-align: center;
     color: white;
     font-weight: bold;
+    font-size: 22px;
   }
+
+  /* Reservations button */
   .reservations-button{
     background-image:  url('menu.png');
     background-repeat: no-repeat;
@@ -24,42 +53,46 @@
     text-align: center;
     color: white;
     font-weight: bold;
+    font-size: 22px;
   }
   .menu-button:hover, .reservations-button:hover{
-    background-color: grey;
+    background-color: rgb(240,240,240);
   }
 }
 
-#restaurant-avatar{
-  position: relative;
-  img{
-    width: 100%;
+.home-page-2, .home-page-3{
+  margin-top: 10px;
+  #google-map{
+    margin-top: 10px;
   }
-  max-height: 50%;
-  overflow: hidden;
-  .restaurant_name{
-    position: absolute;
-    bottom: 40px;
-    right: 20px;
+}
+
+#favorites{
+  text-align: center;
+  .glyphicon-heart{
+    font-size: 50px;
+  }
+
+  .favorite, .favorite:hover{
+    color: #CF000F;
+  }
+
+  .notfavorite, .notfavorite:hover{
+    color: grey;
+  }
+}
+
+#working-times{
+  .schedule-time{
     font-size: 20px;
-    color: white;
   }
-  .restaurant_address{
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    font-family: italic;
-    color: white;
+  .schedule-day{
+    font-size: 16px;
   }
 }
 
-#reservations-button{
-	background-color: blue;
-	height:150px;
-	color: white;
-  font-size: 20px;
-  padding: 20px;
-}
+
+/* Search form */
 
 .search-form{
   margin-top: 15px;  
@@ -72,24 +105,24 @@
 }
 
 .search-form input{
-    border: 0px;
-    box-shadow: none !important;
+  border: 0px;
+  box-shadow: none !important;
 }
 
 .search-form button{
-    margin: 2px 0 0 0;
-    background: none;
-    box-shadow: none;
-    border: 0;
-    color: #666666;
-    padding: 0 15px 0 15px;
-    border-left: solid 1px #ccc;
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 15px 0 15px;
+  border-left: solid 1px #ccc;
 }
 
 .search-form button:hover{
-    border: 0;
-    box-shadow: none;
-    border-left: solid 1px #ccc;
+  border: 0;
+  box-shadow: none;
+  border-left: solid 1px #ccc;
 }
 
 .search-form .glyphicon-search{
@@ -97,19 +130,29 @@
 	padding-bottom: 10px;
 }
 
+/* RESTAURANT ROW */
+
+.restaurants{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+/* Restaurant button */
 .restaurant_row{
   position: relative;
   width: 100%;
-  height:80px;
+  height:90px;
   margin-top:5px;
   padding:20px;
   background-color: white;
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
   .restaurant_name{
     text-align: left;
     color: black;
-    font-size:23px;
+    font-size:25px;
     z-index: 1;
     .restaurant-services{
       position: absolute;
@@ -121,7 +164,7 @@
   .restaurant_address{
     text-align: left;
     font-style: italic;
-    font-size: 12px;
+    font-size: 15px;
     color: black !important;
   }
   .restaurant_number{
@@ -145,62 +188,138 @@
 }
 
 
-
+/* Menu button */
 .restaurant-row-menu{
   font-size: 20px;
   position: relative;
   width: 100%;
-  height:40px;
-  padding: 5px;
+  height:45px;
+  padding: 10px;
   margin-top:5px;
   background-color: white;
   color: grey;
   border-bottom: 1px solid rgb(230,230,230);
-  @media (min-width: 768px){
-    position: relative;
-    width: 100%;
-    height:80px;
-    padding: 25px;
-    margin-top:5px;
-    background-color: white;
-    border-left: 1px solid rgb(230,230,230);
-    border-bottom: 0px;
-  }
 }
 
+
+/* Call button */
 .restaurant-row-call{
   position: relative;
   font-size: 20px;
   width: 100%;
-  height:40px;
-  padding: 5px;
+  height:45px;
+  padding: 10px;
   background-color: white;
   color: grey;
 }
 
-.restaurants{
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+/* Styling specifically for large devices */
+@media (min-width: 768px) {
+  /* Restaurant row */
+  .restaurant_row{
+    height: 100px;
+    border-top-left-radius: 7px !important;
+    border-bottom-left-radius: 7px !important;
+    .restaurant_name{
+      .restaurant-services{
+        font-size: 18px;
+      }
+    }
+    .restaurant_number{
+      font-size: 20px;
+    }
+    .restaurant_favorites{
+      bottom: 30px;
+    }
+  }
+
+  .restaurant-row-menu{
+    width: 100%;
+    height:100px;
+    padding: 40px;
+    border-left: 1px solid rgb(230,230,230);
+    border-bottom: 0px;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+  /* Restaurant show page */
+
+  .home-page{
+    .menu-button{
+      font-size: 25px;
+      background-size: 320px;
+      height: 200px;
+      line-height: 215px;
+    }
+    .reservations-button{
+      font-size: 25px;
+      background-size: 320px;
+      height: 200px;
+      line-height: 215px;
+    }
+
+    /* Restaurant header */
+
+    #restaurant-avatar{
+      position: relative;
+      img{
+        width: 100%;
+      }
+      .restaurant_name{
+        font-size: 25px;
+      }
+      .restaurant_address{
+        font-size: 18px;
+      }
+    }
+  }
+
+  #favorites{
+    h3{
+      font-size: 40px;
+    }
+    .glyphicon-heart{
+      font-size: 70px;
+    }
+  }
+
+  #working-times{
+    .schedule-day{
+      font-size: 18px;
+    }
+    .schedule-time{
+      font-size: 22px;
+    }
+  }
+
+  .search-form input{
+    font-size: 26px !important;
+    height: 50px;
+  }
+
+  .search-form{
+    margin-top: 15px;  
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .search-form button{
+    font-size: 25px;
+  }
+
 }
 
-.home-page-2, .home-page-3{
-  margin-top: 10px;
-  #google-map{
-    margin-top: 10px;
-  }
-}
+/* Restaurant dashboard settings */
 
-#favorites{
-  text-align: center;
-  .glyphicon-heart{
-    font-size: 50px;
+#accordion{
+  .panel-title{
+    font-size: 20px;
   }
-
-  .favorite, .favorite:hover{
-    color: #CF000F;
-  }
-
-  .notfavorite, .notfavorite:hover{
-    color: grey;
+  label{
+    font-size: 18px;
   }
 }

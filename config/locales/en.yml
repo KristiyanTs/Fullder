@@ -10,7 +10,7 @@ en:
   search:
     no-results: "No results found."
   restaurant:
-    search-placeholder: "search restaurants by name, place or tag" 
+    search-placeholder: "search by name, place or tag" 
     working-time: Hours
     open: Open
     closed: Closed
@@ -50,7 +50,7 @@ en:
     statistics: "Statistics"
     ready-orders: Ready orders
     unready-orders: Unready orders
-    delivered_orders: Delivered orders
+    delivered-orders: Delivered orders
     settings: Settings
     profile: "Profile"
     logout: "Exit"

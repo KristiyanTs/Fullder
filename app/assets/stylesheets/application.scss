@@ -19,70 +19,35 @@
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 
+/* General global settings */
+@font-face {
+  font-family: "Am";
+  src: asset-url('assets/AlegreyaSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: "Fullder";
+  /* Change it when you find a better one */
+  src: asset-url('assets/AlegreyaSans-Bold.ttf');
+}
+
 html,body {
   padding-top: 0;
   min-height: 600px;
   margin-bottom: 100px;
-  margin-top: 25px;
+  margin-top: 28px;
   background-color: rgb(235,235,235);
   clear: both;
+  font-family: "Am", sans-serif;
 }
-
-.header {
-  position: fixed;
-  top: 0px;
-  height: 40px;
-  background-color: #CF000F;
-  border-color: #CF000F;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
-  a{
-    color: white !important;
-  }
-  li{
-    margin-left:20px;
-  } 
-  .navbar-brand{
-    padding-left:5px;
-    height: 40px;
-    font-size: 20px;
-    padding-top:10px;
-  }
-  span{
-    background-color: white;
-  } 
-  button{
-    margin-top:12px;
-    padding: 0 0;
-  }
-  .navbar-header{
-    height:40px;
-  }
-  .in, .collapsing{
-    background-color: #CF000F;
-    border-top: 1px solid white;
-  }
-
-  .navbar-right{
-    margin-right:20px;
-    li{
-      height: 40px;
-      a{
-        height: 38px;
-        font-size: 15px;
-        padding-top:10px;
-      }
-      a:hover{
-        background-color: rgb(177,0,15);
-      }
-    }
-  }
-}
-.collapse {  transition: height 0.01s !important;}
 
 input{
   font-size:16px !important;  
   /* When the font-size is 16px phones do not zoom when filling in an input */  
+}
+
+label{
+  font-size: 19px;
 }
 
 a, a:active, a:focus {
@@ -106,20 +71,12 @@ a:hover{
 }
 
 #flash_messages{
+  text-align: center;
+  padding: 10px;
   position: fixed;
   top:40px;
   z-index:1000;
 }
-
-
-.center-pagination{
-  text-align: center;
-  .pagination{
-    padding-bottom: 30px;
-    display: inline-block;
-  }
-}
-
 
 .space{
   margin-bottom: 20px;
@@ -127,4 +84,110 @@ a:hover{
 
 .container-min-height{
   min-height: 600px;
+}
+
+/* Global settings specifically for large devices */
+@media (min-width: 768px) {
+  /* Input not visible on large devices when <20px */
+  input, select{
+    font-size: 20px !important;
+  }
+  /* Bigger font size of flash messages */
+  #flash_messages{
+    font-size: 25px;
+  }
+  label{
+    font-size: 22px;
+  }
+  h2{
+    font-size: 35px;
+  }
+}
+
+/* Navigation bar */
+#mainNav .container{
+  width: 95%;
+}
+.navbar-custom {
+  background-color: rgb(230, 0, 0);
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  .navbar-right{
+    a{
+      font-family: "Am", sans-serif !important;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  }
+  a:focus {
+    outline: none;
+  }
+  .navbar-brand {
+    color: white;
+    font-family: "Fullder", sans-serif;
+  }
+  .navbar-brand:hover,
+  .navbar-brand:focus,
+  .navbar-brand:active,
+  .navbar-brand.active {
+    color: white;
+  }
+  .navbar-nav {
+    letter-spacing: 1px;
+  }
+  .navbar-nav li a {
+    color: white;
+  }
+  .navbar-nav li a:hover {
+    font-weight: 800;
+    color:  white;
+    outline: none;
+  }
+  .navbar-nav li a:focus,
+  .navbar-nav li a:active {
+    color: white;
+  }
+  .navbar-nav li.active a {
+    color: white;
+    background: rgb(150, 0, 0);
+  }
+  .navbar-nav li.active a:hover,
+  .navbar-nav li.active a:focus,
+  .navbar-nav li.active a:active {
+    color: white;
+    background: rgb(150, 0, 0);
+  }
+  .navbar-toggle {
+    color: white;
+    text-transform: uppercase;
+    font-size: 10px;
+    border-color: white;
+  }
+  .navbar-toggle:hover,
+  .navbar-toggle:focus {
+    background-color: rgb(190, 0, 0);
+    color: white;
+    border-color: white;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-custom {
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+  }
+  .navbar-custom .navbar-brand {
+    font-size: 2em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .navbar-custom.affix {
+    padding: 10px 0;
+  }
+  .navbar-custom.affix .navbar-brand {
+    font-size: 1.5em;
+  }
 }

@@ -9,7 +9,7 @@ bg:
   search:
     no-results: "Няма намерени резултати."
   restaurant:
-    search-placeholder: "търсете ресторанти по име, място или таг" 
+    search-placeholder: "търсете по име, място или таг" 
     working-time: Работно време
     open: Отворено
     closed: Затворено
@@ -49,7 +49,7 @@ bg:
     statistics: "Статистики"
     ready-orders: Готови поръчки
     unready-orders: Неготови поръчки
-    delivered_orders: Доставени поръчки
+    delivered-orders: Доставени поръчки
     settings: Настройки
     profile: "Профил"
     logout: "Изход"
