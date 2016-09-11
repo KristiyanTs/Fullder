@@ -74,6 +74,6 @@ staging:
 
 production:
   <<: *default
-  database: ruby_thursday_production
+  database: Fullder_production
   username: deploy
   password: <%= ENV["DATABASE_PASSWORD"] %>
