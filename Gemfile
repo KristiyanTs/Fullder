@@ -110,6 +110,7 @@ group :development do
   gem 'rb-inotify', require: false
   gem 'spring-commands-rspec'
   gem 'capistrano',         require: false
+  gem 'capistrano-rbenv',   require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
