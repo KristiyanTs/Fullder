@@ -1,5 +1,5 @@
 # Change these
-server '139.59.135.85', port: 22, roles: [:web, :app, :db], primary: true
+server '139.59.135.85', port: 80, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:Kristiyan96/Fullder.git'
 set :application,     'Fullder'
