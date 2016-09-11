@@ -75,5 +75,5 @@ staging:
 production:
   <<: *default
   database: Fullder_production
-  username: pguser
+  username: deploy
   password: <%= ENV["DATABASE_PASSWORD"] %>
