@@ -72,6 +72,9 @@ javascript:
       }
     );
     var clip = new Clipboard('.wifipass');
+    $('.wifipass').click(function(event){
+      $(".wifipass").effect( "highlight", {color:"#669966"}, 2000 );
+    });
   }, 800);
 
 
