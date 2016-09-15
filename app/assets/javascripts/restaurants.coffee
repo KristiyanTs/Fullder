@@ -16,3 +16,4 @@ document.addEventListener 'turbolinks:load', ->
     error: ->
       $(this).button('There was an error, please try again')
   return
+
