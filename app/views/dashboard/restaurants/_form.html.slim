@@ -12,6 +12,7 @@
           = f.input :address, hint: false
           = f.input :phone_number
           = f.input :description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.description}}")
+          = f.input :wifipassword
     .panel.panel-default 
       .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings2"
         .panel-title Services
@@ -52,5 +53,8 @@
       #settings5.panel-collapse.collapse
         .panel-body
           / Marketing
-          = f.input :tag_list, input_html: {value: @restaurant.tag_list.to_s}, wrapper_html: {class: "col-xs-12"}
+          .input-group
+            .input-group-addon
+              i.fa.fa-tags aria-hidden="true"
+            = f.input :tag_list, input_html: {value: @restaurant.tag_list.to_s}, label: false
   = f.button :submit, class: "center-block col-xs-12 btn btn-primary"

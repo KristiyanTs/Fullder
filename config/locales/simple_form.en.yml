@@ -31,6 +31,7 @@ en:
         tag_list: 'Tags, separated by commas'
         permission_ids: 'Permissions'
         number: 'Number'
+        wifipassword: Wifi password for your clients
       user:
         locale: Language
       category:
