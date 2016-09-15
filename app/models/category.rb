@@ -42,9 +42,11 @@ class Category < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   translates :name
-
+  
   scope :search, -> (keyword) do
-    keyword = "%#{keyword}%"
-    with_translations.where('categories.name ilike ?', keyword) if keyword
+    unless keyword.blank?
+      keyword = "%#{keyword}%"
+      with_translations.where('categories.name ilike ?', keyword)
+    end
   end
 end
