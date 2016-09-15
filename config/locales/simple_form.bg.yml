@@ -30,6 +30,7 @@ bg:
         tag_list: 'Тагове, разделени със запетайки'
         permission_ids: 'Разрешения'
         number: 'Номер'
+        wifipassword: Wifi парола за вашите клиенти
       user:
         locale: Език / Language
       category:

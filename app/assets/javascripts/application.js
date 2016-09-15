@@ -15,6 +15,7 @@
 //= require jquery.timepicker.js
 //= require moment
 //= require bootstrap-datetimepicker
+//= require clipboard
 //= require turbolinks
 //= require_tree .
 

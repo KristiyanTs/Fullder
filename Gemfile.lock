@@ -139,6 +139,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
+    clipboard-rails (1.5.10)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.9)
@@ -510,6 +511,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-puma
   capybara
+  clipboard-rails
   cocoon
   coffee-rails (~> 4.1.0)
   database_cleaner

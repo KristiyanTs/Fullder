@@ -90,6 +90,8 @@ gem 'sidekiq'
 gem 'sinatra', github: 'sinatra', require: false
 # Parse spreadsheets
 gem 'roo'
+# Click to copy
+gem 'clipboard-rails'
 
 group :development do
   gem 'spring'

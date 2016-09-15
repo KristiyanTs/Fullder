@@ -32,9 +32,11 @@ class Position < ApplicationRecord
       { scope: :restaurant_id, message: ' should have only one position in this restaurant' }
 
   scope :search, -> (keyword) do
-    keyword = "%#{keyword}%"
-    joins(:user, :role)
-      .where('users.first_name ilike ? or users.last_name ilike ? or roles.name ilike ?',
-             keyword, keyword, keyword) if keyword
+    unless keyword.blank?
+      keyword = "%#{keyword}%"
+      joins(:user, :role)
+        .where('users.first_name ilike ? or users.last_name ilike ? or roles.name ilike ?',
+               keyword, keyword, keyword)
+    end
   end
 end

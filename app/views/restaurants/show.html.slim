@@ -37,6 +37,11 @@ script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javas
     hr.hidden-lg.hidden-md
   #favorites.col-xs-12.col-md-4
     = render 'layouts/favorite'
+  #wifipassword.col-xs-12.col-md-4
+    i.fa.fa-wifi aria-hodden="true"
+    h3.wifipass data-clipboard-action="copy" data-clipboard-target=".wifipass" 
+      = @restaurant.try(:wifipassword) || "Wifi password not provided"
+    h5 Click to copy
 
 .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-3
   #restaurant-image-gallery
@@ -66,4 +71,10 @@ javascript:
         handler.getMap().setZoom(17);
       }
     );
+    var clip = new Clipboard('.wifipass');
+    $('.wifipass').click(function(event){
+      $(".wifipass").effect( "highlight", {color:"#669966"}, 2000 );
+    });
   }, 800);
+
+

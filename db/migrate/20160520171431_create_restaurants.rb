@@ -4,6 +4,7 @@ class CreateRestaurants < ActiveRecord::Migration
     create_table :restaurants do |t|
       t.string :name
       t.string :address
+      t.string :wifipassword
       t.text :description
       t.string :phone_number
       t.string :country, default: 'en-GB'

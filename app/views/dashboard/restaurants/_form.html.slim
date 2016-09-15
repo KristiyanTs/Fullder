@@ -1,7 +1,7 @@
 = simple_form_for [:dashboard, @restaurant], html: {multipart: true, class: "col-md-12"} do |f|
   #accordion.panel-group.col-xs-12
-    .panel.panel-default data-parent="#accordion" data-toggle="collapse" href="#settings1"
-      .panel-heading
+    .panel.panel-default
+      .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings1"
         .panel-title General info
       #settings1.panel-collapse.collapse.in
         .panel-body
@@ -12,8 +12,9 @@
           = f.input :address, hint: false
           = f.input :phone_number
           = f.input :description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.description}}")
-    .panel.panel-default data-parent="#accordion" data-toggle="collapse" href="#settings2"
-      .panel-heading
+          = f.input :wifipassword
+    .panel.panel-default 
+      .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings2"
         .panel-title Services
       #settings2.panel-collapse.collapse
         .panel-body
@@ -21,8 +22,8 @@
           = f.input :sells_online
           = f.input :accepts_deliveries
           = f.input :accepts_reservations
-    .panel.panel-default data-parent="#accordion" data-toggle="collapse" href="#settings3"
-      .panel-heading
+    .panel.panel-default
+      .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings3"
         .panel-title Pictures
       #settings3.panel-collapse.collapse
         .panel-body
@@ -35,8 +36,8 @@
               = render 'image_fields', f: image
             .links
               = link_to_add_association f, :images, class: "btn btn-default center-block"
-    .panel.panel-default data-parent="#accordion" data-toggle="collapse" href="#settings4"
-      .panel-heading
+    .panel.panel-default 
+      .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings4"
         .panel-title Working hours
       #settings4.panel-collapse.collapse
         .panel-body
@@ -46,11 +47,14 @@
               = render 'working_time_fields', f: working_time
             .links
               = link_to_add_association f, :working_times, class: "btn btn-default center-block"
-    .panel.panel-default data-parent="#accordion" data-toggle="collapse" href="#settings5"
-      .panel-heading
+    .panel.panel-default
+      .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings5"
         .panel-title Marketing
       #settings5.panel-collapse.collapse
         .panel-body
           / Marketing
-          = f.input :tag_list, input_html: {value: @restaurant.tag_list.to_s}, wrapper_html: {class: "col-xs-12"}
+          .input-group
+            .input-group-addon
+              i.fa.fa-tags aria-hidden="true"
+            = f.input :tag_list, input_html: {value: @restaurant.tag_list.to_s}, label: false
   = f.button :submit, class: "center-block col-xs-12 btn btn-primary"

@@ -62,6 +62,7 @@
 
 .home-page-2, .home-page-3{
   margin-top: 10px;
+  position: relative;
   #google-map{
     margin-top: 10px;
   }
@@ -89,6 +90,11 @@
   .schedule-day{
     font-size: 16px;
   }
+}
+
+#wifipassword{
+  text-align: center;
+  font-size: 80px;
 }
 
 

@@ -2,9 +2,11 @@
   #sidebar-wrapper
     ul#sidebar_menu.sidebar-nav
       li.sidebar-brand
-        a#menu-toggle href="#" 
-          = @restaurant.name
-          span#main_icon.glyphicon.glyphicon-align-justify
+        = link_to @restaurant.name, restaurant_path(@restaurant)
+        / span#main_icon.glyphicon.glyphicon-align-justify
+        button#main_icon.c-hamburger.c-hamburger--htla
+          span toggle menu
+
     ul#sidebar.sidebar-nav
       li
         = link_to dashboard_restaurant_path(@restaurant) do

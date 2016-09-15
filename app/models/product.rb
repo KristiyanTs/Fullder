@@ -59,9 +59,11 @@ class Product < ApplicationRecord
   translates :name, :short_description, :description
 
   scope :search, -> (keyword) do
-    keyword = "%#{keyword}%"
-    where('products.name ilike ?',
-          keyword)
+    unless keyword.blank?
+      keyword = "%#{keyword}%"
+      where('products.name ilike ?',
+            keyword)
+    end
   end
 
   def self.import!(restaurant_id, file_name)
