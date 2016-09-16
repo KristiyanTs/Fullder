@@ -58,8 +58,7 @@ class User < ApplicationRecord
     user = User.find_by(uid: token['uid'])
     unless user
       user = User.new(
-        first_name: token.info['name'].split(' ')[0],
-        last_name: token.info['name'].split(' ')[1],
+        name: token.info['name'],
         provider: token['provider'],
         uid: token['uid'],
         email: token.info['email'] || SecureRandom.hex(5) + "@changemeplease.com",
