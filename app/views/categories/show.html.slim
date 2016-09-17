@@ -6,7 +6,7 @@
 - @right_link = cart_path
 - @right_content = "#{number_to_currency current_order.subtotal}"
 
-.container
+.container.col-xs-12.col-md-8.container-products
   - @subcategories.each do |subcategory|
     = render 'category_row', category: subcategory
   - @products.each do |product| 

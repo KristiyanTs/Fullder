@@ -45,7 +45,7 @@ class Product < ApplicationRecord
 
   default_scope { where(active: true) }
 
-  has_attached_file :avatar, styles: { small: '80x80#', large: '250x250#' }, default_url: '/images/:style/missing.png'
+  has_attached_file :avatar, styles: { small: '140x140#', large: '250x250#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true
   validates :category_id, presence: true

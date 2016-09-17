@@ -1,4 +1,4 @@
-= link_to restaurant_product_path(@restaurant, product), class: "product_row btn col-xs-12 col-md-6 col-md-offset-3"
+= link_to restaurant_product_path(@restaurant, product), class: "product_row btn col-xs-12 col-lg-5"
   .product_name
     = product.name
   .product_short_description
@@ -6,6 +6,6 @@
   .product_price
     = product_price(product)
   .product_avatar
-    = image_tag product.avatar.url(:small), class: "img-circle"
+    = image_tag product.avatar.url(:small), class: "img-rounded"
   .common_allergens
     = common_alergens(product, current_user)
