@@ -47,7 +47,9 @@ class Reservation < ApplicationRecord
   end
 
   scope :search, lambda { |keyword|
-    where(seats: keyword) if keyword
+    unless keyword.blank?
+      where(seats: keyword)
+    end
   }
 
   def end_time_edge_cases
