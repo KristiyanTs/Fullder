@@ -70,9 +70,6 @@
 
 #favorites{
   text-align: center;
-  .glyphicon-heart{
-    font-size: 50px;
-  }
 
   .favorite, .favorite:hover{
     color: #CF000F;
@@ -82,22 +79,31 @@
     color: grey;
   }
   .favorites-text{
-    font-size: 30px;
+    font-size: 20px;
+    line-height: 40px;
   }
 }
 
 #working-times{
   .schedule-time{
     font-size: 20px;
+    text-align: left;
   }
   .schedule-day{
     font-size: 16px;
+    text-align: left;
   }
+  .shchedule{
+    margin-top: 20px;
+  }
+}
+.wifipanel, .favourites-panel{
+  margin-top: 20px;
 }
 
 .wifipass{
-  font-size: 30px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 40px;
 }
 
 #wifipassword, #working-times, .favorite-heart{
@@ -295,7 +301,7 @@
       font-size: 40px;
     }
     .glyphicon-heart{
-      font-size: 70px;
+      font-size: 77px;
     }
   }
 

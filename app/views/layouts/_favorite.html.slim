@@ -1,10 +1,18 @@
 - if !current_user || !current_user.favorite_restaurants.exists?(@restaurant)
   = link_to "", favorite_restaurant_path(@restaurant, type: "favorite"), 
     method: :put, remote: true, class: "glyphicon glyphicon-heart notfavorite favorite-heart"
-  .favorites-text = t 'restaurant.add-to-favorites'
+  .favourites-panel.panel.panel-default
+    .panel-heading data-toggle="collapse" href="#favourites-panel"
+      .favorites-text = t 'restaurant.add-to-favorites'
+      #favourites-panel.panel-collapse.collapse
+        .panel-body
+          .favorites-text-count = @restaurant.favorited_by.count
 -else
   = link_to "", favorite_restaurant_path(@restaurant, type: "unfavorite"), 
     method: :put, remote: true, class: "glyphicon glyphicon-heart favorite favorite-heart"
-  .favorites-text = t 'restaurant.thank-you'
-.favorites-text-count = @restaurant.favorited_by.count
-br
+  .favourites-panel.panel-default
+    .panel-heading data-toggle="collapse" href="#favourites-panel"
+      .favorites-text = t 'restaurant.thank-you'
+      #favourites-panel.panel-collapse.collapse
+        .panel-body
+          .favorites-text-count = @restaurant.favorited_by.count
