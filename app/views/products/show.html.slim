@@ -9,22 +9,22 @@
 = render partial: "product_row", locals: {product: @product}
 = render partial: 'product_buy_form'
 
+.col-xs-12.new-order-item
+  - if !@product.description.blank?
+    .panel.panel-default.col-xs-12.col-lg-5.description-panel
+      .panel-heading data-toggle="collapse" href="#description"
+        h4 = t 'product.description'
+        #description.panel-collapse.collapse
+          .panel-body
+            = @product.description
 
-- if !@product.description.blank?
-  .panel.panel-default.col-xs-12.col-md-6.col-md-offset-3.description-panel
-    .panel-heading
-      = link_to (t 'product.description'), "#description", class: "panel-title", data: { toggle: "collapse" }
-      #description.panel-collapse.collapse
-        .panel-body
-          = @product.description
-
--if @product.allergen_list.any?
-  .panel.panel-default.col-xs-12.col-md-6.col-md-offset-3.ingredient-panel
-    .panel-heading
-      = link_to (t 'product.ingredients'), "#ingredients", class: "panel-title", data: { toggle: "collapse" }
-      #ingredients.panel-collapse.collapse
-        .panel-body
-          = @product.allergen_list.to_s
+  -if @product.allergen_list.any?
+    .panel.panel-default.col-xs-12.col-lg-5.ingredient-panel
+      .panel-heading data-toggle="collapse" href="#ingredients"
+        h4 = t 'product.ingredients'
+        #ingredients.panel-collapse.collapse
+          .panel-body
+            = @product.allergen_list.to_s
 
 
 

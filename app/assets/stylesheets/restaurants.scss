@@ -81,6 +81,9 @@
   .notfavorite, .notfavorite:hover{
     color: grey;
   }
+  .favorites-text{
+    font-size: 30px;
+  }
 }
 
 #working-times{
@@ -92,9 +95,16 @@
   }
 }
 
-#wifipassword{
+.wifipass{
+  font-size: 30px;
+  line-height: 30px;
+}
+
+#wifipassword, #working-times, .favorite-heart{
   text-align: center;
   font-size: 80px;
+  line-height: 18px;
+  margin-top: 20px;
 }
 
 

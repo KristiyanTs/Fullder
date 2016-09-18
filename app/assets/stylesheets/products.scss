@@ -91,6 +91,10 @@ a.product_row:hover{
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
+
+  .new-order-item{
+    margin-left: 0px !important;
+  }
 }
 
 
@@ -102,6 +106,10 @@ a.product_row:hover{
 }
 
 .new-order-item{
+  position: relative;
+  margin-left: 20px;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
   clear: left;
   .form-container{
     background-color: white;
