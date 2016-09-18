@@ -2,6 +2,4 @@
 
 .container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
   h2.text-center = t 'restaurant.update'
-  = form_tag dashboard_restaurant_import_path(@restaurant), multipart: true do
-    = file_field_tag :file
-    = submit_tag 'Import'
+

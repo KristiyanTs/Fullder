@@ -3,8 +3,7 @@
     .input-group
       = text_field_tag :search, params[:search],
                        class: "form-control input restaurant-search-input",
-                       placeholder: "#{t 'restaurant.search-placeholder'}",
-                       title: "#{search_hint}"
+                       placeholder: "#{t 'restaurant.search-placeholder'}"
       span.input-group-btn
         = button_tag name: nil, class: "btn btn-info" do
           i class="glyphicon glyphicon-search"
