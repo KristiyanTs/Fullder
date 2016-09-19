@@ -1,6 +1,6 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
-.container.container-white
+.container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
   h3 = t 'dashboard.product-index-title'
 
   .search-form.col-xs-12
@@ -9,7 +9,7 @@
       .input-group
         = text_field_tag :search, params[:search],
                          class: "form-control input",
-                         placeholder: "Search by product namey"
+                         placeholder: "Search by product name"
         span.input-group-btn
           = button_tag(type: 'submit', class: "btn btn-info btn") do
             i class="glyphicon glyphicon-search"

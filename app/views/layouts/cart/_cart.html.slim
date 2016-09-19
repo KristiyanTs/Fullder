@@ -1,0 +1,15 @@
+table.table.table-hover
+  thead
+    tr
+      th Product
+      th Price
+      th Quantity
+  tbody
+    - current_order.order_items.each do |item|
+      tr
+        td = item.product.name
+        td = number_to_currency item.unit_price
+        td = item.quantity
+hr style="border:1px solid grey"
+.text-center
+  h2 = number_to_currency current_order.subtotal

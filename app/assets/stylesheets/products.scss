@@ -1,50 +1,102 @@
 a.product_row{
+  border-top: 5px solid rgb(210, 0, 0);
   position: relative;
-  margin-top:5px;
+  height: 145px;
+  margin-top: 20px;
+  margin-left: 20px;
   background-color: white;
-  height:80px;
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
   z-index: 1;
+  border-radius: 10px;
   .product_name{
     position:absolute;
-    top: 10px;
-    left: 10px;
     color: black;
-    font-weight: bold;
-    font-size:15px;
+    font-size:24px;
   }
   .product_short_description{
     position:absolute;
-    top: 30px;
-    left:10px;
+    top: 35px;
     font-style: italic;
-    font-size: 12px;
-    padding-right: 95px;
-    color: black !important;
+    font-size: 18px;
+    color: black;
+    width: calc(100% - 160px);
+    white-space: pre-line;
+    overflow:hidden;
+    text-align: left;
   }
   .product_avatar{
     position: absolute;
-    top:-1px;
-    right: 0px;
-    border-radius: 50%;
-    margin-left: calc(100% - 67px);
+    right: -1px;
+    top: 0px;
   }
   .product_price{
     position: absolute;
-    top: 10px;
-    right: 90px;
+    right: 160px;
     color: grey;
+    font-size: 20px;
   }
   .common_allergens{
     position: absolute;
-    bottom: 5px;
-    right: 90px;
     color: red;
   }
 }
+
+a.product_row:hover{
+  border-left: 5px solid rgb(250, 0, 0);
+  border-top: 5px solid rgb(250, 0, 0);
+  background-color: rgb(250,250,250);
+}
+
+@media (max-width:767px) {
+  a.product_row{
+    border-left: 0px;
+    border-top: 0px;
+    position: relative;
+    height: 140px;
+    margin-top: 5px;
+    margin-left: 0px !important;
+    background-color: white;
+    z-index: 1;
+    border-radius: 0px;
+    .product_name{
+      position:absolute;
+      color: black;
+      font-size:24px;
+    }
+    .product_short_description{
+      position:absolute;
+      top: 35px;
+      font-style: italic;
+      font-size: 18px;
+      color: black;
+    }
+    .product_avatar{
+      position: absolute;
+      right: -1px;
+      top: 0px;
+    }
+    .product_price{
+      position: absolute;
+      right: 160px;
+      color: grey;
+      font-size: 20px;
+    }
+    .common_allergens{
+      position: absolute;
+      color: red;
+    }
+  }
+  .container-products{
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .new-order-item{
+    margin-left: 0px !important;
+  }
+}
+
+
 
 
 .dashed-border{
@@ -53,6 +105,10 @@ a.product_row{
 }
 
 .new-order-item{
+  position: relative;
+  margin-left: 20px;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
   clear: left;
   .form-container{
     background-color: white;
@@ -225,3 +281,13 @@ a.product_row{
   margin-bottom: 0px !important;
 }
 
+@media (min-width:767px) {
+  .product-show-page{
+    .product_row, .new-order-item{
+      width: 85% !important;
+    }
+    .panel{
+      width: 100%;
+    }
+  }
+}

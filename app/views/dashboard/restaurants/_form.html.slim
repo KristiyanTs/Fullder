@@ -13,7 +13,7 @@
           = f.input :phone_number
           = f.input :description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.description}}")
           = f.input :wifipassword
-    .panel.panel-default 
+    .panel.panel-default
       .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings2"
         .panel-title Services
       #settings2.panel-collapse.collapse
@@ -36,7 +36,7 @@
               = render 'image_fields', f: image
             .links
               = link_to_add_association f, :images, class: "btn btn-default center-block"
-    .panel.panel-default 
+    .panel.panel-default
       .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings4"
         .panel-title Working hours
       #settings4.panel-collapse.collapse

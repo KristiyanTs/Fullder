@@ -7,7 +7,7 @@
 
   .modal-body
     - if @editing
-      h4 = @position.user.first_name + " " + @position.user.last_name
+      h4 = @position.user.name
     - else
       = label_tag 'email', "Employee email"
       = email_field_tag :email, nil, class: 'form-control'

@@ -32,7 +32,9 @@ class Table < ApplicationRecord
   validates :number, uniqueness: { scope: :restaurant_id }
 
   scope :search, lambda { |keyword|
-    where(capacity: keyword) if keyword
+    unless keyword.blank?
+      where(capacity: keyword) if keyword
+    end
   }
 
   def occupied?(time)

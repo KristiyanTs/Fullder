@@ -1,6 +1,6 @@
 .cart-row
   .item_avatar
-    = image_tag order_item.product.avatar.url(:small), class: "img-circle"
+    = image_tag order_item.product.avatar.url(:small), class: "img-rounded"
   .item_name
     b = order_item.product.name + " "
     = order_item.size.try(:name)

@@ -8,8 +8,7 @@ bg:
         password_confirmation: 'Потвърди паролата'
         current_password: 'Сегашна парола'
         address: 'Адрес'
-        first_name: 'Първо име'
-        last_name: 'Фамилия'
+        name: 'Име'
         phone_number: 'Телефонен номер'
         locale: 'Място'
         language: Език / Language

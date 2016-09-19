@@ -56,7 +56,7 @@
     font-size: 22px;
   }
   .menu-button:hover, .reservations-button:hover{
-    background-color: rgb(240,240,240);
+    background-color: rgb(220,220,220);
   }
 }
 
@@ -70,9 +70,6 @@
 
 #favorites{
   text-align: center;
-  .glyphicon-heart{
-    font-size: 50px;
-  }
 
   .favorite, .favorite:hover{
     color: #CF000F;
@@ -81,20 +78,39 @@
   .notfavorite, .notfavorite:hover{
     color: grey;
   }
+  .favorites-text{
+    font-size: 20px;
+    line-height: 40px;
+  }
 }
 
 #working-times{
   .schedule-time{
     font-size: 20px;
+    text-align: left;
   }
   .schedule-day{
     font-size: 16px;
+    text-align: left;
+  }
+  .shchedule{
+    margin-top: 20px;
   }
 }
+.wifipanel, .favourites-panel{
+  margin-top: 20px;
+}
 
-#wifipassword{
+.wifipass{
+  font-size: 20px;
+  line-height: 40px;
+}
+
+#wifipassword, #working-times, .favorite-heart{
   text-align: center;
   font-size: 80px;
+  line-height: 18px;
+  margin-top: 20px;
 }
 
 
@@ -285,7 +301,7 @@
       font-size: 40px;
     }
     .glyphicon-heart{
-      font-size: 70px;
+      font-size: 77px;
     }
   }
 

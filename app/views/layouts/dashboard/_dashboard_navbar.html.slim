@@ -53,10 +53,10 @@
                 = link_to dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered") do
                   = "#{t 'navbar.delivered-orders'}"
                   i.fa.fa-check-square-o.button-icon aria-hidden="true"
-      li
-        = link_to dashboard_restaurant_path(@restaurant) do
-          = t 'navbar.statistics'
-          i.fa.fa-bar-chart.button-icon aria-hidden="true"
+      / li
+      /   = link_to dashboard_restaurant_path(@restaurant) do
+      /     = t 'navbar.statistics'
+      /     i.fa.fa-bar-chart.button-icon aria-hidden="true"
       li
         = link_to dashboard_restaurant_order_items_path(@restaurant, order_status: "unready") do
           = t 'navbar.unready-orders'
