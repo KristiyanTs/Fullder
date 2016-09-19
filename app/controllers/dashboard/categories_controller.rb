@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class Dashboard::CategoriesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource find_by: :slug
+
   before_action :authenticate_user!
   before_action :set_restaurant
   before_action :set_category, only: [:show, :edit, :update, :destroy]
