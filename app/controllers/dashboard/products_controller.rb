@@ -3,7 +3,7 @@ class Dashboard::ProductsController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_restaurant
-  before_action :set_product, only: [:show, :edit, :destroy]
+  before_action :set_product, only: [:show, :update, :edit, :destroy]
 
   def index
     @products = @restaurant.products.search(params[:search])
