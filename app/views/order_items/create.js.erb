@@ -2,6 +2,7 @@
 alert("not valid.")
 <% else %>
   $(".cart_button").html("<%= escape_javascript(render 'layouts/footer/cart') %>");
+  $(".compact-cart").html("<%= escape_javascript(render 'layouts/cart/cart') %>");
   $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").alert('close');
   });
