@@ -22,13 +22,13 @@
 /* General global settings */
 @font-face {
   font-family: "Am";
-  src: asset-url('assets/AlegreyaSans-Bold.ttf');
+  src: font-url('AlegreyaSans-Bold.ttf');
 }
 
 @font-face {
   font-family: "Fullder";
   /* Change it when you find a better one */
-  src: asset-url('assets/AlegreyaSans-Bold.ttf');
+  src: font-url('AlegreyaSans-Bold.ttf');
 }
 
 html,body {
