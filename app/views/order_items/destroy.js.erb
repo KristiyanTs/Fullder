@@ -1,4 +1,5 @@
 $(".button-right").html("<%= escape_javascript(render 'layouts/footer/cart') %>");
+$(".compact-cart").html("<%= escape_javascript(render 'layouts/cart/cart') %>");
 $(".shopping-cart").html("<%= escape_javascript(render 'carts/shopping_cart') %>");
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").alert('close');
