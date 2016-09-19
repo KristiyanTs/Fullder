@@ -11,3 +11,5 @@
     = render 'category_row', category: subcategory
   - @products.each do |product| 
     = render "products/product_row", product: product, order_item: @order_item
+.container.col-md-3.container-white.compact-cart.hidden-xs.hidden-sm
+  = render partial: "layouts/cart/cart"
