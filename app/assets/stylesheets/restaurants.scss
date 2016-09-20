@@ -1,9 +1,23 @@
-.home-page{
+._restaurant_buttons {
+  background-image: image-url('menu.png');
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: center; 
+  height: 150px;
+  line-height: 160px;
+  display: block;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.home-page {
   margin-top:-10px;
   padding-bottom: 0px !important;
 
   /* Restaurant header */
-  #restaurant-avatar{
+  #restaurant-avatar {
     position: relative;
     max-height: 50%;
     overflow: hidden;
@@ -28,32 +42,12 @@
 
   /* Menu button  */
   .menu-button{
-    background-image: url('menu.png');
-    background-repeat: no-repeat;
-    background-size: 200px;
-    background-position: center; 
-    height: 150px;
-    line-height: 160px;
-    display: block;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 22px;
+    @extend ._restaurant_buttons;
   }
 
   /* Reservations button */
   .reservations-button{
-    background-image:  url('menu.png');
-    background-repeat: no-repeat;
-    background-size: 200px;
-    background-position: center; 
-    height: 150px;
-    line-height: 160px;
-    display: block;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 22px;
+    @extend ._restaurant_buttons;
   }
   .menu-button:hover, .reservations-button:hover{
     background-color: rgb(220,220,220);
@@ -68,7 +62,7 @@
   }
 }
 
-#favorites{
+#favorites {
   text-align: center;
 
   .favorite, .favorite:hover{
