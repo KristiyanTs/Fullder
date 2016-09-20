@@ -10,6 +10,7 @@ table.table.table-hover
         td = item.product.name
         td = number_to_currency item.unit_price
         td = item.quantity
+        td = link_to "", item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }
 hr style="border:1px solid grey"
 .text-center
   h2 = number_to_currency current_order.subtotal
