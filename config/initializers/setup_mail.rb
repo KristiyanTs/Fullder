@@ -6,6 +6,6 @@ ActionMailer::Base.smtp_settings = {
   authentication: :plain,
   user_name: 'omnimenu2016@gmail.com',
   password: 'kris2016',
-  domain: 'omnimenu.org',
+  domain: 'fullder.com',
   enable_starttls_auto: true
 }
