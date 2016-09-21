@@ -41,16 +41,13 @@ class Dashboard::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        @products = @restaurant.products.page(params[:page])
         format.html do
           redirect_to dashboard_restaurant_products_path(@restaurant),
-                      notice: 'Product was successfully created.',
+                      notice: 'Product was successfully added.',
                       status: :created
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_products_path(@restaurant).to_json}",
-                 notice: 'Product was successfully created.',
-                 status: :created
-        end
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }

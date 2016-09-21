@@ -16,6 +16,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require clipboard
+//= require jquery.remotipart
 //= require turbolinks
 //= require_tree .
 

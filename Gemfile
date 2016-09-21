@@ -92,6 +92,8 @@ gem 'sinatra', github: 'sinatra', require: false
 gem 'roo'
 # Click to copy
 gem 'clipboard-rails'
+# Uploading images with ajax
+gem 'remotipart'
 
 group :development do
   gem 'spring'
