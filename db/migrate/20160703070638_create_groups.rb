@@ -2,9 +2,9 @@
 class CreateGroups < ActiveRecord::Migration[5.0]
   def up
     create_table :groups do |t|
-      t.references :product, index: true, foreign_key: true
+      t.references :product,        index: true, foreign_key: true
       t.integer :maximum
-      t.string :name
+      t.string :name,               null: false
 
       t.timestamps
     end

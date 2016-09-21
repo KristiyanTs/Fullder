@@ -2,12 +2,12 @@
 class CreateOrderItems < ActiveRecord::Migration
   def change
     create_table :order_items do |t|
-      t.references :restaurant, index: true, foreign_key: true
-      t.references :product, index: true, foreign_key: true
-      t.references :order, index: true, foreign_key: true
-      t.references :size, index: true, foreign_key: true
-      t.decimal :unit_price
-      t.integer :quantity
+      t.references :restaurant,  index: true, foreign_key: true
+      t.references :product,     index: true, foreign_key: true
+      t.references :order,       index: true, foreign_key: true
+      t.references :size,        index: true, foreign_key: true
+      t.decimal :unit_price,     null: false
+      t.integer :quantity,       null: false
       t.decimal :total_price
       t.string :demands
       t.string :status
@@ -15,7 +15,7 @@ class CreateOrderItems < ActiveRecord::Migration
       t.datetime :ready_at
       t.datetime :delivered_at
 
-      t.timestamps null: false
+      t.timestamps               null: false
     end
   end
 end
