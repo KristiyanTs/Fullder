@@ -6,6 +6,9 @@
       span aria-hidden="true"  &times;
 
   .modal-body
+    - if @category.avatar.exists?
+      = image_tag @category.avatar.url(:small), class: "center-block img-rounded"
+    = f.input :avatar, as: :file
     = f.input :name, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.name}}")
     = f.input :age_restriction
     = f.input :available_all_day

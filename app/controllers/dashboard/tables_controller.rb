@@ -104,6 +104,6 @@ class Dashboard::TablesController < ApplicationController
   end
 
   def table_params
-    params.require(:table).permit(:number)
+    params.require(:table).permit(:number, :capacity)
   end
 end

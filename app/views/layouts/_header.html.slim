@@ -45,7 +45,9 @@
                   class: "glyphicon glyphicon-eye-open"
             - if @right_link && @restaurant&.sells_online
               li.cart_button
-                = button_link(@right_link, @right_class, @right_content)
+                = link_to @right_link
+                  i.fa.fa-shopping-cart aria-hidden="true"
+                  = @right_content
             li
               = link_to " #{t 'navbar.profile'}", edit_user_registration_path
             li
