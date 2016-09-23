@@ -32,7 +32,7 @@
 FactoryGirl.define do
   factory :reservation do
     contact_number "43254356"
-    contact_name "Dris"
+    contact_name "Kris"
     start_time { Time.now }
     end_time { Time.now + 3.hours}
     user

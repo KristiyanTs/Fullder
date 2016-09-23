@@ -29,7 +29,7 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def edit
-    @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats).reject { |table| table.occupied?(@reservation.from_time)}
+    @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats).reject { |table| table.occupied?(@reservation.start_time)}
     
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
@@ -110,6 +110,6 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:from_time, :seats, :contact_number, :contact_name, :requirements, :table_id, :duration)
+    params.require(:reservation).permit(:start_time, :end_time, :seats, :contact_number, :contact_name, :requirements, :table_id, :duration)
   end
 end

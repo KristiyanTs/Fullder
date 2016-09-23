@@ -6,6 +6,6 @@
   hr
   p #{t 'mailer.confirming_reservation.line4'}:
   p #{t 'mailer.confirming_reservation.line5'}: #{@reservation.contact_name} #{@reservation.contact_number}
-  p #{t 'mailer.confirming_reservation.line6'}: #{@reservation.from_time}
+  p #{t 'mailer.confirming_reservation.line6'}: #{@reservation.start_time}
   p #{t 'mailer.confirming_reservation.line7'}: #{@restaurant.address}
   p #{t 'mailer.confirming_reservation.line8-1'}: #{@reservation.seats} #{t 'mailer.confirming_reservation.line8-2'}
