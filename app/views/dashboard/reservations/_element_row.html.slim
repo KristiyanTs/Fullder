@@ -3,7 +3,7 @@ tr
     = reservation.seats
     span.glyphicon.glyphicon-user.capacity-seats
   td = (reservation.table.try(:number) || "Assign")
-  td = reservation.from_time
+  td = reservation.start_time
   td
     - if reservation.confirmed
       i.fa.fa-thumbs-o-up.center aria-hidden="true"
