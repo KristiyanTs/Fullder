@@ -65,6 +65,12 @@ class Product < ApplicationRecord
     end
   end
 
+  def calculate_average_time
+    items = order_items.where(status: 'delivered')
+    average_prepare_time = items.average('ready_at - received_at')
+  end
+
+
   def self.import!(restaurant_id, file_name)
     file_path = Rails.root.join('tmp/menu_import', file_name)
     spreadsheet = open_spreadsheet(file_name, file_path)

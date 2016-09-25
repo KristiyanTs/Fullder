@@ -68,7 +68,10 @@ class OrderItem < ApplicationRecord
 
   def next_status
     self.received_at = Time.now if self.status == 'unpaid'
-    self.ready_at = Time.now if self.status == 'unready'
+    if self.status == 'unready'
+      self.ready_at = Time.now
+      product.calculate_average_time
+    end
     self.delivered_at = Time.now if self.status == 'ready'
 
     return false if ORDER_STATUSES.index(self.status) == ORDER_STATUSES.length-1
