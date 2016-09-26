@@ -67,7 +67,7 @@ class Product < ApplicationRecord
 
   def calculate_average_time
     items = order_items.where(status: 'delivered')
-    average_prepare_time = items.average('ready_at - received_at')
+    self[:average_prepare_time] = items.average('ready_at - received_at')
   end
 
 
