@@ -6,6 +6,7 @@
 #  id                             :integer          not null, primary key
 #  name                           :string
 #  address                        :string
+#  wifipassword                   :string
 #  description                    :text
 #  phone_number                   :string
 #  country                        :string           default("en-GB")
@@ -21,6 +22,7 @@
 #  slug                           :string
 #  accepts_reservations           :boolean
 #  accepts_deliveries             :boolean
+#  google_id                      :string
 #
 # Indexes
 #
