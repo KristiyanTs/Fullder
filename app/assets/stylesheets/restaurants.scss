@@ -19,7 +19,7 @@
   /* Restaurant header */
   #restaurant-avatar {
     position: relative;
-    max-height: 50%;
+    height: 200px;
     overflow: hidden;
     img{
       width: 100%;
@@ -250,6 +250,10 @@
     .restaurant_favorites{
       bottom: 30px;
     }
+  }
+
+  #restaurant-avatar{
+    height: 400px !important;
   }
 
   .restaurant-row-menu{

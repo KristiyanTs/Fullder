@@ -94,6 +94,8 @@ gem 'roo'
 gem 'clipboard-rails'
 # Uploading images with ajax
 gem 'remotipart'
+# Google places to find restaurants
+gem 'google_places'
 
 group :development do
   gem 'spring'
