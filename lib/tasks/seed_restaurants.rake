@@ -3,6 +3,7 @@ task :seed_restaurants => :environment do
   @client = GooglePlaces::Client.new("AIzaSyADZdRRUvCvt0ARmLVrlFlXaB8f4l1ItJE")
   restaurants = @client.spots_by_query(ENV['place'])
   puts restaurants.count
+  
   restaurants.each do |restaurant|
     res = @client.spot(restaurant.place_id)
 
@@ -23,7 +24,6 @@ task :seed_restaurants => :environment do
         end
       end 
       u.save
-
       puts "created " + res.name
     else
       puts res.name + " is already imported."
