@@ -24,7 +24,4 @@
       .modal-dialog role="document"
         .modal-content
           | Please wait ...
-  .import-menu.col-xs-6
-    = form_tag dashboard_restaurant_import_path(@restaurant), multipart: true do
-      = file_field_tag :file, class: "col-xs-6"
-      = submit_tag 'Import', class: "col-xs-6"
+    = link_to " or upload your menu", dashboard_restaurant_menus_path(@restaurant)

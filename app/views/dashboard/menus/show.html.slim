@@ -1,0 +1,31 @@
+= render 'layouts/dashboard/dashboard_navbar'
+.container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
+  h2 Uploading menu
+  h3 This page allows you to upload your menu as a table consisting all the categories and products offered in your business.
+  hr
+  h3 Currently, you could use it to
+  ul
+    li Create new categories and subcategories
+    li Create and add products to categories
+    li Update previuos versions of your menu by uploading a newer version
+  h3 Currently, you can NOT use it to
+  ul
+    li Add pictures to your products and categories
+    li Destroy all your categories and products
+  hr
+  h3 Instructions
+  ul
+    li Download the following blueprint
+    li Each row represents a product, each column represents information about this product
+    li Fill in the table with all your products
+    li When ready, upload the file on this page by 
+    ol
+      li Click on "Browse"
+      li Find the file containing your menu and click on it
+      li Click on "Open"
+      li Click on "Import"
+
+  .import-menu.col-xs-12
+    = form_tag dashboard_restaurant_import_path(@restaurant), multipart: true do
+      = file_field_tag :file, class: "col-xs-6"
+      = submit_tag 'Import', class: "col-xs-6"

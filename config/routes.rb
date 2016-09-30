@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:index, :edit, :update]
       resources :reservations
       resources :order_items, only: [:index, :show, :update]
+      resource :menus, only: [:show]
     end
   end
 
