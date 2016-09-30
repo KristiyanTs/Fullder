@@ -6,7 +6,6 @@
 #  id                             :integer          not null, primary key
 #  name                           :string
 #  address                        :string
-#  wifipassword                   :string
 #  description                    :text
 #  phone_number                   :string
 #  country                        :string           default("en-GB")
@@ -53,7 +52,6 @@ class Restaurant < ApplicationRecord
   accepts_nested_attributes_for :images, reject_if: :all_blank,
                                          allow_destroy: true
 
-  attr_reader :avatar_remote_url
   has_attached_file :restaurant_avatar, styles: { large: '1000x800' },
                                         default_url: '/images/:style/missing.png'
   validates_attachment_content_type :restaurant_avatar,
@@ -86,11 +84,6 @@ class Restaurant < ApplicationRecord
       [:name, :longitude, :latitude],
       [:name, :address, :longitude, :latitude]
     ]
-  end
-
-  def avatar_remote_url(url_value)
-    self.restaurant_avatar = URI.parse(url_value)
-    @avatar_remote_url = url_value
   end
 
   def load_working_hours(periods)
