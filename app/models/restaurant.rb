@@ -53,6 +53,7 @@ class Restaurant < ApplicationRecord
   accepts_nested_attributes_for :images, reject_if: :all_blank,
                                          allow_destroy: true
 
+  attr_reader :avatar_remote_url
   has_attached_file :restaurant_avatar, styles: { large: '1000x800' },
                                         default_url: '/images/:style/missing.png'
   validates_attachment_content_type :restaurant_avatar,
@@ -87,5 +88,19 @@ class Restaurant < ApplicationRecord
     ]
   end
 
+  def avatar_remote_url(url_value)
+    self.restaurant_avatar = URI.parse(url_value)
+    @avatar_remote_url = url_value
+  end
+
+  def load_working_hours(periods)
+    periods.each do |period|
+      work_time = self.working_times.new
+      work_time.update(from_time: Time.new.change(hour: period["open"]["time"].first(2), min: period["open"]["time"].last(2)))
+      work_time.update(from_day: period["open"]["day"])
+      work_time.update(to_time: Time.new.change(hour: period["close"]["time"].first(2), min: period["close"]["time"].last(2)))
+      work_time.update(to_day: period["close"]["day"])
+    end
+  end
   translates :description
 end
