@@ -65,7 +65,7 @@ class Restaurant < ApplicationRecord
                    :default_formula => :flat,
                    :lat_column_name => :latitude,
                    :lng_column_name => :longitude
-  
+
   scope :search, -> (keyword) do
     unless keyword.blank?
       keywords = keyword.split(/\W+/) 
