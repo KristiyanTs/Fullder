@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828112644) do
+ActiveRecord::Schema.define(version: 20160929163117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(version: 20160828112644) do
     t.string   "slug"
     t.boolean  "accepts_reservations"
     t.boolean  "accepts_deliveries"
+    t.string   "google_id"
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true, using: :btree
   end
 

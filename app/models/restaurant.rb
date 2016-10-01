@@ -21,6 +21,7 @@
 #  slug                           :string
 #  accepts_reservations           :boolean
 #  accepts_deliveries             :boolean
+#  google_id                      :string
 #
 # Indexes
 #
@@ -51,7 +52,7 @@ class Restaurant < ApplicationRecord
   accepts_nested_attributes_for :images, reject_if: :all_blank,
                                          allow_destroy: true
 
-  has_attached_file :restaurant_avatar, styles: { large: '1500x1500' },
+  has_attached_file :restaurant_avatar, styles: { large: '1000x800' },
                                         default_url: '/images/:style/missing.png'
   validates_attachment_content_type :restaurant_avatar,
                                     content_type: /\Aimage\/.*\Z/
@@ -64,7 +65,7 @@ class Restaurant < ApplicationRecord
                    :default_formula => :flat,
                    :lat_column_name => :latitude,
                    :lng_column_name => :longitude
-  
+
   scope :search, -> (keyword) do
     unless keyword.blank?
       keywords = keyword.split(/\W+/) 
@@ -85,5 +86,14 @@ class Restaurant < ApplicationRecord
     ]
   end
 
+  def load_working_hours(periods)
+    periods.each do |period|
+      work_time = self.working_times.new
+      work_time.update(from_time: Time.new.change(hour: period["open"]["time"].first(2), min: period["open"]["time"].last(2)))
+      work_time.update(from_day: period["open"]["day"])
+      work_time.update(to_time: Time.new.change(hour: period["close"]["time"].first(2), min: period["close"]["time"].last(2)))
+      work_time.update(to_day: period["close"]["day"])
+    end
+  end
   translates :description
 end

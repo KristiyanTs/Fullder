@@ -189,6 +189,8 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
+    google_places (0.32.0)
+      httparty (~> 0.13.1)
     guard (2.14.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -222,6 +224,9 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     interception (0.5)
     jbuilder (2.6.0)
@@ -527,6 +532,7 @@ DEPENDENCIES
   geokit-rails
   globalize!
   gmaps4rails
+  google_places
   guard-bundler
   guard-rails
   guard-rspec
