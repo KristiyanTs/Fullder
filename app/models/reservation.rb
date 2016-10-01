@@ -34,15 +34,16 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :table
 
-  validate :user_confirmed?
-  validate :table_free?
+  validate :user_confirmed
+  validate :table_free
   validate :end_time_edge_cases
+  validate :not_overlapping
 
-  def user_confirmed?
+  def user_confirmed
     errors.add(:user, 'has not confirmed an email.') if user && !user.confirmed?
   end
 
-  def table_free?
+  def table_free
     errors.add(:table, 'Table taken.') if table && table.occupied?(start_time)
   end
 
@@ -53,6 +54,12 @@ class Reservation < ApplicationRecord
   }
 
   def end_time_edge_cases
-    errors.add(:end_time, 'End time should be within 24 hours after start time.') unless end_time.between?(start_time, start_time + 24.hours)
+    errors.add(:end_time, 'End time should be within 24 hours after start time.') unless (!end_time || end_time.between?(start_time, start_time + 24.hours))
+  end
+
+  def not_overlapping
+    user.reservations.each do |reservation|
+      errors.add(:reservation, 'Reservations collapsing.') if (self.start_time - reservation.start_time).abs < 7200
+    end
   end
 end

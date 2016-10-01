@@ -23,10 +23,10 @@
 
 
 .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-2
-  #favorites.col-xs-12.col-md-4
+  #favorites.col-xs-12.col-sm-4
     = render 'layouts/favorite'
-    hr.hidden-lg.hidden-md
-  #working-times.col-xs-12.col-md-4
+    hr.hidden-lg.hidden-md.hidden-sm
+  #working-times.col-xs-12.col-sm-4
     i.fa.fa-calendar-check-o.working-time-awesome aria-hodden="true"
     .shchedule.panel.panel-default
       .panel-heading data-toggle="collapse" href="#working-hours"
@@ -39,8 +39,8 @@
               .schedule-time.col-xs-6
                 = time.from_time.to_formatted_s(:time)   + "-" + time.to_time.to_formatted_s(:time)  
 
-    hr.hidden-lg.hidden-md
-  #wifipassword.col-xs-12.col-md-4
+    hr.hidden-lg.hidden-md.hidden-sm
+  #wifipassword.col-xs-12.col-sm-4
     i.fa.fa-wifi aria-hodden="true"
     .panel.panel-default.wifipanel
       .wifipass.panel-heading data-toggle="collapse" href="#copied" data-clipboard-action="copy" data-clipboard-target=".wifipass" 
@@ -49,13 +49,9 @@
           .panel-body
             h5 Copied
 
-
-
 = render "restaurant_images"
 
 = render "restaurant_map"
-
-
 
 javascript:
   setTimeout(function() {
