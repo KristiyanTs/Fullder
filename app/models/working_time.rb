@@ -25,16 +25,24 @@ class WorkingTime < ApplicationRecord
   belongs_to :restaurant
 
   def active_now?
-    from = Date.today - (Date.today.wday - from_day) % 7
-    to   = from + (to_day - from.wday) % 7
-    from = Time.new(from.year, from.month, from.day, from_time.hour, from_time.min, 0)
-    to   = Time.new(to.year, to.month, to.day, to_time.hour, to_time.min, 0)
+    if valid_working_hours?
+      from = Date.today - (Date.today.wday - from_day) % 7
+      to   = from + (to_day - from.wday) % 7
+      from = Time.new(from.year, from.month, from.day, from_time.hour, from_time.min, 0)
+      to   = Time.new(to.year, to.month, to.day, to_time.hour, to_time.min, 0)
 
-    Time.now.between?(from, to)
+      Time.now.between?(from, to)
+    else
+      false
+    end
   end
 
   def closest_from_time
     from = Date.today - (Date.today.wday - from_day) % 7
     from = Time.new(from.year, from.month, from.day, from_time.hour, from_time.min, 0)
+  end
+
+  def valid_working_hours?
+    from_day && from_time && to_day && to_time
   end
 end
