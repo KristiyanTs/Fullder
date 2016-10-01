@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
     @reservation.user_id = current_user.id
 
     respond_to do |format|
-      if @reservation.save
+      if verify_recaptcha(model: @reservation) && @reservation.save
         ReservationMailer.confirming_reservation(current_user, @restaurant, @reservation).deliver_now
         format.html do
           redirect_to restaurant_path(@restaurant),
