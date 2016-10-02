@@ -36,8 +36,8 @@ class Reservation < ApplicationRecord
   belongs_to :table
 
   validate :user_confirmed
-  # validate :table_free
-  # validate :not_overlapping
+  validate :table_free
+  validate :not_overlapping
 
   before_update :calc_end_time, if: :duration_changed?
 
@@ -59,7 +59,7 @@ class Reservation < ApplicationRecord
 
   def not_overlapping
     self.user.reservations.each do |reservation|
-      errors.add(:reservation, 'Reservations collapsing.') if (self.start_time - reservation.start_time).abs < 7200
+      errors.add(:reservation, 'Reservations collapsing.') if ((self.start_time - reservation.start_time).abs < 7200 && self.id != reservation.id)
     end
   end
 
