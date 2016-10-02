@@ -1,0 +1,20 @@
+h2 = t 'reservation.reserve-table-header'
+= simple_form_for [@restaurant, @reservation], remote: true do |f|
+  = f.input :start_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
+  = f.input :seats
+  = f.input :contact_number, input_html: {value: current_user.try(:phone_number)}
+  = f.input :contact_name, input_html: {value: current_user.try(:name)}
+  = f.input :requirements
+  = recaptcha_tags
+  = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"
+
+javascript:
+  $(function () {
+    $('#datetimepicker').datetimepicker({
+      inline: true,
+      sideBySide: true,
+      inline: true,
+      ignoreReadonly: true,
+      format: 'YYYY-MM-DD HH:mm'
+    });
+  });

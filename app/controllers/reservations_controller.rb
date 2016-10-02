@@ -18,6 +18,7 @@ class ReservationsController < ApplicationController
                       notice: 'Reservation was successfully created.',
                       status: :created
         end
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
