@@ -96,6 +96,8 @@ gem 'clipboard-rails'
 gem 'remotipart'
 # Google places to find restaurants
 gem 'google_places'
+# Requiring captcha on forms, human verification
+gem 'recaptcha', require: 'recaptcha/rails'
 
 group :development do
   gem 'spring'

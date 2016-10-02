@@ -15,6 +15,7 @@
 #  confirmed      :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  duration       :time
 #
 # Indexes
 #
@@ -34,17 +35,11 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :table
 
-  validate :user_confirmed?
-  validate :table_free?
-  validate :end_time_edge_cases
+  validate :user_confirmed
+  validate :table_free
+  validate :not_overlapping
 
-  def user_confirmed?
-    errors.add(:user, 'has not confirmed an email.') if user && !user.confirmed?
-  end
-
-  def table_free?
-    errors.add(:table, 'Table taken.') if table && table.occupied?(start_time)
-  end
+  before_update :calc_end_time, if: :duration_changed?
 
   scope :search, lambda { |keyword|
     unless keyword.blank?
@@ -52,7 +47,24 @@ class Reservation < ApplicationRecord
     end
   }
 
-  def end_time_edge_cases
-    errors.add(:end_time, 'End time should be within 24 hours after start time.') unless end_time.between?(start_time, start_time + 24.hours)
+  private
+
+  def user_confirmed
+    errors.add(:user, 'has not confirmed an email.') if user && !user.confirmed?
   end
+
+  def table_free
+    errors.add(:table, 'Table taken.') if (table && table.occupied?(start_time))
+  end
+
+  def not_overlapping
+    self.user.reservations.each do |reservation|
+      errors.add(:reservation, 'Reservations collapsing.') if ((self.start_time - reservation.start_time).abs < 7200 && self.id != reservation.id)
+    end
+  end
+
+  def calc_end_time
+    self.end_time = self.start_time + self.duration.seconds_since_midnight.seconds
+  end
+
 end

@@ -38,8 +38,8 @@ class Table < ApplicationRecord
   }
 
   def occupied?(time)
-    reservations.any? do |reservation|
+    reservations.where(confirmed: true) do |reservation|
       time.between?(reservation.start_time, reservation.end_time)
-    end
+    end.any?
   end
 end

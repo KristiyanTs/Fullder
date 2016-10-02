@@ -28,9 +28,9 @@ class WorkingTime < ApplicationRecord
     return false unless valid_working_hours?
     from = Time.zone.today - (Time.zone.today.wday - from_day) % 7
     to = from + (to_day - from.wday) % 7
-    from = Time.zone.new(from.year, from.month,
+    from = Time.zone.local(from.year, from.month,
                          from.day, from_time.hour, from_time.min, 0)
-    to = Time.zone.new(to.year, to.month,
+    to = Time.zone.local(to.year, to.month,
                        to.day, to_time.hour, to_time.min, 0)
 
     Time.zone.now.between?(from, to)

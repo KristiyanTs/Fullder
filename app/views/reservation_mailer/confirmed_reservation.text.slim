@@ -1,12 +1,11 @@
 = I18n.with_locale(@user.locale) do 
-  |OmniMenu
-  |#{t 'mailer.line1'} #{@user.name||@user.email},
-  |#{t 'mailer.line2-1'} #{@restaurant.name}, #{t 'mailer.line2-2'}
-  |
-  |#{t 'mailer.line3'}
-  |#{t 'mailer.line4'}: #{@reservation.contact_name} #{@reservation.contact_number}
-  |#{t 'mailer.line5'}: #{@reservation.start_time}
-  |#{t 'mailer.line6'}: #{@restaurant.address}
-  |#{t 'mailer.line7-1'}: #{@reservation.seats} #{t 'mailer.line7-2'}
-  |
-  |#{t 'mailer.line8'}
+  |#{t('mailer.confirming_reservation.line0')}
+  |#{t('mailer.confirming_reservation.line1', user: @user.name||@user.email)}
+  |#{t('mailer.confirming_reservation.line2', restaurant: @restaurant.name)}
+
+  |#{t('mailer.confirming_reservation.line3')}
+  |#{t('mailer.confirming_reservation.line4')}: #{@reservation.contact_name}
+  |#{t('mailer.confirming_reservation.line5')}: #{@reservation.start_time.to_formatted_s(:short)}
+  |#{t('mailer.confirming_reservation.line6')}: #{@restaurant.address}
+  |#{t('mailer.confirming_reservation.line7')}: #{@reservation.seats.to_s}
+  |#{t('mailer.confirming_reservation.line8')}

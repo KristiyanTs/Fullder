@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'reservations@omnimenu.org'
+  default from: 'reservations@fullder.com'
   # layout 'mailer'
 end
 
