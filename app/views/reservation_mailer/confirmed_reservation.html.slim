@@ -1,35 +1,35 @@
 = I18n.with_locale(@user.locale) do 
-  h2 #{t('confirming_reservation.line0')}
-  h3 #{t('confirmed_reservation.line1', user: @user.name||@user.email)}
-  h3 #{t('confirmed_reservation.line2', restaurant: @restaurant.name)}
+  h2 #{t('mailer.confirming_reservation.line0')}
+  h3 #{t('mailer.confirmed_reservation.line1', user: @user.name||@user.email)}
+  h3 #{t('mailer.confirmed_reservation.line2', restaurant: @restaurant.name)}
   hr
   table
     thead
       tr
         th colspan="2"
-          h3 #{t('confirmed_reservation.line3')}
+          h3 #{t('mailer.confirmed_reservation.line3')}
     tbody
       tr
         td
-          h4 #{t('confirmed_reservation.line4')}
+          h4 #{t('mailer.confirmed_reservation.line4')}
         td 
           h4
             b #{@reservation.contact_name}
       tr
         td  
-          h4 #{t('confirmed_reservation.line5')}
+          h4 #{t('mailer.confirmed_reservation.line5')}
         td
           h4
             b #{@reservation.start_time.to_formatted_s(:short)}
       tr  
         td  
-          h4 #{t('confirmed_reservation.line6')}
+          h4 #{t('mailer.confirmed_reservation.line6')}
         td
           h4
             b #{@restaurant.address}
       tr  
         td  
-          h4 #{t('confirmed_reservation.line7')}
+          h4 #{t('mailer.confirmed_reservation.line7')}
         td 
           h4
             b #{@reservation.seats.to_s}

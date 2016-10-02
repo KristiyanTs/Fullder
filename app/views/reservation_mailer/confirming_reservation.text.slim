@@ -1,11 +1,11 @@
 = I18n.with_locale(@user.locale) do 
-  |#{t('confirming_reservation.line0')}
-  |#{t('confirming_reservation.line1', user: current_user.name||current_user.email)}
-  |#{t('confirming_reservation.line2', restaurant: @restaurant.name)}
-  |#{t('confirming_reservation.line3')}
+  |#{t('mailer.confirming_reservation.line0')}
+  |#{t('mailer.confirming_reservation.line1', user: @user.name||@user.email)}
+  |#{t('mailer.confirming_reservation.line2', restaurant: @restaurant.name)}
+  |#{t('mailer.confirming_reservation.line3')}
 
-  |#{t('confirming_reservation.line4')}
-  |#{t('confirming_reservation.line5')}: #{@reservation.contact_name}
-  |#{t('confirming_reservation.line6')}: #{@reservation.start_time.to_formatted_s(:short)}
-  |#{t('confirming_reservation.line7')}: #{@restaurant.address}
-  |#{t('confirming_reservation.line8')}: #{@reservation.seats.to_s}
+  |#{t('mailer.confirming_reservation.line4')}
+  |#{t('mailer.confirming_reservation.line5')}: #{@reservation.contact_name}
+  |#{t('mailer.confirming_reservation.line6')}: #{@reservation.start_time.to_formatted_s(:short)}
+  |#{t('mailer.confirming_reservation.line7')}: #{@restaurant.address}
+  |#{t('mailer.confirming_reservation.line8')}: #{@reservation.seats.to_s}

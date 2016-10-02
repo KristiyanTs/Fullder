@@ -9,7 +9,7 @@ h2 = t 'reservation.reserve-table-header'
   = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"
 
 javascript:
-  $(function () {
+  setTimeout(function () {
     $('#datetimepicker').datetimepicker({
       inline: true,
       sideBySide: true,
@@ -17,4 +17,4 @@ javascript:
       ignoreReadonly: true,
       format: 'YYYY-MM-DD HH:mm'
     });
-  });
+  }, 300);

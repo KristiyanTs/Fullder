@@ -62,6 +62,7 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def update
+    @reservations = @restaurant.reservations.page(params[:page])
     respond_to do |format|
       if @reservation.update(reservation_params)
 
@@ -74,13 +75,10 @@ class Dashboard::ReservationsController < ApplicationController
                       notice: 'Reservation was successfully updated.',
                       status: :ok
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_reservations_path(@restaurant).to_json}",
-                 notice: 'Reservation was successfully updated.',
-                 status: :ok
-        end
+        format.js 
       else
         format.html { render :edit }
+        format.js
         format.json { render json: @reservations.errors, status: :unprocessable_entity }
       end
     end
