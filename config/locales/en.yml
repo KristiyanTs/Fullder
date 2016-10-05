@@ -111,26 +111,24 @@ en:
       remove: Delete image
   mailer:
     confirming_reservation:
-      line1: Hello, 
-      line2-1: Your reservation at
-      line2-2: has been sent
+      line0: Successfully sent
+      line1: Hello %{user}, 
+      line2: Your reservation at %{restaurant} has been sent.
       line3: You will be contacted shortly!
       line4: Reservation information
-      line5: Who
-      line6: When
+      line5: Who  
+      line6: When 
       line7: Where
-      line8-1: What
-      line8-2: seats
+      line8: Seats   
     confirmed_reservation:
-      line1: Hello, 
-      line2-1: Your reservation at
-      line2-2: has been confirmed by an employee.
+      line0: Reservation confirmed
+      line1: Hello %{user},
+      line2: Your reservation at %{restaurant} has been confirmed by an employee.
       line3: Reservation information
       line4: Who
       line5: When
       line6: Where
-      line7-1: What
-      line7-2: seats
+      line7: Seats
       line8: We are expecting you!
   views:
     pagination:

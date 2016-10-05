@@ -1,5 +1,5 @@
 class ReservationMailer < ApplicationMailer
-  default from: 'reservations@omnimenu.org'
+  default from: 'reservations@fullder.com'
 
   def confirming_reservation(user, restaurant, reservation)
     @user = user
