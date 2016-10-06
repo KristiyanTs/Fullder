@@ -24,7 +24,7 @@ class Dashboard::OrderItemsController < ApplicationController
     @items = @restaurant.order_items.where(status: session[:order_status]).page(params[:page])
 
     respond_to do |format|
-      format.js {}
+      format.js
     end
   end
 

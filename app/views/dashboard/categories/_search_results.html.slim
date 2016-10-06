@@ -1,13 +1,13 @@
-- if @categories.size == 0
+- if @categories.blank?
   p.text-center
     = t "search.no-results"
 - else
-  table.table.table-striped
+  table#categories.table.table-striped
     thead
       tr
         th = t 'dashboard.name'
         th = t 'dashboard.products'
         th = t 'dashboard.actions'
     tbody
-      = render partial: "element_row", collection: @categories, as: :category
+      = render partial: "category", collection: @categories, as: :category
   = paginate @categories, theme: 'twitter-bootstrap-3'

@@ -1,13 +1,13 @@
-- if @positions.size == 0
+- if @positions.blank?
   p.text-center
     = t "search.no-results"
 - else
-  table.table.table-striped
+  table#positions.table.table-striped
     thead
       tr
         th = t 'dashboard.name'
         th = t 'dashboard.roles'
         th = t 'dashboard.actions'
     tbody
-      = render partial: "element_row", collection: @positions, as: :position
+      = render partial: "position", collection: @positions, as: :position
   = paginate @positions, theme: 'twitter-bootstrap-3'

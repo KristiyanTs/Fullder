@@ -45,14 +45,11 @@ class Dashboard::CategoriesController < ApplicationController
                       notice: 'Category was successfully created.',
                       status: :created
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_categories_path(@restaurant).to_json}",
-                 notice: 'Category was successfully created.',
-                 status: :created
-        end
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -65,14 +62,11 @@ class Dashboard::CategoriesController < ApplicationController
                       notice: 'Category was successfully updated.',
                       status: :ok
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_categories_path(@restaurant).to_json}",
-                 notice: 'Category was successfully updated.',
-                 status: :ok
-        end
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -82,11 +76,7 @@ class Dashboard::CategoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to dashboard_restaurant_categories_path(@restaurant), flash: { notice: 'Category was successfully destroyed.' } }
       format.json { head :no_content }
-      format.js do
-        render js: "window.location = #{dashboard_restaurant_categories_path(@restaurant).to_json}",
-               notice: 'Category was successfully destroyed.',
-               status: :ok
-      end
+      format.js
     end
   end
 

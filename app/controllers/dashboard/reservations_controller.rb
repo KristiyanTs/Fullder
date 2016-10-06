@@ -49,14 +49,11 @@ class Dashboard::ReservationsController < ApplicationController
                       notice: 'Reservation was successfully created.',
                       status: :created
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_reservations_path(@restaurant).to_json}",
-                 notice: 'Reservation was successfully created.',
-                 status: :created
-        end
+        format.js
       else
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -78,8 +75,8 @@ class Dashboard::ReservationsController < ApplicationController
         format.js 
       else
         format.html { render :edit }
-        format.js
         format.json { render json: @reservations.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -89,11 +86,7 @@ class Dashboard::ReservationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to dashboard_restaurant_reservations_path, flash: { notice: 'Reservation was successfully removed.' } }
       format.json { head :no_content }
-      format.js do
-        render js: "window.location = #{dashboard_restaurant_reservations_path(@restaurant).to_json}",
-               notice: 'Reservation was successfully removed.',
-               status: :ok
-      end
+      format.js
     end
   end
 

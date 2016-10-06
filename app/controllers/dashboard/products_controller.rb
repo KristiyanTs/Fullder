@@ -51,6 +51,7 @@ class Dashboard::ProductsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -63,14 +64,11 @@ class Dashboard::ProductsController < ApplicationController
                       notice: 'Product was successfully updated.',
                       status: :ok
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_products_path(@restaurant).to_json}",
-                 notice: 'Product was successfully updated.',
-                 status: :ok
-        end
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -80,11 +78,7 @@ class Dashboard::ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @restaurant, flash: { notice: 'Product was successfully destroyed.' } }
       format.json { head :no_content }
-      format.js do
-        render js: "window.location = #{dashboard_restaurant_products_path(@restaurant).to_json}",
-               notice: 'Product was successfully destroyed.',
-               status: :ok
-      end
+      format.js
     end
   end
 

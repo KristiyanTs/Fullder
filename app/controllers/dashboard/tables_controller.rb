@@ -45,14 +45,11 @@ class Dashboard::TablesController < ApplicationController
                       notice: 'Table was successfully created.',
                       status: :created
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_tables_path(@restaurant).to_json}",
-                 notice: 'Table was successfully created.',
-                 status: :created
-        end
+        format.js
       else
         format.html { render :new }
         format.json { render json: @table.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -65,14 +62,11 @@ class Dashboard::TablesController < ApplicationController
                       notice: 'Table was successfully updated.',
                       status: :ok
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_tables_path(@restaurant).to_json}",
-                 notice: 'Table was successfully updated.',
-                 status: :ok
-        end
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @table.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -82,11 +76,7 @@ class Dashboard::TablesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to dashboard_restaurant_tables_path, flash: { notice: 'Table was successfully removed.' } }
       format.json { head :no_content }
-      format.js do
-        render js: "window.location = #{dashboard_restaurant_tables_path(@restaurant).to_json}",
-               notice: 'Table was successfully removed.',
-               status: :ok
-      end
+      format.js
     end
   end
 

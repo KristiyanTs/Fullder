@@ -1,8 +1,8 @@
-- if @reservations.size == 0
+- if @reservations.blank?
   p.text-center
     = t "search.no-results"
 - else
-  table.table.table-striped
+  table#reservations.table.table-striped
     thead
       tr
         th = t 'dashboard.seats'
@@ -11,5 +11,5 @@
         th = t 'dashboard.confirmed'
         th = t 'dashboard.actions'
     tbody
-      = render partial: "element_row", collection: @reservations, as: :reservation
+      = render partial: "reservation", collection: @reservations, as: :reservation
   = paginate @reservations, theme: 'twitter-bootstrap-3'

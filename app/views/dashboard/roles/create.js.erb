@@ -1,0 +1,6 @@
+<% if @role.errors.any? %>
+ $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
+<% else %>
+  $('#element-form').modal('hide');
+  $('#roles').prepend("<%= j render @role %>");
+<% end %>

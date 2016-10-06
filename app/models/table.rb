@@ -30,6 +30,8 @@ class Table < ApplicationRecord
   has_many :reservations
 
   validates :number, uniqueness: { scope: :restaurant_id }
+  validates :number, presence: true
+  validates :capacity, presence: true
 
   scope :search, lambda { |keyword|
     unless keyword.blank?

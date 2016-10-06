@@ -21,9 +21,6 @@
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
-  $(".alert").fadeTo(2000, 500).slideUp(500, function(){
-      $(".alert").alert('close');
-  });
   $('.restaurant-search-input').tooltip({
     placement: "bottom",
     trigger: "focus"

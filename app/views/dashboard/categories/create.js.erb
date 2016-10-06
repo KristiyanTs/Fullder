@@ -1,0 +1,6 @@
+<% if @category.errors.any? %>
+ $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
+<% else %>
+  $('#element-form').modal('hide');
+  $('#categories').prepend("<%= j render @category %>");
+<% end %>

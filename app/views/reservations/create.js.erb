@@ -1,4 +1,6 @@
-$('.container-white').html("<%= escape_javascript (render partial: 'successful') %>");
-$(".alert").fadeTo(2000, 500).slideUp(500, function(){
-  $(".alert").alert('close');
-});
+<% if @reservation.errors.any? %>
+  $('.container-white').html("<%= escape_javascript (render partial: 'form') %>");
+  end
+<% else %>
+  $('.container-white').html("<%= escape_javascript (render partial: 'successful') %>");
+<% end %>

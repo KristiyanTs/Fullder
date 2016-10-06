@@ -1,0 +1,7 @@
+<% if @product.errors.any? %>
+ $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
+<% else %>
+  $('#element-form').modal('hide');
+  $('#product-<%= @product.id %>').fadeOut(1000);
+  $('#products').prepend($("<%= j render @product %>").fadeIn('slow'));
+<% end %>

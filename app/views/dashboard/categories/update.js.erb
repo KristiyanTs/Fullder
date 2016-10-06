@@ -1,0 +1,7 @@
+<% if @category.errors.any? %>
+ $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
+<% else %>
+  $('#element-form').modal('hide');
+  $('#category-<%= @category.id %>').fadeOut(1000);
+  $('#categories').prepend($("<%= j render @category %>").fadeIn('slow'));
+<% end %>
