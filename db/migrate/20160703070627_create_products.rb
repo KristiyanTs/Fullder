@@ -4,10 +4,10 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
       t.references :restaurant,            index: true, foreign_key: true
       t.references :category,              index: true, foreign_key: true
-      t.string :name,                      null: false
+      t.string :name
       t.string :short_description
       t.text :description
-      t.decimal :price,                    null: false                    
+      t.decimal :price                  
       t.boolean :active
       t.integer :average_prepare_time
       t.boolean :ready

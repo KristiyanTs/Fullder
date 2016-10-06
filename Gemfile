@@ -98,11 +98,13 @@ gem 'remotipart'
 gem 'google_places'
 # Requiring captcha on forms, human verification
 gem 'recaptcha', require: 'recaptcha/rails'
+# Annotate because it fails in production
+gem 'annotate'
+
 
 group :development do
   gem 'spring'
   gem 'web-console', '~> 2.0'
-  gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_21]
   gem 'guard-bundler'
@@ -117,9 +119,9 @@ group :development do
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
   gem 'spring-commands-rspec'
+  gem 'capistrano3-nginx', '~> 2.0'
   gem 'capistrano',         require: false
   gem 'capistrano-rbenv',   require: false
-  gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
@@ -133,10 +135,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'byebug'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
 
 group :test do

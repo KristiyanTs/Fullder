@@ -2,8 +2,8 @@
 class CreateRestaurants < ActiveRecord::Migration
   def up
     create_table :restaurants do |t|
-      t.string :name,                    null: false
-      t.string :address,                 null: false
+      t.string :name
+      t.string :address
       t.string :wifipassword
       t.text :description
       t.string :phone_number

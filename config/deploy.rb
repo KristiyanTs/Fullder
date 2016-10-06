@@ -2,10 +2,18 @@
 server '139.59.135.85', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:Kristiyan96/Fullder.git'
+set :branch,          ENV.fetch('BRANCH', 'master')
 set :application,     'Fullder'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
+
+# rbenv settings
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.3.0'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
 
 # Don't change these unless you know what you're doing
 set :pty,             true
@@ -23,7 +31,10 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 # Default value for linked_dirs is []
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+# Restart application after deployment 
+set :passenger_restart_with_touch, true
 
 ## Defaults:
 # set :scm,           :git
@@ -74,7 +85,7 @@ namespace :deploy do
       invoke 'puma:restart'
     end
   end
-
+  
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup

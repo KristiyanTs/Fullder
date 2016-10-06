@@ -4,7 +4,7 @@ class CreateGroups < ActiveRecord::Migration[5.0]
     create_table :groups do |t|
       t.references :product,        index: true, foreign_key: true
       t.integer :maximum
-      t.string :name,               null: false
+      t.string :name
 
       t.timestamps
     end

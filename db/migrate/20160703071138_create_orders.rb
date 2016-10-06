@@ -9,7 +9,7 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :tax
       t.decimal :shipping
       t.decimal :tip
-      t.decimal :total,             null: false
+      t.decimal :total
       t.integer :table_number
       t.string :address
       t.boolean :payed,             default: false

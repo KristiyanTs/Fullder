@@ -14,6 +14,7 @@
 #
 
 default: &default
+  host:     localhost
   adapter: postgresql
   pool: 5
   timeout: 5000
@@ -21,7 +22,6 @@ default: &default
 
 development:
   <<: *default
-  host:     localhost
   encoding: unicode
   database: FastOrder_development
   username: pguser
@@ -48,7 +48,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host:     localhost
   encoding: unicode
   database: FastOrder_test
   username: pguser
@@ -68,12 +67,14 @@ test:
 
 staging:
   <<: *default
-  database: ruby_thursday_staging
+  database: fullder_staging
   username: deploy
-  password: <%= ENV["DATABASE_PASSWORD"] %>
+  password: "krisnikola2016"
+  # password: <%= ENV["DATABASE_PASSWORD"] %>
 
 production:
   <<: *default
-  database: Fullder_production
+  database: fullder_production
   username: deploy
-  password: <%= ENV["DATABASE_PASSWORD"] %>
+  password: "krisnikola2016"
+  # password: <%= ENV["DATABASE_PASSWORD"] %>
