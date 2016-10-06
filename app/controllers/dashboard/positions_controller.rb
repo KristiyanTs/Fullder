@@ -51,15 +51,11 @@ class Dashboard::PositionsController < ApplicationController
                       notice: 'Employee was successfully added.',
                       status: :created
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_positions_path(@restaurant).to_json}",
-                 notice: 'Employee was successfully added.',
-                 status: :created
-        end
+        format.js
       else
         format.html { render :new }
         format.json { render json: @position.errors, status: :unprocessable_entity }
-        format.js { render 'layouts/flash_messages' }
+        format.js
       end
     end
   end
@@ -72,14 +68,11 @@ class Dashboard::PositionsController < ApplicationController
                       notice: 'Employee status was successfully updated.',
                       status: :ok
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_positions_path(@restaurant).to_json}",
-                 notice: 'Employee status was successfully updated.',
-                 status: :ok
-        end
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @position.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -89,10 +82,7 @@ class Dashboard::PositionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to dashboard_restaurant_positions_path(@restaurant), flash: { notice: 'Employee was successfully removed.' } }
       format.json { head :no_content }
-      format.js do
-        render js: "window.location = #{dashboard_restaurant_positions_path(@restaurant).to_json}",
-               status: :ok
-      end
+      format.js
     end
   end
 

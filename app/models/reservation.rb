@@ -35,6 +35,10 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :table
 
+  validates :contact_name, presence: true
+  validates :contact_number, presence: true
+  validates :start_time, presence: true
+  validates :seats, presence: true
   validate :user_confirmed
   validate :table_free
   validate :not_overlapping
@@ -59,8 +63,8 @@ class Reservation < ApplicationRecord
 
   def not_overlapping
     self.user.reservations.each do |reservation|
-      errors.add(:reservation, 'Reservations collapsing.') if ((self.start_time - reservation.start_time).abs < 7200 && self.id != reservation.id)
-    end
+      errors.add(:start_time, 'You already have a reservation at that time.') if ((self.start_time - reservation.start_time).abs < 7200 && self.id != reservation.id)
+    end if self.user
   end
 
   def calc_end_time

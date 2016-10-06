@@ -31,6 +31,8 @@ class Role < ApplicationRecord
 
   before_destroy :check_for_positions
 
+  validates :name, presence: true
+
   private
 
   def check_for_positions

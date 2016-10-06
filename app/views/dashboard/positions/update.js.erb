@@ -1,0 +1,7 @@
+<% if @position.errors.any? %>
+ $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
+<% else %>
+  $('#element-form').modal('hide');
+  $('#position-<%= @position.id %>').fadeOut(1000);
+  $('#positions').prepend($("<%= j render @position %>").fadeIn('slow'));
+<% end %>

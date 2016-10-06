@@ -1,6 +1,6 @@
-<% if @product.errors.any? %>
+<% if @position.errors.any? %>
   $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
 <% else %>
   $('#element-form').modal('hide');
-  $('#products').prepend("<%= j render @product %>");
+  $('#positions').prepend("<%= j render @position %>");
 <% end %>

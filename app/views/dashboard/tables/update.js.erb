@@ -1,0 +1,7 @@
+<% if @table.errors.any? %>
+ $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
+<% else %>
+  $('#element-form').modal('hide');
+  $('#table-<%= @table.id %>').fadeOut(1000);
+  $('#tables').prepend($("<%= j render @table %>").fadeIn('slow'));
+<% end %>

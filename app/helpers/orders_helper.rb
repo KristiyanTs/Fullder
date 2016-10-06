@@ -9,7 +9,7 @@ module OrdersHelper
   end
 
   def table_number
-    @restaurant.tables.find(object.table_id).number
+    @restaurant.tables.find(object.table_id).try(:number)
   end
 
   def ready_items

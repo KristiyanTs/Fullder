@@ -41,7 +41,7 @@ class OrderItemsController < ApplicationController
         @order_items = current_order.order_items
         format.html { redirect_to cart_path }
         format.json { render json: current_order.subtotal }
-        format.js   { flash[:notice] = 'Your order was successfully updated.' }
+        format.js   
       else
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }

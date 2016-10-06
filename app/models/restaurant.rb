@@ -49,6 +49,10 @@ class Restaurant < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
   has_many :reservations
 
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+
   accepts_nested_attributes_for :working_times, allow_destroy: true
   accepts_nested_attributes_for :images, reject_if: :all_blank,
                                          allow_destroy: true

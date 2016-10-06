@@ -1,12 +1,12 @@
-- if @roles.empty?
+- if @roles.blank?
   p.text-center
     = t "search.no-results"
 - else
-  table.table.table-striped
+  table#roles.table.table-striped
     thead
       tr
         th = t 'dashboard.title'
         th = t 'dashboard.actions'
     tbody
-      = render partial: "element_row", collection: @roles, as: :role
+      = render partial: "role", collection: @roles, as: :role
   = paginate @roles, theme: 'twitter-bootstrap-3'

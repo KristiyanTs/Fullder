@@ -43,14 +43,11 @@ class Dashboard::RolesController < ApplicationController
                       notice: 'Role was successfully created.',
                       status: :created
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_roles_path(@restaurant).to_json}",
-                 notice: 'Role was successfully created.',
-                 status: :created
-        end
+        format.js
       else
         format.html { render :new }
         format.json { render json: @role.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -63,14 +60,11 @@ class Dashboard::RolesController < ApplicationController
                       notice: 'Role was successfully updated.',
                       status: :ok
         end
-        format.js do
-          render js: "window.location = #{dashboard_restaurant_roles_path(@restaurant).to_json}",
-                 notice: 'Role was successfully updated.',
-                 status: :ok
-        end
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @role.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -79,11 +73,7 @@ class Dashboard::RolesController < ApplicationController
     respond_to do |format|
       @role.destroy
       format.html { redirect_to dashboard_restaurant_roles_path(@restaurant) }
-      format.js do
-        render js: "window.location = #{dashboard_restaurant_roles_path(@restaurant).to_json}",
-               notice: 'Role was successfully destroyed.',
-               status: :ok
-      end
+      format.js
     end
   end
 

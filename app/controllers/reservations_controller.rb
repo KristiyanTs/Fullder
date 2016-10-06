@@ -22,6 +22,7 @@ class ReservationsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
+        format.js 
       end
     end
   end

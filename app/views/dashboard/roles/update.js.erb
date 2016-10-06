@@ -1,0 +1,7 @@
+<% if @role.errors.any? %>
+ $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
+<% else %>
+  $('#element-form').modal('hide');
+  $('#role-<%= @role.id %>').fadeOut(1000);
+  $('#roles').prepend($("<%= j render @role %>").fadeIn('slow'));
+<% end %>
