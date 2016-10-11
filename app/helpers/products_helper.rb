@@ -12,8 +12,10 @@ module ProductsHelper
     end
   end
 
-  def common_alergens(product, current_user)
-    allergens = product.allergen_list & current_user.allergen_list
-    (t 'product.contains').to_s + allergens.to_sentence if allergens.any?
+  def common_alergens(prod, user)
+    if prod && user 
+      allergens = prod.allergen_list & user.allergen_list
+      (t 'product.contains').to_s + allergens.to_sentence if allergens.any?
+    end
   end
 end
