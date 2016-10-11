@@ -19,9 +19,9 @@
 #
 # Indexes
 #
-#  index_categories_on_restaurant_id     (restaurant_id)
-#  index_categories_on_slug              (slug) UNIQUE
-#  index_categories_on_supercategory_id  (supercategory_id)
+#  index_categories_on_restaurant_id           (restaurant_id)
+#  index_categories_on_restaurant_id_and_slug  (restaurant_id,slug) UNIQUE
+#  index_categories_on_supercategory_id        (supercategory_id)
 #
 # Foreign Keys
 #
@@ -30,7 +30,7 @@
 
 class Category < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :scoped], scope: :restaurant
+  friendly_id :name, use: [:slugged, :scoped], :scope => :restaurant
 
   belongs_to :restaurant
   belongs_to :supercategory, class_name: "Category"

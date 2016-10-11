@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20161002153610) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "slug"
+    t.index ["restaurant_id", "slug"], name: "index_categories_on_restaurant_id_and_slug", unique: true, using: :btree
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
-    t.index ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
     t.index ["supercategory_id"], name: "index_categories_on_supercategory_id", using: :btree
   end
 
@@ -298,10 +298,10 @@ ActiveRecord::Schema.define(version: 20161002153610) do
   create_table "sizes", force: :cascade do |t|
     t.integer  "product_id"
     t.string   "name"
-    t.decimal  "price"
+    t.decimal  "price",       default: "0.0"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["product_id"], name: "index_sizes_on_product_id", using: :btree
   end
 
