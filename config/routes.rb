@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     resources :restaurants, except: [:index, :destroy] do
-      post :import
       resources :products
       resources :categories
       resources :roles
@@ -31,6 +30,9 @@ Rails.application.routes.draw do
       resources :orders, only: [:index, :edit, :update]
       resources :reservations
       resources :order_items, only: [:index, :show, :update]
+      resource :menus, only: [:show] do
+        post :import
+      end
     end
   end
 
