@@ -27,6 +27,6 @@
   hr
 
   .import-menu.col-xs-12
-    = form_tag dashboard_restaurant_import_path(@restaurant), multipart: true do
+    = form_tag import_dashboard_restaurant_menus_path(@restaurant), multipart: true do
       = file_field_tag :file, class: "col-xs-6"
       = submit_tag 'Import', class: "col-xs-6"
