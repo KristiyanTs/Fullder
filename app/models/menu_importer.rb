@@ -14,6 +14,7 @@ class MenuImporter
   end
 
   def import!
+    Rails.logger.info "Starting to import in menu_importer"
     ((sheet.first_row + 2)..(sheet.last_row)).each do |idx|
       row = sheet.row(idx)
       params = Hash[headers.zip(row)]
