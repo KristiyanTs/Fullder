@@ -23,3 +23,12 @@ a.category-row{
   float: left;
   margin-right: 20px;
 }
+
+
+@media (max-width:990px) {
+  a.category-row{
+    margin-top: 10px;
+    margin-left: 0px;
+    border-radius: 0px;
+  }
+}
