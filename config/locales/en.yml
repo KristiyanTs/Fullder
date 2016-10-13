@@ -84,7 +84,7 @@ en:
   reservation:
     reserve-table-header: Reserve a table
   cart:
-    send-order: Order
+    send-order: Order for %{price}
     empty: Your cart is empty
     add-demands: Click to add demands
   rating:

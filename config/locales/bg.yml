@@ -83,7 +83,7 @@ bg:
   reservation:
     reserve-table-header: Резервирай маса
   cart:
-    send-order: Поръчай
+    send-order: Поръчай за %{price}
     empty: Количката Ви е празна
     add-demands: Добавете изисквания тук
   cocoon:

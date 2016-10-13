@@ -1,0 +1,5 @@
+tr id="item-#{order_item.id}"
+  td = order_item.product.name
+  td = number_to_currency order_item.unit_price
+  td = order_item.quantity
+  td = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

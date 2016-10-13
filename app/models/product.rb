@@ -49,7 +49,7 @@ class Product < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true, length: { maximum: 24 }
   validates :category_id, presence: true
-  validates :short_description, presence: true
+  validates :short_description, presence: true, length: { maximum: 130 }
   validates :price, presence: true
 
   acts_as_taggable

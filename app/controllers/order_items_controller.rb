@@ -4,6 +4,7 @@ class OrderItemsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    @restaurant = current_order.restaurant
     @order_item = OrderItem.new(order_item_params)
     respond_to do |format|
       if @order_item.valid?

@@ -1,16 +1,12 @@
-table.table.table-hover
-  thead
-    tr
-      th Product
-      th Price
-      th Quantity
-  tbody
-    - current_order.order_items.each do |item|
-      tr
-        td = item.product.name
-        td = number_to_currency item.unit_price
-        td = item.quantity
-        td = link_to "", item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }
-hr style="border:1px solid grey"
-.text-center
-  h2 = number_to_currency current_order.subtotal
+- if @restaurant&.sells_online || @restaurant&.accepts_deliveries
+  .container.col-md-3.container-white.compact-cart.container-min-height.hidden-xs.hidden-sm
+    table#order-items.table.table-hover
+      thead
+        tr
+          th Product
+          th Price
+          th Qty
+      tbody
+        = render partial: "order_items/order_item", collection: current_order.order_items, as: :order_item
+    .buy-button
+      = render partial: 'carts/buy_button'
