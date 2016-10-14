@@ -1,0 +1,23 @@
+h1 Listing bugs
+
+table
+  thead
+    tr
+      th Description
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @bugs.each do |bug|
+      tr
+        td = bug.description
+        td = bug.user
+        td = link_to 'Show', bug
+        td = link_to 'Edit', edit_bug_path(bug)
+        td = link_to 'Destroy', bug, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Bug', new_bug_path

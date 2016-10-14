@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :bugs
   mount Sidekiq::Web, at: '/sidekiq'
   root 'restaurants#index'
 
