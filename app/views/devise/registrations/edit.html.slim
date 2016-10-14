@@ -6,6 +6,8 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white
     = f.error_notification
     .form-inputs
       = f.input :email, required: true, autofocus: true
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        p Currently waiting confirmation for: #{resource.unconfirmed_email}
       = f.input :name
       = f.input :phone_number
       = f.input :address
@@ -15,9 +17,6 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white
       hr
       = f.input :allergen_list, input_html: {value: current_user.allergen_list.to_s}
       hr
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        p
-          | Currently waiting confirmation for: #{resource.unconfirmed_email}
       - if f.object.provider.blank?
         = f.input :password, autocomplete: "off", required: false
         = f.input :password_confirmation, required: false

@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.new(order_item_params)
     respond_to do |format|
       if @order_item.valid?
-        if table_in_this_restaurant?
+        if table_in_this_restaurant? || current_order.address
           add_item
 
           format.html
