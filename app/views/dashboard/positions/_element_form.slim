@@ -6,6 +6,7 @@
       span aria-hidden="true"  &times;
 
   .modal-body
+    = render 'layouts/error_messages', object: @position
     - if @editing
       h4 = @position.user.name
     - else
