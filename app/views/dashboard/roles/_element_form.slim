@@ -6,6 +6,7 @@
       span aria-hidden="true"  &times;
 
   .modal-body
+    = render 'layouts/error_messages', object: @role
     = f.input :name
     = f.collection_check_boxes :permission_ids, Permission.all, :id, :description, 
       { selected: @role.permission_ids, item_wrapper_tag: "p" }

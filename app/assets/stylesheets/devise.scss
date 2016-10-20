@@ -1,43 +1,6 @@
-.login-actions{
-  padding: 0px !important;
-  .checkbox{
-    position: absolute;
-    top: 2px;
-    left: 0px;
-  }
-  .user_remember_me{
-    width: 140px;
-    font-size: 16px !important;
-  }
-  .forgot-password{
-    padding: 0px;
-    height: 40px;
-    width: 120px;
-    a{
-      position: absolute;
-      top: 15px;
-      right: 0px;
-      font-size: 15px; 
-    }
-  }
-}
-
-.login-or{
-  position:  absolute;
-  text-align: center;
-  top: -40px;
-  font-size: 30px;
-  background-color: white;
-  color: rgb(200,200,200);
-}
-
-.fa-lock, .fa-user{
-  width: 15px;
-}
-
 .login-options{
-  padding-bottom: 30px;
-  border-bottom: 2px solid rgb(230,230,230);
+  position: relative;
+  margin-bottom: 30px;
   a{
     font-size: 25px;
     font-weight: bold;
@@ -49,18 +12,22 @@
 .omb_btn-google {background: #c32f10; color: white;}
 
 .login-footer{
-  background-color: rgb(220,220,220);
+  background-color: rgb(240,240,240);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+  box-shadow: 0px 0px 1px 0px #888888;
   height: 60px;
   a{
     margin-top: 10px;
     padding-top: 20px;
     line-height: 60px;
+    color: grey;
   }
 }
 
 .login-container{
+  color: grey;
+  margin-top: 20px;
   border-bottom-right-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   input{

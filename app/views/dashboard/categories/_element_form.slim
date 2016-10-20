@@ -6,6 +6,7 @@
       span aria-hidden="true"  &times;
 
   .modal-body
+    = render 'layouts/error_messages', object: @category
     - if @category.avatar.exists?
       = image_tag @category.avatar.url(:small), class: "center-block img-rounded"
     = f.input :avatar, as: :file

@@ -1,0 +1,6 @@
+- if object.errors.any?
+  .error-explanation.alert.alert-error
+    = t 'simple_form.error_notification.default_message'
+    ul
+      - object.errors.full_messages.each do |msg|
+        li = msg

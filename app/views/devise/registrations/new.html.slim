@@ -1,40 +1,12 @@
 container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
-  h3.text-center.space
-    |Sign up or 
-    = link_to "Log in", new_user_session_path
-  hr
-  .col-xs-12.space.login-options
-    .col-xs-4.col-sm-4
-      = link_to omniauth_authorize_path(:user, :facebook), class: "btn btn-lg btn-block omb_btn-facebook text-center" do
-        i.fa.fa-facebook.visible-xs
-        span.hidden-xs Facebook 
-    .col-xs-4.col-sm-4
-      = link_to omniauth_authorize_path(:user, :twitter), class: "btn btn-lg btn-block omb_btn-twitter" do
-        i.fa.fa-twitter.visible-xs
-        span.hidden-xs Twitter
-    .col-xs-4.col-sm-4
-      = link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn btn-lg btn-block omb_btn-google" do
-        i.fa.fa-google-plus.visible-xs
-        span.hidden-xs Google+
-  .col-xs-4.col-xs-offset-4.col-md-2.col-md-offset-5.login-or or
-
+  h3.text-center Sign up
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = f.error_notification
-    .form-inputs
-      .input-group.col-xs-12.space
-        span.input-group-addon
-          i.fa.fa-user
-        = f.input :email, required: true, autofocus: true, placeholder: "Email", label: false
-      - if f.object.provider.blank?
-        .input-group.col-xs-12.space
-          span.input-group-addon
-            i.fa.fa-lock
-          = f.input :password, required: true, placeholder: "Password", label: false, wrapper: false
-        h5 = ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-        .input-group.col-xs-12.space
-          span.input-group-addon
-            i.fa.fa-lock
-          = f.input :password_confirmation, required: true, placeholder: "Confirm password", label: false, wrapper: false
-    .form-actions
-      = f.button :submit, "Sign up", class: "col-xs-12 btn btn-primary"
-
+    = render 'layouts/error_messages', object: resource
+    = f.input :email, required: true, autofocus: true, placeholder: "Email", label: false
+    - if f.object.provider.blank?
+      = f.input :password, required: true, placeholder: "Password", label: false
+      = f.input :password_confirmation, required: true, placeholder: "Confirm password", label: false
+    = f.button :submit, "Submit", class: "col-xs-12 btn btn-primary"
+.container.col-xs-12.col-md-6.col-md-offset-3.login-footer
+  .text-center
+    = link_to "Log in", new_user_session_path

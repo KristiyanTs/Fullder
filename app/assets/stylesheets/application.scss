@@ -19,6 +19,9 @@
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 
+/* Variables */
+$header-red: rgb(230, 0, 0);
+
 /* General global settings */
 @font-face {
   font-family: "Am";
@@ -45,6 +48,15 @@ input{
   font-size:16px !important;  
   /* When the font-size is 16px phones do not zoom when filling in an input */  
 }
+input:focus{
+  border: solid rgba(240,0,0,0.1) !important;
+  box-shadow: 0 0 2px rgba(240,0,0,0.2) !important;
+}
+
+/* webkit solution */
+::-webkit-input-placeholder { text-align:right; }
+/* mozilla solution */
+input:-moz-placeholder { text-align:right; }
 
 label{
   font-size: 19px;
@@ -59,6 +71,31 @@ a:hover{
   text-decoration: none;
 }
 
+.error-explanation{
+  margin-top: 20px;
+  color: black;
+}
+
+.flash_messages{
+  position: fixed;
+  z-index: 100;
+  top: 60px;
+  background-color: rgba(230,0,0,0.8);
+  color: white;
+  font-size: 26px;
+  button{
+    line-height: 40px;
+    span{
+      color: white !important;
+      font-weight: bold;
+    }
+  }
+}
+
+.flash_messages:hover{
+  background-color: $header-red;
+}
+
 .container-white{
   border-radius:5px;
   background-color: white;
@@ -71,12 +108,10 @@ a:hover{
   padding-right: 0px !important;
 }
 
-#flash_messages{
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  top:40px;
-  z-index:1000;
+.alert-error{
+  background-color: rgba(230,0,0,0.3);
+  font-size: 23px;
+  font-weight: bold;
 }
 
 .space{
@@ -110,7 +145,7 @@ a:hover{
   width: 95%;
 }
 .navbar-custom {
-  background-color: rgb(230, 0, 0);
+  background-color: $header-red;
   text-transform: uppercase;
   font-weight: 700;
   border: none;

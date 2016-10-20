@@ -6,6 +6,7 @@
       span aria-hidden="true"  &times;
 
   .modal-body
+    = render 'layouts/error_messages', object: @product
     = f.input :avatar, as: :file
     = f.input :name, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.name}}")
     = f.input :short_description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.short_description}}")
