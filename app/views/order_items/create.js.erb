@@ -1,7 +1,7 @@
 <% if current_order.errors.any? || @order_item.errors.any? %>
 alert("not valid.")
 <% else %>
-  $(".buy-button").html("<%= j render 'carts/buy_button' %>");
+  $(".buy-button").html("<%= j render 'layouts/cart/buy_button' %>");
   $(".cart_button").html("<%= escape_javascript(render 'layouts/footer/cart') %>");
   $('#order-items').prepend("<%= j render @order_item %>");
 <% end %>

@@ -1,2 +1,2 @@
-$(".buy-button").html("<%= j render 'carts/buy_button' %>");
+$(".buy-button").html("<%= j render 'layouts/cart/buy_button' %>");
 $("#order-items").html("<%= j render partial: 'carts/order_item', collection: @order_items, as: :order_item %>");
