@@ -1,4 +1,4 @@
-- if @restaurant&.sells_online || @restaurant&.accepts_deliveries
+- if current_order && current_order.restaurant == @restaurant
   .container.col-md-3.container-white.compact-cart.container-min-height.hidden-xs.hidden-sm
     table#order-items.table.table-hover
       thead
@@ -9,4 +9,4 @@
       tbody
         = render partial: "order_items/order_item", collection: current_order.order_items, as: :order_item
     .buy-button
-      = render partial: 'carts/buy_button'
+      = render partial: 'layouts/cart/buy_button'

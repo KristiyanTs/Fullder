@@ -1,3 +1,3 @@
 $(".button-right").html("<%= escape_javascript(render 'layouts/footer/cart') %>");
 $('#item-<%= @order_item.id %>').fadeOut(200);
-$(".buy-button").html("<%= j render 'carts/buy_button' %>");
+$(".buy-button").html("<%= j render 'layouts/cart/buy_button' %>");

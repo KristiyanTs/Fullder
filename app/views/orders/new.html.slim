@@ -8,7 +8,7 @@
 
   .tab-content
     #table.tab-pane.fade.in.active
-      = render 'table_form'
+      = render 'orders/table_form'
     - if @restaurant.accepts_deliveries
     #delivery.tab-pane.fade
-      = render 'delivery_form'
+      = render 'orders/delivery_form'

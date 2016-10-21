@@ -38,9 +38,9 @@ class Order < ApplicationRecord
 
   has_many :order_items, dependent: :destroy
 
-  validate :table_exists?
   before_save :update_subtotal
   before_save :set_table
+  validate :table_exists?
 
   def subtotal
     order_items.collect { |oi| oi.valid? ? oi.total_price : 0 }.sum
@@ -59,8 +59,8 @@ class Order < ApplicationRecord
   end
 
   def set_table
-    if self[:table_number]
-      self[:table_id] = Restaurant.friendly.find(self[:restaurant_id]).tables.find_by(number: self[:table_number]).id
+    if table_number
+      self[:table_id] = Restaurant.find(restaurant_id).tables.find_by(number: table_number).id
     end
   end
 end
