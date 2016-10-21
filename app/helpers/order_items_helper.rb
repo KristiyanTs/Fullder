@@ -1,14 +1,15 @@
 module OrderItemsHelper
-  def table_in_this_restaurant?
-    current_order.restaurant_id == @order_item.product.restaurant_id && !current_order.table_id.nil?
+
+  def order_exists?
+    current_order.restaurant_id == @restaurant.id
   end
 
-  def clear_order
-    current_order.restaurant_id = @order_item.product.restaurant_id
-    current_order.order_items.destroy_all
-    current_order.save
+  # Verifies that the order is valid
+  def current_order_valid?
+    current_order.table_id || current_order.address
   end
 
+  # Adds the order item to the current_order
   def add_item
     current_order.order_items << @order_item
     current_order.save

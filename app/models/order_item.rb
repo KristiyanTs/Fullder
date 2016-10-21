@@ -72,14 +72,10 @@ class OrderItem < ApplicationRecord
     self.delivered_at = Time.now if self.status == 'ready'
 
     return false if ORDER_STATUSES.index(self.status) == ORDER_STATUSES.length-1
-
     next_index = ORDER_STATUSES.index(self.status) + 1
-
     self.update(status: ORDER_STATUSES[next_index])    
   end
-
-  private
-
+  
   def product_present
     errors.add(:product, 'is not valid or is not active.') if product.nil?
   end

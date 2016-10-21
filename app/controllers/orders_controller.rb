@@ -13,14 +13,17 @@ class OrdersController < ApplicationController
   end
 
   def create
-    params[:order][:user_id] = current_user.id
-
-    @order = @restaurant.orders.new(order_params)
+    @order = current_user.orders.new(order_params)
+    @order.restaurant_id = @restaurant.id
     respond_to do |format|
       if @order.save
+        @order_item = @restaurant.order_items.new(session[:order_item])
+        @order.order_items << @order_item
+
+        flash[:success] = "Item added to your cart."
         session[:order_id] = @order.id
-        format.html { redirect_to restaurant_categories_path(params[:restaurant_id]) }
-        format.json { render :show, status: :ok, location: params[:restaurant_id] }
+
+        redirect_to restaurant_product_path(@restaurant, @order_item.product_id) and return
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -58,7 +61,7 @@ class OrdersController < ApplicationController
 
   private
   def set_restaurant
-    @restaurant = Restaurant.friendly.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(session[:restaurant_id])
   end
 
   def order_params

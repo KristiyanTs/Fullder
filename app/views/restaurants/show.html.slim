@@ -6,7 +6,7 @@
       = @restaurant.address
     = image_tag @restaurant.restaurant_avatar.url(:large)
 
-  = link_to (t 'restaurant.menu'), menu_button, class: "menu-button col-xs-6 text-center"
+  = link_to (t 'restaurant.menu'), restaurant_categories_path(@restaurant), class: "menu-button col-xs-6 text-center"
 
   = link_to (t 'restaurant.reserve'), new_restaurant_reservation_path(@restaurant), 
     class: "reservations-button col-xs-6 text-center"

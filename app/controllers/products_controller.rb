@@ -3,7 +3,9 @@ class ProductsController < ApplicationController
   before_action :set_product
 
   def show
-    @order_item = current_order.order_items.new
+    @order_item = OrderItem.new
+    session[:restaurant_id] = @restaurant.id
+    session[:product_id] = @product.id
   end
 
   private

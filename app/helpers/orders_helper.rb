@@ -15,7 +15,4 @@ module OrdersHelper
   def ready_items
     @restaurant.orders.first
   end
-
-  def awaiting_items
-  end
 end

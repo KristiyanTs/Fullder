@@ -9,7 +9,8 @@ html
     = csrf_meta_tags
     = render 'layouts/header'
   body
-    = render 'layouts/flash_message'
+    .flash-container
+      = render 'layouts/flash_messages'
     = yield
   / footer
   /   = render 'layouts/footer'

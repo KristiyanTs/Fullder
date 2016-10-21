@@ -4,31 +4,15 @@ class OrderItemsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @restaurant = current_order.restaurant
+    @restaurant = Restaurant.find(session[:restaurant_id])
     @order_item = OrderItem.new(order_item_params)
     respond_to do |format|
-      if @order_item.valid?
-        if table_in_this_restaurant? || current_order.address
-          add_item
-
-          format.html
-          format.js
-        else
-          clear_order
-          add_item
-
-          session[:order_id] = current_order.id
-          session[:product_id] = @order_item.product.id
-
-          format.html { redirect_to edit_order_path(current_order) }
-          format.js do
-            render js: "window.location = #{edit_order_path(current_order).to_json}",
-                   flash: { notice: 'Order was added to your cart.' }
-          end
-        end
+      if order_exists?
+        add_item
+        format.js
       else
-        flash[:error] = @order_item.errors.full_messages.to_sentence
-        format.js { render 'layouts/flash_messages' }
+        session[:order_item] = @order_item
+        redirect_to new_order_path and return
       end
     end
   end
