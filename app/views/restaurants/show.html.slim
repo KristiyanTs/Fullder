@@ -20,7 +20,7 @@
   #working-times.col-xs-12.col-sm-4
     i.fa.fa-calendar-check-o.working-time-awesome aria-hodden="true"
     .shchedule.panel.panel-default
-      .panel-heading data-toggle="collapse" href="#working-hours" data-target="#working-hours"
+      .panel-heading data-toggle="collapse" data-target="#working-hours"
         h4 = status(@restaurant)
         #working-hours.panel-collapse.collapse
           .panel-body
@@ -34,7 +34,7 @@
   #wifipassword.col-xs-12.col-sm-4
     i.fa.fa-wifi aria-hodden="true"
     .panel.panel-default.wifipanel
-      .wifipass.panel-heading data-toggle="collapse" href="#copied" data-target="#copied" data-clipboard-action="copy" data-clipboard-target=".wifipass" 
+      .wifipass.panel-heading data-toggle="collapse" data-target="#copied" data-clipboard-action="copy" data-clipboard-target=".wifipass" 
         = @restaurant.try(:wifipassword) || "Not provided"
         #copied.panel-collapse.collapse
           .panel-body

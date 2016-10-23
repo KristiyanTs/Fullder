@@ -1,3 +1,6 @@
+/* Variables */
+$header-red: rgb(230, 0, 0);
+
 .cart-row{
   background-color: white;
   height: 140px;
@@ -78,7 +81,8 @@
 }
 
 .compact-cart{
-  margin-top: 20px;
+  min-width: 300px;
+  margin-top: 10px;
   border-radius: 10px;
   th{
     font-size: 25px;
@@ -97,6 +101,7 @@
     border-top-right-radius: 0px;
   }
   .buy-button{
+    background-color: $header-red;
     position: absolute;
     bottom: 0px;
     width: 100%;
