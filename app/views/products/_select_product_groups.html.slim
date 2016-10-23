@@ -1,8 +1,7 @@
-- @product ||= product
-- @product.groups.each do |group|
+- product ||= @product
+- product.groups.each do |group|
   .container.container-white.col-xs-12.space
-    h4.text-center = group.name
-    i.max-options = "max " + group.maximum.to_s
+    h4.max-options.text-center = group.name + " (max " + group.maximum.to_s + " )"
     .col-xs-12.option_holder.padding-top-small
       = f.collection_check_boxes :option_ids, group.options, :id, :name,          
         item_wrapper_class: "col-xs-6 col-sm-6 col-md-4 col-lg-3 product_option #{group.maximum.to_s}"
