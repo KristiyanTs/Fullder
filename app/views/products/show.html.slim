@@ -3,7 +3,7 @@
     - if @product.avatar?
       = image_tag @product.avatar.url(:large), class: "img-rounded img-responsive center-block space space-up"
     .col-xs-10.col-md-8.col-xs-offset-1.col-md-offset-2.text-center.space
-      = @product.short_description  
+      h4 = @product.short_description  
   = render partial: 'product_buy_form'
 
   - if !@product.description.blank?
