@@ -9,6 +9,8 @@ class CategoriesController < ApplicationController
   def show
     @subcategories = @category.subcategories.page(params[:page])
     @products = @category.products.page(params[:page])
+    @order_item = OrderItem.new
+    session[:restaurant_id] = @restaurant.id
   end
 
   private

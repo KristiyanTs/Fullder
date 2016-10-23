@@ -1,14 +1,14 @@
-- if @product.sizes.any?
-  .col-xs-12.form-container
-    h4.text-center = t 'product.pick-variation'
+- product ||= @product
+- if product.sizes.any?
+  .container.container-white.col-xs-12.product-sizes.space
     .col-xs-5.col-sm-6.col-md-3.col-lg-3.padding-top-small
-      = f.collection_radio_buttons :size_id, @product.sizes, :id, :name,
+      = f.collection_radio_buttons :size_id, product.sizes, :id, :name,
                                     item_wrapper_class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12 product_size',
-                                    checked: @product.sizes.first
+                                    checked: product.sizes.first
                   
     .col-xs-7.col-sm-6.col-md-9.col-lg-9.size_info
-      - @product.sizes.each do |size|
+      - product.sizes.each do |size|
         .col-xs-6.col-sm-9.col-md-9.col-lg-9.size_description
           = size.description
         .col-xs-6.col-sm-3.col-md-3.col-lg-3.product_size_price
-          = size_price(@product, size)  
+          = size_price(product, size)  
