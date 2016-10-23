@@ -1,6 +1,7 @@
-= simple_form_for @order_item, html: { class: 'new-order-item col-xs-12 col-lg-5' }, remote: true do |f|
+- product ||= @product
+= minimal_form_for @order_item, html: { class: 'new-order-item' }, remote: true do |f|
   = f.input :quantity, as: :hidden, input_html: {value: '1'}
-  = f.input :product_id, as: :hidden, input_html: {value: @product.id}
-  = render 'select_product_sizes', f: f
-  = render 'select_product_groups', f: f
-  = render 'add_to_cart', f: f
+  = f.input :product_id, as: :hidden, input_html: {value: product.id}
+  = render 'products/select_product_sizes', f: f, product: product
+  = render 'products/select_product_groups', f: f, product: product
+  = render 'products/add_to_cart', f: f, product: product

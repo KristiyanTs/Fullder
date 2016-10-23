@@ -1,5 +1,6 @@
+- @product ||= product
 - @product.groups.each do |group|
-  .col-xs-12.col-md-6.col-md-offset-3.form-container
+  .container.container-white.col-xs-12.space
     h4.text-center = group.name
     i.max-options = "max " + group.maximum.to_s
     .col-xs-12.option_holder.padding-top-small

@@ -1,6 +1,11 @@
-.container.col-xs-12.col-md-8.container-products.product-show-page
-  = render partial: "product_row", locals: {product: @product}
+.container.col-xs-12.col-md-6.col-md-offset-1.container-products
+  .container.container-white.space
+    - if @product.avatar?
+      = image_tag @product.avatar.url(:large), class: "img-rounded img-responsive center-block space space-up"
+    .col-xs-10.col-md-8.col-xs-offset-1.col-md-offset-2.text-center.space
+      = @product.short_description  
   = render partial: 'product_buy_form'
+
   .col-xs-12.new-order-item
     - if !@product.description.blank?
       .panel.panel-default.col-xs-12.col-lg-5.description-panel

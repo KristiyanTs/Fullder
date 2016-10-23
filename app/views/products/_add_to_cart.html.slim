@@ -1,6 +1,7 @@
+- @product ||= product
 - if @restaurant.sells_online
-  .col-xs-12.form-container
+  .container.container-white.col-xs-12
     = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'padding-top-small' }
     - f.input :product_id, value: @product.id
-  = f.submit "#{t 'order.add-to-cart'}", class: "btn col-xs-12 buy-button"
+  = f.submit "#{t 'order.add-to-cart'}", class: "btn buy-button col-xs-12"
  

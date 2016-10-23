@@ -93,6 +93,22 @@ a:hover{
   }
 }
 
+@media (max-width: 768px) {
+  .flash_messages{
+    top: 55px;
+    background-color: rgba(230,0,0,0.8);
+    color: white;
+    font-size: 14px;
+    button{
+      line-height: 20px;
+      span{
+        color: white !important;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 .flash_messages:hover{
   background-color: $header-red;
 }
@@ -100,7 +116,6 @@ a:hover{
 .container-white{
   border-radius:5px;
   background-color: white;
-  padding-bottom:15px;
   box-shadow: 0px 0px 1px 0px #888888;
 }
 
@@ -116,7 +131,11 @@ a:hover{
 }
 
 .space{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.space-up{
+  margin-top: 10px;
 }
 
 .container-min-height{
