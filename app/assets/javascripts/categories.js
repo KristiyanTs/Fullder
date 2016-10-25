@@ -3,3 +3,4 @@ $(document).on('turbolinks:load', function() {
     $(this).parent().next('.more-options').toggle();
   });
 });
+
