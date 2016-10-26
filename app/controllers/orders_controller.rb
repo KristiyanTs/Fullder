@@ -5,6 +5,14 @@ class OrdersController < ApplicationController
   before_action :set_restaurant, only: [:new, :create]
   before_action :delete_unpaid_orders, only: [:create]
 
+  def index
+    @orders = current_user.orders.order('updated_at DESC').page(params[:page]).per(10)
+  end
+
+  def show
+    @order = current_user.orders.find(params[:id])
+  end
+
   def new
     @order = Order.new
   end

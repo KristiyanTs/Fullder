@@ -52,6 +52,8 @@ bg:
     delivered-orders: Доставени поръчки
     settings: Настройки
     profile: "Профил"
+    profile_settings: "Настройки на профила"
+    orders_history: Минали поръчки
     logout: "Изход"
     register: "Регистрация"
     enter: "Влез"

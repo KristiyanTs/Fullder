@@ -20,7 +20,7 @@
               li.cart_button
                 = button_link(@right_link, @right_class, @right_content)
             li
-              = link_to " #{t 'navbar.profile'}", edit_user_registration_path
+              = link_to " #{t 'navbar.profile'}", profile_path
             li
               = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete
 
@@ -49,7 +49,7 @@
                   i.fa.fa-shopping-cart aria-hidden="true"
                   = @right_content
             li
-              = link_to " #{t 'navbar.profile'}", edit_user_registration_path
+              = link_to " #{t 'navbar.profile'}", profile_path
             li
               = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete
           - else 

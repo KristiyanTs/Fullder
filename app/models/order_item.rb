@@ -73,7 +73,8 @@ class OrderItem < ApplicationRecord
 
     return false if ORDER_STATUSES.index(self.status) == ORDER_STATUSES.length-1
     next_index = ORDER_STATUSES.index(self.status) + 1
-    self.update(status: ORDER_STATUSES[next_index])    
+    self.update(status: ORDER_STATUSES[next_index])  
+    status  
   end
   
   def product_present

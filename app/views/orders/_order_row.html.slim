@@ -1,0 +1,9 @@
+= link_to order_path(order), class: "container container-white col-xs-12 order-row"
+  .order-restaurant.col-xs-12.col-md-4.text-center
+    = order.restaurant.name
+  .order-date.col-xs-12.col-md-4.text-center.glyphicon.glyphicon-time
+    = order.created_at.strftime("%d/%m %H:%M")
+  .order-cost.col-xs-6.col-md-2.text-center
+    = number_to_currency(order.subtotal, locale: order.restaurant.country.to_sym)
+  .order-progress.col-xs-6.col-md-2.text-center class="#{order.ready?}"
+    = order_status(order)  
