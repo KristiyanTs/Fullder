@@ -9,3 +9,43 @@
   font-size: 16px;
   width:100px;
 }
+
+.order-row{
+  margin-bottom: 10px;
+  height: 100px;
+
+  .order-restaurant{
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 100px;
+  }
+
+  .order-date{
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 100px;
+  }
+
+  .order-cost{
+    color: grey;
+    font-size: 24px;
+    line-height: 100px;
+  }
+
+  .order-progress{
+    font-size: 24px;
+    line-height: 100px;
+  }
+
+  .order-progress.true{
+    color: green;
+  }
+
+  .order-progress.false{
+    color: red;
+  }
+
+
+}

@@ -1,0 +1,7 @@
+.container.col-xs-12.container-white.space.order-item-row
+  .order-item-product.col-xs-12.col-md-4
+    = item.product.name
+  .order-item-price.col-xs-12.col-md-4
+    = number_to_currency(item.total_price, locale: item.product.restaurant.country.to_sym)
+  .order-item-status.col-xs-12.col-md-4
+    = item.status

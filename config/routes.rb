@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
   root 'restaurants#index'
 
+  get 'profiles/show'
   get 'carts/show'
   get 'tags/:tag', to: 'restaurants#index', as: :tag
 
@@ -35,9 +36,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :profile, only: [:show] do
+    member do
+      get :help
+      get :report
+      get :contact
+    end
+  end
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, only: [:new, :edit, :create, :update, :destroy] do
+  resources :orders do
     member do
       get :pay
     end

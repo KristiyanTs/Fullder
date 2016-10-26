@@ -46,6 +46,10 @@ class Order < ApplicationRecord
     order_items.collect { |oi| oi.valid? ? oi.total_price : 0 }.sum
   end
 
+  def ready?
+    order_items.all? {|oi| oi.ready_at != nil}
+  end
+
   private
 
   def update_subtotal

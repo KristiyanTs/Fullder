@@ -1,6 +1,6 @@
 h2 = t 'reservation.reserve-table-header'
 = simple_form_for [@restaurant, @reservation], remote: true do |f|
-  = render 'layouts/error_messages', object: resource
+  = render 'layouts/error_messages', object: @reservation
   = f.input :start_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
   = f.input :seats
   = f.input :contact_number, input_html: {value: current_user.try(:phone_number)}

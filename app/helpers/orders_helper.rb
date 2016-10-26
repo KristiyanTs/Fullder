@@ -15,4 +15,10 @@ module OrdersHelper
   def ready_items
     @restaurant.orders.first
   end
+
+  def order_status(order)
+    unready = order.order_items.where(ready_at: nil).count
+    all   = order.order_items.count
+    (all - unready).to_s + "/" + all.to_s
+  end
 end

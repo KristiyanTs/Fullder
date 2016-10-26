@@ -1,0 +1,6 @@
+container.col-xs-12.col-md-6.col-md-offset-3.container-white
+  h3.text-center = t 'navbar.orders_history'
+  hr
+  .orders_container
+    = render partial: 'order_row', collection: @orders, as: :order
+    = paginate @orders, theme: 'twitter-bootstrap-3'

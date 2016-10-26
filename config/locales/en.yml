@@ -52,6 +52,8 @@ en:
     unready-orders: Unready orders
     delivered-orders: Delivered orders
     settings: Settings
+    profile_settings: Profile settings
+    orders_history: Orders history
     profile: "Profile"
     logout: "Exit"
     register: "Register"
