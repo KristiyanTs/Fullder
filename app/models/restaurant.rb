@@ -58,7 +58,7 @@ class Restaurant < ApplicationRecord
                                          allow_destroy: true
 
   has_attached_file :restaurant_avatar, styles: { small: '300x300#', large: '1000x800' },
-                                        default_url: '/images/:style/missing.png'
+                                        default_url: ':rails_root/public/system/:style/missing.png'
   validates_attachment_content_type :restaurant_avatar,
                                     content_type: /\Aimage\/.*\Z/
 
