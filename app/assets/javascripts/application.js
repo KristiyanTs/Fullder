@@ -9,6 +9,7 @@
 //= require select2-full
 //= require cocoon
 //= require slick.min
+//= require foggy
 //= require jquery-ui
 //= require underscore
 //= require gmaps/google

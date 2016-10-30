@@ -35,13 +35,11 @@ $header-red: rgb(230, 0, 0);
 }
 
 html,body {
-  padding-top: 0;
-  min-height: 600px;
-  margin-bottom: 100px;
-  margin-top: 28px;
-  background-color: rgb(248,248,248);
+  margin-bottom: 0px;
+  margin-top: 20px;
   clear: both;
   font-family: "Am", sans-serif;
+  height: 100%;
 }
 
 input{
@@ -67,9 +65,7 @@ a, a:active, a:focus {
   text-decoration: none;
 }
 
-a:hover{ 
-  text-decoration: none;
-}
+
 
 .error-explanation{
   margin-top: 20px;
@@ -264,5 +260,20 @@ a:hover{
   }
 }
 
-.account-extra{
+.cd-fixed-bg {
+  min-height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  
+}
+ 
+.cd-fixed-bg.cd-bg-1 {
+  background-image: image-url('index-background.jpg');
+}
+
+ 
+.cd-scrolling-bg {
+  min-height: 100%;
 }

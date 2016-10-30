@@ -1,4 +1,4 @@
-.col-xs-12.col-md-6.col-lg-4.restaurant-index-button
+.col-xs-12.col-sm-6.col-md-4.col-lg-3.restaurant-index-button
   = link_to restaurant_path(restaurant), class: "restaurant-row btn col-xs-12" do  
     .restaurant-avatar
       = image_tag restaurant.restaurant_avatar.url(:small)
@@ -12,6 +12,6 @@
         h5.glyphicon.glyphicon-heart = restaurant.favorited_by.count 
 
   = link_to (t 'restaurant.menu'),restaurant_categories_path(restaurant),  
-    class: "restaurant-row-menu col-xs-6 col-md-12 text-center"
+    class: "restaurant-row-menu col-xs-6 col-sm-12 text-center"
   = link_to "tel:" + restaurant.phone_number, class: "col-xs-6 visible-xs restaurant-row-call text-center"
     i.fa.fa-phone
