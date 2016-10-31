@@ -1,10 +1,9 @@
 <% if !@scrolling %>
+  $('.home-screen').fadeOut(1000);
   $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
 <% else %>
-
   $("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
     .appendTo($(".infinite-scroll"));
-
   <% if @restaurants.last_page? %>
     $('.pagination').html("That's all, folks!");
   <% else %>

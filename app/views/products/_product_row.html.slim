@@ -1,14 +1,16 @@
-.container-white.col-xs-12.btn.product_row
-  = link_to restaurant_product_path(@restaurant, product), class: "btn col-xs-12"
-    .product_name.col-xs-8
+.col-xs-12.col-sm-6.col-md-6.col-lg-6.product-index-button
+  = link_to restaurant_product_path(@restaurant, product), class: "product-row btn col-xs-12" do  
+    .product-avatar
+      = image_tag product.avatar.url(:small)
+    .product-name
       = product.name
-    .product_price.col-xs-4
-      = product_price(product)
-  .product-info
-    .product_short_description.col-xs-10
+    .product-short-description
       = product.short_description
-    .glyphicon.glyphicon-chevron-down.col-xs-2
-    .common_allergens.col-xs-12
+    hr
+    .product-price
+      = product_price(product)
+    .common_allergens
       = common_alergens(product, current_user)
-.col-xs-12.more-options
-  = render partial: 'products/product_buy_form', locals: {product: product}
+  .product-show-more.col-xs-12.text-center show more
+  .product-more-options
+    = render partial: 'products/product_buy_form', locals: {product: product}

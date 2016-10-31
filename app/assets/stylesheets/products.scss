@@ -1,66 +1,62 @@
 $header-red: rgb(230, 0, 0);
 
-.product_row{
-  background-color: white;
+
+.product-row{
   position: relative;
-  margin-top: 10px;
-  z-index: 1;
-  border-radius: 10px;
-  .product_name{
-    font-size: 28px;
-    text-align: left;
-    float: left;
-    line-height: 40px;
-    text-decoration: none;
-    color: black !important;
-    border-bottom: 1px solid rgb(235,235,235);
+  margin-top:25px;
+  padding:0px !important;
+  background-color: white;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  .product-avatar img{
+    width: 100%;
   }
-
-  .product_price{
-    color: grey;
-    font-size: 20px;
-    text-align: right;
-    line-height: 40px;
-    border-bottom: 1px solid rgb(235,235,235);
+  .product-name{
+    text-align: center;
+    color: black;
+    font-size:25px;
+    z-index: 1;
   }
-
-  .product_short_description{
-    font-size: 20px;
-    font-style: italic;
-    color: grey;
-    text-align: left;
+  .product-short-description{
     white-space: pre-line;
-    padding-top: 10px;
+    color: black;
+    height: 60px;
+    font-size: 15px;
+    overflow: hidden;
   }
-
-  .common_allergens{
-    color: red;
-    font-weight: bold;
-    text-align: left;
+  .product-price{
+    color: grey;
   }
+  hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .product-more-options{
+    display: none;
+  }
+}
+.product-show-more{
+  margin-top: 10px;
+}
 
-  .product-info{
-    position: relative;
-    .glyphicon-chevron-down{
-      padding-top: 10px;
-      font-size: 20px;
-      color: grey;
+@media (min-width: 768px) {
+  /* Restaurant row */
+  .product-row{
+    margin-top: 10px;
+    box-shadow: 0px 0px 1px 0px #888888;
+    .product-name{ 
+
+    }
+    .product-short-description{
+      height: 70px;
+      font-size: 18px;
+    }
+    .product-price{
+      font-size: 23px;
     }
   }
-}
-
-@media (max-width:990px) {
-
-}
-
-.more-options, .container-products{
-  padding-right: 0px !important;
-  padding-left: 0px !important;
-}
-
-.more-options{
-  margin-top: 10px;
-  display: none;
 }
 
 .product-sizes{
@@ -72,6 +68,7 @@ $header-red: rgb(230, 0, 0);
 }
 
 .product_option{
+  min-width: 130px;
   label{
     font-size: 20px !important;
   }
