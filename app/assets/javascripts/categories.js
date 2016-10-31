@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
-  $('.product-info').on('click tap', function() {
-    $(this).parent().next('.more-options').toggle();
+  $('.product-show-more').on('click tap', function() {
+    $(this).next('.product-more-options').toggle();
   });
 });
 
