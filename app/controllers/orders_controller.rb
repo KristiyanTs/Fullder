@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders.order('updated_at DESC').page(params[:page]).per(10)
+    add_breadcrumb "orders", orders_path, title: "Back to the orders"
   end
 
   def show

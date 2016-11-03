@@ -100,6 +100,8 @@ gem 'google_places'
 gem 'recaptcha', require: 'recaptcha/rails'
 # Annotate because it fails in production
 gem 'annotate'
+# Bread crumbs for site navigation
+gem "breadcrumbs_on_rails"
 
 
 group :development do

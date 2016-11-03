@@ -253,7 +253,7 @@ a, a:active, a:focus {
 }
 
 .footer{
-  background-color: rgb(240,240,240);
+  background-color: $header-red;
 }
 
 .account-important{
@@ -280,4 +280,22 @@ a, a:active, a:focus {
  
 .cd-scrolling-bg {
   min-height: 100%;
+}
+
+.breadcrumbs{
+  font-size: 16px;
+  a{
+    color: rgb(220,220,220);
+  }
+}
+.breadcrumbs-small{
+  font-size: 16px;
+  color: white;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 10px;
+  text-transform: uppercase;
+  a{
+    color: rgb(220,220,220);
+  }
 }

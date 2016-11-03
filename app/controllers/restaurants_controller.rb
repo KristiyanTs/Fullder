@@ -24,6 +24,8 @@ class RestaurantsController < ApplicationController
       marker.lat res.latitude
       marker.lng res.longitude
     end
+
+    add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
   end
 
   def favorite
