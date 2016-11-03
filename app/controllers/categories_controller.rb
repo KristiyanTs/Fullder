@@ -4,7 +4,9 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = @restaurant.categories.where(supercategory_id: nil)
-    add_breadcrumb "categories", restaurant_categories_path(@restaurant), title: "Back to the categories"
+    
+    add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
+    add_breadcrumb "menu", restaurant_categories_path(@restaurant), title: "Back to menu"
   end
 
   def show
@@ -12,6 +14,10 @@ class CategoriesController < ApplicationController
     @products = @category.products.page(params[:page])
     @order_item = OrderItem.new
     session[:restaurant_id] = @restaurant.id
+
+    add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
+    add_breadcrumb "menu", restaurant_categories_path(@restaurant), title: "Back to menu"
+    add_breadcrumb @category.name, restaurant_category_path(@restaurant, @category), title: "Category"
   end
 
   private

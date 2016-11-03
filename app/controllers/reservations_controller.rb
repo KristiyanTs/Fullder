@@ -4,6 +4,9 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = @restaurant.reservations.build
+
+    add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
+    add_breadcrumb "reservation", new_restaurant_reservation_path(@restaurant), title: "Reserve a table"
   end
 
   def create
