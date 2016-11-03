@@ -1,4 +1,5 @@
 document.addEventListener 'turbolinks:load', ->
+  $('.product-more-options').hide()
   $('input[type=checkbox]').on 'change', (evt) ->
     max = parseInt($(this).parent().parent().attr('class').split(' ').pop())
     if $(this).parent().parent().siblings().children().children(':checked').length + 1 > max

@@ -35,16 +35,14 @@ $header-red: rgb(230, 0, 0);
 }
 
 html,body {
+  height: calc(100% + 20px);
   padding-top: 0;
   min-height: 600px;
-  margin-bottom: 100px !important;
   margin-top: 25px;
   clear: both;
   font-family: "Am", sans-serif;
-  height: 103%;
   background-image: image-url('brickwall.png');
 }
-
 
 input{
   font-size:16px !important;  
@@ -298,4 +296,9 @@ a, a:active, a:focus {
   a{
     color: rgb(220,220,220);
   }
+}
+
+.clear{
+  clear: both; 
+  height: 60px;
 }
