@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = @restaurant.categories.where(supercategory_id: nil)
+    add_breadcrumb "categories", restaurant_categories_path(@restaurant), title: "Back to the categories"
   end
 
   def show

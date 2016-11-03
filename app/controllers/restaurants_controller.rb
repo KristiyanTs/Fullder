@@ -16,6 +16,8 @@ class RestaurantsController < ApplicationController
       format.json { render json: @restaurants }
       format.js { }
     end
+
+    add_breadcrumb "restaurants", restaurants_path, title: "Back to the restaurants"
   end
 
   def show
@@ -24,6 +26,7 @@ class RestaurantsController < ApplicationController
       marker.lat res.latitude
       marker.lng res.longitude
     end
+    add_breadcrumb "restaurant", restaurant_path(@restaurant), title: "Back to the restaurant"
   end
 
   def favorite

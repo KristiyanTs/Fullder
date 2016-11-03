@@ -9,6 +9,8 @@ html
     = csrf_meta_tags
     = render 'layouts/header'
   body
+  ol.breadcrumb
+    = render_breadcrumbs tag: :li, separator: "" 
     .flash-container
       = render 'layouts/flash_messages'
     = yield

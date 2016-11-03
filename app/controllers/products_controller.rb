@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
     @order_item = OrderItem.new
     session[:restaurant_id] = @restaurant.id
     session[:product_id] = @product.id
+    add_breadcrumb "product", restaurant_product_path(@restaurant, @product), title: "Back to the product"
   end
 
   private
