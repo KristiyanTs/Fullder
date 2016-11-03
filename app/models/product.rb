@@ -6,9 +6,6 @@
 #  id                   :integer          not null, primary key
 #  restaurant_id        :integer
 #  category_id          :integer
-#  name                 :string
-#  short_description    :string
-#  description          :text
 #  price                :decimal(, )
 #  active               :boolean
 #  average_prepare_time :integer
@@ -19,6 +16,7 @@
 #  avatar_content_type  :string
 #  avatar_file_size     :integer
 #  avatar_updated_at    :datetime
+#  weight               :string
 #
 # Indexes
 #
@@ -47,9 +45,9 @@ class Product < ApplicationRecord
 
   has_attached_file :avatar, styles: { small: '140x140#', large: '250x250#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
-  validates :name, presence: true, length: { maximum: 24 }
+  validates :name, presence: true
   validates :category_id, presence: true
-  validates :short_description, presence: true, length: { maximum: 130 }
+  # validates :short_description, presence: true, length: { maximum: 130 }
   validates :price, presence: true
 
   acts_as_taggable

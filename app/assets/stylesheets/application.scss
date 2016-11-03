@@ -35,24 +35,22 @@ $header-red: rgb(230, 0, 0);
 }
 
 html,body {
+  height: calc(100% + 20px);
   padding-top: 0;
   min-height: 600px;
-  margin-bottom: 100px !important;
   margin-top: 25px;
   clear: both;
   font-family: "Am", sans-serif;
-  height: 103%;
   background-image: image-url('brickwall.png');
 }
-
 
 input{
   font-size:16px !important;  
   /* When the font-size is 16px phones do not zoom when filling in an input */  
 }
-input:focus{
-  border: solid rgba(240,0,0,0.1) !important;
-  box-shadow: 0 0 2px rgba(240,0,0,0.2) !important;
+.restaurant-serach input:focus{
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* webkit solution */
@@ -114,9 +112,9 @@ a, a:active, a:focus {
 }
 
 .container-white{
-  border-radius:5px;
   background-color: white;
   box-shadow: 0px 0px 1px 0px #888888;
+  padding-bottom: 10px;
 }
 
 .container-fluid{
@@ -130,12 +128,30 @@ a, a:active, a:focus {
   font-weight: bold;
 }
 
-.space{
-  margin-bottom: 10px;
+.space-down{
+  margin-bottom: 15px;
 }
 
 .space-up{
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+.space-up-animation{
+  animation-duration: 1s;
+  animation-name: slideDown;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideDown {
+  from{
+    margin-top: 70px;
+  }
+
+  to {
+    margin-top: 15px;
+  }
 }
 
 .table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
@@ -298,4 +314,9 @@ a, a:active, a:focus {
   a{
     color: rgb(220,220,220);
   }
+}
+
+.clear{
+  clear: both; 
+  height: 60px;
 }

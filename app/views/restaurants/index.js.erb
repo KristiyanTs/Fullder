@@ -1,7 +1,9 @@
 <% if !@scrolling %>
   $('.home-screen').fadeOut(1000);
+  $('.restaurant-search').addClass("space-up-animation");
   $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
 <% else %>
+  alert();
   $("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
     .appendTo($(".infinite-scroll"));
   <% if @restaurants.last_page? %>

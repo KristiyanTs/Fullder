@@ -1,6 +1,6 @@
 - product ||= @product
 - if product.sizes.any?
-  .container.container-white.col-xs-12.product-sizes.space
+  .container.container-white.col-xs-12.product-sizes.space-down
     .col-xs-5.col-sm-6.col-md-3.col-lg-3.padding-top-small
       = f.collection_radio_buttons :size_id, product.sizes, :id, :name,
                                     item_wrapper_class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12 product_size',

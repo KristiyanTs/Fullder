@@ -15,4 +15,4 @@
     |Subtotal:
     = number_to_currency(current_order.subtotal)
     .pull-right.col-xs-4
-      = link_to (t 'cart.send-order'), pay_order_path(current_order), class: "btn btn-success checkout-order"
+      = link_to (t 'cart.send-order'), pay_order_path(current_order), class: "btn checkout-order"

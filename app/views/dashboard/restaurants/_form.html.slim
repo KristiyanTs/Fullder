@@ -43,7 +43,7 @@
       #settings4.panel-collapse.collapse
         .panel-body
           / Working hours
-          .working_times.col-md-6.space
+          .working_times.col-md-6.space-down
             = f.simple_fields_for :working_times do |working_time|
               = render 'working_time_fields', f: working_time
             .links

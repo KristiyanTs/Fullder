@@ -1,6 +1,6 @@
 - product ||= @product
 - product.groups.each do |group|
-  .container.container-white.col-xs-12.space
+  .container.container-white.col-xs-12.space-down
     h4.max-options.text-center #{group.name} (max #{group.maximum.to_s})
     .col-xs-12.option_holder.padding-top-small
       = f.collection_check_boxes :option_ids, group.options, :id, :name,          

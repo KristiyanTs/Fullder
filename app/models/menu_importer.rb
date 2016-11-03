@@ -14,7 +14,6 @@ class MenuImporter
   end
 
   def import!
-    Rails.logger.info "Starting to import in menu_importer"
     ((sheet.first_row + 2)..(sheet.last_row)).each do |idx|
       row = sheet.row(idx)
       params = Hash[headers.zip(row)]
@@ -32,17 +31,21 @@ class MenuImporter
         p.category = restaurant.categories
                                .find_or_create_by(name: product_category)
         group_params.each do |group_hash|
-          g = p.groups.find_or_initialize_by(group_hash.except('options'))
-          g.options.destroy_all
-          group_hash['options'].split(',').each do |option_name|
-            option_name.squish!
-            g.options.new(name: option_name)
+          unless group_hash["maximum"].blank?
+            g = p.groups.find_or_initialize_by(group_hash.except('options'))
+            g.options.destroy_all
+            unless group_hash['options'].nil?
+              group_hash['options'].split(',').each do |option_name|
+                option_name.squish!
+                g.options.new(name: option_name)
+              end
+            end
+            g.save
           end
-          g.save
         end
 
         size_params.each do |size_hash|
-          p.sizes.find_or_initialize_by(size_hash)
+          p.sizes.find_or_initialize_by(size_hash) unless size_hash['price'].blank?
         end
 
         p.save!

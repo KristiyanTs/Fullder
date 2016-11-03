@@ -6,7 +6,6 @@
 #  id         :integer          not null, primary key
 #  product_id :integer
 #  maximum    :integer
-#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -27,6 +26,8 @@ class Group < ApplicationRecord
 
   has_many :groups_order_items
   has_many :order_items, through: :groups_order_items
+
+  validates :maximum, presence: true 
 
   translates :name
 end

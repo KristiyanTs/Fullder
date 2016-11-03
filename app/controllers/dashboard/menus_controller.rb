@@ -8,7 +8,7 @@ class Dashboard::MenusController < ApplicationController
   end
 
   def import
-    Rails.logger.info "Starting to import in menu_controller"
+    logger.debug "STARTING TO IMPORT FILE IN MENUS CONTROLLER, THE FILE IS #{params[:file]}"
     upload = params[:file]
     File.open(Rails.root.join('tmp/menu_import', upload.original_filename), 'wb') do |file|
       file.write(upload.read)
@@ -16,6 +16,7 @@ class Dashboard::MenusController < ApplicationController
 
     @restaurant = Restaurant.friendly.find(params[:restaurant_id])
     MenuImportWorker.perform_async(@restaurant.id, upload.original_filename)
+    Rails.logger.info upload.original_filename
     redirect_to dashboard_restaurant_path(@restaurant),
                 notice: 'File was uploaded successfully and is being processed.'
   end
