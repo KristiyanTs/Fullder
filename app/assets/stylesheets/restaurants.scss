@@ -174,17 +174,17 @@
   .restaurant-avatar img{
     width: 100%;
   }
+  .restaurant-services{
+    position: absolute;
+    bottom: 60px;
+    right: 2px;
+    font-size: 10px;
+  }
   .restaurant-name{
     text-align: center;
     color: black;
     font-size:25px;
     z-index: 1;
-    .restaurant-services{
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      font-size: 10px;
-    }
   }
   .restaurant-address{
     text-align: center;
@@ -243,10 +243,8 @@
   .restaurant-row{
     margin-top: 20px;
     box-shadow: 0px 0px 1px 0px #888888;
-    .restaurant_name{
-      .restaurant-services{
-        font-size: 18px;
-      }
+    .restaurant-services{
+      font-size: 18px;
     }
     .restaurant-number{
       font-size: 20px;

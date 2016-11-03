@@ -1,9 +1,7 @@
 $header-red: rgb(230, 0, 0);
 
-
 .product-row{
   position: relative;
-  margin-top:25px;
   padding:0px !important;
   background-color: white;
   border-top-right-radius: 0px !important;
@@ -24,6 +22,7 @@ $header-red: rgb(230, 0, 0);
     color: black;
     height: 60px;
     font-size: 15px;
+    font-family: italic;
     overflow: hidden;
   }
   .product-price{
@@ -41,17 +40,24 @@ $header-red: rgb(230, 0, 0);
   margin-top: 10px;
 }
 
+.product-index-button{
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
+
+
 @media (min-width: 768px) {
   /* Restaurant row */
   .product-row{
-    margin-top: 10px;
+    margin-top: 15px;
     box-shadow: 0px 0px 1px 0px #888888;
     .product-name{ 
 
     }
     .product-short-description{
       height: 70px;
-      font-size: 18px;
+      font-size: 17px;
     }
     .product-price{
       font-size: 23px;
@@ -259,4 +265,7 @@ $header-red: rgb(230, 0, 0);
       width: 100%;
     }
   }
+}
+
+.container-products{
 }
