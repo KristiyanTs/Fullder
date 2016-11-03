@@ -2,9 +2,10 @@
   = link_to restaurant_path(restaurant), class: "restaurant-row btn col-xs-12" do  
     .restaurant-avatar
       = image_tag restaurant.restaurant_avatar.url(:small)
+    .restaurant-services
+      = render 'services', restaurant: restaurant
     .restaurant-name
       = restaurant.name
-      = render 'services', restaurant: restaurant
     .restaurant-address
       = restaurant.address
     .restaurant-favorites

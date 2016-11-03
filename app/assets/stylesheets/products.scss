@@ -22,6 +22,7 @@ $header-red: rgb(230, 0, 0);
     color: black;
     height: 60px;
     font-size: 15px;
+    font-family: italic;
     overflow: hidden;
   }
   .product-price{
@@ -39,6 +40,11 @@ $header-red: rgb(230, 0, 0);
   margin-top: 10px;
 }
 
+.product-index-button{
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
 
 
 @media (min-width: 768px) {
@@ -51,7 +57,7 @@ $header-red: rgb(230, 0, 0);
     }
     .product-short-description{
       height: 70px;
-      font-size: 18px;
+      font-size: 17px;
     }
     .product-price{
       font-size: 23px;
@@ -259,4 +265,7 @@ $header-red: rgb(230, 0, 0);
       width: 100%;
     }
   }
+}
+
+.container-products{
 }

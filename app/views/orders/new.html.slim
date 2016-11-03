@@ -1,10 +1,12 @@
-.container.container-white.col-md-6.col-md-offset-3
+.container.container-white.col-md-6.col-md-offset-3.space-up
   ul.nav.nav-tabs
     li.active
-      a data-toggle="tab" href="#table" = t 'order.table'
+      a data-toggle="tab" href="#table" 
+        h3 = t 'order.table'
     - if @restaurant.accepts_deliveries
       li
-        a data-toggle="tab" href="#delivery" = t 'order.delivery'
+        a data-toggle="tab" href="#delivery" 
+          h3 = t 'order.delivery'
 
   .tab-content
     #table.tab-pane.fade.in.active

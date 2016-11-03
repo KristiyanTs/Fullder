@@ -1,5 +1,6 @@
 <% if !@scrolling %>
   $('.home-screen').fadeOut(1000);
+  $('.restaurant-search').addClass("space-up");
   $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
 <% else %>
   $("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
