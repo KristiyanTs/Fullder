@@ -6,6 +6,8 @@
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require jquery.infinite-pages
+//= require jquery.raty
+//= require ratyrate
 //= require select2-full
 //= require cocoon
 //= require slick.min
@@ -18,8 +20,6 @@
 //= require bootstrap-datetimepicker
 //= require clipboard
 //= require jquery.remotipart
-//= require jquery.raty
-//= require ratyrate
 //= require turbolinks
 //= require_tree .
 

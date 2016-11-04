@@ -9,7 +9,7 @@
  *
  */
 
-;
+document.addEventListener("turbolinks:load", function() {
 (function($) {
   'use strict';
 
@@ -758,3 +758,4 @@
   };
 
 })(jQuery);
+});

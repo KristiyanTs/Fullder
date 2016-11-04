@@ -39,6 +39,8 @@
         #copied.panel-collapse.collapse
           .panel-body
             h5 Copied
+  #rating.col-xs-12
+    = rating_for @restaurant, 'overall'
 
 = render "restaurant_images"
 

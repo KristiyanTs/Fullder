@@ -69,6 +69,7 @@ class Restaurant < ApplicationRecord
                    :default_formula => :flat,
                    :lat_column_name => :latitude,
                    :lng_column_name => :longitude
+  ratyrate_rateable 'overall'
 
   scope :search, -> (keyword) do
     unless keyword.blank?

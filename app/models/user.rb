@@ -53,6 +53,7 @@ class User < ApplicationRecord
 
   acts_as_taggable
   acts_as_taggable_on :allergens
+  ratyrate_rater
 
   def self.from_omniauth(token)
     user = User.find_by(uid: token['uid'])
