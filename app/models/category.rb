@@ -6,7 +6,6 @@
 #  id                  :integer          not null, primary key
 #  restaurant_id       :integer
 #  supercategory_id    :integer
-#  name                :string
 #  age_restriction     :boolean
 #  available_all_day   :boolean
 #  created_at          :datetime         not null

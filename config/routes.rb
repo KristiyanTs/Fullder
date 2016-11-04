@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   mount Sidekiq::Web, at: '/sidekiq'
   root 'restaurants#index'
 

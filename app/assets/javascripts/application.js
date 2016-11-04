@@ -18,6 +18,8 @@
 //= require bootstrap-datetimepicker
 //= require clipboard
 //= require jquery.remotipart
+//= require jquery.raty
+//= require ratyrate
 //= require turbolinks
 //= require_tree .
 

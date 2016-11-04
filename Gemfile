@@ -101,7 +101,9 @@ gem 'recaptcha', require: 'recaptcha/rails'
 # Annotate because it fails in production
 gem 'annotate'
 # Bread crumbs for site navigation
-gem "breadcrumbs_on_rails"
+gem 'breadcrumbs_on_rails'
+# Vote system
+gem 'ratyrate'
 
 
 group :development do
