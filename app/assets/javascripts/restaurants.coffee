@@ -8,12 +8,3 @@ document.addEventListener 'turbolinks:load', ->
     centerMode: true
     centerPadding: '60px'
   return
-
-document.addEventListener 'turbolinks:load', ->
-  $('.infinite-scroll').infinitePages
-    loading: ->
-      $(this).text('Loading next page...')
-    error: ->
-      $(this).button('There was an error, please try again')
-  return
-

@@ -2,7 +2,4 @@
   p.text-center
     = t "search.no-results"
 - else
-  .infinite-scroll
-    = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
-    .pagination.hidden
-      = link_to_next_page(@restaurants, 'Next Page', remote: true)
+  = render partial: "restaurant_row", collection: @restaurants, as: :restaurant

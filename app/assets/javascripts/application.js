@@ -27,4 +27,4 @@ document.addEventListener("turbolinks:load", function() {
     trigger: "focus"
   });
   $('.time-picker').timepicker();
-});
+})
