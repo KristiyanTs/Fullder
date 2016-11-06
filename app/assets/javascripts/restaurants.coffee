@@ -8,3 +8,10 @@ document.addEventListener 'turbolinks:load', ->
     centerMode: true
     centerPadding: '60px'
   return
+
+document.addEventListener 'turbolinks:load', ->
+  $(window).scroll ->
+    url = $('.pagination a[rel=next]').attr('href')
+    if url && $(window).scrollTop() > $(document).height() - $(window).height() - 100
+      $('.pagination').text("Loading more results...")
+      $.getScript(url)

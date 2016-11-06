@@ -2,4 +2,6 @@
   p.text-center
     = t "search.no-results"
 - else
-  = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
+  .infinite-scroll
+    = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
+  = paginate @restaurants

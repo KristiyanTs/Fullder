@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
 
     @restaurants = Restaurant.search(params[:search])
     @restaurants = @restaurants.by_distance(origin: [@user_location.latitude, @user_location.longitude]) if !@user_location.blank?
-    @restaurants = @restaurants.page(params[:page]).per(15)
+    @restaurants = @restaurants.page(params[:page]).per(12)
     @scrolling = params[:search] ? false : true
 
     respond_to do |format|

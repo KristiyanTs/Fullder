@@ -82,8 +82,6 @@ gem 'friendly_id'
 gem 'momentjs-rails', '>= 2.9.0'
 # Use jquery datetime picker
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
-# For kaminari infinite pages
-gem 'jquery-infinite-pages'
 # Async jobs
 gem 'sidekiq'
 # Web interface for sidekiq
@@ -101,7 +99,7 @@ gem 'recaptcha', require: 'recaptcha/rails'
 # Annotate because it fails in production
 gem 'annotate'
 # Bread crumbs for site navigation
-gem "breadcrumbs_on_rails"
+gem 'breadcrumbs_on_rails'
 
 
 group :development do
