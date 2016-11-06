@@ -10,10 +10,8 @@ document.addEventListener 'turbolinks:load', ->
   return
 
 document.addEventListener 'turbolinks:load', ->
-  $('.infinite-scroll').infinitePages
-    loading: ->
-      $(this).text('Loading next page...')
-    error: ->
-      $(this).button('There was an error, please try again')
-  return
-
+  $(window).scroll ->
+    url = $('.pagination a[rel=next]').attr('href')
+    if url && $(window).scrollTop() > $(document).height() - $(window).height() - 100
+      $('.pagination').text("Loading more results...")
+      $.getScript(url)
