@@ -1,7 +1,8 @@
 .col-xs-12.col-sm-6.col-md-6.col-lg-6.product-index-button
   = link_to restaurant_product_path(@restaurant, product), class: "product-row btn col-xs-12" do  
-    .product-avatar
-      = image_tag product.avatar.url(:small)
+    - if product.avatar?
+      .product-avatar
+        = image_tag product.avatar.url(:small)
     .product-name
       = product.name
     .product-short-description
