@@ -1,8 +1,9 @@
-link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" type="text/css"
-script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javascript" 
+- if @restaurant.images.any?
+  link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" type="text/css"
+  script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js" type="text/javascript" 
 
-.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-3
-  #restaurant-image-gallery
-    - @restaurant.images.each do |image|
-      .gallery-image
-        = image_tag image.pic.url(:medium)
+  .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-3
+    #restaurant-image-gallery
+      - @restaurant.images.each do |image|
+        .gallery-image
+          = image_tag image.pic.url(:medium)

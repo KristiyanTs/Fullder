@@ -4,7 +4,6 @@
 }
 
 ._restaurant_buttons {
-  background-image: image-url('menu.png');
   background-repeat: no-repeat;
   background-size: 200px;
   background-position: center; 
@@ -50,12 +49,15 @@
 
   /* Menu button  */
   .menu-button{
+    background-image: image-url('menu.png');
     @extend ._restaurant_buttons;
   }
 
   /* Reservations button */
   .reservations-button{
+    background-image: image-url('calendar.png');
     @extend ._restaurant_buttons;
+    background-size: 140px;
   }
   .menu-button:hover, .reservations-button:hover{
     background-color: rgb(220,220,220);
@@ -276,7 +278,7 @@
     }
     .reservations-button{
       font-size: 25px;
-      background-size: 320px;
+      background-size: 220px;
       height: 200px;
       line-height: 215px;
     }
