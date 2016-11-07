@@ -10,7 +10,7 @@
       = restaurant.address
     .restaurant-favorites
       - if restaurant.favorited_by.count>0
-        h5.glyphicon.glyphicon-heart = restaurant.favorited_by.count 
+        h5.glyphicon.glyphicon-heart.label.label-danger = restaurant.favorited_by.count 
 
   = link_to (t 'restaurant.menu'),restaurant_categories_path(restaurant),  
     class: "restaurant-row-menu col-xs-6 col-sm-12 text-center"

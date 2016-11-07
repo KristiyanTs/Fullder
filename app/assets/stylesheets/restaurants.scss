@@ -178,7 +178,7 @@
     position: absolute;
     bottom: 60px;
     right: 2px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .restaurant-name{
     text-align: center;
@@ -206,9 +206,10 @@
   }
   .restaurant-favorites{
     position: absolute;
-    right: 20px;
-    top: 0px;
+    bottom: 60px;
+    left: 10px;
     color: grey;
+    font-size: 12px;
   }
 }
 
@@ -250,8 +251,9 @@
       font-size: 20px;
     }
     .restaurant-favorites{
-      bottom: 30px;
+      font-size: 18px;
     }
+
   }
 
   #restaurant-avatar{
