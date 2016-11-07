@@ -7,6 +7,8 @@
 
   .modal-body
     = render 'layouts/error_messages', object: @product
+    - if @product.avatar?
+      = image_tag @product.avatar.url(:small), class: "center-block img-rounded"
     = f.input :avatar, as: :file
     = f.input :name, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.name}}")
     = f.input :short_description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.short_description}}")
