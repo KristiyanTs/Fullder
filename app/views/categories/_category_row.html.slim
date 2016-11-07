@@ -1,6 +1,7 @@
 .col-xs-12.col-sm-6.col-md-6.col-lg-6.category-index-button
   = link_to restaurant_category_path(@restaurant, category), class: "category-row btn col-xs-12" do  
-    .category-avatar
-      = image_tag category.avatar.url(:small)
+    - if category.avatar?
+      .category-avatar
+        = image_tag category.avatar.url(:small)
     .category-name
       = category.name 
