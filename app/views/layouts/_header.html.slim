@@ -32,7 +32,7 @@
           span.sr-only Toggle navigation
           | Menu 
           i.fa.fa-bars
-        a.navbar-brand href="/"  Fullder
+        = link_to "Fullder", root_path(search: " "),class: "navbar-brand"
         .navbar-brand.breadcrumbs.visible-lg.visible-md = render_breadcrumbs
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav.navbar-right
