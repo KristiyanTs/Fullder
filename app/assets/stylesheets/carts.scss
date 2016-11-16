@@ -108,3 +108,20 @@ $header-red: rgb(230, 0, 0);
     left: 0px;
   }
 }
+
+
+.mobile-cart{
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+
+  .glyphicon{
+    font-size: 20px;
+  }
+  a{
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    background-color: rgba(230, 0, 0, 0.5);
+  }
+}
