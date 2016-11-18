@@ -22,6 +22,11 @@
 #  accepts_reservations           :boolean
 #  accepts_deliveries             :boolean
 #  google_id                      :string
+#  avg_meal_price                 :decimal(, )
+#  staff_count                    :integer
+#  facebook_link                  :string
+#  twitter_link                   :string
+#  available_payment              :string
 #
 # Indexes
 #

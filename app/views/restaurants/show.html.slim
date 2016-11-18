@@ -8,8 +8,10 @@
 
   = link_to (t 'restaurant.menu'), restaurant_categories_path(@restaurant), class: "menu-button col-xs-6 text-center"
 
-  = link_to (t 'restaurant.reserve'), new_restaurant_reservation_path(@restaurant), 
-    class: "reservations-button col-xs-6 text-center"
+  - if @restaurant.accepts_reservations
+    = link_to (t 'restaurant.reserve'), new_restaurant_reservation_path(@restaurant), 
+      class: "reservations-button col-xs-6 text-center"
+    
 
 
 
@@ -18,32 +20,14 @@
     = render 'layouts/favorite'
     hr.hidden-lg.hidden-md.hidden-sm
   #working-times.col-xs-12.col-sm-4
-    i.fa.fa-calendar-check-o.working-time-awesome aria-hodden="true"
-    .shchedule.panel.panel-default
-      .panel-heading data-toggle="collapse" data-target="#working-hours"
-        h4 = status(@restaurant)
-        #working-hours.panel-collapse.collapse
-          .panel-body
-            - @restaurant.working_times.order('from_day ASC').each do |time|
-              .schedule-day.col-xs-6
-                = I18n.t(:"date.abbr_day_names")[time.from_day].upcase
-              .schedule-time.col-xs-6
-                = time.from_time.to_formatted_s(:time)   + "-" + time.to_time.to_formatted_s(:time)  
-
+    = render 'working_times' 
     hr.hidden-lg.hidden-md.hidden-sm
   #wifipassword.col-xs-12.col-sm-4
-    i.fa.fa-wifi aria-hodden="true"
-    .panel.panel-default.wifipanel
-      .wifipass.panel-heading data-toggle="collapse" data-target="#copied" data-clipboard-action="copy" data-clipboard-target=".wifipass" 
-        = @restaurant.try(:wifipassword) || "Not provided"
-        #copied.panel-collapse.collapse
-          .panel-body
-            h5 Copied
+    = render 'wifipassword'
   #show-more.col-xs-12
-    hr
     h4.text-center style="color:grey;" Show more info
-  #more-info.col-xs-12.hidden
-    h2 More information
+  #more-info.col-xs-12
+    = render 'more_info'
 
 = render 'restaurant_images'
 

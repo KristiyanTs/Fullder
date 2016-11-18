@@ -14,6 +14,11 @@
           = f.input :phone_number
           = f.input :description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.description}}")
           = f.input :wifipassword
+          = f.input :avg_meal_price
+          = f.input :staff_count
+          = f.input :available_payment
+          = f.input :facebook_link
+          = f.input :twitter_link
     .panel.panel-default
       .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings2"
         .panel-title Services

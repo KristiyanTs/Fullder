@@ -15,3 +15,11 @@ document.addEventListener 'turbolinks:load', ->
     if url && $(window).scrollTop() > $(document).height() - $(window).height() - 100
       $('.pagination').text("Loading more results...")
       $.getScript(url)
+
+
+$(document).on 'turbolinks:load', ->
+  $('#more-info').hide()
+  $('#show-more, #more-info').click ->
+    $('#show-more, #more-info').toggle()
+    return
+  return
