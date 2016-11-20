@@ -9,7 +9,7 @@
         = button_tag name: nil, class: "btn" do
           i class="glyphicon glyphicon-search"
 
-- unless @searching
+- unless params[:search]
   .home-screen.cd-fixed-bg.cd-bg-1
     .col-xs-12.aboutus-page
       .col-xs-12.col-md-4.col-md-offset-1.aboutus-text
@@ -26,7 +26,6 @@
 
 
 .restaurants.col-xs-12.col-lg-10.col-lg-offset-1
-  = render partial: 'restaurants_result'
   
 
 .footer.contact-page  

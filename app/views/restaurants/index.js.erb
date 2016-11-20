@@ -1,11 +1,7 @@
-<% if @searching %>
-  $('.restaurants').removeClass('hidden');
+if ($('.infinite-scroll').length > 0){
   $('.home-screen').fadeOut(1000);
   $('.restaurant-search').addClass("space-up-animation");
-  $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
-  $('.pagination')
-      .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true) %>");
-<% else %>
+
   $("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
     .appendTo($(".infinite-scroll"));
   <% if @restaurants.last_page? %>
@@ -14,4 +10,11 @@
     $('.pagination')
       .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true) %>");
   <% end %>
-<% end%>
+}
+else{
+  $('.home-screen').fadeOut(1000);
+  $('.restaurant-search').addClass("space-up-animation");
+  $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
+  $('.pagination')
+      .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true) %>");
+}

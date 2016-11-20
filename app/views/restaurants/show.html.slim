@@ -1,9 +1,5 @@
-.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.home-page.container-white
+.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.home-page.container-white.space-up
   #restaurant-avatar
-    .restaurant-name
-      = @restaurant.name
-    .restaurant-address
-      = @restaurant.address
     = image_tag @restaurant.restaurant_avatar.url(:large)
 
   = link_to (t 'restaurant.menu'), restaurant_categories_path(@restaurant), class: "menu-button col-xs-6 text-center"
