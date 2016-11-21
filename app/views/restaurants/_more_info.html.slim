@@ -1,0 +1,22 @@
+h4.text-center.col-xs-12 Show less info 
+h4.col-xs-12.col-sm-6.col-md-4 
+  | Average meal price: 
+  b = number_to_currency @restaurant.avg_meal_price
+h4.col-xs-12.col-sm-6.col-md-4 
+  | Staff count: 
+  b = @restaurant.staff_count
+h4.col-xs-12.col-sm-6.col-md-4 
+  | Payment: 
+  b = @restaurant.available_payment
+h4.col-xs-12.col-sm-6.col-md-4 
+  | Address: 
+  b = @restaurant.address
+h4.col-xs-12.col-sm-6.col-md-4 
+  | Accepts reservations: 
+  b = @restaurant.accepts_reservations ? 'yes' : 'no'
+h4.col-xs-12.col-sm-6.col-md-4 
+  | Delivers: 
+  b = @restaurant.accepts_deliveries ? 'yes' : 'no'
+h4.col-xs-12.col-sm-6.col-md-4 
+  | Accepts in-shop orders: 
+  b = @restaurant.sells_online ? 'yes' : 'no'

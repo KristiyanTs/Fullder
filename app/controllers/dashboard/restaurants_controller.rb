@@ -64,7 +64,9 @@ class Dashboard::RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :tag_list, :country, :address, :description, :phone_number, :wifipassword,
+    params.require(:restaurant).permit(:name, :tag_list, :country, :address, :description, :phone_number, :wifipassword,:avg_meal_price, 
+                                      :staff_count, :facebook_link,
+                                      :twitter_link, :available_payment,
                                       :accepts_deliveries, :accepts_reservations, :sells_online,
                                       :restaurant_avatar, language_ids: [],
                                       working_times_attributes: [:id, :from_time, :to_time, :from_day, :to_day, :restaurant_id, :_destroy],

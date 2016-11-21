@@ -1,17 +1,12 @@
-.cart-row.container-white id="item-#{order_item.id}"
-  .item_avatar
-    = image_tag order_item.product.avatar.url(:small), class: "img-rounded"
-  .item_name
-    b = order_item.product.name + " "
-    = order_item.size.try(:name)
-  .item_price
+.cart-row.container-white.space-up.col-xs-10.col-md-11 id="item-#{order_item.id}"
+  .item-name.col-xs-9.col-md-7
+    b = " #{order_item.product.name} #{order_item.size.try(:name)} "
+  .item-price.col-xs-3.col-md-2
     = number_to_currency order_item.unit_price
-  .item_form
+  .item-form
     = simple_form_for order_item, remote: true do |f|
-      = render 'shared/error_messages', obj: order_item
-      = f.select :quantity, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], { selected: order_item.quantity }, 
-      onchange: "$('#order_item_quantity').submit();", label: false, class: "quantity-update"
+      = f.select :quantity, [["x 1", 1], ["x 2", 2], ["x 3", 3], ["x 4", 4], ["x 5", 5]], { selected: order_item.quantity },
+      onchange: "$('#order_item_quantity').submit();", class: "hidden-xs"
       = f.input :demands, label: false, class: "demands-update", onchange: "$('#order_item_quantity').submit();",
         placeholder: "#{t 'cart.add-demands'}"               
-  .delete_button
-    = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }
+= link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash col-xs-2 col-md-1 remove-order-item" }

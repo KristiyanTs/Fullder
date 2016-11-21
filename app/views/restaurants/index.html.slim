@@ -9,21 +9,25 @@
         = button_tag name: nil, class: "btn" do
           i class="glyphicon glyphicon-search"
 
-.home-screen.cd-fixed-bg.cd-bg-1
-  .col-xs-12.aboutus-page
-    .col-xs-12.col-md-4.col-md-offset-1.aboutus-text
-      |There is a place, a magical place, for a quick lunch and for a fancy dinner. 
-      |You could go there just to grab a pizza, or you could order a warm lobster in a summer preparation. 
-      |It is perfect to crash with your friends, as well as, for a romantic dinner with a date. 
-      |This spot is just round the corner, but you have not found it yet. 
-      |We will help you fix that! 
-    .col-xs-12.col-md-4.col-md-offset-2.services-text
-      |Fullder will find a place that suits your needs. You could then browse its whole menu 
-      |and select from a list that is more graphic and understandable so that you will never 
-      |wonder "what might that be?" while staring at the menu. Don't be afraid that it would be full. 
-      | Now, you can reserve a table in less than a minute!
+- unless params[:search]
+  .home-screen.cd-fixed-bg.cd-bg-1
+    .col-xs-12.aboutus-page
+      .col-xs-12.col-md-4.col-md-offset-1.aboutus-text
+        |There is a place, a magical place, for a quick lunch and for a fancy dinner. 
+        |You could go there just to grab a pizza, or you could order a warm lobster in a summer preparation. 
+        |It is perfect to crash with your friends, as well as, for a romantic dinner with a date. 
+        |This spot is just round the corner, but you have not found it yet. 
+        |We will help you fix that! 
+      .col-xs-12.col-md-4.col-md-offset-2.services-text
+        |Fullder will find a place that suits your needs. You could then browse its whole menu 
+        |and select from a list that is more graphic and understandable so that you will never 
+        |wonder "what might that be?" while staring at the menu. Don't be afraid that it would be full. 
+        | Now, you can reserve a table in less than a minute!
+
 
 .restaurants.col-xs-12.col-lg-10.col-lg-offset-1
+  .infinite-scroll
+  = paginate @restaurants
   
 
 .footer.contact-page  

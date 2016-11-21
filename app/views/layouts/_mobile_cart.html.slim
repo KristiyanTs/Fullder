@@ -1,0 +1,5 @@
+- if @restaurant && @restaurant.id == current_order.restaurant_id
+  .mobile-cart.visible-xs.visible-sm
+    = link_to cart_path, class: "" do
+      .glyphicon.glyphicon-shopping-cart
+      = number_to_currency current_order.subtotal
