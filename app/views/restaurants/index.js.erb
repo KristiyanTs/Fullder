@@ -1,11 +1,14 @@
-$('.home-screen').fadeOut(1000);
-$("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
-  .appendTo($(".infinite-scroll"));
-<% if @restaurants.last_page? %>
-  $('.pagination').html("<h3>No more results.</h3>");
+<% if @nextpage %>
+  $('.home-screen').fadeOut(1000);
+  $("<%=j render partial: 'restaurant_row', collection: @restaurants, as: :restaurant %>")
+    .appendTo($(".infinite-scroll"));
+  <% if @restaurants.last_page? %>
+    $('.pagination').html("<h3>No more results.</h3>");
+  <% else %>
+    $('.pagination')
+      .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true, params: {scrolling: true}) %>");
+  <% end %>
 <% else %>
-  $('.pagination')
-    .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true) %>");
+   $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
+   $('.home-screen').fadeOut(1000);
 <% end %>
-
-

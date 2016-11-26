@@ -5,10 +5,16 @@ class RestaurantsController < ApplicationController
 
   def index
     @user_location = request.location
-
+    
     @restaurants = Restaurant.search(params[:search])
     @restaurants = @restaurants.by_distance(origin: [@user_location.latitude, @user_location.longitude]) if !@user_location.blank?
     @restaurants = @restaurants.page(params[:page]).per(12)
+
+    # Checking if called by pagination or by a new search
+    @nextpage = params[:scrolling]
+    params[:scrolling] = false
+    # Checking if should show index page
+    @html = request.format.html?
 
     respond_to do |format|
       format.html

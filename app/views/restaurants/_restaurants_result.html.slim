@@ -4,4 +4,4 @@
 - else
   .infinite-scroll
     = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
-  = paginate @restaurants
+  = paginate @restaurants, params: {scrolling: true}
