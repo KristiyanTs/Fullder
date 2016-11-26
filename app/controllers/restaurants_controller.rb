@@ -13,6 +13,10 @@ class RestaurantsController < ApplicationController
     # Checking if called by pagination or by a new search
     @nextpage = params[:scrolling]
     params[:scrolling] = false
+    # Checking if should show index page
+    @html = request.format.html?
+
+
 
     respond_to do |format|
       format.html
