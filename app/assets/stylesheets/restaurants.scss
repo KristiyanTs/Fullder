@@ -4,7 +4,6 @@
 }
 
 ._restaurant_buttons {
-  background-color: rgba(10,10,10, 0.5);
   position: absolute;
   background-repeat: no-repeat;
   background-size: 200px;
@@ -16,7 +15,10 @@
   color: white;
   font-weight: bold;
   font-size: 22px;
-  bottom: 0px;
+}
+
+#restaurant-buttons{
+  height: 150px;
 }
 
 .home-page {
@@ -26,6 +28,7 @@
   #restaurant-avatar {
     position: relative;
     height: 100%;
+    max-height: 350px;
     width: 100%;
     overflow: hidden;
     img{
@@ -254,7 +257,10 @@
     }
   }
 
-
+  #restaurant-buttons{
+    height: 200px;
+  }
+  
   .restaurant-row-menu{
     border-right: 0px;
     width: 100%;

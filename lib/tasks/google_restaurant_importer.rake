@@ -16,7 +16,7 @@ task google_restaurant_importer: :environment do
     Restaurant.find_or_create_by(google_api_data(res)) do |rest|
       rest.tag_list = res.types.join(', ')
       rest.restaurant_avatar = google_avatar(res.photos) if res.photos.any?
-      rest.load_working_hours(res[:opening_hours]['periods']) if res[:opening_hours]
+      rest.load_working_hours(res[:opening_hours]['periods']) if res[:opening_hours]['periods'].present?
 
       rest.save!
       puts "#{rest.name} was created successfully."
