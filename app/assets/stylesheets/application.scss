@@ -45,19 +45,13 @@ html,body {
 }
 
 input{
-  font-size:16px !important;  
-  text-align: left;
+  font-size:16px !important;
   /* When the font-size is 16px phones do not zoom when filling in an input */  
 }
 .restaurant-serach input:focus{
   border: none !important;
   box-shadow: none !important;
 }
-
-/* webkit solution */
-::-webkit-input-placeholder { text-align:right; }
-/* mozilla solution */
-input:-moz-placeholder { text-align:right; }
 
 label{
   font-size: 19px;

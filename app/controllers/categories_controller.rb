@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = @restaurant.categories.where(supercategory_id: nil)
+    @categories = @restaurant.categories.where(supercategory_id: nil).order(:index)
     
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
     add_breadcrumb "menu", restaurant_categories_path(@restaurant), title: "Back to menu"

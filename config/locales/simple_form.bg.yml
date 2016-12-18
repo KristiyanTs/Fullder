@@ -34,6 +34,7 @@ bg:
         locale: Език / Language
       category:
         supercategory: "Надкатегория. Пример: 'алкохолни напитки' -> 'напитки'"
+        index: "Ред. По-нисък ред се появява по-рано."
       reservation:
         from_time: Дата и час
         seats: Места
