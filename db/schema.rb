@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118143014) do
+ActiveRecord::Schema.define(version: 20161218120451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161118143014) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "slug"
+    t.integer  "index"
     t.index ["restaurant_id", "slug"], name: "index_categories_on_restaurant_id_and_slug", unique: true, using: :btree
     t.index ["restaurant_id"], name: "index_categories_on_restaurant_id", using: :btree
     t.index ["supercategory_id"], name: "index_categories_on_supercategory_id", using: :btree
