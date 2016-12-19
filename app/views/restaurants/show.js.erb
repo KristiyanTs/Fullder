@@ -1,0 +1,5 @@
+<% if @delivers %>
+  $('.accepts-deliveries').html("<br>We accept orders from your address! <hr>");
+<% else %>
+  $('.deliveries').html("<h2 style='text-align:center'>Sorry, you are too far and we do not deliver to your address.</h2>");
+<% end %>
