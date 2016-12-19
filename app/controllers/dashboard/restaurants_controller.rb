@@ -68,6 +68,7 @@ class Dashboard::RestaurantsController < ApplicationController
                                       :staff_count, :facebook_link,
                                       :twitter_link, :available_payment,
                                       :accepts_deliveries, :accepts_reservations, :sells_online,
+                                      :delivery_time, :delivery_cost, :delivery_radius, :min_delivery_price,
                                       :restaurant_avatar, language_ids: [],
                                       working_times_attributes: [:id, :from_time, :to_time, :from_day, :to_day, :restaurant_id, :_destroy],
                                       images_attributes: [:id, :pic, :restaurant_id, :_destroy])

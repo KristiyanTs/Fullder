@@ -63,4 +63,15 @@
             .input-group-addon
               i.fa.fa-tags aria-hidden="true"
             = f.input :tag_list, input_html: {value: @restaurant.tag_list.to_s}, label: false
+    .panel.panel-default
+      .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings6"
+        .panel-title Delivery
+      #settings6.panel-collapse.collapse
+        .panel-body
+          / Delivery
+          = f.input :delivery_time
+          = f.input :delivery_cost
+          = f.input :delivery_radius
+          = f.input :min_delivery_price
+
   = f.button :submit, class: "center-block col-xs-12 btn btn-primary"

@@ -27,6 +27,10 @@
 #  facebook_link                  :string
 #  twitter_link                   :string
 #  available_payment              :string
+#  delivery_time                  :integer
+#  delivery_cost                  :decimal(, )
+#  min_delivery_price             :decimal(, )
+#  delivery_radius                :integer
 #
 # Indexes
 #
