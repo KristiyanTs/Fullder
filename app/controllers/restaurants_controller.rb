@@ -30,7 +30,16 @@ class RestaurantsController < ApplicationController
       marker.lng res.longitude
     end
 
+    if params[:address]
+      @delivers = @restaurant.distance_to(params[:address]) <= @restaurant.delivery_radius ? true : false
+      session[:address] = params[:address]
+    end
+
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def favorite

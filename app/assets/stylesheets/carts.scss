@@ -72,8 +72,10 @@ $header-red: rgb(230, 0, 0);
 }
 
 .compact-cart{
+  position: fixed !important;
   min-width: 300px;
   margin-top: 15px;
+  right: 5%;
   th{
     font-size: 25px;
     text-align: center;

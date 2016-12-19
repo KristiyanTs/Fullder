@@ -21,6 +21,12 @@
   height: 150px;
 }
 
+#address{
+  font-size: 20px !important;
+  line-height: 30px;
+  height: 40px !important;
+}
+
 .home-page {
   padding-bottom: 0px !important;
 
@@ -242,6 +248,20 @@
 
 /* Styling specifically for large devices */
 @media (min-width: 768px) {
+
+  .accepts-deliveries{
+    button{
+      height: 60px !important;
+      border-radius: 0px !important;
+    }
+  }
+
+  #address{
+    font-size: 30px !important;
+    line-height: 40px;
+    height: 60px !important;
+    line-height: 80px !important;
+  }
   /* Restaurant row */
   .restaurant-row{
     border-bottom: 1px solid rgb(240,240,240) !important;
@@ -389,3 +409,15 @@
     color: rgb(230,0,0);
   }
 }
+
+.accepts-deliveries{
+  padding: 0px !important;
+  margin: 0px;
+  margin-bottom: 20px;
+  button{
+    height: 40px;
+  }
+}
+
+
+
