@@ -3,13 +3,15 @@
     - if product.avatar?
       .product-avatar
         = image_tag product.avatar.url(:small)
-    .product-name
-      = product.name
-    .product-short-description
-      = product.short_description
-    hr
-    .product-price
+    .product-name.col-xs-6
+      = product.name 
+      - if product.weight.length>0
+        = ' (' + product.weight.to_s + ')'
+    .product-price.col-xs-6
       = product_price(product)
+    - if product.short_description && product.short_description.length > 5
+      .product-short-description
+        = product.short_description
     .common_allergens
       = common_alergens(product, current_user)
   .product-show-more.col-xs-12.text-center show more
