@@ -50,6 +50,11 @@ class Order < ApplicationRecord
     order_items.all? {|oi| oi.ready_at != nil}
   end
 
+  def fulfils_requirements?
+    return false if address && restaurant.min_delivery_price && subtotal < restaurant.min_delivery_price
+    return true
+  end
+
   private
 
   def update_subtotal

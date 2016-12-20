@@ -89,6 +89,7 @@ en:
     send-order: Order for %{price}
     empty: Your cart is empty
     add-demands: Click to add demands
+    meet-requirements: Minimum order price - %{current_price}/%{min_price}
   rating:
     ambiance: Ambiance
     products: Goods qualiy

@@ -5,7 +5,7 @@
         = image_tag product.avatar.url(:small)
     .product-name.col-xs-6
       = product.name 
-      - if product.weight.length>0
+      - if product.weight && product.weight.length>0
         = ' (' + product.weight.to_s + ')'
     .product-price.col-xs-6
       = product_price(product)
