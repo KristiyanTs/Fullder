@@ -61,11 +61,17 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    @restaurant = current_order.restaurant
-    current_order.update(payed: true)
-    current_order.order_items.update_all(status: 'unready', received_at: Time.now)
-    session[:order_id] = nil
-    redirect_to restaurant_path(@restaurant)
+    if current_order.fulfils_requirements?
+      @restaurant = current_order.restaurant
+      current_order.update(payed: true)
+      current_order.order_items.update_all(status: 'unready', received_at: Time.now)
+      session[:order_id] = nil
+      flash[:success] = "Order sent to restaurant."
+      redirect_to restaurant_path(@restaurant)
+    else
+      flash[:error] = "The requirements are not met."
+    end
+
   end
 
   private

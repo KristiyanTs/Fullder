@@ -88,6 +88,7 @@ bg:
     send-order: Поръчай за %{price}
     empty: Количката Ви е празна
     add-demands: Добавете изисквания тук
+    meet-requirements: Минимална поръчка - %{current_price}/%{min_price}
   cocoon:
     defaults:
       add: "Добави данни"
