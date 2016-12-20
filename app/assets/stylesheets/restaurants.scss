@@ -71,7 +71,7 @@
     right: 0px;
     background-image: image-url('calendar.png');
     @extend ._restaurant_buttons;
-    background-size: 140px;
+    background-size: 110px;
   }
   .menu-button:hover, .reservations-button:hover{
     background-color: rgb(220,220,220);
@@ -298,7 +298,7 @@
     }
     .reservations-button{
       font-size: 25px;
-      background-size: 220px;
+      background-size: 170px;
       height: 200px;
       line-height: 215px;
     }
