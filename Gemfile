@@ -100,6 +100,8 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'annotate'
 # Bread crumbs for site navigation
 gem 'breadcrumbs_on_rails'
+# Statistics gem
+gem 'ahoy_matey'
 
 
 group :development do

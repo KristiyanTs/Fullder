@@ -16,6 +16,8 @@ class RestaurantsController < ApplicationController
     # Checking if should show index page
     @html = request.format.html?
 
+    ahoy.track "Viewed restaurants index"
+
     respond_to do |format|
       format.html
       format.json { render json: @restaurants }
@@ -36,6 +38,8 @@ class RestaurantsController < ApplicationController
     end
 
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
+    ahoy.track "Viewed restaurant home page", restaurant_id: @restaurant.id
+    
     respond_to do |format|
       format.html
       format.js
