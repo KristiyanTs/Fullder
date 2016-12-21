@@ -33,13 +33,13 @@ class RestaurantsController < ApplicationController
     end
 
     if params[:address]
-      @delivers = @restaurant.distance_to(params[:address]) <= @restaurant.delivery_radius ? true : false
+      @delivers = @restaurant.distance_to(params[:address]) <= @restaurant.delivery_radius
       session[:address] = params[:address]
     end
 
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
     ahoy.track "Viewed restaurant home page", restaurant_id: @restaurant.id
-    
+
     respond_to do |format|
       format.html
       format.js
