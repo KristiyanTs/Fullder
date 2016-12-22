@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
   mount Sidekiq::Web, at: '/sidekiq'
   root 'restaurants#index'
 
@@ -39,15 +40,19 @@ Rails.application.routes.draw do
   resource :profile, only: [:show] do
     member do
       get :help
-      get :report
       get :contact
     end
   end
+
   resource :cart, only: [:show]
+
   resources :order_items, only: [:create, :update, :destroy]
+
   resources :orders do
     member do
       get :pay
     end
   end
+
+  resources :problems
 end
