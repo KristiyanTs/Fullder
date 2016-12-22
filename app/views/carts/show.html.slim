@@ -1,14 +1,6 @@
-- @left_link = :back
-- @left_class = "glyphicon glyphicon-triangle-left"
-- @middle_link = cart_path
-- @middle_class = "glyphicon glyphicon-info-sign"
-- @right_class = "glyphicon glyphicon-shopping-cart"
-- @right_link = cart_path
-- @right_content = "#{number_to_currency current_order.subtotal}"
-
-
 .col-sm-10.col-sm-offset-1.col-md-8.col-lg-6.col-md-offset-2.col-lg-offset-3.shopping-cart
   #order-items
     = render partial: 'order_item', collection: @order_items, as: :order_item
+  .buy-button
     = render partial: 'layouts/cart/buy_button'
 
