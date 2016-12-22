@@ -8,10 +8,6 @@ class ProfilesController < ApplicationController
 
   end
 
-  def report
-
-  end
-
   def contact
 
   end
