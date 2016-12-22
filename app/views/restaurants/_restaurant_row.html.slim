@@ -5,9 +5,9 @@
     .restaurant-services
       = render 'services', restaurant: restaurant
     .restaurant-name
-      = restaurant.name
+      = shorthand(restaurant.name, 35)
     .restaurant-address
-      = restaurant.address
+      = shorthand(restaurant.address, 60)
     .restaurant-favorites
       - if restaurant.favorited_by.count>0
         h5.glyphicon.glyphicon-heart.label.label-danger = restaurant.favorited_by.count 

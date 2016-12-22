@@ -10,4 +10,5 @@
 .col-sm-10.col-sm-offset-1.col-md-8.col-lg-6.col-md-offset-2.col-lg-offset-3.shopping-cart
   #order-items
     = render partial: 'order_item', collection: @order_items, as: :order_item
-    = link_to (t 'cart.send-order', price: number_to_currency(current_order.subtotal)), pay_order_path(current_order), class: "btn col-xs-12 pay-button"
+    = render partial: 'layouts/cart/buy_button'
+

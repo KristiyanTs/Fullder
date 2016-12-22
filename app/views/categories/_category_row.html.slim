@@ -4,4 +4,4 @@
       .category-avatar
         = image_tag category.avatar.url(:small)
     .category-name
-      = category.name 
+      = shorthand(category.name, 33) 

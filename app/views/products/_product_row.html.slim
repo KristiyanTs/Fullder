@@ -4,16 +4,16 @@
       .product-avatar
         = image_tag product.avatar.url(:small)
     .product-name.col-xs-6
-      = product.name 
+      = shorthand(product.name, 25) 
       - if product.weight && product.weight.length>0
         = ' (' + product.weight.to_s + ')'
     .product-price.col-xs-6
       = product_price(product)
     - if product.short_description && product.short_description.length > 5
       .product-short-description
-        = product.short_description
-    .common_allergens
-      = common_alergens(product, current_user)
+        = shorthand(product.short_description,180)
+    .common-allergens
+      = shorthand(common_alergens(product, current_user), 40)
   .product-show-more.col-xs-12.text-center show more
   .product-more-options
     = render partial: 'products/product_buy_form', locals: {product: product}

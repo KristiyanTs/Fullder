@@ -20,10 +20,12 @@ $header-red: rgb(230, 0, 0);
   .product-short-description{
     white-space: pre-line;
     color: black;
-    height: 60px;
+    max-height: 125px;
     font-size: 15px;
-    font-family: italic;
-    overflow: hidden;
+    font-style: italic;
+    text-align: left;
+    color: grey;
+    padding: 5px;
   }
   .product-price{
     color: grey;
@@ -31,6 +33,9 @@ $header-red: rgb(230, 0, 0);
     font-size:18px;
     z-index: 1;
     line-height: 40px;
+  }
+  .common-allergens{
+    color: red;
   }
   hr{
     margin-top: 5px;
@@ -62,7 +67,7 @@ $header-red: rgb(230, 0, 0);
 
     }
     .product-short-description{
-      height: 70px;
+      max-height: 115px;
       font-size: 17px;
     }
     .product-price{
