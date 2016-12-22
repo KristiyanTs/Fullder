@@ -18,8 +18,11 @@ document.addEventListener 'turbolinks:load', ->
 
 
 $(document).on 'turbolinks:load', ->
-  $('#more-info').hide()
-  $('#show-more, #more-info').click ->
-    $('#show-more, #more-info').toggle()
+  $('#show-more').on 'click tap', ->
+    if $(this).children().html() == 'show more info'
+      $(this).html '<h4 class=\'text-center\' style=\'color: grey\'>show less info</h4>'
+    else
+      $(this).html '<h4 class=\'text-center\' style=\'color: grey\'>show more info</h4>'
+    $(this).next('#more-info').toggle()
     return
   return
