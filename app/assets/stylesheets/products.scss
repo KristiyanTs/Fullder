@@ -163,10 +163,7 @@ $header-red: rgb(230, 0, 0);
 
   .buy-button{
     background-color: $header-red;
-    border-top-right-radius: 0px !important;
-    border-top-left-radius: 0px !important;
-    border-bottom-left-radius: 7px !important;
-    border-bottom-right-radius: 7px !important;
+    border-radius: 0px;
     color: white;
   }
 

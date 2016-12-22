@@ -2,7 +2,7 @@
   $('.flash-container').html("<%= j render 'layouts/flash_messages' %>");
 <% else %>
   $(".buy-button").html("<%= j render 'layouts/cart/buy_button' %>");
-  $(".cart_button").html("<%= escape_javascript(render 'layouts/footer/cart') %>");
+  $(".mobile-cart").html("<a href='/cart'><div class='glyphicon glyphicon-shopping-cart'></div><%=number_to_currency(current_order.subtotal)%></a>");
   $('#order-items').prepend("<%= j render @order_item %>");
 <% end %>
 
