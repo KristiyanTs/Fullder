@@ -11,15 +11,18 @@ document.addEventListener 'turbolinks:load', ->
 
 document.addEventListener 'turbolinks:load', ->
   $(window).scroll ->
-    url = $('.pagination a[rel=next]').attr('href')
+    url = $('.infinite-pagination a[rel=next]').attr('href')
     if url && $(window).scrollTop() > $(document).height() - $(window).height() - 200
       $('.pagination').text("Loading more results...")
       $.getScript(url)
 
 
 $(document).on 'turbolinks:load', ->
-  $('#more-info').hide()
-  $('#show-more, #more-info').click ->
-    $('#show-more, #more-info').toggle()
+  $('#show-more').on 'click tap', ->
+    if $(this).children().html() == 'show more info'
+      $(this).html '<h4 class=\'text-center\' style=\'color: grey\'>show less info</h4>'
+    else
+      $(this).html '<h4 class=\'text-center\' style=\'color: grey\'>show more info</h4>'
+    $(this).next('#more-info').toggle()
     return
   return

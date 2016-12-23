@@ -1,4 +1,4 @@
-- if @restaurant && @restaurant.id == current_order.restaurant_id
+- if @restaurant && @restaurant.id == current_order.restaurant_id && params[:controller] != "carts"
   .mobile-cart.visible-xs.visible-sm
     = link_to cart_path, class: "" do
       .glyphicon.glyphicon-shopping-cart

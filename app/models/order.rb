@@ -40,6 +40,7 @@ class Order < ApplicationRecord
 
   before_save :update_subtotal
   before_save :set_table
+  after_validation :set_total
   validate :table_exists?
 
   def subtotal
@@ -71,5 +72,9 @@ class Order < ApplicationRecord
     if table_number
       self[:table_id] = Restaurant.find(restaurant_id).tables.find_by(number: table_number).id
     end
+  end
+
+  def set_total
+    total = subtotal + (address ? restaurant.delivery_cost : 0)
   end
 end

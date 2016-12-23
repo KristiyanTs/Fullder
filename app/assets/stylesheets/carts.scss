@@ -26,7 +26,7 @@ $header-red: rgb(230, 0, 0);
   }
 }
 
-#order-items .pay-button{
+.pay-button{
   background-color: rgb(216,0,0);
   color: white;
   border-radius: 0px !important;
@@ -104,6 +104,7 @@ $header-red: rgb(230, 0, 0);
 
 
 .mobile-cart{
+  z-index: 1000;
   position: fixed;
   bottom: 60px;
   right: 10px;
