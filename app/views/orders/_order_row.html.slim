@@ -4,6 +4,6 @@
   .order-date.col-xs-12.col-md-4.text-center.glyphicon.glyphicon-time
     = order.created_at.strftime("%d/%m %H:%M")
   .order-cost.col-xs-6.col-md-2.text-center
-    = number_to_currency(order.subtotal, locale: order.restaurant.country.to_sym)
+    = formatted_price(order.subtotal, order.restaurant)
   .order-progress.col-xs-6.col-md-2.text-center class="#{order.ready?}"
     = order_status(order)  

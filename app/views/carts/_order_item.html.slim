@@ -2,7 +2,7 @@
   .item-name.col-xs-9.col-md-7
     b = " #{order_item.product.name} #{order_item.size.try(:name)} "
   .item-price.col-xs-3.col-md-2
-    = number_to_currency order_item.unit_price
+    = formatted_price(order_item.unit_price, order_item.product.restaurant)
   .item-form
     = simple_form_for order_item, remote: true do |f|
       = f.select :quantity, [["x 1", 1], ["x 2", 2], ["x 3", 3], ["x 4", 4], ["x 5", 5]], { selected: order_item.quantity },

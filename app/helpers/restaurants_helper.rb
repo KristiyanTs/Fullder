@@ -11,4 +11,8 @@ module RestaurantsHelper
     end
   end
 
+  def formatted_price(price, restaurant)
+    number_to_currency(price, locale: restaurant.country.to_sym)
+  end
+
 end

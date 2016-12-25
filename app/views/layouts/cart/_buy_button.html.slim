@@ -2,24 +2,24 @@
   = link_to pay_order_path(current_order), class: "btn col-xs-12 pay-button"
     - if current_order.address
       .col-xs-6 
-        b = number_to_currency(current_order.subtotal)
+        b = formatted_price(current_order.subtotal, current_order.restaurant)
       .col-xs-6
         - if current_order.address
-          = "+" + number_to_currency(current_order.restaurant.delivery_cost)
+          = "+" + formatted_price(current_order.restaurant.delivery_cost, current_order.restaurant)
           h5 delivery
     - else
-      b = number_to_currency(current_order.subtotal)
+      b = formatted_price(current_order.subtotal, current_order.restaurant)
 
 
 - else
   = link_to root_path, class: "btn col-xs-12 pay-button disabled"
     - if current_order.address
       .col-xs-6
-        b.col-xs-12 = number_to_currency(current_order.subtotal)
-        .col-xs-12 = "Min. " + number_to_currency(current_order.restaurant.min_delivery_price)
+        b.col-xs-12 = formatted_price(current_order.subtotal, current_order.restaurant)
+        .col-xs-12 = "Min. " + formatted_price(current_order.restaurant.min_delivery_price, current_order.restaurant)
       .col-xs-6
         - if current_order.address
-          .col-xs-12 = "+" + number_to_currency(current_order.restaurant.delivery_cost)
+          .col-xs-12 = "+" + formatted_price(current_order.restaurant.delivery_cost, current_order.restaurant)
           h5.col-xs-12 delivery
     - else
-      b.col-xs-12 = number_to_currency(current_order.subtotal)
+      b.col-xs-12 = formatted_price(current_order.subtotal, current_order.restaurant)

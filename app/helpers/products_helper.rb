@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 module ProductsHelper
   def size_price(product, size)
-    number_to_currency(product.price + size.price, locale: @restaurant.country.to_sym)
+    formatted_price(product.price + size.price, product.restaurant)
   end
 
   def product_price(product)
     if product.sizes.any?
-      (t 'product.price-from').to_s + number_to_currency(product.price, locale: @restaurant.country.to_sym)
+      (t 'product.price-from').to_s + formatted_price(product.price, product.restaurant)
     else
-      number_to_currency(product.price, locale: @restaurant.country.to_sym)
+      formatted_price(product.price, @restaurant)
     end
   end
 
