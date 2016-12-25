@@ -23,6 +23,25 @@ en:
     reserve: Reserve
     order: Order
     deliver: Delivery
+    avg-time: Avg time
+    delivery-cost: Delivery cost
+    min-delivery-price: Minimum price
+    delivery-radius: Delivery radius
+    delivery-address: Enter your address for delivery
+    accept-in-place-orders: We accept your in-place orders!
+    add-product: Add products to your cart
+    enter-table: Enter your table number when prompt
+    click-to-order: Click to order and just wait!
+    accept-delivery: We accept orders from your address!
+    sorry-too-far: Sorry, you are too far and we do not deliver to your address.
+    avg-meal-price: "Average meal price: "
+    staff-count: "Staff count: "
+    payments: "Payment: "
+    address: "Address: "
+    accept-reservation: "Accepts reservations: "
+    delivers: "Delivers: "
+    in-place-orders: "Accepts in-shop orders: "
+    copied: Copied
   product:
     contains: "Contains "
     price-from: "From "
@@ -32,12 +51,24 @@ en:
     description: Description
   user:
     cancel-account: Cancel account 
+    settings: Settings
+    order-history: Orders history
+    help: Help
+    report-problem: Report a problem
+    contacts: Contacts
   order:
     demands-placeholder: "Any demands? Please, be concise."
     add-to-cart: "Add to Cart"
     choose-table: "Choose a table"
     choose-address: Or select an address for delivery
     table: Table
+    delivery: Delivery
+    product: product
+    price: price
+    qty: qty
+    order-from: Order from
+  cart:
+    subtotal: Subtotal
     delivery: Delivery
   navbar:
     home: "Home"
@@ -355,3 +386,6 @@ en:
       long: "%B %d, %Y %I:%M %p"
       short: "%d %b %I:%M %p"
     pm: pm
+  common_words:
+    agree: yes
+    disagree:  no

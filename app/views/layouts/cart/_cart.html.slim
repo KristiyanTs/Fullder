@@ -3,9 +3,9 @@
     table#order-items.table.table-borderless
       thead
         tr
-          th Product
-          th Price
-          th Qty
+          th = t 'order.product'
+          th = t 'order.price'
+          th = t 'order.qty'
       tbody
         = render partial: "order_items/order_item", collection: current_order.order_items, as: :order_item
     .buy-button

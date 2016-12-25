@@ -5,7 +5,7 @@
         .input-group
           = text_field_tag :address, params[:address],
                            class: "form-control input",
-                           placeholder: "Enter your address for delivery"
+                           placeholder: "#{t 'restaurant.delivery-address'}"
           span.input-group-btn
             = button_tag name: nil, class: "btn" do
               i class="glyphicon glyphicon-search"
@@ -13,17 +13,17 @@
 
     .col-xs-6.col-md-3.col-lg-3
       i.fa.fa-clock-o.fa-3x.col-xs-12.text-center aria-hidden="true"
-      b.col-xs-12.text-center Avg time
+      b.col-xs-12.text-center = t 'restaurant.avg-time'
       h2.col-xs-12.text-center = @restaurant.delivery_time.to_s + " min."
     .col-xs-6.col-md-3.col-lg-3
       i.fa.fa-dollar.fa-3x.col-xs-12.text-center aria-hidden="true"
-      b.col-xs-12.text-center Delivery price
+      b.col-xs-12.text-center = t 'restaurant.delivery-cost'
       h2.col-xs-12.text-center = formatted_price(@restaurant.delivery_cost, @restaurant)
     .col-xs-6.col-md-3.col-lg-3
       i.fa.fa-check.fa-3x.col-xs-12.text-center aria-hidden="true"
-      b.col-xs-12.text-center Minimum price
+      b.col-xs-12.text-center = t 'restaurant.min-delivery-price'
       h2.col-xs-12.text-center = formatted_price(@restaurant.min_delivery_price, @restaurant)
     .col-xs-6.col-md-3.col-lg-3
       i.fa.fa-car.fa-3x.col-xs-12.text-center aria-hidden="true"
-      b.col-xs-12.text-center Delivery radius
+      b.col-xs-12.text-center = t 'restaurant.delivery-radius'
       h2.col-xs-12.text-center = @restaurant.delivery_radius.to_s + " km."

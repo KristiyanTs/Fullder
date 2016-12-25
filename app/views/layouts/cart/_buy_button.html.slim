@@ -6,7 +6,7 @@
       .col-xs-6
         - if current_order.address
           = "+" + formatted_price(current_order.restaurant.delivery_cost, current_order.restaurant)
-          h5 delivery
+          h5 = t 'cart.delivery'
     - else
       b = formatted_price(current_order.subtotal, current_order.restaurant)
 
@@ -20,6 +20,6 @@
       .col-xs-6
         - if current_order.address
           .col-xs-12 = "+" + formatted_price(current_order.restaurant.delivery_cost, current_order.restaurant)
-          h5.col-xs-12 delivery
+          h5.col-xs-12 = t 'cart.delivery'
     - else
       b.col-xs-12 = formatted_price(current_order.subtotal, current_order.restaurant)

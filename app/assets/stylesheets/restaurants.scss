@@ -70,6 +70,7 @@
 
   /* Reservations button */
   .reservations-button{
+    font-size: 14px;
     right: 0px;
     background-image: image-url('calendar.png');
     @extend ._restaurant_buttons;
@@ -307,7 +308,7 @@
       line-height: 215px;
     }
     .reservations-button{
-      font-size: 25px;
+      font-size: 20px;
       background-size: 160px;
       height: 200px;
       line-height: 215px;

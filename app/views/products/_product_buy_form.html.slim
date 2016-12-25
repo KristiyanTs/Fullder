@@ -3,7 +3,6 @@
   = f.input :product_id, as: :hidden, input_html: {value: product.id || @product.id}
   = render 'products/select_product_sizes', f: f, product: product
   = render 'products/select_product_groups', f: f, product: product
-  = f.input :quantity, input_html: {value: 1, min: 1, max: 20, class: 'text-center'}
   = render 'products/add_to_cart', f: f, product: product
 
 

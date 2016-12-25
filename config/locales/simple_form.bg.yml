@@ -36,7 +36,7 @@ bg:
         supercategory: "Надкатегория. Пример: 'алкохолни напитки' -> 'напитки'"
         index: "Ред. По-нисък ред се появява по-рано."
       reservation:
-        from_time: Дата и час
+        start_time: Дата и час
         seats: Места
         contact_number: Номер за връзка
         contact_name: Име на резервацията
