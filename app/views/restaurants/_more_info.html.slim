@@ -1,6 +1,6 @@
 h4.col-xs-12.col-sm-6.col-md-4 
   | Average meal price: 
-  b = number_to_currency @restaurant.avg_meal_price
+  b = formatted_price(@restaurant.avg_meal_price, @restaurant)
 h4.col-xs-12.col-sm-6.col-md-4 
   | Staff count: 
   b = @restaurant.staff_count

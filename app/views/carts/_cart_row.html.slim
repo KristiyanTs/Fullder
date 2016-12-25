@@ -5,7 +5,7 @@
   .item_description
     = order_item.product.short_description
   .item_price
-    = number_to_currency order_item.unit_price
+    = formatted_price(order_item.unit_price, order_item.restaurant)
   .item_form
     = simple_form_for order_item, remote: true do |f|
       = f.select :quantity, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], { selected: order_item.quantity }, 
