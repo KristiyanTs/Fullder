@@ -41,6 +41,7 @@ en:
     accept-reservation: "Accepts reservations: "
     delivers: "Delivers: "
     in-place-orders: "Accepts in-shop orders: "
+    copied: Copied
   product:
     contains: "Contains "
     price-from: "From "
@@ -50,6 +51,11 @@ en:
     description: Description
   user:
     cancel-account: Cancel account 
+    settings: Settings
+    order-history: Orders history
+    help: Help
+    report-problem: Report a problem
+    contacts: Contacts
   order:
     demands-placeholder: "Any demands? Please, be concise."
     add-to-cart: "Add to Cart"
@@ -60,6 +66,7 @@ en:
     product: product
     price: price
     qty: qty
+    order-from: Order from
   cart:
     subtotal: Subtotal
     delivery: Delivery

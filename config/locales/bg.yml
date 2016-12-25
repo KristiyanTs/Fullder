@@ -40,6 +40,7 @@ bg:
     accept-reservation: "Приема резервации: "
     delivers: "Доставя:"
     in-place-orders: "Приема поръчки от маса: "
+    copied: Копирано
   product:
     contains: "Съдържа "
     price-from: "От "
@@ -49,6 +50,11 @@ bg:
     description: Описание
   user:
     cancel-account: Изтриване на акаунт
+    settings: Настройки
+    order-history: Поръчки
+    help: Помощ
+    report-problem: Докладвай проблеми
+    contacts: Контакти
   order:
     demands-placeholder: "Имате ли изисквания?"
     add-to-cart: "Добави"
@@ -59,6 +65,7 @@ bg:
     product: продукт
     price: цена
     qty: брой
+    order-from: Поръчка от
   cart:
     subtotal: Междинна сума
     delivery: Доставка

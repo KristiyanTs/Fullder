@@ -8,17 +8,17 @@
 
   - if !@product.description.blank?
     .panel.panel-default.col-xs-12.description-panel
-      .panel-heading data-toggle="collapse" href="#description"
+      .panel-heading data-toggle="collapse" href="#description" data-target="#description"
         h4 = t 'product.description'
-        #description.panel-collapse.collapse
+        #description.panel-collapse
           .panel-body
             = @product.description
 
   -if @product.allergen_list.any?
     .panel.panel-default.col-xs-12.ingredient-panel
-      .panel-heading data-toggle="collapse" href="#ingredients"
+      .panel-heading data-toggle="collapse" href="#ingredients" data-target="#ingredients"
         h4 = t 'product.ingredients'
-        #ingredients.panel-collapse.collapse
+        #ingredients.panel-collapse
           .panel-body
             = @product.allergen_list.to_s
 
