@@ -37,7 +37,7 @@ en:
         supercategory: "Supercategory. Example: 'Alcoholic drinks' -> 'Drinks'"
         index: "Category index. Lower indexes show up first."
       reservation:
-        from_time: Time
+        start_time: Time
         seats: How many people
         contact_number: Contact number
         contact_name: Contact name

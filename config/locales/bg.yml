@@ -22,6 +22,24 @@ bg:
     reserve: Резервирай
     order: Поръчай
     deliver: Доставки
+    avg-time: Средно време
+    delivery-cost: Цена за доставка
+    min-delivery-price: Мин. цена
+    delivery-radius: Радиус на поръчки
+    delivery-address: Въведете своя адрес
+    accept-in-place-orders: Може да поръчате от масата си!
+    add-product: Добавете желаните продукти
+    enter-table: Въведете номера на масата си
+    click-to-order: Поръчайте
+    accept-delivery: Доставяме до вашия адрес!
+    sorry-too-far: Съжаляваме, но не доставяме до вашия адрес.
+    avg-meal-price: "Средна сметка за един човек: "
+    staff-count: "Брой служители: "
+    payments: "Начини за плащане: "
+    address: "Адрес: "
+    accept-reservation: "Приема резервации: "
+    delivers: "Доставя:"
+    in-place-orders: "Приема поръчки от маса: "
   product:
     contains: "Съдържа "
     price-from: "От "
@@ -364,3 +382,6 @@ bg:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: следобед
+  common_words:
+    agree: да
+    disagree:  не

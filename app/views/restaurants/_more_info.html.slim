@@ -1,21 +1,21 @@
 h4.col-xs-12.col-sm-6.col-md-4 
-  | Average meal price: 
+  = t 'restaurant.avg-meal-price'
   b = formatted_price(@restaurant.avg_meal_price, @restaurant)
 h4.col-xs-12.col-sm-6.col-md-4 
-  | Staff count: 
+  = t 'restaurant.staff-count'
   b = @restaurant.staff_count
 h4.col-xs-12.col-sm-6.col-md-4 
-  | Payment: 
+  = t 'restaurant.payments' 
   b = @restaurant.available_payment
 h4.col-xs-12.col-sm-6.col-md-4 
-  | Address: 
+  = t 'restaurant.address'
   b = @restaurant.address
 h4.col-xs-12.col-sm-6.col-md-4 
-  | Accepts reservations: 
-  b = @restaurant.accepts_reservations ? 'yes' : 'no'
+  = t 'restaurant.accept-reservation' 
+  b = @restaurant.accepts_reservations ? (t 'common_words.agree') : (t 'common_words.disagree')
 h4.col-xs-12.col-sm-6.col-md-4 
-  | Delivers: 
-  b = @restaurant.accepts_deliveries ? 'yes' : 'no'
+  = t 'restaurant.delivers' 
+  b = @restaurant.accepts_deliveries ? (t 'common_words.agree') : (t 'common_words.disagree')
 h4.col-xs-12.col-sm-6.col-md-4 
-  | Accepts in-shop orders: 
-  b = @restaurant.sells_online ? 'yes' : 'no'
+  = t 'restaurant.in-place-orders'  
+  b = @restaurant.sells_online ? (t 'common_words.agree') : (t 'common_words.disagree')
