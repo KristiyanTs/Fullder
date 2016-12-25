@@ -56,6 +56,12 @@ bg:
     choose-address: Или изберете адрес за доставка
     table: Маса
     delivery: Доставка
+    product: продукт
+    price: цена
+    qty: брой
+  cart:
+    subtotal: Междинна сума
+    delivery: Доставка
   navbar:
     home: "Начало"
     manage: "Управлявай"

@@ -57,6 +57,12 @@ en:
     choose-address: Or select an address for delivery
     table: Table
     delivery: Delivery
+    product: product
+    price: price
+    qty: qty
+  cart:
+    subtotal: Subtotal
+    delivery: Delivery
   navbar:
     home: "Home"
     manage: "Manage"
