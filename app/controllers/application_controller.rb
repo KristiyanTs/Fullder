@@ -45,6 +45,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = current_user&.locale || I18n.default_locale
+    @user_location = request.location
+    if @user_location&.country == "Bulgaria" && !current_user
+      I18n.locale = "bg"
+    else
+      I18n.locale = current_user&.locale || I18n.default_locale
+    end
   end
 end
