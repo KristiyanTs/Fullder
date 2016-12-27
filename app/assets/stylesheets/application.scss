@@ -41,7 +41,7 @@ html,body {
   margin-top: 25px;
   clear: both;
   font-family: "Am", sans-serif;
-  background-image: image-url('brickwall.png');
+  background-color: rgb(245,245,245);
 }
 
 input{
@@ -182,7 +182,7 @@ a, a:active, a:focus {
   font-weight: 700;
   border: none;
   .navbar-right{
-    a{
+    a, .language-pick{
       font-family: "Am", sans-serif !important;
       font-weight: bold;
       font-size: 18px;
@@ -204,13 +204,15 @@ a, a:active, a:focus {
   .navbar-nav {
     letter-spacing: 1px;
   }
-  .navbar-nav li a {
+  .navbar-nav .dropdown-language{
+    color: white;
+  }
+  .navbar-nav li a{
     color: white;
   }
   .navbar-nav li a:hover {
     font-weight: 800;
     color:  white;
-    outline: none;
   }
   .navbar-nav li a:focus,
   .navbar-nav li a:active {
@@ -237,6 +239,12 @@ a, a:active, a:focus {
     background-color: rgb(190, 0, 0);
     color: white;
     border-color: white;
+  }
+  .language-pick{
+    padding: 15px;
+  }
+  .dropdown-language li a{
+    color: black;
   }
 }
 

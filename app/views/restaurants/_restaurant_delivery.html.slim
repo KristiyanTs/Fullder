@@ -1,15 +1,7 @@
 - if @restaurant.accepts_deliveries
   .container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-3.deliveries
-    h2.accepts-deliveries.text-center
-      = form_tag restaurant_path(@restaurant), remote: true, method: 'get', id: 'address-lookup' do
-        .input-group
-          = text_field_tag :address, params[:address],
-                           class: "form-control input",
-                           placeholder: "#{t 'restaurant.delivery-address'}"
-          span.input-group-btn
-            = button_tag name: nil, class: "btn" do
-              i class="glyphicon glyphicon-search"
-
+    h2.text-center
+      b.accepts-deliveries = t 'restaurant.accept-delivery'
 
     .col-xs-6.col-md-3.col-lg-3
       i.fa.fa-clock-o.fa-3x.col-xs-12.text-center aria-hidden="true"

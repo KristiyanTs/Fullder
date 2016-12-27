@@ -45,6 +45,13 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = current_user&.locale || I18n.default_locale
+    I18n.locale = current_user&.locale || params[:locale] || cookies[:locale] || session[:locale] || I18n.default_locale
+    session[:locale] = I18n.locale
+    cookies.permanent[:locale] = I18n.locale
   end
+
+ def default_url_options(options={})
+   logger.debug "default_url_options is passed options: #{options.inspect}\n"
+   { locale: I18n.locale }
+ end
 end

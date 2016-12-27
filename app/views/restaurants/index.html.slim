@@ -1,32 +1,28 @@
-.col-xs-12.col-md-8.col-md-offset-2.restaurant-search.search-form
-  = form_tag restaurants_path, remote: true, method: 'get', id: 'restaurants-search' do
-    .input-group
+#restaurant-finder.col-xs-12
+
+  = form_tag restaurants_path, remote: true, method: 'get', id: 'restaurant-search', 
+    class: "col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3 space-up" do
+    #map.hidden
+    .location
+      button.share-location onclick="geoFindMe()" 
+        i.fa.fa-map-marker.fa-3x.space-up
+        br
+        h3 Share your location
+      = text_field_tag :latitude, params[:latitude], class: "hidden"
+      = text_field_tag :longitude, params[:longitude], class: "hidden"
+    .interest.col-xs-12.space-up.space-down
+      button.going-out.col-xs-6 value="1" I am going out
+      button.delivery.col-xs-6 value="2" I want a delivery
+      = text_field_tag :interest, params[:interest], class: "hidden"
+    .tags.space-up
       = text_field_tag :search, params[:search],
-                       class: "form-control input restaurant-search-input",
-                       placeholder: "#{t 'restaurant.search-placeholder'}",
-                       autofocus: true
-      span.input-group-btn
-        = button_tag name: nil, class: "btn" do
-          i class="glyphicon glyphicon-search"
-
-- unless params[:search] || @html
-  .home-screen.cd-fixed-bg.cd-bg-1
-    .col-xs-12.aboutus-page
-      .col-xs-12.col-md-4.col-md-offset-1.aboutus-text
-        |There is a place, a magical place, for a quick lunch and for a fancy dinner. 
-        |You could go there just to grab a pizza, or you could order a warm lobster in a summer preparation. 
-        |It is perfect to crash with your friends, as well as, for a romantic dinner with a date. 
-        |This spot is just round the corner, but you have not found it yet. 
-        |We will help you fix that! 
-      .col-xs-12.col-md-4.col-md-offset-2.services-text
-        |Fullder will find a place that suits your needs. You could then browse its whole menu 
-        |and select from a list that is more graphic and understandable so that you will never 
-        |wonder "what might that be?" while staring at the menu. Don't be afraid that it would be full. 
-        | Now, you can reserve a table in less than a minute!
-
+        class: "form-control input restaurant-search-input",
+        placeholder: "#{t 'restaurant.search-placeholder'}",
+        autofocus: true
+    = button_tag name: nil, class: "btn btn-submit space-up" do
+        i class="glyphicon glyphicon-search"
 
 .restaurants.col-xs-12.col-lg-10.col-lg-offset-1.infinite-pagination
-  - if @html
     .infinite-scroll
       = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
     = paginate @restaurants, params: {scrolling: true}
@@ -49,6 +45,55 @@
     p
       b Scotland, Edinburgh EH8 9EW, Nicolson Str. 92
   
+script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyA29rpRdgUXPQoVfAhO5KlO4cV55CMSMi0"
+script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" 
 
   
+javascript:
 
+
+  function geoFindMe() {
+
+    function success(position) {
+      $("#map").removeClass("hidden");
+      $(".location").addClass("hidden");
+      document.getElementById("latitude").value = position.coords.latitude;
+      document.getElementById("longitude").value = position.coords.longitude;
+
+      handler = Gmaps.build('Google');
+
+      handler.buildMap({ 
+        provider: {
+          disableDefaultUI: true,
+          rotateControl: true,
+          streetViewControl: true,
+          streetViewControlOptions: true
+        }, 
+        internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers([
+            {
+            "lat": position.coords.latitude,
+            "lng": position.coords.longitude
+            }
+          ]);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          handler.getMap().setZoom(16);
+        }
+      );
+
+
+    }
+
+    function error() {
+      alert("Unable to retrieve your location");
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  };
+
+  $('.interest button').on('click tap', function() {
+    $(".interest").children().removeClass("active");
+    $(this).addClass("active");
+    document.getElementById("interest").value = $(this).val();
+  });

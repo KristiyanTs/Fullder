@@ -46,5 +46,11 @@
             li
               = link_to " #{t 'navbar.logout'}", destroy_user_session_path, method: :delete
           - else 
+            li.dropdown.dropdown-language
+              .dropdown-toggle.language-pick data-toggle='dropdown' = I18n.locale.upcase
+              ul.dropdown-menu
+                li.dropdown-header Pick a language
+                li = link_to "English", locale: 'en'
+                li = link_to "Български", locale: 'bg'
             li
               = link_to " #{t 'navbar.enter'}", new_user_session_path

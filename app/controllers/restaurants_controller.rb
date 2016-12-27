@@ -4,17 +4,14 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :favorite]
 
   def index
-    @user_location = request.location
+    @latitude = params[:latitude] || request.location.latitude
+    @longitude = params[:longitude] || request.location.longitude
     
     @restaurants = Restaurant.search(params[:search])
-    @restaurants = @restaurants.by_distance(origin: [@user_location.latitude, @user_location.longitude]) if !@user_location.blank?
+    restaurants_array = @restaurants.select{|r| r.accepts_deliveries && r.distance_to([@latitude, @longitude]) <= r.delivery_radius} if params[:interest] == "2"
+    @restaurants = @restaurants.where(id: restaurants_array.map(&:id)) if params[:interest] == "2"
+    @restaurants = @restaurants.by_distance(origin: [@latitude, @longitude]) if @latitude && @longitude
     @restaurants = @restaurants.page(params[:page]).per(12)
-
-    # Checking if called by pagination or by a new search
-    @nextpage = params[:scrolling]
-    params[:scrolling] = false
-    # Checking if should show index page
-    @html = request.format.html?
 
     ahoy.track "Viewed restaurants index"
 
@@ -30,11 +27,6 @@ class RestaurantsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@restaurant) do |res, marker|
       marker.lat res.latitude
       marker.lng res.longitude
-    end
-
-    if params[:address]
-      @delivers = @restaurant.distance_to(params[:address]) <= @restaurant.delivery_radius
-      session[:address] = params[:address]
     end
 
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
