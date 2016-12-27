@@ -9,6 +9,6 @@
       .html("<%=j link_to_next_page(@restaurants, 'Next Page', remote: true, params: {scrolling: true}) %>");
   <% end %>
 <% else %>
-   $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
-   $('.home-screen').fadeOut(1000);
+  $('.restaurants').html("<%= escape_javascript (render partial: 'restaurants_result') %>");
+  $('.home-screen').fadeOut(1000);
 <% end %>

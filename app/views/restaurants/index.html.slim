@@ -7,12 +7,12 @@
       button.share-location onclick="geoFindMe()" 
         i.fa.fa-map-marker.fa-3x.space-up
         br
-        h3 Share your location
-      = text_field_tag :latitude, params[:latitude], class: "hidden"
+        h3 = t 'restaurant.share-location'
+      = text_field_tag :latitude, params[:latitude], onchange: "this.form.submit();", class: "hidden"
       = text_field_tag :longitude, params[:longitude], class: "hidden"
     .interest.col-xs-12.space-up.space-down
-      button.going-out.col-xs-6 value="1" I am going out
-      button.delivery.col-xs-6 value="2" I want a delivery
+      button.going-out.col-xs-6 value="1" = t 'restaurant.going-out'
+      button.delivery.col-xs-6 value="2" = t 'restaurant.want-delivery'
       = text_field_tag :interest, params[:interest], class: "hidden"
     .tags.space-up
       = text_field_tag :search, params[:search],

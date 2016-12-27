@@ -42,6 +42,9 @@ en:
     in-place-orders: "Accepts in-shop orders: "
     copied: Copied
     distance: km. away
+    share-location: Share your location
+    going-out: I am going out
+    want-delivery: I want delivery
   product:
     contains: "Contains "
     price-from: "From "

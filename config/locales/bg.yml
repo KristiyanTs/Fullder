@@ -31,7 +31,7 @@ bg:
     add-product: Добавете желаните продукти
     enter-table: Въведете номера на масата си
     click-to-order: Поръчайте
-    accept-delivery: Можете да поръчате да вкъщи!
+    accept-delivery: Можете да поръчате за вкъщи!
     avg-meal-price: "Средна сметка за един човек: "
     staff-count: "Брой служители: "
     payments: "Начини за плащане: "
@@ -41,6 +41,9 @@ bg:
     in-place-orders: "Приема поръчки от маса: "
     copied: Копирано
     distance: км. от теб
+    share-location: Вашият адрес
+    going-out: Отивам на ресторант
+    want-delivery: Доставка до вкъщи
   product:
     contains: "Съдържа "
     price-from: "От "
