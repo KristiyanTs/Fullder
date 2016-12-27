@@ -4,17 +4,12 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :favorite]
 
   def index
-    @user_location = request.location
+    latitude = params[:latitude] || request.location.latitude
+    longitude = params[:longitude] || request.location.longitude
     
     @restaurants = Restaurant.search(params[:search])
-    @restaurants = @restaurants.by_distance(origin: [@user_location.latitude, @user_location.longitude]) if !@user_location.blank?
+    @restaurants = @restaurants.by_distance(origin: [latitude, longitude]) if latitude && longitude
     @restaurants = @restaurants.page(params[:page]).per(12)
-
-    # Checking if called by pagination or by a new search
-    @nextpage = params[:scrolling]
-    params[:scrolling] = false
-    # Checking if should show index page
-    @html = request.format.html?
 
     ahoy.track "Viewed restaurants index"
 

@@ -18,10 +18,79 @@
 }
 
 #restaurant-finder{
+  min-height: 400px;
   height: 50%;
   background-image: image-url('wallpaper.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  .share-location, #map{
+    background-color: rgba(0,0,0,0.4);
+    border: 0px;
+    color: white;
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    height: 180px;
+  }
+  .interest{
+    padding-right: 0px;
+    padding-left: 0px;
+    button{
+      height: 50px;
+      background-color: rgba(0,0,0,0.6);
+      border: 0px;
+      color: white;
+      font-size: 20px;
+    }
+    button.active{
+      background-color: rgba(0,216,0, 0.5);
+    }
+  }
+  .tags{
+    input::-webkit-input-placeholder {
+      /* WebKit browsers */
+      text-align: center;
+    }
+    input:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      text-align: center;
+    }
+    input::-moz-placeholder {
+      /* Mozilla Firefox 19+ but I'm not sure about working */
+      text-align: center;
+    }
+    input{
+      border-radius: 0px !important;
+      border: 0px;
+      background-color: rgba(0,0,0,0.6) !important;
+      color: white;
+      text-align: center;
+    }
+    input:focus{
+      outline: 0 none;
+      box-shadow: none;
+      border: rgb(216,0,0);
+    }
+  }
+  .btn-submit{
+    width: 100%;
+    border-radius: 0px;
+    background-color: rgba(0,216,0,0.0);
+    color: white;
+    font-size: 50px;
+    -webkit-animation: pulsate 5s ease-out;
+    -webkit-animation-iteration-count: infinite;
+  }
+  @-webkit-keyframes pulsate {
+      0% {-webkit-transform: scale(1, 1); opacity: 0.5;}
+      50% {-webkit-transform: scale(1.2, 1.2); opacity: 1;}
+      100% {-webkit-transform: scale(1, 1); opacity: 0.5;}
+  }
+  .btn-submit:hover{
+    opacity: 1;
+    font-size: 60px;
+    -webkit-animation:  none;
+  }
 }
 
 
@@ -145,45 +214,6 @@
   font-size: 80px;
   line-height: 18px;
   margin-top: 20px;
-}
-
-
-/* Search form */
-
-.search-form{
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding: 3px;
-  background-color: #fff;
-}
-
-.restaurant-search-form{
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.search-form input{
-  border: 0px;
-  box-shadow: none !important;
-}
-
-.search-form button{
-  margin: 2px 0 0 0;
-  background: none;
-  box-shadow: none;
-  border: 0;
-  color: #666666;
-  padding: 0 15px 0 15px;
-}
-
-.search-form button:hover{
-  border: 0;
-  box-shadow: none;
-}
-
-.search-form .glyphicon-search{
-	padding-top: 10px;
-	padding-bottom: 10px;
 }
 
 /* RESTAURANT ROW */
@@ -356,25 +386,6 @@
     .schedule-time{
       font-size: 22px;
     }
-  }
-
-  .search-form input{
-    font-size: 26px !important;
-    height: 50px;
-  }
-
-  .search-form{
-    margin-top: 80px;  
-    padding: 3px;
-    border: solid 1px #E4E4E4;
-    background-color: #fff;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-
-  .search-form button{
-    font-size: 25px;
-    color: rgb(230, 0, 0);
   }
 
 }
