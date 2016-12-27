@@ -1,13 +1,22 @@
-.col-xs-12.col-md-8.col-md-offset-2.restaurant-search.search-form
-  = form_tag restaurants_path, remote: true, method: 'get', id: 'restaurants-search' do
-    .input-group
+#restaurant-finder.col-xs-12
+  = form_tag restaurants_path, remote: true, method: 'get', id: 'restaurant-search' do
+    .location
+      button.share-location onclick="geoFindMe()" Share location
+      = text_field_tag :latitude, params[:latitude], class: "hidden"
+      = text_field_tag :longitude, params[:longitude], class: "hidden"
+    .interest
+      button.going-out value="1" I am going to the restaurant
+      button.delivery value="2" I want a delivery
+      = text_field_tag :interest, params[:interest], class: "hidden"
+    .radius
+      = text_field_tag :radius, params[:radius]
+    .tags
       = text_field_tag :search, params[:search],
-                       class: "form-control input restaurant-search-input",
-                       placeholder: "#{t 'restaurant.search-placeholder'}",
-                       autofocus: true
-      span.input-group-btn
-        = button_tag name: nil, class: "btn" do
-          i class="glyphicon glyphicon-search"
+        class: "form-control input restaurant-search-input",
+        placeholder: "#{t 'restaurant.search-placeholder'}",
+        autofocus: true
+    = button_tag name: nil, class: "btn" do
+        i class="glyphicon glyphicon-search"
 - unless params[:search] || @html
   .home-screen.cd-fixed-bg.cd-bg-1
     .col-xs-12.aboutus-page
@@ -50,4 +59,23 @@
   
 
   
+javascript:
+  function geoFindMe() {
 
+    function success(position) {
+      document.getElementById("latitude").value = position.coords.latitude;
+      document.getElementById("longitude").value = position.coords.longitude;
+    }
+
+    function error() {
+      alert("Unable to retrieve your location");
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  };
+
+  $('.interest button').on('click tap', function() {
+    $(".interest").children().removeClass("active");
+    $(this).addClass("active");
+    document.getElementById("interest").value = $(this).val();
+  });
