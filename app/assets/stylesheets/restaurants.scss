@@ -18,19 +18,21 @@
 }
 
 #restaurant-finder{
+  position: relative;
   min-height: 400px;
   height: 50%;
   background-image: image-url('wallpaper.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   .share-location, #map{
+    position: relative;
     background-color: rgba(0,0,0,0.4);
     border: 0px;
     color: white;
     width: 100%;
     padding-right: 0px;
     padding-left: 0px;
-    height: 180px;
+    height: 25vh;
   }
   .interest{
     padding-right: 0px;

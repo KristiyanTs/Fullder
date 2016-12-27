@@ -8,6 +8,8 @@ class RestaurantsController < ApplicationController
     longitude = params[:longitude] || request.location.longitude
     
     @restaurants = Restaurant.search(params[:search])
+    restaurants_array = @restaurants.select{|r| r.accepts_deliveries && r.distance_to([latitude, longitude]) <= r.delivery_radius} if params[:interest] == "2"
+    @restaurants = @restaurants.where(id: restaurants_array.map(&:id)) if params[:interest] == "2"
     @restaurants = @restaurants.by_distance(origin: [latitude, longitude]) if latitude && longitude
     @restaurants = @restaurants.page(params[:page]).per(12)
 
