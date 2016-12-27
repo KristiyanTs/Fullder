@@ -271,6 +271,14 @@
     color: grey;
     font-size: 12px;
   }
+  .restaurant-distance{
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    color: grey;
+    font-size: 18px;
+    z-index: 10;
+  }
 }
 
 .restaurant-index-button{

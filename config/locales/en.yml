@@ -32,8 +32,7 @@ en:
     add-product: Add products to your cart
     enter-table: Enter your table number when prompt
     click-to-order: Click to order and just wait!
-    accept-delivery: We accept orders from your address!
-    sorry-too-far: Sorry, you are too far and we do not deliver to your address.
+    accept-delivery: We offer deliveries!
     avg-meal-price: "Average meal price: "
     staff-count: "Staff count: "
     payments: "Payment: "
@@ -42,6 +41,7 @@ en:
     delivers: "Delivers: "
     in-place-orders: "Accepts in-shop orders: "
     copied: Copied
+    distance: km. away
   product:
     contains: "Contains "
     price-from: "From "
