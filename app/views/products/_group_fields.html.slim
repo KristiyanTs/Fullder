@@ -3,4 +3,4 @@
   .max-options = "max " + f.object.maximum.to_s
   .col-xs-12.option_holder.padding-top-small
     = f.collection_check_boxes :option_ids, f.object.options, :id, :name,          
-      item_wrapper_class: "col-xs-6 col-sm-6 col-md-4 col-lg-3 product_option #{f.object.maximum.to_s}"
+item_wrapper_class: "col-xs-6 col-sm-6 col-md-4 col-lg-3 product_option #{f.object.maximum.to_s}"

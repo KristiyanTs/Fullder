@@ -1,7 +1,5 @@
-.col-xs-12.col-sm-6.col-md-6.col-lg-6.category-index-button
-  = link_to restaurant_category_path(@restaurant, category), class: "category-row btn col-xs-12" do  
-    - if category.avatar?
-      .category-avatar
-        = image_tag category.avatar.url(:small)
-    .category-name
-      = shorthand(category.name, 33) 
+.col-xs-12 
+  b.col-xs-12.well 
+    h3 = shorthand(category.name, 33) 
+  = render partial: "categories/category_row", collection: category.subcategories, as: :subcategory
+  = render partial: "products/product_row", collection: category.products, as: :product

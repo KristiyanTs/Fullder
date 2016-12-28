@@ -1,8 +1,5 @@
-.col-xs-12.col-sm-6.col-md-6.col-lg-6.product-index-button
-  = link_to restaurant_product_path(@restaurant, product), class: "product-row btn col-xs-12" do  
-    - if product.avatar?
-      .product-avatar
-        = image_tag product.avatar.url(:small)
+.col-xs-12.product-index-button
+  = link_to restaurant_product_path(@restaurant, product), class: "product-row btn col-xs-11" do  
     .product-name.col-xs-6
       = shorthand(product.name, 25) 
       - if product.weight && product.weight.length>0
@@ -14,6 +11,16 @@
         = shorthand(product.short_description,180)
     .common-allergens
       = shorthand(common_alergens(product, current_user), 40)
-  .product-show-more.col-xs-12.text-center show more
-  .product-more-options
-    = render partial: 'products/product_buy_form', locals: {product: product}
+  - if product.options.any? || product.sizes.any?
+    .product-show-more.col-xs-1
+      i.fa.fa-angle-down.fa-2x
+    .product-more-options
+      = render partial: 'products/product_buy_form', locals: {product: product}
+  - elsif current_user && @restaurant.sells_online
+    .col-xs-1
+      = minimal_form_for @order_item, html: { class: 'new-order-item' }, remote: true do |f|
+        = f.input :product_id, as: :hidden, input_html: {value: product.id || @product.id}
+        = f.input :quantity, input_html: {value: 1, min: 1, max: 20, class: 'text-center hidden'}
+        = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'padding-top-small hidden' }
+        - f.input :product_id, value: @product.id
+        = f.submit "+", class: "not-button"

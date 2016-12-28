@@ -1,8 +1,7 @@
 - @product ||= product
 - if @restaurant.sells_online
   .container.container-white.col-xs-12
-    = f.input :quantity, input_html: {value: 1, min: 1, max: 20, class: 'text-center'}
-    = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'padding-top-small' }
+    = f.input :quantity, input_html: {value: 1, min: 1, max: 20, class: 'text-center hidden'}
+    = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'padding-top-small hidden' }
     - f.input :product_id, value: @product.id
-  = f.submit "#{t 'order.add-to-cart'}", class: "btn buy-button col-xs-12"
- 
+= f.submit "#{t 'order.add-to-cart'}", class: "btn buy-button col-xs-12" 

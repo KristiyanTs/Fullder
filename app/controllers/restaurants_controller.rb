@@ -33,6 +33,9 @@ class RestaurantsController < ApplicationController
       marker.lng res.longitude
     end
 
+    @categories = @restaurant.categories.where(supercategory_id: nil).order(:index)
+    @order_item = OrderItem.new
+
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
     ahoy.track "Viewed restaurant home page", restaurant_id: @restaurant.id
 
