@@ -4,6 +4,10 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :favorite]
 
   def index
+    # Checking if called by pagination or by a new search
+    @nextpage = params[:scrolling]
+    params[:scrolling] = false
+    
     @latitude = params[:latitude] || request.location.latitude
     @longitude = params[:longitude] || request.location.longitude
     

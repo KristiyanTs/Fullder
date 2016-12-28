@@ -48,6 +48,11 @@ input{
   font-size:16px !important;
   /* When the font-size is 16px phones do not zoom when filling in an input */  
 }
+
+.btn-square{
+  border-radius: 0px;
+}
+
 .restaurant-serach input:focus{
   border: none !important;
   box-shadow: none !important;
