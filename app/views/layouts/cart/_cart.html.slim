@@ -1,8 +1,9 @@
-.container.col-md-3.col-md-offset-1.container-white.compact-cart.container-min-height.hidden-xs.hidden-sm
-  table#order-items.table.table-borderless
-    thead
-      h3.col-xs-12.text-center Cart
-    tbody
-      = render partial: "order_items/order_item", collection: current_order.order_items, as: :order_item if current_order
-  .buy-button
-    = render partial: 'layouts/cart/buy_button'
+- if current_user && @restaurant && current_order.restaurant == @restaurant
+  .container.col-md-3.col-md-offset-1.container-white.compact-cart.container-min-height.hidden-xs.hidden-sm
+    table#order-items.table.table-borderless
+      thead
+        h3.col-xs-12.text-center Cart
+      tbody
+        = render partial: "order_items/order_item", collection: current_order.order_items, as: :order_item if current_order
+    .buy-button
+      = render partial: 'layouts/cart/buy_button'

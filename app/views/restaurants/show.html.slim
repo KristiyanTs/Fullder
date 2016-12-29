@@ -19,11 +19,21 @@
 
 = render partial: 'layouts/cart/cart'
 
+= render partial: 'reservations/form'
+
 javascript:
   $(".menu-button").on('click tap', function() {
     $(".home-page-3").addClass("hidden");
     $(".home-page-2").addClass("hidden-xs hidden-sm");
+    $(".restaurant-reservation").addClass("hidden");
     $(".restaurant-menu").removeClass("hidden");
+  });
+
+  $(".reservations-button").on('click tap', function() {
+    $(".home-page-3").addClass("hidden");
+    $(".home-page-2").addClass("hidden");
+    $(".restaurant-menu").addClass("hidden");
+    $(".restaurant-reservation").removeClass("hidden");
   });
 
 
