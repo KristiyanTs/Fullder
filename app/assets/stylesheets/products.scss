@@ -8,15 +8,11 @@ $header-red: rgb(230, 0, 0);
   border-bottom-right-radius: 0px !important;
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
-  .product-avatar img{
-    width: 100%;
-  }
   .product-name{
     padding-left: 5px;
     text-align: left;
     color: black;
-    font-size:25px;
-    z-index: 1;
+    font-size:16px;
   }
   .product-short-description{
     white-space: pre-line;
@@ -31,14 +27,13 @@ $header-red: rgb(230, 0, 0);
   .product-price{
     color: grey;
     text-align: right;
-    font-size:18px;
+    font-size:14px;
     z-index: 1;
-    line-height: 40px;
+    line-height: 25px;
   }
   .product-weight{
     font-size: 15px;
     color: grey;
-    margin-top: 10px;
   }
   .common-allergens{
     color: red;
@@ -55,16 +50,23 @@ $header-red: rgb(230, 0, 0);
 input.not-button{
   background-color: transparent !important;
   border: 0px !important;
-  font-size: 40px !important;
-  margin-top: -10px;
+  line-height: 30px;
+  font-size: 30px !important;
 }
 input.not-button:hover{
   color: rgb(216,0,0) !important;
 }
 
+.plus-button{
+  text-align: right !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
 .product-show-more{
-  margin-top: 20px;
   z-index: 1000;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .product-index-button{
@@ -81,7 +83,7 @@ input.not-button:hover{
   .product-row{
     margin-top: 15px;
     .product-name{ 
-
+      font-size: 25px;
     }
     .product-short-description{
       max-height: 115px;
@@ -89,7 +91,15 @@ input.not-button:hover{
     }
     .product-price{
       font-size: 23px;
+      line-height: 30px;
     }
+  }
+  .product-show-more{
+    margin-top: 20px;
+  }
+
+  .plus-button{
+    margin-top: 15px;
   }
 }
 

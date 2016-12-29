@@ -1,26 +1,25 @@
 .col-xs-12.product-index-button
   = link_to restaurant_product_path(@restaurant, product), class: "product-row btn col-xs-11" do  
-    .product-name.col-xs-6
-      = shorthand(product.name, 25) 
-    .product-weight.col-xs-2
-      = product.weight
+    .product-name.col-xs-8.overflow.ellipsis
+      = shorthand(product.name, 80) 
     .product-price.col-xs-4
       = product_price(product)
-    - if product.short_description && product.short_description.length > 5
-      .product-short-description
-        = shorthand(product.short_description,180)
-    .common-allergens.text-left
+    .product-short-description.col-xs-8
+      = shorthand(product.short_description,180)
+    .product-weight.text-right.col-xs-4
+      = product.weight
+    .common-allergens.col-xs-12.text-left
       = shorthand(common_alergens(product, current_user), 40)
   - if product.options.any? || product.sizes.any?
-    .product-show-more.col-xs-1
+    .product-show-more.col-xs-1.text-right
       i.fa.fa-angle-down.fa-2x
     .product-more-options
       = render partial: 'products/product_buy_form', locals: {product: product}
   - elsif current_user && @restaurant.sells_online
-    .col-xs-1
+    .col-xs-1.plus-button.text-right
       = minimal_form_for @order_item, html: { class: 'new-order-item' }, remote: true do |f|
         = f.input :product_id, as: :hidden, input_html: {value: product.id || @product.id}
-        = f.input :quantity, input_html: {value: 1, min: 1, max: 20, class: 'text-center hidden'}
-        = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'padding-top-small hidden' }
-        - f.input :product_id, value: @product.id
+        = f.input :quantity, as: :hidden, input_html: {value: 1, min: 1, max: 20, class: 'hidden'}
+        = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'hidden' }
+
         = f.submit "+", class: "not-button"
