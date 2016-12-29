@@ -42,6 +42,16 @@ javascript:
     }, 500);
   });
 
+  if ("#{params[:menu]}" == "open"){
+    $(".home-page-3").addClass("hidden");
+    $(".home-page-2").addClass("hidden-xs hidden-sm");
+    $(".restaurant-reservation").addClass("hidden");
+    $(".restaurant-menu").removeClass("hidden");
+    $('html, body').animate({
+        scrollTop: $(".restaurant-menu").offset().top
+    }, 500);
+  }
+
 
   setTimeout(function() {
     handler = Gmaps.build('Google');
@@ -63,6 +73,7 @@ javascript:
     $('.wifipass').click(function(event){
       $(".wifipass").effect( "highlight", {color:"#669966"}, 2000 );
     });
+
   }, 800);
 
 

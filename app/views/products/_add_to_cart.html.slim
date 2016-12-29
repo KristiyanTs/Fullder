@@ -4,4 +4,5 @@
     = f.input :quantity, input_html: {value: 1, min: 1, max: 20, class: 'text-center hidden'}
     = f.input :demands, placeholder: "#{t 'order.demands-placeholder'}", wrapper_html: { class: 'padding-top-small hidden' }
     - f.input :product_id, value: @product.id
-= f.submit "#{t 'order.add-to-cart'}", class: "btn buy-button col-xs-12" 
+- if @restaurant.sells_online
+  = f.submit "#{t 'order.add-to-cart'}", class: "btn buy-button col-xs-12" 
