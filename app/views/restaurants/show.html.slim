@@ -1,35 +1,58 @@
-.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.home-page.container-white.space-up
+.container-fluid.col-md-6.col-md-offset-1.home-page.container-white.space-up
   #restaurant-avatar
     = image_tag @restaurant.restaurant_avatar.url(:large)
   #restaurant-buttons
-    = link_to (t 'restaurant.menu'), restaurant_categories_path(@restaurant), class: "menu-button col-xs-6 text-center"
-
-    = link_to (t 'restaurant.reserve'), new_restaurant_reservation_path(@restaurant), 
-      class: "reservations-button col-xs-6 text-center"
+    a.menu-button.col-xs-6.text-center = t 'restaurant.menu'
+    a.reservations-button.col-xs-6.text-center = t 'restaurant.reserve' 
 
 = render 'restaurant_delivery'
 
 = render 'inplace_order'
 
-.container-fluid.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3.container-white.home-page-2
-  #favorites.col-xs-12.col-sm-4
-    = render 'layouts/favorite'
-    hr.hidden-lg.hidden-md.hidden-sm
-  #working-times.col-xs-12.col-sm-4
-    = render 'working_times' 
-    hr.hidden-lg.hidden-md.hidden-sm
-  #wifipassword.col-xs-12.col-sm-4
-    = render 'wifipassword'
-  #show-more.col-xs-12
-    h4.text-center style="color:grey;" show more info
-  #more-info.col-xs-12
-    = render 'more_info'
+= render 'restaurant_info'
 
 = render 'restaurant_images'
 
 = render 'restaurant_map'
 
+= render 'restaurant_menu'
+
+= render partial: 'layouts/cart/cart'
+
+= render partial: 'reservations/form'
+
 javascript:
+  $(".menu-button").on('click tap', function() {
+    $(".home-page-3").addClass("hidden");
+    $(".home-page-2").addClass("hidden-xs hidden-sm");
+    $(".restaurant-reservation").addClass("hidden");
+    $(".restaurant-menu").removeClass("hidden");
+    $('html, body').animate({
+        scrollTop: $(".restaurant-menu").offset().top
+    }, 500);
+  });
+
+  $(".reservations-button").on('click tap', function() {
+    $(".home-page-3").addClass("hidden");
+    $(".home-page-2").addClass("hidden");
+    $(".restaurant-menu").addClass("hidden");
+    $(".restaurant-reservation").removeClass("hidden");
+    $('html, body').animate({
+        scrollTop: $(".restaurant-reservation").offset().top
+    }, 500);
+  });
+
+  if ("#{params[:menu]}" == "open"){
+    $(".home-page-3").addClass("hidden");
+    $(".home-page-2").addClass("hidden-xs hidden-sm");
+    $(".restaurant-reservation").addClass("hidden");
+    $(".restaurant-menu").removeClass("hidden");
+    $('html, body').animate({
+        scrollTop: $(".restaurant-menu").offset().top
+    }, 500);
+  }
+
+
   setTimeout(function() {
     handler = Gmaps.build('Google');
     handler.buildMap({ 
@@ -50,6 +73,7 @@ javascript:
     $('.wifipass').click(function(event){
       $(".wifipass").effect( "highlight", {color:"#669966"}, 2000 );
     });
+
   }, 800);
 
 

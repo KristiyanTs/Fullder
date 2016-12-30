@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
         flash[:success] = "Item added to your cart."
         session[:order_id] = @order.id
 
-        redirect_to restaurant_product_path(@restaurant, @order_item.product_id) and return
+        redirect_to restaurant_path(@restaurant) and return
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }

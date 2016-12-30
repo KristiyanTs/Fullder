@@ -14,7 +14,7 @@
       - if restaurant.favorited_by.count>0
         h5.glyphicon.glyphicon-heart.label.label-danger = restaurant.favorited_by.count 
 
-  = link_to (t 'restaurant.menu'),restaurant_categories_path(restaurant),  
+  = link_to (t 'restaurant.menu'),restaurant_path(restaurant, menu: "open"),  
     class: "restaurant-row-menu col-xs-6 col-sm-12 text-center"
   = link_to "tel:" + restaurant.phone_number, class: "col-xs-6 visible-xs restaurant-row-call text-center"
     i.fa.fa-phone

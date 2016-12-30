@@ -44,6 +44,14 @@ html,body {
   background-color: rgb(245,245,245);
 }
 
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ellipsis { 
+  text-overflow: ellipsis; 
+}
+
 input{
   font-size:16px !important;
   /* When the font-size is 16px phones do not zoom when filling in an input */  
