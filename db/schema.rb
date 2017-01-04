@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222093320) do
+ActiveRecord::Schema.define(version: 20170104123326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -303,6 +303,7 @@ ActiveRecord::Schema.define(version: 20161222093320) do
     t.decimal  "delivery_cost"
     t.decimal  "min_delivery_price"
     t.integer  "delivery_radius"
+    t.integer  "reservation_time_tolerance"
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true, using: :btree
   end
 

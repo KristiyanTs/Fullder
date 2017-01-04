@@ -32,6 +32,7 @@
 #  delivery_cost                  :decimal(, )
 #  min_delivery_price             :decimal(, )
 #  delivery_radius                :integer
+#  reservation_time_tolerance     :integer
 #
 # Indexes
 #

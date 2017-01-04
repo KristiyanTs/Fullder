@@ -29,7 +29,7 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def edit
-    @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats).reject { |table| table.occupied?(@reservation.start_time)}
+    @tables = @restaurant.tables
     
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
@@ -38,6 +38,7 @@ class Dashboard::ReservationsController < ApplicationController
 
   def create
     @reservation = @restaurant.reservations.new(reservation_params)
+    @tables = @restaurant.tables.order(:capacity)
 
     respond_to do |format|
       if @reservation.save
@@ -59,6 +60,7 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def update
+    @tables = @restaurant.tables
     @reservations = @restaurant.reservations.page(params[:page])
     respond_to do |format|
       if @reservation.update(reservation_params)
