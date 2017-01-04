@@ -6,6 +6,7 @@ bg:
     add-role: Добави роля
     add-position: Добави служител
     add-table: Добави маса
+    add-reservation: Добави резервация
   search:
     no-results: "Няма намерени резултати."
   restaurant:
@@ -81,9 +82,9 @@ bg:
     positions: "Позиции"
     tables: "Маси"
     statistics: "Статистики"
-    ready-orders: Готови поръчки
-    unready-orders: Неготови поръчки
-    delivered-orders: Доставени поръчки
+    ready-orders: Готови
+    unready-orders: В процес
+    delivered-orders: Доставени
     settings: Настройки
     profile: "Профил"
     profile_settings: "Настройки на профила"
@@ -116,8 +117,10 @@ bg:
     time: Час
     seats: Места
     confirmed: Потвърдена
+    confirm-delete: Наистина ли искате да го изтриете?
   reservation:
     reserve-table-header: Резервирай маса
+    assign-table: Няма маса
   cart:
     send-order: Поръчай за %{price}
     empty: Количката Ви е празна
@@ -339,6 +342,9 @@ bg:
         update: Коригирай
       user:
         update: Потвърди промените
+      reservation:
+        create: Създай резервацията
+        update: Потвърди резервацията
   number:
     currency:
       format:

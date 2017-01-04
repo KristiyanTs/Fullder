@@ -1,22 +1,24 @@
 tr id="reservation-#{reservation.id}"
-  td
+  td.reservation-people
     = reservation.seats
     span.glyphicon.glyphicon-user.capacity-seats
-  td = (reservation.table.try(:number) || "Assign")
-  td = reservation.start_time.to_formatted_s(:short)
-  td
+  td.reservation-table = (reservation.table.try(:number) || "#{t 'reservation.assign-table'}")
+  td.reservation-time = l reservation.start_time, format: :short
+  td.reservation-status
     - if reservation.confirmed
-      i.fa.fa-thumbs-o-up.center aria-hidden="true"
+      i.fa.fa-thumbs-o-up.center.fa-2x
     - else
-      i.fa.fa-spinner aria-hidden="true"
+      i.fa.fa-spinner.fa-2x
 
-  td
+  td.reservation-actions
     .show
-      = link_to "", dashboard_restaurant_reservation_path(@restaurant, reservation),
-        class: "glyphicon glyphicon-info-sign"
+      = link_to dashboard_restaurant_reservation_path(@restaurant, reservation) do
+        i.fa.fa-info-circle.fa-2x
     .edit
-      = link_to "", edit_dashboard_restaurant_reservation_path(@restaurant, reservation),
-        class: "glyphicon glyphicon-pencil", data: { target: '#element-form', toggle: 'modal', remote: true}
+      = link_to edit_dashboard_restaurant_reservation_path(@restaurant, reservation), 
+        data: { target: '#element-form', toggle: 'modal', remote: true} do
+        i.fa.fa-pencil-square-o.fa-2x
     .destroy
-      = link_to "", dashboard_restaurant_reservation_path(@restaurant, reservation),
-        {confirm: "Are you sure?", method: :delete, remote: true, class: "glyphicon glyphicon-trash" }
+      = link_to dashboard_restaurant_reservation_path(@restaurant, reservation), method: :delete, remote: true, 
+        data: {confirm: "#{t 'dashboard.confirm-delete'}"} do
+        i.fa.fa-times.fa-2x

@@ -1,12 +1,6 @@
 h2 Listing delivered orders
-.infinite-table
-  table#items.table.table-striped.items
-    thead
-      tr
-        th = t 'dashboard.product'
-        th = t 'dashboard.time'
-        th = t 'dashboard.actions'
-    tbody.page
-      = yield
-  p.pagination
-    = link_to_next_page(@items, 'Next Page', remote: true) 
+table#items.table.table-striped.items.col-xs-12
+  tbody.page
+    = yield
+p
+  = paginate @items

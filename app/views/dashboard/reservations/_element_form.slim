@@ -1,7 +1,6 @@
 = simple_form_for([:dashboard, @restaurant, @reservation], remote: true, 
   html: { multipart: true }, authenticity_token: true) do |f|
   .modal-header
-    = (t 'dashboard.reservation-form-title') + @restaurant.name
     button.close aria-label="Close" data-dismiss="modal" type="button"
       span aria-hidden="true"  &times;
 
@@ -21,12 +20,16 @@
     = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"
     
 javascript:
+  $('.time-picker').on('focus',function(){
+    $(this).trigger('blur');
+  });
   $(function () {
-    $('.time-picker').timepicker({ 'timeFormat': 'H:i'});
+    $('.time-picker').timepicker({
+    timeFormat: 'H:i'
+    });
     $('#datetimepicker').datetimepicker({
-      inline: true,
+      inline: false,
       sideBySide: true,
-      inline: true,
       minDate: -1,
       ignoreReadonly: true,
       format: 'YYYY-MM-DD HH:mm'

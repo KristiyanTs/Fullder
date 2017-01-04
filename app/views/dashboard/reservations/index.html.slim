@@ -1,9 +1,9 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
-.container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
-  h3 = t 'dashboard.reservation-index-title'
+.container.container-white.col-xs-12.col-sm-6.col-sm-offset-1.dashboard-main-window
+  h3.text-center = t 'dashboard.reservation-index-title'
 
-  .search-form
+  .search-form.hidden
     = form_tag dashboard_restaurant_reservations_path(@restaurant),
                remote: true, method: 'get', id: 'reservations-search' do
       .input-group
@@ -18,10 +18,13 @@
   .search-results
     = render partial: "search_results"
 
-  .new-element
+  .new-element.text-center.space-down
     = link_to (t 'button.add-reservation'), new_dashboard_restaurant_reservation_path(@restaurant), class: 'btn btn-primary btn-lg',
       data: { target: '#element-form', toggle: 'modal' , remote: true}
     #element-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
       .modal-dialog role="document"
         .modal-content
           = t 'button.wait'
+
+.container.container-white.col-sm-3.col-sm-offset-1.dashboard-main-window.hidden-xs
+  = render partial: 'upcoming_reservations'
