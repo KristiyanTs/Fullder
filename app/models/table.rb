@@ -39,11 +39,11 @@ class Table < ApplicationRecord
     end
   }
 
-  def occupied?(st_time, duration)
+  def occupied?(st_time, duration, id)
     tolerance = restaurant.reservation_time_tolerance || 0
     res_end_time = st_time + duration.seconds_since_midnight.seconds + tolerance.minutes
 
-    u = reservations.select{ |res| st_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds) || res_end_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds)}
+    u = reservations.select{ |res| (st_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds) || res_end_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds)) && res.id != id}
     
     return (u.length > 0 ? true : false)
   end

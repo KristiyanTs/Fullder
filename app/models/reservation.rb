@@ -40,7 +40,7 @@ class Reservation < ApplicationRecord
   validates :start_time, presence: true
   validates :seats, presence: true
   validate :user_confirmed
-  validate :reservation_overlaps
+  validate :reservation_overlaps 
 
   before_validation :calc_end_time
 
@@ -57,11 +57,11 @@ class Reservation < ApplicationRecord
   end
 
   def reservation_overlaps
-    errors.add(:table, 'Table taken.') if table.occupied?(start_time, duration)
+    errors.add(:table, 'Table taken.') if duration.present? && table.occupied?(start_time, duration, id)
   end
 
   def calc_end_time
-    self.end_time = start_time + duration.seconds_since_midnight.seconds
+    self.end_time = (start_time + duration.seconds_since_midnight.seconds) if duration.present?
   end
 
 end

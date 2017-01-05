@@ -28,3 +28,6 @@
 
 .container.container-white.col-sm-3.col-sm-offset-1.dashboard-main-window.hidden-xs
   = render partial: 'upcoming_reservations'
+
+.container.col-xs-12.col-sm-8.col-sm-offset-2
+  = render partial: "table_reservations", collection: @tables, as: :table

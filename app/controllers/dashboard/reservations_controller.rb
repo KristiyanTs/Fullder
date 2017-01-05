@@ -8,6 +8,12 @@ class Dashboard::ReservationsController < ApplicationController
     @reservations = @restaurant.reservations
                                .search(params[:search])
                                .page(params[:page])
+    @tables = @restaurant.tables.order(:number)
+
+    date = Date.today
+    weekday = date.wday
+    @start_time = @restaurant.working_times.where(from_day: weekday).first.from_time
+    @end_time = @restaurant.working_times.where(from_day: weekday).first.from_time
 
     respond_to do |format|
       format.html
@@ -64,11 +70,9 @@ class Dashboard::ReservationsController < ApplicationController
     @reservations = @restaurant.reservations.page(params[:page])
     respond_to do |format|
       if @reservation.update(reservation_params)
-
         ReservationMailer.confirmed_reservation(@reservation.user, @restaurant, @reservation).deliver_now if
-          @reservation.user
+              @reservation.user
         @reservation.update(confirmed: true)
-
         format.html do
           redirect_to dashboard_restaurant_reservations_path(@restaurant),
                       notice: 'Reservation was successfully updated.',
