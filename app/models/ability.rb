@@ -13,9 +13,10 @@ class Ability
         end
       end
       can [:edit, :update, :destroy, :pay], Order, user_id: user.id, payed: false
-      can :create, Order
+      can :read, Restaurant
       can :read, Product
       can :read, Category
+      can :create, Order
     end
   end
 end
