@@ -27,8 +27,9 @@ class Table < ApplicationRecord
   belongs_to :user
 
   has_many :orders
-  has_many :reservations
-
+  has_many :reservation_tables, dependent: :destroy
+  has_many :reservations, through: :reservation_tables
+  
   validates :number, uniqueness: { scope: :restaurant_id }
   validates :number, presence: true
   validates :capacity, presence: true
@@ -46,5 +47,9 @@ class Table < ApplicationRecord
     u = reservations.select{ |res| (st_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds) || res_end_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds)) && res.id != id}
     
     return (u.length > 0 ? true : false)
+  end
+
+  def table_info
+    "#{number} - for #{capacity} people"
   end
 end

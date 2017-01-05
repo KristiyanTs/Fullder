@@ -1,4 +1,4 @@
-.col-xs-12
-  - table.reservations.where(confirmed: true).each_cons(2) do |res|
-    a style="width:#{(res.first.duration.seconds_since_midnight)/1.minute}px; height:10px; background-color:green;" Reservation
-    a style="width:#{((res.last.start_time-res.first.end_time)/1.minute).round}px; height:10px; background-color:red;" Free space
+/ .col-xs-12
+/   - table.reservations.where(confirmed: true).each_cons(2) do |res|
+/     a style="width:#{(res.first.duration.seconds_since_midnight)/1.minute}px; height:10px; background-color:green;" Reservation
+/     a style="width:#{((res.last.start_time-res.first.end_time)/1.minute).round}px; height:10px; background-color:red;" Free space

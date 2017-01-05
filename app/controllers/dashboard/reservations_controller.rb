@@ -8,12 +8,6 @@ class Dashboard::ReservationsController < ApplicationController
     @reservations = @restaurant.reservations
                                .search(params[:search])
                                .page(params[:page])
-    @tables = @restaurant.tables.order(:number)
-
-    date = Date.today
-    weekday = date.wday
-    @start_time = @restaurant.working_times.where(from_day: weekday).first.from_time
-    @end_time = @restaurant.working_times.where(from_day: weekday).first.from_time
 
     respond_to do |format|
       format.html
@@ -27,7 +21,6 @@ class Dashboard::ReservationsController < ApplicationController
 
   def new
     @reservation = @restaurant.reservations.build
-    @tables = @restaurant.tables.order(:capacity)
 
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
@@ -44,7 +37,6 @@ class Dashboard::ReservationsController < ApplicationController
 
   def create
     @reservation = @restaurant.reservations.new(reservation_params)
-    @tables = @restaurant.tables.order(:capacity)
 
     respond_to do |format|
       if @reservation.save
@@ -66,7 +58,6 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def update
-    @tables = @restaurant.tables
     @reservations = @restaurant.reservations.page(params[:page])
     respond_to do |format|
       if @reservation.update(reservation_params)
@@ -107,6 +98,8 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:start_time, :end_time, :seats, :contact_number, :contact_name, :requirements, :table_id, :duration)
+    params.require(:reservation).permit(:start_time, :end_time, :seats, 
+                                        :contact_number, :contact_name, :requirements, :duration,
+                                        {table_ids: []})
   end
 end

@@ -33,7 +33,9 @@
 class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
-  belongs_to :table
+
+  has_many :reservation_tables, dependent: :destroy
+  has_many :tables, through: :reservation_tables
 
   validates :contact_name, presence: true
   validates :contact_number, presence: true
@@ -57,7 +59,7 @@ class Reservation < ApplicationRecord
   end
 
   def reservation_overlaps
-    errors.add(:table, 'Table taken.') if duration.present? && table.occupied?(start_time, duration, id)
+    errors.add(:table, 'Table taken.') if duration.present? && tables.any?{ |table| table.occupied?(start_time, duration, id)}
   end
 
   def calc_end_time

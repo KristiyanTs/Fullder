@@ -2,7 +2,7 @@ tr id="reservation-#{reservation.id}"
   td.reservation-people
     = reservation.seats
     span.glyphicon.glyphicon-user.capacity-seats
-  td.reservation-table = (reservation.table.try(:number) || "#{t 'reservation.assign-table'}")
+  td.reservation-table = reservation.tables.pluck(:number).to_sentence
   td.reservation-time = l reservation.start_time, format: :short
   td.reservation-status
     - if reservation.confirmed
