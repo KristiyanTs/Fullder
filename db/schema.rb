@@ -26,15 +26,6 @@ ActiveRecord::Schema.define(version: 20161222093320) do
     t.index ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
   end
 
-  create_table "average_caches", force: :cascade do |t|
-    t.integer  "rater_id"
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "avg",           null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.integer  "supercategory_id"
@@ -182,14 +173,6 @@ ActiveRecord::Schema.define(version: 20161222093320) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
-  create_table "overall_averages", force: :cascade do |t|
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "overall_avg",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "permission_roles", force: :cascade do |t|
     t.integer  "permission_id"
     t.integer  "role_id"
@@ -260,29 +243,6 @@ ActiveRecord::Schema.define(version: 20161222093320) do
     t.string   "weight"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
-  end
-
-  create_table "rates", force: :cascade do |t|
-    t.integer  "rater_id"
-    t.string   "rateable_type"
-    t.integer  "rateable_id"
-    t.float    "stars",         null: false
-    t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
-    t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
-  end
-
-  create_table "rating_caches", force: :cascade do |t|
-    t.string   "cacheable_type"
-    t.integer  "cacheable_id"
-    t.float    "avg",            null: false
-    t.integer  "qty",            null: false
-    t.string   "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
 
   create_table "reservations", force: :cascade do |t|

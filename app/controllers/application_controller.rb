@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   include CanCan::ControllerAdditions # When using rails-api, you have to manually include the controller methods for CanCan
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, flash[:error] = exception.message
+    flash[:error] = exception.message
+    redirect_to root_path
   end
 
   # Finds user's current order or creates a new one

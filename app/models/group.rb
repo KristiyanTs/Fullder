@@ -6,6 +6,7 @@
 #  id         :integer          not null, primary key
 #  product_id :integer
 #  maximum    :integer
+#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
