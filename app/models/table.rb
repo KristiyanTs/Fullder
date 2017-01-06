@@ -44,7 +44,7 @@ class Table < ApplicationRecord
     tolerance = restaurant.reservation_time_tolerance || 0
     res_end_time = st_time + duration.seconds_since_midnight.seconds + tolerance.minutes
 
-    u = reservations.select{ |res| (st_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds) || res_end_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds)) && res.id != id}
+    u = reservations.select{ |res| res.confirmed = true && res.id != id && (st_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds) || res_end_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds))}
     
     return (u.length > 0 ? true : false)
   end

@@ -10,23 +10,20 @@
 
 puts "Generating seeds..."
 
-
-
-User.delete_all
-User.create!([
-           {name: 'Kristiyan Tsvetanov',
-            email: 'test1@example.com', password: 'password',
-            password_confirmation: 'password', admin: true},
-           {name: 'Valentina Latinska',
-            email: 'test2@example.com', password: 'password',
-            password_confirmation: 'password'},
-           {name: 'Plamen Dimitrov',
-            email: 'test3@example.com', password: 'password',
-            password_confirmation: 'password'},
-           {name: 'Pesho Speshno',
-            email: 'pesho@abv.bg', password: '123123123',
-            password_confirmation: '123123123'}
-])
+# User.find_or_create_by([
+#            {name: 'Kristiyan Tsvetanov',
+#             email: 'test1@example.com', password: 'password',
+#             password_confirmation: 'password', admin: true},
+#            {name: 'Valentina Latinska',
+#             email: 'test2@example.com', password: 'password',
+#             password_confirmation: 'password'},
+#            {name: 'Plamen Dimitrov',
+#             email: 'test3@example.com', password: 'password',
+#             password_confirmation: 'password'},
+#            {name: 'Pesho Speshno',
+#             email: 'pesho@abv.bg', password: '123123123',
+#             password_confirmation: '123123123'}
+# ])
 
 
 
@@ -126,6 +123,30 @@ permission_seed = [
     action: "destroy",
     name: "Dismiss employees",
     description: "Allow user to dismiss employees. Be cautious!"
+  },
+  {
+    subject_class: "Reservation",
+    action: "read",
+    name: "Show all reservations",
+    description: "Allow user to see all reservations, including information about them."
+  },
+  {
+    subject_class: "Reservation",
+    action: "create",
+    name: "Add new reservation",
+    description: "Allow user to add new reservations."
+  },
+  {
+    subject_class: "Reservation",
+    action: "update",
+    name: "Update existing reservations",
+    description: "Allow user to update information about existing reservations."
+  },
+  {
+    subject_class: "Reservation",
+    action: "destroy",
+    name: "Delete reservations",
+    description: "Allow user to delete reservations."
   }
 ]
 
