@@ -5,7 +5,6 @@
 #
 #  id         :integer          not null, primary key
 #  group_id   :integer
-#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

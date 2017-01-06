@@ -7,7 +7,6 @@
 #  name                           :string
 #  address                        :string
 #  wifipassword                   :string
-#  description                    :text
 #  phone_number                   :string
 #  country                        :string           default("en-GB")
 #  latitude                       :float

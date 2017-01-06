@@ -6,9 +6,6 @@
 #  id                   :integer          not null, primary key
 #  restaurant_id        :integer
 #  category_id          :integer
-#  name                 :string
-#  short_description    :string
-#  description          :text
 #  price                :decimal(, )
 #  active               :boolean
 #  average_prepare_time :integer

@@ -24,7 +24,7 @@ development:
   <<: *default
   encoding: unicode
   database: FastOrder_development
-  username: pguser
+  username: postgres
   password: 12345678
   template: template0
 
@@ -50,7 +50,7 @@ test:
   <<: *default
   encoding: unicode
   database: FastOrder_test
-  username: pguser
+  username: postgres
   password: 12345678
   template: template0
 
