@@ -31,6 +31,7 @@ en:
         permission_ids: 'Permissions'
         number: 'Number'
         wifipassword: Wifi password for your clients
+        table: Table
       user:
         locale: Language
       category:
@@ -38,6 +39,7 @@ en:
         index: "Category index. Lower indexes show up first."
       reservation:
         start_time: Time
+        duration: Duration
         seats: How many people
         contact_number: Contact number
         contact_name: Contact name

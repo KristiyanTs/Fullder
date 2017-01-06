@@ -15,6 +15,7 @@
 //= require jquery.timepicker.js
 //= require moment
 //= require bootstrap-datetimepicker
+//= require bootstrap-datepicker
 //= require clipboard
 //= require ahoy
 //= require jquery.remotipart

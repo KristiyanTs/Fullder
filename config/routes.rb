@@ -31,7 +31,11 @@ Rails.application.routes.draw do
       resources :positions
       resources :tables
       resources :orders, only: [:index, :edit, :update]
-      resources :reservations
+      resources :reservations do
+        collection do
+          get 'update_available_tables'
+        end
+      end
       resources :order_items, only: [:index, :show, :update]
       resource :menus, only: [:show]
     end

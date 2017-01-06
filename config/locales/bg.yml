@@ -6,6 +6,7 @@ bg:
     add-role: Добави роля
     add-position: Добави служител
     add-table: Добави маса
+    add-reservation: Добави резервация
   search:
     no-results: "Няма намерени резултати."
   restaurant:
@@ -81,9 +82,9 @@ bg:
     positions: "Позиции"
     tables: "Маси"
     statistics: "Статистики"
-    ready-orders: Готови поръчки
-    unready-orders: Неготови поръчки
-    delivered-orders: Доставени поръчки
+    ready-orders: Готови
+    unready-orders: В процес
+    delivered-orders: Доставени
     settings: Настройки
     profile: "Профил"
     profile_settings: "Настройки на профила"
@@ -116,8 +117,10 @@ bg:
     time: Час
     seats: Места
     confirmed: Потвърдена
+    confirm-delete: Наистина ли искате да го изтриете?
   reservation:
     reserve-table-header: Резервирай маса
+    assign-table: Няма маса
   cart:
     send-order: Поръчай за %{price}
     empty: Количката Ви е празна
@@ -141,26 +144,24 @@ bg:
       remove: Изтрий снимката
   mailer:
     confirming_reservation:
-      line1: Здравей, 
-      line2-1: Твоята резервация в
-      line2-2: беше изпратена
+      line0: Успешно изпратена
+      line1: Здравей %{user}, 
+      line2: Вашата резервация в %{restaurant} беше изпратена успешно.
       line3: Ще се свържем с Вас скоро!
-      line4: Информация за резервацията
-      line5: Кой
-      line6: Кога
-      line7: Къде
-      line8-1: Какво
-      line8-2: места
+      line4: Информация
+      line5: Име на резервацията  
+      line6: Дата 
+      line7: Място
+      line8: Запазени места   
     confirmed_reservation:
-      line1: Здравей, 
-      line2-1: Твоята резервация в
-      line2-2: беше одобрена от служител.
-      line3: Информация за резервацията
-      line4: Кой
-      line5: Кога
-      line6: Къде
-      line7-1: Какво
-      line7-2: места
+      line0: Потвърдена резервация
+      line1: Здравей %{user},
+      line2: Вашата резервация в %{restaurant} беше потвърдена.
+      line3: Информация
+      line4: Име на резервацията
+      line5: Дата
+      line6: Място
+      line7: Запазени места
       line8: Очакваме Ви!
   views:
     pagination:
@@ -339,6 +340,9 @@ bg:
         update: Коригирай
       user:
         update: Потвърди промените
+      reservation:
+        create: Създай резервацията
+        update: Потвърди резервацията
   number:
     currency:
       format:
