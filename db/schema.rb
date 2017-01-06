@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222093320) do
+ActiveRecord::Schema.define(version: 20170105171013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -245,6 +245,40 @@ ActiveRecord::Schema.define(version: 20161222093320) do
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
 
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.string   "rateable_type"
+    t.integer  "rateable_id"
+    t.float    "stars",         null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+    t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string   "cacheable_type"
+    t.integer  "cacheable_id"
+    t.float    "avg",            null: false
+    t.integer  "qty",            null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
+  end
+
+  create_table "reservation_tables", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.integer  "reservation_id"
+    t.integer  "table_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["reservation_id"], name: "index_reservation_tables_on_reservation_id", using: :btree
+    t.index ["restaurant_id"], name: "index_reservation_tables_on_restaurant_id", using: :btree
+    t.index ["table_id"], name: "index_reservation_tables_on_table_id", using: :btree
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.integer  "user_id"
@@ -303,6 +337,7 @@ ActiveRecord::Schema.define(version: 20161222093320) do
     t.decimal  "delivery_cost"
     t.decimal  "min_delivery_price"
     t.integer  "delivery_radius"
+    t.integer  "reservation_time_tolerance"
     t.index ["slug"], name: "index_restaurants_on_slug", unique: true, using: :btree
   end
 
@@ -333,6 +368,11 @@ ActiveRecord::Schema.define(version: 20161222093320) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["product_id"], name: "index_sizes_on_product_id", using: :btree
+  end
+
+  create_table "table_reservations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tables", force: :cascade do |t|
@@ -464,6 +504,9 @@ ActiveRecord::Schema.define(version: 20161222093320) do
   add_foreign_key "positions", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "restaurants"
+  add_foreign_key "reservation_tables", "reservations"
+  add_foreign_key "reservation_tables", "restaurants"
+  add_foreign_key "reservation_tables", "tables"
   add_foreign_key "reservations", "restaurants"
   add_foreign_key "reservations", "tables"
   add_foreign_key "reservations", "users"

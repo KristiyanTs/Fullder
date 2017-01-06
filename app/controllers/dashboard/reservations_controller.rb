@@ -21,7 +21,6 @@ class Dashboard::ReservationsController < ApplicationController
 
   def new
     @reservation = @restaurant.reservations.build
-    @tables = @restaurant.tables.order(:capacity)
 
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
@@ -29,7 +28,7 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def edit
-    @tables = @restaurant.tables.where('capacity >= ?', @reservation.seats).reject { |table| table.occupied?(@reservation.start_time)}
+    @tables = @restaurant.tables
     
     respond_to do |format|
       format.js { render partial: 'form.js.coffee' }
@@ -62,11 +61,9 @@ class Dashboard::ReservationsController < ApplicationController
     @reservations = @restaurant.reservations.page(params[:page])
     respond_to do |format|
       if @reservation.update(reservation_params)
-
         ReservationMailer.confirmed_reservation(@reservation.user, @restaurant, @reservation).deliver_now if
-          @reservation.user
+              @reservation.user
         @reservation.update(confirmed: true)
-
         format.html do
           redirect_to dashboard_restaurant_reservations_path(@restaurant),
                       notice: 'Reservation was successfully updated.',
@@ -90,6 +87,19 @@ class Dashboard::ReservationsController < ApplicationController
     end
   end
 
+  def update_available_tables
+    debugger
+    @tables = @restaurant.tables.all
+    if params[:start_time] && params[:duration]
+      @tables = @restaurant.tables
+    end
+    respond_to do |format|
+      format.html 
+      format.json
+      format.js
+    end
+  end
+
   private
 
   def set_restaurant
@@ -101,6 +111,8 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:start_time, :end_time, :seats, :contact_number, :contact_name, :requirements, :table_id, :duration)
+    params.require(:reservation).permit(:start_time, :end_time, :seats, 
+                                        :contact_number, :contact_name, :requirements, :duration,
+                                        {table_ids: []})
   end
 end

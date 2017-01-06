@@ -14,8 +14,9 @@
                 = link_to " #{t 'navbar.dashboard'}", dashboard_path
             - if current_user.positions.count == 1
               li
-                = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
-                  class: "glyphicon glyphicon-eye-open"
+                = link_to dashboard_restaurant_path(current_user.positions.first.restaurant) do
+                  i.fa.fa-cogs = " " + (t 'navbar.dashboard')
+                  
             li
               = link_to " #{t 'navbar.profile'}", profile_path
             li
@@ -39,8 +40,9 @@
                 = link_to " #{t 'navbar.dashboard'}", dashboard_path
             - if current_user.positions.count == 1
               li
-                = link_to " #{t 'navbar.dashboard'}", dashboard_restaurant_path(current_user.positions.first.restaurant), 
-                  class: "glyphicon glyphicon-eye-open"
+                = link_to dashboard_restaurant_path(current_user.positions.first.restaurant) do
+                  i.fa.fa-cogs = " " + (t 'navbar.dashboard')
+                  
             li
               = link_to " #{t 'navbar.profile'}", profile_path
             li

@@ -1,32 +1,36 @@
 = simple_form_for([:dashboard, @restaurant, @reservation], remote: true, 
   html: { multipart: true }, authenticity_token: true) do |f|
   .modal-header
-    = (t 'dashboard.reservation-form-title') + @restaurant.name
     button.close aria-label="Close" data-dismiss="modal" type="button"
       span aria-hidden="true"  &times;
 
   .modal-body
     = render 'layouts/error_messages', object: @reservation
-    = f.input :start_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
-    = f.input :duration, as: :string, 
+    = f.input :start_time, as: :string,
+      input_html: { id: "datetimepicker", data: { behavior: "datepicker" }}, readonly: true
+    = f.input :duration, as: :string,
       input_html: {class: "time-picker", value: @reservation.duration&.strftime("%H:%M") || "03:00"}
     = f.input :seats
     = f.input :contact_number
     = f.input :contact_name
     = f.input :requirements
-    = f.association :table, collection: @tables, prompt: "Assign a table", include_blank: false,
-      label_method: lambda { |table| "Table #{table.number} - #{table.capacity} people" }
+    = f.collection_check_boxes :table_ids, @restaurant.tables.all, :id, :table_info,
+      { selected: @reservation.table_ids, item_wrapper_tag: "p" }
 
   .modal-footer
     = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"
     
 javascript:
+  $('.time-picker').on('focus',function(){
+    $(this).trigger('blur');
+  });
   $(function () {
-    $('.time-picker').timepicker({ 'timeFormat': 'H:i'});
+    $('.time-picker').timepicker({
+    timeFormat: 'H:i'
+    });
     $('#datetimepicker').datetimepicker({
-      inline: true,
+      inline: false,
       sideBySide: true,
-      inline: true,
       minDate: -1,
       ignoreReadonly: true,
       format: 'YYYY-MM-DD HH:mm'

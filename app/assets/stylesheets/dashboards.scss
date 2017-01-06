@@ -92,16 +92,17 @@
 }
 
 .sidebar-nav > .sidebar-brand {
-  height: 55px;
+  height: 60px;
   line-height: 55px;
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   background-color: #252525;
 }
 
 .sidebar-nav > .sidebar-brand a {
   color: #999999;
   width: 180px !important;
+  margin-top: 5px;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -161,6 +162,10 @@
   }
   #main_icon{
     right: -70px;
+    top: 5px;
+  }
+  label{
+    font-size: 14px !important;
   }
 }
 
@@ -184,6 +189,10 @@
   #main_icon{
     font-size: 27px;
     right: -10px !important;
+    top: 5px;
+  }
+  label{
+    font-size: 16px !important;
   }
 }
 
@@ -254,10 +263,11 @@
 
 .dashboard-main-window{
   margin-top: 20px;
+  padding: 0px !important;
   th{
-    font-size: 24px;
+    font-size: 18px;
   }
   td{
-    font-size: 20px;
+    font-size: 14px;
   }
 }

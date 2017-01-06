@@ -27,8 +27,9 @@ class Table < ApplicationRecord
   belongs_to :user
 
   has_many :orders
-  has_many :reservations
-
+  has_many :reservation_tables, dependent: :destroy
+  has_many :reservations, through: :reservation_tables
+  
   validates :number, uniqueness: { scope: :restaurant_id }
   validates :number, presence: true
   validates :capacity, presence: true
@@ -39,9 +40,16 @@ class Table < ApplicationRecord
     end
   }
 
-  def occupied?(time)
-    reservations.where(confirmed: true) do |reservation|
-      time.between?(reservation.start_time, reservation.end_time)
-    end.any?
+  def occupied?(st_time, duration, id)
+    tolerance = restaurant.reservation_time_tolerance || 0
+    res_end_time = st_time + duration.seconds_since_midnight.seconds + tolerance.minutes
+
+    u = reservations.select{ |res| res.confirmed = true && res.id != id && (st_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds) || res_end_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds))}
+    
+    return (u.length > 0 ? true : false)
+  end
+
+  def table_info
+    "#{number} - for #{capacity} people"
   end
 end

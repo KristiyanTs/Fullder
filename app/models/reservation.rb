@@ -33,17 +33,18 @@
 class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
-  belongs_to :table
+
+  has_many :reservation_tables, dependent: :destroy
+  has_many :tables, through: :reservation_tables
 
   validates :contact_name, presence: true
   validates :contact_number, presence: true
   validates :start_time, presence: true
   validates :seats, presence: true
   validate :user_confirmed
-  validate :table_free
-  validate :not_overlapping
+  validate :reservation_overlaps 
 
-  before_update :calc_end_time, if: :duration_changed?
+  before_validation :calc_end_time
 
   scope :search, lambda { |keyword|
     unless keyword.blank?
@@ -57,18 +58,12 @@ class Reservation < ApplicationRecord
     errors.add(:user, 'has not confirmed an email.') if user && !user.confirmed?
   end
 
-  def table_free
-    errors.add(:table, 'Table taken.') if (table && table.occupied?(start_time))
-  end
-
-  def not_overlapping
-    self.user.reservations.each do |reservation|
-      errors.add(:start_time, 'You already have a reservation at that time.') if ((self.start_time - reservation.start_time).abs < 7200 && self.id != reservation.id)
-    end if self.user
+  def reservation_overlaps
+    errors.add(:table, 'Table taken.') if duration.present? && tables.any?{ |table| table.occupied?(start_time, duration, id)}
   end
 
   def calc_end_time
-    self.end_time = self.start_time + self.duration.seconds_since_midnight.seconds
+    self.end_time = (start_time + duration.seconds_since_midnight.seconds) if duration.present?
   end
 
 end

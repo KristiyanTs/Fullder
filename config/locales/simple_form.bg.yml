@@ -30,6 +30,7 @@ bg:
         permission_ids: 'Разрешения'
         number: 'Номер'
         wifipassword: Wifi парола за вашите клиенти
+        table: Маса
       user:
         locale: Език / Language
       category:
@@ -37,6 +38,7 @@ bg:
         index: "Ред. По-нисък ред се появява по-рано."
       reservation:
         start_time: Дата и час
+        duration: Продължителност
         seats: Места
         contact_number: Номер за връзка
         contact_name: Име на резервацията
