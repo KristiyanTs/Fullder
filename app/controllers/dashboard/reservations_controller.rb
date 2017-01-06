@@ -87,6 +87,19 @@ class Dashboard::ReservationsController < ApplicationController
     end
   end
 
+  def update_available_tables
+    debugger
+    @tables = @restaurant.tables.all
+    if params[:start_time] && params[:duration]
+      @tables = @restaurant.tables
+    end
+    respond_to do |format|
+      format.html 
+      format.json
+      format.js
+    end
+  end
+
   private
 
   def set_restaurant

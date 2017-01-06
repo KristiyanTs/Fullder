@@ -6,8 +6,9 @@
 
   .modal-body
     = render 'layouts/error_messages', object: @reservation
-    = f.input :start_time, as: :string, input_html: { id: "datetimepicker", data: { behavior: "datepicker" } }, readonly: true
-    = f.input :duration, as: :string, 
+    = f.input :start_time, as: :string,
+      input_html: { id: "datetimepicker", data: { behavior: "datepicker" }}, readonly: true
+    = f.input :duration, as: :string,
       input_html: {class: "time-picker", value: @reservation.duration&.strftime("%H:%M") || "03:00"}
     = f.input :seats
     = f.input :contact_number
