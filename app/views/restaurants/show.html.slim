@@ -2,8 +2,11 @@
   #restaurant-avatar
     = image_tag @restaurant.restaurant_avatar.url(:large)
   #restaurant-buttons
-    a.menu-button.col-xs-6.text-center = t 'restaurant.menu'
-    a.reservations-button.col-xs-6.text-center = t 'restaurant.reserve' 
+    - if @restaurant.accepts_reservations
+      a.menu-button.col-xs-6.text-center = t 'restaurant.menu'
+      a.reservations-button.col-xs-6.text-center = t 'restaurant.reserve' 
+    - else
+      a.menu-button.col-xs-12.text-center = t 'restaurant.menu'
 
 = render 'restaurant_delivery'
 
