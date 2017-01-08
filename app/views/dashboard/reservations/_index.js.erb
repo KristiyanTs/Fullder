@@ -1,1 +1,2 @@
 $('.search-results').html("<%= escape_javascript (render partial: 'search_results') %>");
+$('.reservations-timetable').html("<%= escape_javascript (render partial: 'table_reservations', collection: @restaurant.tables.order(:number), as: :table) %>");

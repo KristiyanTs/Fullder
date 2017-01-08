@@ -9,6 +9,8 @@ class Dashboard::ReservationsController < ApplicationController
                                .search(params[:search])
                                .page(params[:page])
 
+    @date = params[:date] ? params[:date].to_time : Date.today
+    @working_time = @restaurant.working_times.where(from_day: @date.wday).first
     respond_to do |format|
       format.html
       format.json { render json: @reservations }

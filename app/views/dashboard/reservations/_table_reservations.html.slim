@@ -1,15 +1,14 @@
 tr id="table-#{table.id}"
   td = table.table_info
-  / - from_to(@restaurant.working_times.first.from_time, @restaurant.working_times.first.to_time, 30.minutes).each do |time|
-  /   td style="#{table.reservations.any?{ |res| time.change(year: res.start_time.year, month: res.start_time.month, day: res.start_time.day).between?(res.start_time - 1.minute, res.end_time - 1.minute)} ? 'background-color:blue;' : ''}" 
-  - from_to(@restaurant.working_times.first.from_time, @restaurant.working_times.first.to_time, 30.minutes).each do |time|
-    - res = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: 2017, month: 1, day: 7), time.change(year: 2017, month: 1, day: 7))
-    - res_previous = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: 2017, month: 1, day: 7) - 30.minutes, time.change(year: 2017, month: 1, day: 7)- 30.minutes)
+  - from_to(@working_time.from_time, @working_time.to_time, 30.minutes).each do |time|
+    - res = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: @date.year, month: @date.month, day: @date.day), time.change(year: @date.year, month: @date.month, day: @date.day))
+    - res_previous = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: @date.year, month: @date.month, day: @date.day) - 30.minutes, time.change(year: @date.year, month: @date.month, day: @date.day)- 30.minutes)
     - if res_previous.first == res.first && res.count>0
       - next
 
     - if res.count > 0
-      td colspan="#{res.first.duration.seconds_since_midnight/30.minutes}" style="background-color:grey; text-align:center" = res.first.contact_name
+      td colspan="#{res.first.duration.seconds_since_midnight/30.minutes}" style="background-color:grey; text-align:center" 
+        a #{res.first.contact_name} - #{res.first.contact_number} - #{res.first.seats}
       td
     - else
       td style="min-width:50px;" .

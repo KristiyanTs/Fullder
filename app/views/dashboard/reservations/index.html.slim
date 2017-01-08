@@ -29,13 +29,27 @@
 .container.container-white.col-sm-3.col-sm-offset-1.dashboard-main-window.hidden-xs
   = render partial: 'upcoming_reservations'
 
-.container.col-xs-12.col-sm-8.col-sm-offset-2
+.container.col-xs-12.col-sm-11.col-sm-offset-1
   table.table.table-striped.space-up
     thead
       tr
-        th Timetable
-        - from_to(@restaurant.working_times.first.from_time, @restaurant.working_times.first.to_time, 30.minutes).each do |time|
+        th 
+          = form_tag dashboard_restaurant_reservations_path(@restaurant),
+                     remote: true, method: 'get', id: 'change-date' do
+              = text_field_tag :date, params[:date]
+              = button_tag class: 'btn btn-info' do
+                  b Change date
+        - from_to(@working_time.from_time, @working_time.to_time, 30.minutes).each do |time|
           th
             b style="margin-left:-20px;" = time.strftime("%H:%M")
-    tbody
+    tbody.reservations-timetable
       = render partial: "table_reservations", collection: @restaurant.tables.order(:number), as: :table
+
+    javascript:
+      setTimeout(function () {
+        $('#date').datetimepicker({
+          inline: false,
+          ignoreReadonly: true,
+          format: 'YYYY-MM-DD'
+        });
+      }, 300);
