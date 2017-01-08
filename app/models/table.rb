@@ -50,6 +50,6 @@ class Table < ApplicationRecord
   end
 
   def table_info
-    "#{number} - for #{capacity} people"
+    "№#{number} - for #{capacity}"
   end
 end

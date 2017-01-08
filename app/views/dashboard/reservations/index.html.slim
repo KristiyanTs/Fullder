@@ -29,5 +29,13 @@
 .container.container-white.col-sm-3.col-sm-offset-1.dashboard-main-window.hidden-xs
   = render partial: 'upcoming_reservations'
 
-.container.col-xs-12.col-sm-8.col-sm-offset-2.hidden
-  = render partial: "table_reservations", collection: @tables, as: :table
+.container.col-xs-12.col-sm-8.col-sm-offset-2
+  table.table.table-striped.space-up
+    thead
+      tr
+        th Timetable
+        - from_to(@restaurant.working_times.first.from_time, @restaurant.working_times.first.to_time, 30.minutes).each do |time|
+          th
+            b style="margin-left:-20px;" = time.strftime("%H:%M")
+    tbody
+      = render partial: "table_reservations", collection: @restaurant.tables.order(:number), as: :table

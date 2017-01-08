@@ -1,4 +1,15 @@
-/ .col-xs-12
-/   - table.reservations.where(confirmed: true).each_cons(2) do |res|
-/     a style="width:#{(res.first.duration.seconds_since_midnight)/1.minute}px; height:10px; background-color:green;" Reservation
-/     a style="width:#{((res.last.start_time-res.first.end_time)/1.minute).round}px; height:10px; background-color:red;" Free space
+tr id="table-#{table.id}"
+  td = table.table_info
+  / - from_to(@restaurant.working_times.first.from_time, @restaurant.working_times.first.to_time, 30.minutes).each do |time|
+  /   td style="#{table.reservations.any?{ |res| time.change(year: res.start_time.year, month: res.start_time.month, day: res.start_time.day).between?(res.start_time - 1.minute, res.end_time - 1.minute)} ? 'background-color:blue;' : ''}" 
+  - from_to(@restaurant.working_times.first.from_time, @restaurant.working_times.first.to_time, 30.minutes).each do |time|
+    - res = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: 2017, month: 1, day: 7), time.change(year: 2017, month: 1, day: 7))
+    - res_previous = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: 2017, month: 1, day: 7) - 30.minutes, time.change(year: 2017, month: 1, day: 7)- 30.minutes)
+    - if res_previous.first == res.first && res.count>0
+      - next
+
+    - if res.count > 0
+      td colspan="#{res.first.duration.seconds_since_midnight/30.minutes}" style="background-color:grey; text-align:center" = res.first.contact_name
+      td
+    - else
+      td style="min-width:50px;" .
