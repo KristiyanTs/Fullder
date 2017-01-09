@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include OrdersHelper
   load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_restaurant, only: [:new, :create]
+  before_action :set_restaurant, only: [:new, :create, :pay]
   before_action :delete_unpaid_orders, only: [:create]
 
   def index
@@ -42,8 +42,6 @@ class OrdersController < ApplicationController
 
   def update
     respond_to do |format|
-      # params[:order][:restaurant_id] = current_order.restaurant_id
-      # params[:order][:user_id] = current_user.id
       if current_order.update(order_params)
         session[:order_id] = current_order.id
         format.html { redirect_to restaurant_product_path(order_restaurant, session[:product_id]) }
@@ -61,15 +59,18 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    if current_order.fulfils_requirements?
-      @restaurant = current_order.restaurant
-      current_order.update(payed: true)
-      current_order.order_items.update_all(status: 'unready', received_at: Time.current)
-      session[:order_id] = nil
-      flash[:success] = "Order sent to restaurant."
-      redirect_to restaurant_path(@restaurant)
-    else
-      flash[:error] = "The requirements are not met."
+    respond_to do |format|
+      if current_order.fulfils_requirements?
+        @restaurant = current_order.restaurant
+        current_order.update(payed: true)
+        current_order.order_items.update_all(status: 'unready', received_at: Time.current)
+        session[:order_id] = nil
+        flash[:success] = "Order sent to restaurant."
+        format.html { redirect_to restaurant_path(@restaurant)}
+      else
+        flash[:error] = "The requirements are not met."
+        format.html { redirect_to @restaurant}
+      end
     end
 
   end
