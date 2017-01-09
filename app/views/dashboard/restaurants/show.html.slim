@@ -8,11 +8,11 @@
       li = link_to "#{@restaurant.reservations.count} new reservations!", 
           dashboard_restaurant_reservations_path(@restaurant)
       li = link_to "#{@restaurant.orders.count} new prepared orders!", 
-          dashboard_restaurant_orders_path(@restaurant)
+          dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered")
       li = link_to "#{@restaurant.orders.count} new unready orders!", 
-          dashboard_restaurant_orders_path(@restaurant)
+          dashboard_restaurant_order_items_path(@restaurant, order_status: "unready")
       li = link_to "#{@restaurant.orders.count} new delivery orders!", 
-          dashboard_restaurant_orders_path(@restaurant)
+          dashboard_restaurant_order_items_path(@restaurant, order_status: "ready")
 
   .col-xs-12 
     h3 Views of your restaurant

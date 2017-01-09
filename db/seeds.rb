@@ -29,6 +29,12 @@ puts "Generating seeds..."
 
 permission_seed = [
   {
+    subject_class: "Restaurant",
+    action: "update",
+    name: "Update restaurant settings",
+    description: "Allow user to update the restaurant settings."
+  },
+  {
     subject_class: "Product",
     action: "read",
     name: "Show all products",
@@ -147,6 +153,30 @@ permission_seed = [
     action: "destroy",
     name: "Delete reservations",
     description: "Allow user to delete reservations."
+  },
+  {
+    subject_class: "Reservation",
+    action: "update_available_tables",
+    name: "Advanced reservations options",
+    description: "Makes the process of creating a reservation easier."
+  },
+  {
+    subject_class: "OrderItem",
+    action: "read",
+    name: "See orders",
+    description: "Allow to see the orders."
+  },
+  {
+    subject_class: "OrderItem",
+    action: "update",
+    name: "Update orders",
+    description: "Allow to update the orders."
+  },
+  {
+    subject_class: "OrderItem",
+    action: "destroy",
+    name: "Destroy orders",
+    description: "Allow to delete the orders."
   }
 ]
 

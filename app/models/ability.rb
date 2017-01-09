@@ -10,6 +10,7 @@ class Ability
       user.roles.each do |role|
         role.permissions.each do |permission|
           can permission.action.to_sym, permission.subject_class.constantize, restaurant_id: role.restaurant_id
+          can permission.action.to_sym, permission.subject_class.constantize, id: role.restaurant_id if permission.subject_class == "Restaurant"
         end
       end
       can [:edit, :update, :destroy, :pay], Order, user_id: user.id, payed: false
