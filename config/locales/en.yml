@@ -53,6 +53,7 @@ en:
     pick-choices: "Pick choices"
     ingredients: Ingredients
     description: Description
+    add: Add
   user:
     cancel-account: Cancel account 
     settings: Settings
@@ -71,9 +72,6 @@ en:
     price: price
     qty: qty
     order-from: Order from
-  cart:
-    subtotal: Subtotal
-    delivery: Delivery
   navbar:
     home: "Home"
     manage: "Manage"
@@ -122,10 +120,13 @@ en:
   reservation:
     reserve-table-header: Reserve a table
   cart:
+    cart: Cart
     send-order: Order for %{price}
     empty: Your cart is empty
     add-demands: Click to add demands
     meet-requirements: Minimum order price - %{current_price}/%{min_price}
+    subtotal: Subtotal
+    delivery: Delivery
   rating:
     ambiance: Ambiance
     products: Goods qualiy

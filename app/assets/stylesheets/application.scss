@@ -190,7 +190,11 @@ a, a:active, a:focus {
 #mainNav .container{
   width: 95%;
 }
+.nav-up {
+    top: -50px;
+}
 .navbar-custom {
+  transition: top 0.4s ease-in-out;
   background-color: $header-red;
   text-transform: uppercase;
   font-weight: 700;

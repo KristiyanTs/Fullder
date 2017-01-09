@@ -47,3 +47,17 @@
     }
   }
 }
+
+.restaurant-menu .well-sm{
+  text-align: center;
+  position:sticky; 
+  position: -webkit-sticky; 
+  top:0px; 
+  z-index:1020; 
+  background-color: rgba(216,0,0,0.8); 
+  color: white; border:0px; 
+  height:50px;
+  h3{
+    margin-top: 5px;
+  }
+}

@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     session[:product_id] = @product.id
 
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
-    add_breadcrumb "menu", restaurant_categories_path(@restaurant), title: "Back to menu"
+    add_breadcrumb "menu", restaurant_path(@restaurant, menu: "open"), title: "Back to menu"
     add_breadcrumb @product.name, restaurant_product_path(@restaurant, @product)
     ahoy.track "Viewed product show page", product_id: @product.id, restaurant_id: @restaurant.id
   end

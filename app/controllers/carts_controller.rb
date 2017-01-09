@@ -7,7 +7,7 @@ class CartsController < ApplicationController
 
     @restaurant = current_order.restaurant
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
-    add_breadcrumb "menu", restaurant_categories_path(@restaurant), title: "Back to menu"
+    add_breadcrumb "menu", restaurant_path(@restaurant, menu: "open"), title: "Back to menu"
     add_breadcrumb "cart"
   end
 end
