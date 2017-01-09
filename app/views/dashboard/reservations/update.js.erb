@@ -4,4 +4,6 @@
   $('#element-form').modal('hide');
   $('#reservation-<%= @reservation.id %>').fadeOut(1000);
   $('#reservations').prepend($("<%= j render @reservation %>").fadeIn('slow'));
+  $('.reservation-timetable').html("<%= escape_javascript (render 'table_reservations') %>");
+  $('.upcoming-reservations').html("<%= j render partial: 'upcoming_reservations' %>");
 <% end %>

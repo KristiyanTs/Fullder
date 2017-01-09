@@ -390,6 +390,7 @@ en:
       default: "%a, %d %b %Y %I:%M:%S %p %Z"
       long: "%B %d, %Y %I:%M %p"
       short: "%d %b %I:%M %p"
+      only_time: "%H:%M"
     pm: pm
   common_words:
     agree: yes

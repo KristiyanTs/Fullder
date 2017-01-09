@@ -40,16 +40,12 @@ class Table < ApplicationRecord
     end
   }
 
-  def occupied?(st_time, duration, id)
-    tolerance = restaurant.reservation_time_tolerance || 0
-    res_end_time = st_time + duration.seconds_since_midnight.seconds + tolerance.minutes
-
-    u = reservations.select{ |res| res.confirmed = true && res.id != id && (st_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds) || res_end_time.between?(res.start_time, res.start_time + res.duration.seconds_since_midnight.seconds))}
-    
-    return (u.length > 0 ? true : false)
+  def occupied?(st_time, duration, res_id=0)
+    fin_time = st_time + duration.seconds_since_midnight.seconds
+    reservations.any? { |res| res.confirmed && (st_time .. fin_time).overlaps?(res.start_time .. res.end_time) }
   end
 
   def table_info
-    "#{number} - for #{capacity} people"
+    "№#{number} - for #{capacity}"
   end
 end

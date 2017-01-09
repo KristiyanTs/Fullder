@@ -33,8 +33,8 @@ FactoryGirl.define do
   factory :reservation do
     contact_number "43254356"
     contact_name "Kris"
-    start_time { Time.now }
-    end_time { Time.now + 3.hours}
+    start_time { Time.current }
+    end_time { Time.current + 3.hours}
     user
     table
   end

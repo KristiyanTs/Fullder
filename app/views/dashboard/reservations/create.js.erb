@@ -3,4 +3,6 @@
 <% else %>
   $('#element-form').modal('hide');
   $('#reservations').prepend("<%= j render @reservation %>");
+  $('.reservation-timetable').html("<%= escape_javascript (render 'table_reservations') %>");
+  $('.upcoming-reservations').html("<%= j render partial: 'upcoming_reservations' %>");
 <% end %>

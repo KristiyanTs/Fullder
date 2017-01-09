@@ -2,6 +2,6 @@ h4.text-center Upcoming reservations
 - @restaurant.reservations.order(:start_time).first(10).each do |reservation|
   .col-xs-12.space-down
     .col-xs-4 = l reservation.start_time, format: :short
-    .col-xs-4 = reservation.contact_name
-    .col-xs-4 = reservation.tables.pluck(:number).to_sentence
+    .col-xs-5 = reservation.contact_name
+    .col-xs-3.text-right = reservation.tables.pluck(:number).to_sentence
 
