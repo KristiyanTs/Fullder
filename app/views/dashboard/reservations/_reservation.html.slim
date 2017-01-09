@@ -3,12 +3,13 @@ tr id="reservation-#{reservation.id}"
     = reservation.seats
     span.glyphicon.glyphicon-user.capacity-seats
   td.reservation-table = reservation.tables.pluck(:number).to_sentence
-  td.reservation-time = l reservation.start_time, format: :short
-  td.reservation-status
-    - if reservation.confirmed
-      i.fa.fa-thumbs-o-up.center.fa-2x
-    - else
-      i.fa.fa-spinner.fa-2x
+  td.reservation-time #{l reservation.start_time, format: :short} - #{l reservation.end_time, format: :only_time}
+  - if @restaurant.accepts_reservations
+    td.reservation-status
+      - if reservation.confirmed
+        i.fa.fa-thumbs-o-up.center.fa-2x
+      - else
+        i.fa.fa-spinner.fa-2x
 
   td.reservation-actions
     .show

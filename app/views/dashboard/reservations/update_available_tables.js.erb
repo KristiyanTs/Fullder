@@ -1,1 +1,5 @@
-alert();
+$("input[name='reservation[table_ids][]'").prop("checked", false);
+$("label input[name='reservation[table_ids][]'").parent().parent().hide();
+<% @tables.each do |table| %>
+$("#reservation_table_ids_" + <%=table.id%>).parent().parent().show('200');
+<% end %>

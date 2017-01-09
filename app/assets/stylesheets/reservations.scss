@@ -10,3 +10,52 @@ td.reservation-actions{
 td.reservation-people{
   min-width: 55px;
 }
+
+.reservations-timetable{
+  td.reserved-cell{
+    background-color: #337ab7;
+    text-align: center;
+    a{
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+input#date{
+  width: 100px !important;
+}
+
+.upcoming-reservations{
+  .col-xs-4{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservations-timetable{
+    td{
+      font-size: 10px;
+      width: 30px;
+    }
+  }
+}
+
+#reservations-table{
+  margin-left: 50px;
+  table-layout: fixed;
+  th,td{
+    width: 50px;
+  }
+  .table-info{
+    width: 80px;
+    position:absolute; 
+    border: 0px;
+    font-weight: bold;
+    background-color: rgba(20,48,80,0.7);
+    color: white;
+  }
+  input{
+    margin-left: -60px;
+  }
+}

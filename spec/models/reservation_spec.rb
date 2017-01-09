@@ -35,7 +35,7 @@ RSpec.describe Reservation, type: :model do
   describe "taken table" do
     it "can't save if the table is taken" do
       table = create(:table)
-      reservation = build(:reservation, start_time: Time.now + 1.hour, end_time: Time.now + 4.hours)
+      reservation = build(:reservation, start_time: Time.current + 1.hour, end_time: Time.current + 4.hours)
       taken_reservation = create(:reservation)
       table.reservations << [taken_reservation, reservation]
 

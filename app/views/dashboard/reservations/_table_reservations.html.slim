@@ -1,14 +1,45 @@
-tr id="table-#{table.id}"
-  td = table.table_info
-  - from_to(@working_time.from_time, @working_time.to_time, 30.minutes).each do |time|
-    - res = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: @date.year, month: @date.month, day: @date.day), time.change(year: @date.year, month: @date.month, day: @date.day))
-    - res_previous = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: @date.year, month: @date.month, day: @date.day) - 30.minutes, time.change(year: @date.year, month: @date.month, day: @date.day)- 30.minutes)
-    - if res_previous.first == res.first && res.count>0
-      - next
+table#reservations-table.table.table-striped.space-up
+  thead
+    tr
+      th
+        = form_tag dashboard_restaurant_reservations_path(@restaurant),
+                   remote: true, method: 'get', id: 'change-date' do
+            = text_field_tag :date, params[:date], readonly: true
+      - if @first_res && @last_res
+        - from_to(@first_res.start_time, @last_res.end_time + 30.minutes, 15.minutes).each do |time|
+          th
+            b style="margin-left:-20px;" = time.strftime("%H:%M") if time.min == 30 || time.min == 0
+  tbody.reservations-timetable
+    - @restaurant.tables.order(:number).each do |table|
+      tr id="table-#{table.id}"
+        td.table-info = table.table_info
+        - if @first_res && @last_res
+          - from_to(@first_res.start_time, @last_res.end_time + 30.minutes, 15.minutes).each do |time|
+            - res = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: @date.year, month: @date.month, day: @date.day), time.change(year: @date.year, month: @date.month, day: @date.day))
+            - res_previous = table.reservations.where("start_time<= ? AND end_time >= ?", time.change(year: @date.year, month: @date.month, day: @date.day) - 15.minutes, time.change(year: @date.year, month: @date.month, day: @date.day)- 15.minutes)
+            - if res_previous.first == res.first && res.count>0
+              - next
 
-    - if res.count > 0
-      td colspan="#{res.first.duration.seconds_since_midnight/30.minutes}" style="background-color:grey; text-align:center" 
-        a #{res.first.contact_name} - #{res.first.contact_number} - #{res.first.seats}
-      td
-    - else
-      td style="min-width:50px;" .
+            - if res.count > 0
+              td.reserved-cell colspan="#{res.first.duration.seconds_since_midnight/15.minutes}" 
+                = link_to "#{res.first.contact_name} - #{res.first.seats} - #{l res.first.start_time, format: :only_time} - #{l res.first.end_time, format: :only_time}", 
+                  dashboard_restaurant_reservation_path(@restaurant, res.first)
+              td
+            - else
+              td style="min-width:50px;" .
+
+  javascript:
+    setTimeout(function () {
+      $('#date').datetimepicker({
+        inline: false,
+        ignoreReadonly: true,
+        format: 'YYYY-MM-DD',
+        ignoreReadonly: true,
+        widgetPositioning: { vertical: 'bottom' }
+      }).on('dp.change', function(e){
+        $('#change-date').submit();
+      });
+    }, 300);
+    $('.reservation-timetable').scroll(function() {
+        $(this).find('.table-info').css('left', $(this).scrollLeft());
+    });

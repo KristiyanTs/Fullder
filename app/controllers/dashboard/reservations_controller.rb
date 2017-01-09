@@ -2,15 +2,10 @@ class Dashboard::ReservationsController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_restaurant
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :update_available_tables]
+  before_action :set_date_search, only: [:index, :create, :update, :destroy]
 
-  def index
-    @reservations = @restaurant.reservations
-                               .search(params[:search])
-                               .page(params[:page])
-
-    @date = params[:date] ? params[:date].to_time : Date.today
-    @working_time = @restaurant.working_times.where(from_day: @date.wday).first
+  def index    
     respond_to do |format|
       format.html
       format.json { render json: @reservations }
@@ -90,10 +85,13 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def update_available_tables
-    debugger
-    @tables = @restaurant.tables.all
-    if params[:start_time] && params[:duration]
-      @tables = @restaurant.tables
+    @tables = @restaurant.tables.order(:number)
+    if params[:start_time] && params[:duration_time]
+      tables_array = @tables.select{|table| !table.occupied?(params[:start_time].to_time + 2.hours,params[:duration_time].to_time)}
+      @tables = @tables.where(id: tables_array.map(&:id))
+    end
+    @tables.each do |table|
+      puts "Table #{table.number} is free"
     end
     respond_to do |format|
       format.html 
@@ -109,12 +107,22 @@ class Dashboard::ReservationsController < ApplicationController
   end
 
   def set_reservation
-    @reservation = @restaurant.reservations.find(params[:id])
+    @reservation = @restaurant.reservations.find(params[:id]) if params[:id]
   end
 
   def reservation_params
     params.require(:reservation).permit(:start_time, :end_time, :seats, 
                                         :contact_number, :contact_name, :requirements, :duration,
                                         {table_ids: []})
+  end
+
+  def set_date_search
+    @reservations = @restaurant.reservations
+                               .search(params[:search])
+                               .page(params[:page])
+    @date = params[:date] ? params[:date].to_time : Date.today
+    @reservations_today = @reservations.where("start_time>=? AND start_time<=?", @date, @date+1.day).order(:start_time)
+    @first_res = @reservations_today.first
+    @last_res  = @reservations_today.last
   end
 end

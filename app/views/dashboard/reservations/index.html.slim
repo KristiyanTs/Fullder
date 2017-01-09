@@ -26,30 +26,8 @@
         .modal-content
           = t 'button.wait'
 
-.container.container-white.col-sm-3.col-sm-offset-1.dashboard-main-window.hidden-xs
+.container.container-white.col-sm-3.col-sm-offset-1.dashboard-main-window.hidden-xs.upcoming-reservations
   = render partial: 'upcoming_reservations'
 
-.container.col-xs-12.col-sm-11.col-sm-offset-1
-  table.table.table-striped.space-up
-    thead
-      tr
-        th 
-          = form_tag dashboard_restaurant_reservations_path(@restaurant),
-                     remote: true, method: 'get', id: 'change-date' do
-              = text_field_tag :date, params[:date]
-              = button_tag class: 'btn btn-info' do
-                  b Change date
-        - from_to(@working_time.from_time, @working_time.to_time, 30.minutes).each do |time|
-          th
-            b style="margin-left:-20px;" = time.strftime("%H:%M")
-    tbody.reservations-timetable
-      = render partial: "table_reservations", collection: @restaurant.tables.order(:number), as: :table
-
-    javascript:
-      setTimeout(function () {
-        $('#date').datetimepicker({
-          inline: false,
-          ignoreReadonly: true,
-          format: 'YYYY-MM-DD'
-        });
-      }, 300);
+.container.col-xs-12.col-sm-10.col-sm-offset-1.container-white.space-up.reservation-timetable.container-min-height style="overflow: scroll;"
+  = render "table_reservations"
