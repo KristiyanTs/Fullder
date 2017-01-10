@@ -107,6 +107,30 @@ permission_seed = [
     description: "Allow user to destroy existing roles."
   },
   {
+    subject_class: "Table",
+    action: "read",
+    name: "Show all tables",
+    description: "Allow user to see all tables."
+  },
+  {
+    subject_class: "Table",
+    action: "create",
+    name: "Add new tables",
+    description: "Allow user to add tables."
+  },
+  {
+    subject_class: "Table",
+    action: "update",
+    name: "Update tables",
+    description: "Allow user to update information about tables."
+  },
+  {
+    subject_class: "Table",
+    action: "destroy",
+    name: "Destroy tables",
+    description: "Allow user to delete tables."
+  },
+  {
     subject_class: "Position",
     action: "read",
     name: "Show all employees",

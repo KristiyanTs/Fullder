@@ -37,10 +37,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    @current_ability ||= Ability.new(current_user)
+    Ability.new(current_user, controller_path.split('/').first)
   end
 
-  # load the permissions for the current user so that UI can be manipulated
   def load_permissions
     @current_permissions = current_user.role.permissions.collect { |i| [i.subject_class, i.action] }
   end
