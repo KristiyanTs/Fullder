@@ -17,8 +17,8 @@
 
   .search-results
     = render partial: "search_results"
-
-  .new-element.text-center.space-down
+  .col-xs-6 = paginate @reservations, theme: 'twitter-bootstrap-3'
+  .new-element.text-center.space-down.col-xs-6.space-up
     = link_to (t 'button.add-reservation'), new_dashboard_restaurant_reservation_path(@restaurant), class: 'btn btn-primary btn-lg',
       data: { target: '#element-form', toggle: 'modal' , remote: true}
     #element-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"

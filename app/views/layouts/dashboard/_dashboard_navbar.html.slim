@@ -13,41 +13,42 @@
           = "#{t 'navbar.home'}"
           i.fa.fa-home.button-icon aria-hidden="true"
       li
-        a data-toggle="collapse" href="#collapse1" 
+        a data-toggle="collapse" href="#collapse1" target="#collapse1"
           = t 'navbar.manage'
           i.fa.fa-eye.button-icon aria-hidden="true"
         #collapse1.panel-collapse.collapse
           ul.list-group
-            - if should_see?(@restaurant.products.new)
+            - if can? :read, Product, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_products_path(@restaurant) do
                   = "#{t 'navbar.products'}"
                   i.fa.fa-cutlery.button-icon aria-hidden="true"
-            - if should_see?(@restaurant.categories.new)
+            - if can? :read, Category, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_categories_path(@restaurant) do
                   = "#{t 'navbar.categories'}"
                   i.fa.fa-filter.button-icon aria-hidden="true"
-            - if should_see?(@restaurant.roles.new)
+            - if can? :read, Role, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_roles_path(@restaurant) do
                   = "#{t 'navbar.roles'}"
                   i.fa.fa-street-view.button-icon aria-hidden="true"
-            - if should_see?(@restaurant.positions.new)
+            - if can? :read, Position, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_positions_path(@restaurant) do
                   = "#{t 'navbar.positions'}"
                   i.fa.fa-users.button-icon aria-hidden="true"
-            - if should_see?(@restaurant.tables.new)
+            - if can? :read, Table, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_tables_path(@restaurant) do
                   = "#{t 'navbar.tables'}"
                   i.fa.fa-archive.button-icon aria-hidden="true"
-            - if should_see?(@restaurant.reservations.new)
+            - if can? :read, Reservation, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_reservations_path(@restaurant) do
                   = "#{t 'navbar.reservations'}"
                   i.fa.fa-calendar.button-icon aria-hidden="true"
+            - if can? :read, Order, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered") do
                   = "#{t 'navbar.delivered-orders'}"

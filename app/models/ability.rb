@@ -9,21 +9,21 @@ class Ability
 
     case controller_namespace
       when 'dashboard'
+
+        can :read, Restaurant if user.positions.any? { |pos| id = pos.restaurant_id} 
+
         user.roles.each do |role|
           role.permissions.each do |permission|
-            can permission.action.to_sym, permission.subject_class.constantize, restaurant_id: role.restaurant_id if !permission.subject_class == "Restaurant"
+            can permission.action.to_sym, permission.subject_class.constantize, restaurant_id: role.restaurant_id if permission.subject_class != "Restaurant"
             can permission.action.to_sym, permission.subject_class.constantize, id: role.restaurant_id if permission.subject_class == "Restaurant"
           end
-          can :read, Restaurant, id: role.restaurant_id
-          can [:read, :edit, :update, :destroy], OrderItem, restaurant_id: role.restaurant_id
         end
       else
-        can [:edit, :update, :destroy, :pay], Order, user_id: user.id, received_at: nil
+        can [:read, :create, :edit, :update, :destroy, :pay], Order, user_id: user.id, payed: false
         can :read, Restaurant
         can :read, Product
         can :read, Category
         can [:read, :create], Reservation
-        can [:create, :pay], Order
     end
   end
 end

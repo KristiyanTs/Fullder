@@ -119,7 +119,7 @@ class Dashboard::ReservationsController < ApplicationController
   def set_date_search
     @reservations = @restaurant.reservations
                                .search(params[:search])
-                               .page(params[:page])
+                               .page(params[:page]).per(10)
     @date = params[:date] ? params[:date].to_time : Date.today
     @reservations_today = @reservations.where("start_time>=? AND start_time<=?", @date, @date+1.day).order(:start_time)
     @first_res = @reservations_today.first

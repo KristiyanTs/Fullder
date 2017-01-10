@@ -1,5 +1,6 @@
 - if current_order.fulfils_requirements?
-  = link_to pay_order_path(current_order), class: "btn col-xs-12 pay-button"
+  = link_to pay_order_path(current_order), class: "btn col-xs-12 pay-button", 
+    remote: true, data: {confirm: "Send order to restaurant?"}
     - if current_order.address
       .col-xs-6 
         b = formatted_price(current_order.subtotal, current_order.restaurant)
