@@ -2,8 +2,9 @@
   = link_to restaurant_path(restaurant), class: "restaurant-row btn col-xs-12" do  
     .restaurant-avatar
       = image_tag restaurant.restaurant_avatar.url(:small)
-    .restaurant-distance
-      = restaurant.distance_to([@latitude, @longitude]).to_s[0,4] + (t 'restaurant.distance')
+    - if restaurant.distance_to([@latitude, @longitude]) < 10
+      .restaurant-distance
+        = restaurant.distance_to([@latitude, @longitude]).to_s[0,4] + (t 'restaurant.distance')
     .restaurant-services
       = render 'services', restaurant: restaurant
     .restaurant-name

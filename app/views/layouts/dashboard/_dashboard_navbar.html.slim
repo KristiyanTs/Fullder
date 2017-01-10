@@ -48,7 +48,6 @@
                 = link_to dashboard_restaurant_reservations_path(@restaurant) do
                   = "#{t 'navbar.reservations'}"
                   i.fa.fa-calendar.button-icon aria-hidden="true"
-            - if should_see?(@restaurant.orders.new)
               li.nested
                 = link_to dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered") do
                   = "#{t 'navbar.delivered-orders'}"

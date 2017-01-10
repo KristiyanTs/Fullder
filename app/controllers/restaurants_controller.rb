@@ -8,8 +8,8 @@ class RestaurantsController < ApplicationController
     @nextpage = params[:scrolling]
     params[:scrolling] = false
     
-    @latitude = params[:latitude] || request.location.latitude
-    @longitude = params[:longitude] || request.location.longitude
+    @latitude = params[:latitude] || request.location.try(:latitude) || 0
+    @longitude = params[:longitude] || request.location.try(:longitude) || 0
     
     @restaurants = Restaurant.search(params[:search])
     restaurants_array = @restaurants.select{|r| r.accepts_deliveries && r.distance_to([@latitude, @longitude]) <= r.delivery_radius} if params[:interest] == "2"

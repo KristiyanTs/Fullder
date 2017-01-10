@@ -1,11 +1,26 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
 .container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
+
   h3.text-center Reservation info
+
   .col-xs-12.col-sm-6.col-sm-offset-3
     p Name: #{@reservation.contact_name}
     p Contact number: #{@reservation.contact_number}
     p People: #{@reservation.seats}
     p Date: #{@reservation.start_time.to_formatted_s(:short)}
 
-  
+    .edit
+      = link_to edit_dashboard_restaurant_reservation_path(@restaurant, @reservation), 
+        data: { target: '#element-form', toggle: 'modal', remote: true} do
+        i.fa.fa-pencil-square-o.fa-2x
+    .destroy
+      = link_to dashboard_restaurant_reservation_path(@restaurant, @reservation), method: :delete, remote: true, 
+        data: {confirm: "#{t 'dashboard.confirm-delete'}"} do
+        i.fa.fa-times.fa-2x
+
+
+    #element-form.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+      .modal-dialog role="document"
+        .modal-content
+          = t 'button.wait'

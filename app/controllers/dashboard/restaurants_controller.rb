@@ -2,7 +2,7 @@
 class Dashboard::RestaurantsController < ApplicationController
   load_and_authorize_resource find_by: :slug
   before_action :authenticate_user!
-  before_action :set_restaurant, except: [:create, :new, :import]
+  before_action :set_restaurant, except: [:show, :new, :edit, :update, :import]
 
   def show
   end
@@ -33,12 +33,9 @@ class Dashboard::RestaurantsController < ApplicationController
 
   def import
     upload = params[:file]
-    logger.debug "STARTING TO IMPORT FILE IN RESTAURANT'S CONTROLLER, THE FILE IS #{Rails.root.join('tmp/menu_import', upload.original_filename)}"
     File.open(Rails.root.join('tmp/menu_import', upload.original_filename), 'wb') do |file|
       file.write(upload.read)
     end
-
-    logger.debug "STARTING TO IMPORT FILE IN RESTAURANT #{params[:restaurant_id]}"
     @restaurant = Restaurant.friendly.find(params[:restaurant_id])
     MenuImportWorker.perform_async(@restaurant.id, upload.original_filename)
     redirect_to dashboard_restaurant_path(@restaurant),

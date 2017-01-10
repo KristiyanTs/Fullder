@@ -52,6 +52,7 @@ bg:
     pick-choices: "Избери опции"
     ingredients: Състав
     description: Описание
+    add: добави
   user:
     cancel-account: Изтриване на акаунт
     settings: Настройки
@@ -70,9 +71,6 @@ bg:
     price: цена
     qty: брой
     order-from: Поръчка от
-  cart:
-    subtotal: Междинна сума
-    delivery: Доставка
   navbar:
     home: "Начало"
     manage: "Управлявай"
@@ -122,10 +120,13 @@ bg:
     reserve-table-header: Резервирай маса
     assign-table: Няма маса
   cart:
+    cart: Количка
     send-order: Поръчай за %{price}
     empty: Количката Ви е празна
     add-demands: Добавете изисквания тук
     meet-requirements: Минимална поръчка - %{current_price}/%{min_price}
+    subtotal: Междинна сума
+    delivery: Доставка
   cocoon:
     defaults:
       add: "Добави данни"
