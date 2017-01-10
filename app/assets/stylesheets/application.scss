@@ -194,14 +194,9 @@ a, a:active, a:focus {
   top: -50px;
 }
 .navbar-custom {
-  
--webkit-transition: top 0.6s;
-
--moz-transition: top 0.6s;
-
-transition: top 0.6s;
-
-
+  -webkit-transition: top 0.6s;
+  -moz-transition: top 0.6s;
+  transition: top 0.6s;
   background-color: $header-red;
   text-transform: uppercase;
   font-weight: 700;

@@ -183,24 +183,6 @@ permission_seed = [
     action: "update_available_tables",
     name: "Advanced reservations options",
     description: "Makes the process of creating a reservation easier."
-  },
-  {
-    subject_class: "OrderItem",
-    action: "read",
-    name: "See orders",
-    description: "Allow to see the orders."
-  },
-  {
-    subject_class: "OrderItem",
-    action: "update",
-    name: "Update orders",
-    description: "Allow to update the orders."
-  },
-  {
-    subject_class: "OrderItem",
-    action: "destroy",
-    name: "Destroy orders",
-    description: "Allow to delete the orders."
   }
 ]
 
