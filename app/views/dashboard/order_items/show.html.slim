@@ -1,0 +1,22 @@
+= render 'layouts/dashboard/dashboard_navbar'
+
+.container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
+  h2.text-center Showing order items by this user
+  hr
+  .col-xs-12.col-md-6.col-md-offset-3.text-left.space-down
+    .ordered-items.col-xs-12
+      - @order_item.order.order_items.each do |item| 
+        .item.col-xs-12.col-md-4
+          h4 = item.product.name
+          h5 = item.size.try(:name)
+          h5 = option_names(item).to_sentence
+    br
+    br.space-down.space-up
+    hr
+    h4 Ordered by: #{@order_item.order.user.name}
+    h4 Tel. number: #{@order_item.order.user.try(:phone_number)}
+    h4 Rating: #{@order_item.order.user.rating}
+    hr
+      = link_to "Report user for incorrect order and reset his/her rating", 
+        dashboard_restaurant_order_item_path(@restaurant, @order_item, order_action: 'reported'),
+      {method: :patch, remote: true, class: "btn btn-danger" }

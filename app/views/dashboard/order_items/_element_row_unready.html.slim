@@ -1,12 +1,10 @@
-tr.item class="row-#{item.id}"
-  td 
+tr.item class="row-#{item.id} #{item.order.user.trustworthy? ? '' : 'confirm-order'}"
+  td.product-name 
     h4 = item.product.name
     h5 = item.size.try(:name)
     h5 = option_names(item).to_sentence
-  td = time_ago_in_words(item.received_at)
-  td = item.try(:demands)
-  td 
-    = link_to "Show", dashboard_restaurant_order_item_path(@restaurant, item),
-      class: "btn btn-default"
+  td.time-ago = time_ago_in_words(item.received_at)
+  td.demands = item.try(:demands)
+  td.actions 
     = link_to "Ready", dashboard_restaurant_order_item_path(@restaurant, item),
-      {method: :patch, remote: true, class: "btn btn-success" }
+      {method: :patch, remote: true, class: "btn btn-success pull-right" }

@@ -27,6 +27,7 @@
 #  uid                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  rating                 :integer          default(0)
 #
 # Indexes
 #
@@ -68,6 +69,18 @@ class User < ApplicationRecord
       user.save!
     end
     user
+  end
+
+  def trustworthy?
+    rating>=5
+  end
+
+  def add_rating
+    self.rating = self.rating + 1
+  end
+
+  def reset_rating
+    self.update(rating: 0)
   end
 
 end
