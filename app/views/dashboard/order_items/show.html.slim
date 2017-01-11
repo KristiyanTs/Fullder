@@ -10,13 +10,12 @@
           h4 = item.product.name
           h5 = item.size.try(:name)
           h5 = option_names(item).to_sentence
-    br
-    br.space-down.space-up
-    hr
+          h4 Status: #{item.status}
+    span style="padding:30px;"
     h4 Ordered by: #{@order_item.order.user.name}
     h4 Tel. number: #{@order_item.order.user.try(:phone_number)}
     h4 Rating: #{@order_item.order.user.rating}
     hr
       = link_to "Report user for incorrect order and reset his/her rating", 
         dashboard_restaurant_order_item_path(@restaurant, @order_item, order_action: 'reported'),
-      {method: :patch, remote: true, class: "btn btn-danger" }
+      {method: :patch, class: "btn btn-danger" }

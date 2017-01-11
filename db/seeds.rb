@@ -183,6 +183,30 @@ permission_seed = [
     action: "update_available_tables",
     name: "Advanced reservations options",
     description: "Makes the process of creating a reservation easier."
+  },
+  {
+    subject_class: "OrderItem",
+    action: "update",
+    name: "Update dashboard order items",
+    description: "Allows the staff member to work with orders."
+  },
+  {
+    subject_class: "OrderItem",
+    action: "read",
+    name: "See restaurant orders",
+    description: "Allows the staff member to work with orders."
+  },
+  {
+    subject_class: "Order",
+    action: "read",
+    name: "See whole order",
+    description: "Allows the staff member to work with orders."
+  },
+  {
+    subject_class: "Order",
+    action: "update",
+    name: "Update all order",
+    description: "Allows the staff member to work with orders."
   }
 ]
 
