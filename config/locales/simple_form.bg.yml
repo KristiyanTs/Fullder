@@ -2,13 +2,12 @@ bg:
   simple_form:
     labels:
       defaults:
-        name: 'Име'
+        name: 'Псевдоним/Име'
         email: 'Имейл'
         password: 'Парола'
         password_confirmation: 'Потвърди паролата'
         current_password: 'Сегашна парола'
         address: 'Адрес'
-        name: 'Име'
         phone_number: 'Телефонен номер'
         locale: 'Място'
         language: Език / Language
@@ -49,6 +48,7 @@ bg:
         phone_number: ще бъде ползван за резервации
         allergen_list: разделени със запетаи
         address: за доставки
+        name: ще се вижда от персонала на ресторантите, в които поръчвате
       user:
         edit:
           password: остави полето празно, ако не желаете да я промените

@@ -20,11 +20,19 @@ class Dashboard::OrderItemsController < ApplicationController
   end
 
   def update
-    @order_item.next_status
+    if params[:order_action] == "reported"
+      @order_item.order.user.reset_rating
+      @order_item.order.order_items.update_all(status: 'reported')
+    else
+      @order_item.next_status
+    end
+    
+    @order_item.order.user.add_rating if @order_item.status == "delivered"
     @items = @restaurant.order_items.where(status: session[:order_status]).page(params[:page])
 
     respond_to do |format|
       format.js
+      format.html { redirect_to dashboard_restaurant_order_item_path(@restaurant, @order_item) }
     end
   end
 

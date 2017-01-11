@@ -35,7 +35,7 @@
 #
 
 class OrderItem < ApplicationRecord
-  ORDER_STATUSES = %w(unpaid unready ready delivered).freeze
+  ORDER_STATUSES = %w(unpaid unready ready delivered reported).freeze
   belongs_to :order
   belongs_to :product
   belongs_to :size

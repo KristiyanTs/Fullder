@@ -4,3 +4,29 @@
   line-height: 100px;
   font-size: 24px;
 }
+
+.order-items{
+  .confirm-order{
+    color: #FF4136  !important;
+  }
+  td{
+    padding: 0px !important;
+  }
+  .btn-success, .btn-default{
+    height: 41px;
+    padding: 10px;
+    border-radius: 0px;
+    font-weight: bold;
+  }
+  .product-name{
+    padding-left: 10px !important;
+  }
+  .time-ago{
+    line-height: 40px;
+  }
+  .destination{
+    line-height: 40px;
+  }
+
+
+}
