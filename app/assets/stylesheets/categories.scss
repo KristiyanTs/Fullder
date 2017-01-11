@@ -15,12 +15,13 @@
     font-size:25px;
     z-index: 1;
   }
-
 }
 
-.show, .edit, .destroy{
-  float: left;
-  margin-right: 20px;
+#categories tbody, #products tbody, #roles tbody, #tables tbody, #reservations tbody, #positions tbody{
+  .show, .edit, .destroy{
+    float: left;
+    margin-right: 20px;
+  }
 }
 
 

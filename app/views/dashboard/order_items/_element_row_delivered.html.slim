@@ -1,9 +1,13 @@
 tr.item class="row-#{item.id}"
-  td.product-name
+  td.product-name.col-xs-5
     h4 = item.product.name
     h5 = item.size.try(:name)
     h5 = option_names(item).to_sentence
-  td.time-ago = time_ago_in_words(item.delivered_at)
-  td.actions
+  td.col-xs-5
+    .username.col-xs-12 = link_to dashboard_restaurant_order_item_path(@restaurant, item) do 
+      b #{item.order.user.try(:name)} (#{item.order.user.rating} rating)
+    .time-ago.col-xs-6 = time_ago_in_words(item.delivered_at)
+    .destination.col-xs-6 = delivery_destination(item)
+  td.actions.col-xs-2
     = link_to "Show", dashboard_restaurant_order_item_path(@restaurant, item),
       class: "btn btn-default pull-right"

@@ -16,6 +16,9 @@
     h4 Tel. number: #{@order_item.order.user.try(:phone_number)}
     h4 Rating: #{@order_item.order.user.rating}
     hr
+    - if @order_item.order.user.trustworthy?
       = link_to "Report user for incorrect order and reset his/her rating", 
         dashboard_restaurant_order_item_path(@restaurant, @order_item, order_action: 'reported'),
       {method: :patch, class: "btn btn-danger" }
+    - else
+      .btn.btn-info style="font-size:20px;" This user does not have enough rating to be reported

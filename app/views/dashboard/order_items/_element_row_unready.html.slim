@@ -4,7 +4,10 @@ tr.item class="row-#{item.id} #{item.order.user.trustworthy? ? '' : 'confirm-ord
     h5 = item.size.try(:name)
     h5 = option_names(item).to_sentence
   td.col-xs-5
-    .time-ago = time_ago_in_words(item.received_at)
+    .username.col-xs-12 = link_to dashboard_restaurant_order_item_path(@restaurant, item) do 
+      b #{item.order.user.try(:name)} (#{item.order.user.rating} rating)
+    .time-ago.col-xs-6 = time_ago_in_words(item.received_at)
+    .destination.col-xs-6 = delivery_destination(item)
   td.col-xs-2.actions 
     = link_to dashboard_restaurant_order_item_path(@restaurant, item),
       {method: :patch, remote: true, class: "btn btn-success pull-right" } do 

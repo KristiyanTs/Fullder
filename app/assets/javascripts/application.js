@@ -19,6 +19,7 @@
 //= require clipboard
 //= require ahoy
 //= require jquery.remotipart
+//= require jquery-readyselector
 //= require turbolinks
 //= require_tree .
 
@@ -29,9 +30,6 @@ document.addEventListener("turbolinks:load", function() {
   });
   $('.time-picker').timepicker();
   
-
-
-
   // Hide Header on on scroll down
   var didScroll;
   var lastScrollTop = 0;
@@ -70,4 +68,5 @@ document.addEventListener("turbolinks:load", function() {
       
       lastScrollTop = st;
   }
+
 })
