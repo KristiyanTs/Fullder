@@ -36,7 +36,11 @@ Rails.application.routes.draw do
           get 'update_available_tables'
         end
       end
-      resources :order_items, only: [:index, :show, :update]
+      resources :order_items, only: [:index, :show, :update] do
+        collection do
+          get 'refresh_orders'
+        end
+      end
       resource :menus, only: [:show]
     end
   end

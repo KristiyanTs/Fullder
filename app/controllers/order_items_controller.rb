@@ -6,6 +6,7 @@ class OrderItemsController < ApplicationController
   def create
     @restaurant = Restaurant.find(session[:restaurant_id])
     @order_item = OrderItem.new(order_item_params)
+    @order_item.restaurant_id = @restaurant.id
     respond_to do |format|
       if order_exists?
         add_item
@@ -43,7 +44,7 @@ class OrderItemsController < ApplicationController
   private
 
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id, :size_id, :demands,
+    params.require(:order_item).permit(:quantity, :product_id, :size_id, :demands, :restaurant_id,
                                        option_ids: [])
   end
 end

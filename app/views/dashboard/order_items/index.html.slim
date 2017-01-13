@@ -1,5 +1,18 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
-.container.container-white.order-items.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
+.container.container-white.order-items.col-xs-12.col-sm-11.col-sm-offset-1.col-md-8.col-md-offset-1.col-lg-6.col-lg-offset-1.dashboard-main-window
   = render layout: "table_#{session[:order_status]}" do
     = render partial: "element_row_#{session[:order_status]}", collection: @items, as: :item
+
+
+
+
+  javascript:
+      setInterval(function() {
+        $.ajax({
+          url: '#{refresh_orders_dashboard_restaurant_order_items_path(@restaurant)}',
+          type: 'GET',
+          data: {},
+          dataType: 'script'
+        });
+      }, 5000);
