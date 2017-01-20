@@ -1,7 +1,0 @@
-<% if @reservation.errors.any? %>
- $('.modal-content').html("<%= j(render partial: 'element_form').html_safe%>")
-<% else %>
-  $('#element-form').modal('hide');
-  $('#reservation-<%= @reservation.id %>').fadeOut(1000);
-  $('#reservations').prepend($("<%= j render @reservation %>").fadeIn('slow'));
-<% end %>

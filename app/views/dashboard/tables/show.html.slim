@@ -3,14 +3,3 @@
 .container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
   h3 Table #{@table.number}
 
-  table.table.table-striped
-    thead
-      tr
-        th = t 'dashboard.seats'
-        th = t 'dashboard.number'
-        th = t 'dashboard.time'
-        th = t 'dashboard.confirmed'
-        th = t 'dashboard.actions'
-    tbody
-      = render partial: "dashboard/reservations/element_row", collection: @reservations, as: :reservation
-  = paginate @reservations, theme: 'twitter-bootstrap-3'

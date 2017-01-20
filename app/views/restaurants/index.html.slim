@@ -1,56 +1,33 @@
 #restaurant-finder.col-xs-12
-  = form_tag restaurants_path, remote: true, method: 'get', id: 'restaurant-search', 
-    class: "col-xs-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3 space-up" do
+  = form_tag restaurants_path, remote: true, method: 'get', id: 'restaurant-search', class: "col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3" do
     #map.hidden
     .location
       button.share-location onclick="geoFindMe()" 
-        i.fa.fa-map-marker.fa-3x.space-up
-        br
-        h3 = t 'restaurant.share-location'
-      = text_field_tag :latitude, params[:latitude], onchange: "this.form.submit();", class: "hidden"
+        .content
+          i.fa.fa-map-marker.fa-3x
+          br
+          h3 = t 'restaurant.share-location'
+      = text_field_tag :latitude, params[:latitude], class: "hidden"
       = text_field_tag :longitude, params[:longitude], class: "hidden"
-    .interest.col-xs-12.space-up.space-down
-      button.going-out.col-xs-6 value="1" = t 'restaurant.going-out'
-      button.delivery.col-xs-6 value="2" = t 'restaurant.want-delivery'
-      = text_field_tag :interest, params[:interest], class: "hidden"
-    .tags.space-up
+    .tags
       = text_field_tag :search, params[:search],
         class: "form-control input restaurant-search-input",
         placeholder: "#{t 'restaurant.search-placeholder'}",
         autofocus: true
-    = button_tag name: nil, class: "btn btn-submit space-up" do
+    = button_tag name: nil, class: "btn btn-submit" do
         i class="glyphicon glyphicon-search"
 
-.restaurants.col-xs-12.col-lg-10.col-lg-offset-1.infinite-pagination
+.index-restaurants.col-xs-12.col-lg-10.col-lg-offset-1.infinite-pagination
     .infinite-scroll
       = render partial: "restaurant_row", collection: @restaurants, as: :restaurant
     = paginate @restaurants, params: {scrolling: true}
 
-.footer.contact-page  
-  .col-xs-12.col-md-3.text-center
-    .glyphicon.glyphicon-phone
-    p
-      b +447761889141
-  .col-xs-12.col-md-3.text-center
-    .glyphicon.glyphicon-envelope
-    b
-      p moonhythe@gmail.com
-  .col-xs-12.col-md-3.text-center
-    .glyphicon.glyphicon-globe
-    p
-      a href="http://www.moonhythe.com" MOONHYTHE
-  .col-xs-12.col-md-3.text-center
-    .glyphicon.glyphicon-map-marker
-    p
-      b Scotland, Edinburgh EH8 9EW, Nicolson Str. 92
   
 script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyA29rpRdgUXPQoVfAhO5KlO4cV55CMSMi0"
 script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" 
 
   
 javascript:
-
-
   function geoFindMe() {
 
     function success(position) {
@@ -81,7 +58,7 @@ javascript:
         }
       );
 
-
+      $('#restaurant-search').submit();
     }
 
     function error() {
@@ -90,9 +67,3 @@ javascript:
 
     navigator.geolocation.getCurrentPosition(success, error);
   };
-
-  $('.interest button').on('click tap', function() {
-    $(".interest").children().removeClass("active");
-    $(this).addClass("active");
-    document.getElementById("interest").value = $(this).val();
-  });

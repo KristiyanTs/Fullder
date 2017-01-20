@@ -1,80 +1,45 @@
 /* Variables */
 $header-red: rgb(230, 0, 0);
 
-.cart-row{
-  background-color: white;
-  height: 90px;
-  padding-bottom: 0px !important;
-  .item-name{
-    padding: 10px;
-    font-size: 20px;
-  }
-  .item-price{
-    padding: 10px;
-    font-size: 20px;
-    color: grey;
-    text-align: right;
-  }
-  .form-group{
-    margin-bottom: 0px !important;
-  }
-  input{
-    border-radius: 0px !important;
-  }
-  select{
-    margin: 10px;
-  }
-}
-
-.pay-button{
-  background-color: rgb(216,0,0);
-  color: white;
-  border-radius: 0px !important;
-}
-
-.remove-order-item{
-  background-color: rgb(216,0,0);
-  height: 90px;
-  color: white;
-  line-height: 90px !important;
-  text-align: center;
-  font-size: 20px;
-  margin-top: 14px;
-}
-
-@media (max-width:990px) {
-  .item-name, .item-price{
-    font-size: 12px !important;
-  }
-  input{
-  }
-
-}
-
-.shopping-cart{
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-
-  .cart-subtotal{
-    font-size: 15px;
-    padding-left: 5px !important;
-    padding-right: 5px !important;
-    padding: 5px;
+.carts.show{
+  .cart-row{
     background-color: white;
-    margin-top:10px;
+    height: 100px;
+    margin-top: 10px;
+    .item-name{
+      padding: 10px;
+    }
+    #order_item_quantity{
+      min-width: 72px;
+      margin-top: 10px;
+    }
+  }
+
+  .remove-item{
+    margin-top: 9px;
+    background-color: rgb(216,0,0);
+    line-height: 100px !important;
+    height: 100px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
   }
 
   .pay-button{
-    margin-top: 30px;
-    font-size: 20px;
-    font-weight: bold;
+    background-color: rgb(216,0,0);
+    color: white;
+    border-radius: 0px !important;
+    margin-top: 20px;
   }
 }
 
+
+
 .compact-cart{
   position: fixed !important;
-  min-width: 300px;
   margin-top: 15px;
+  min-width: 300px;
+  min-height: 600px !important;
   right: 5%;
   th{
     font-size: 25px;
@@ -109,9 +74,6 @@ $header-red: rgb(230, 0, 0);
   bottom: 60px;
   right: 10px;
 
-  .glyphicon{
-    font-size: 20px;
-  }
   a{
     color: white;
     padding: 20px;

@@ -8,7 +8,7 @@
   .modal-body
     = render 'layouts/error_messages', object: @position
     - if @editing
-      h4 = @position.user.name
+      h4 = @position.user.try(:name)
     - else
       = label_tag 'email', "Employee email"
       = email_field_tag :email, nil, class: 'form-control'

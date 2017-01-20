@@ -27,8 +27,6 @@ class Table < ApplicationRecord
   belongs_to :user
 
   has_many :orders
-  has_many :reservation_tables, dependent: :destroy
-  has_many :reservations, through: :reservation_tables
   
   validates :number, uniqueness: { scope: :restaurant_id }
   validates :number, presence: true
@@ -39,13 +37,4 @@ class Table < ApplicationRecord
       where(capacity: keyword) if keyword
     end
   }
-
-  def occupied?(st_time, duration, res_id=0)
-    fin_time = st_time + duration.seconds_since_midnight.seconds
-    reservations.any? { |res| res.confirmed && (st_time .. fin_time).overlaps?(res.start_time .. res.end_time) }
-  end
-
-  def table_info
-    "№#{number} - for #{capacity}"
-  end
 end

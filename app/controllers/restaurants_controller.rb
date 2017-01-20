@@ -12,8 +12,6 @@ class RestaurantsController < ApplicationController
     @longitude = params[:longitude] || request.location.try(:longitude) || 0
     
     @restaurants = Restaurant.search(params[:search])
-    restaurants_array = @restaurants.select{|r| r.accepts_deliveries && r.distance_to([@latitude, @longitude]) <= r.delivery_radius} if params[:interest] == "2"
-    @restaurants = @restaurants.where(id: restaurants_array.map(&:id)) if params[:interest] == "2"
     @restaurants = @restaurants.by_distance(origin: [@latitude, @longitude]) if @latitude && @longitude
     @restaurants = @restaurants.page(params[:page]).per(12)
 
@@ -35,7 +33,6 @@ class RestaurantsController < ApplicationController
 
     @categories = @restaurant.categories.where(supercategory_id: nil).order(:index)
     @order_item = OrderItem.new
-    @reservation = @restaurant.reservations.build
 
     add_breadcrumb @restaurant.name, restaurant_path(@restaurant), title: "Back to the restaurant"
     ahoy.track "Viewed restaurant home page", restaurant_id: @restaurant.id
@@ -45,21 +42,7 @@ class RestaurantsController < ApplicationController
       format.js
     end
   end
-
-  def favorite
-    type = params[:type]
-    if type == 'favorite'
-      current_user.favorite_restaurants << @restaurant
-    else
-      current_user.favorite_restaurants.delete(@restaurant)
-    end
-
-    respond_to do |format|
-      format.html
-      format.js { render partial: 'favorite.js.erb' }
-    end
-  end
-
+  
   private
 
   def set_restaurant

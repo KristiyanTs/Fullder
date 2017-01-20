@@ -155,36 +155,6 @@ permission_seed = [
     description: "Allow user to dismiss employees. Be cautious!"
   },
   {
-    subject_class: "Reservation",
-    action: "read",
-    name: "Show all reservations",
-    description: "Allow user to see all reservations, including information about them."
-  },
-  {
-    subject_class: "Reservation",
-    action: "create",
-    name: "Add new reservation",
-    description: "Allow user to add new reservations."
-  },
-  {
-    subject_class: "Reservation",
-    action: "update",
-    name: "Update existing reservations",
-    description: "Allow user to update information about existing reservations."
-  },
-  {
-    subject_class: "Reservation",
-    action: "destroy",
-    name: "Delete reservations",
-    description: "Allow user to delete reservations."
-  },
-  {
-    subject_class: "Reservation",
-    action: "update_available_tables",
-    name: "Advanced reservations options",
-    description: "Makes the process of creating a reservation easier."
-  },
-  {
     subject_class: "OrderItem",
     action: "update",
     name: "Update dashboard order items",

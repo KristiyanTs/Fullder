@@ -1,8 +1,8 @@
-.container.col-xs-12.col-md-6.col-md-offset-1.container-products.space-up
-  .container.container-white.space-down.col-xs-12
+.container.col-xs-12.col-md-6.col-md-offset-1.container-products
+  .container.container-white.col-xs-12
     - if @product.avatar?
-      = image_tag @product.avatar.url(:large), class: "img-rounded img-responsive center-block space-down space-up"
-    .col-xs-10.col-md-8.col-xs-offset-1.col-md-offset-2.text-center.space-down
+      = image_tag @product.avatar.url(:large), class: "img-rounded img-responsive center-block"
+    .col-xs-10.col-md-8.col-xs-offset-1.col-md-offset-2.text-center
       h4 = @product.short_description  
   = render partial: 'product_buy_form'
 

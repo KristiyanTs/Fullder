@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function() {
     else {
       $(this).html("<i class=\"fa fa-angle-down fa-2x\"></i>");
     }
-    $(this).next('.product-more-options').toggle();
+    $(this).next('.product-more-options').toggle('fast');
   });
 });
 

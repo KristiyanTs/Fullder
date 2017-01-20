@@ -6,7 +6,7 @@ class Dashboard::OrderItemsController < ApplicationController
 
   def index
     session[:order_status] = params[:order_status] || session[:order_status]
-    @items = @restaurant.order_items.where(status: session[:order_status]).order(updated_at: :desc).page(params[:page]).per(15)
+    @items = @restaurant.order_items.where(status: session[:order_status]).order(:updated_at).page(params[:page]).per(15)
     respond_to do |format|
       format.html {}
       format.js { @partial_name = "element_row_#{session[:order_status]}" }
@@ -35,7 +35,7 @@ class Dashboard::OrderItemsController < ApplicationController
   end
 
   def refresh_orders
-    @items = @restaurant.order_items.where(status: session[:order_status]).order(updated_at: :desc).page(params[:page]).per(15)
+    @items = @restaurant.order_items.where(status: session[:order_status]).order(:updated_at).page(params[:page]).per(15)
     @partial_name = "element_row_#{session[:order_status]}"
     respond_to do |format|
         format.js 

@@ -12,14 +12,10 @@
 //= require jquery-ui
 //= require underscore
 //= require gmaps/google
-//= require jquery.timepicker.js
 //= require moment
-//= require bootstrap-datetimepicker
-//= require bootstrap-datepicker
 //= require clipboard
 //= require ahoy
 //= require jquery.remotipart
-//= require jquery-readyselector
 //= require turbolinks
 //= require_tree .
 
@@ -28,7 +24,6 @@ document.addEventListener("turbolinks:load", function() {
     placement: "bottom",
     trigger: "focus"
   });
-  $('.time-picker').timepicker();
   
   // Hide Header on on scroll down
   var didScroll;
