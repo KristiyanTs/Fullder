@@ -14,11 +14,7 @@
           = f.input :phone_number
           = f.input :description, hint: (I18n.locale == :en ? "" : "en: #{I18n.with_locale(:en) {f.object.description}}")
           = f.input :wifipassword
-          = f.input :avg_meal_price
-          = f.input :staff_count
           = f.input :available_payment
-          = f.input :facebook_link
-          = f.input :twitter_link
     .panel.panel-default
       .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings2"
         .panel-title Services
@@ -26,13 +22,6 @@
         .panel-body
           / Services
           = f.input :sells_online
-          = f.input :accepts_deliveries
-          = f.input :delivery_time
-          = f.input :delivery_cost
-          = f.input :delivery_radius
-          = f.input :min_delivery_price
-          = f.input :accepts_reservations
-          = f.input :reservation_time_tolerance
     .panel.panel-default
       .panel-heading data-parent="#accordion" data-toggle="collapse" href="#settings3"
         .panel-title Pictures
@@ -53,7 +42,7 @@
       #settings4.panel-collapse.collapse
         .panel-body
           / Working hours
-          .working_times.col-md-6.space-down
+          .working_times.col-md-6
             = f.simple_fields_for :working_times do |working_time|
               = render 'working_time_fields', f: working_time
             .links

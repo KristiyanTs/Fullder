@@ -1,14 +1,12 @@
-.submit-table{
-  margin-top: 20px;
-  font-size: 16px;
-  width:100px;
+/* Page specific css */
+
+.orders.new{
+  .container-white{
+    margin-top: 15px;
+  }
 }
 
-.skip-table{
-  margin-top: 20px;
-  font-size: 16px;
-  width:100px;
-}
+/* Global css */
 
 .order-row{
   margin-bottom: 10px;
@@ -46,6 +44,4 @@
   .order-progress.false{
     color: red;
   }
-
-
 }

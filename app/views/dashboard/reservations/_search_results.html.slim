@@ -1,9 +1,0 @@
-- if @reservations.blank?
-  p.text-center
-    = t "search.no-results"
-- else
-  table#reservations.table.table-striped
-
-    tbody
-      = render partial: "reservation", collection: @reservations, as: :reservation
-  / = paginate @reservations, theme: 'twitter-bootstrap-3'

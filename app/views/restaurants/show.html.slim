@@ -1,54 +1,30 @@
-.container-fluid.col-md-6.col-md-offset-1.home-page.container-white.space-up
+.container-fluid.col-md-6.col-md-offset-1.home-page.container-white
   #restaurant-avatar
     = image_tag @restaurant.restaurant_avatar.url(:large)
-  #restaurant-buttons
-    - if @restaurant.accepts_reservations
-      a.menu-button.col-xs-6.text-center = t 'restaurant.menu'
-      a.reservations-button.col-xs-6.text-center = t 'restaurant.reserve' 
-    - else
-      a.menu-button.col-xs-12.text-center = t 'restaurant.menu'
 
-= render 'restaurant_delivery'
+= render 'info'
 
-= render 'inplace_order'
+= render 'images'
 
-= render 'restaurant_info'
+= render 'map'
 
-= render 'restaurant_images'
-
-= render 'restaurant_map'
-
-= render 'restaurant_menu'
+= render 'menu'
 
 = render partial: 'layouts/cart/cart'
-
-= render partial: 'reservations/form'
 
 javascript:
   $(".menu-button").on('click tap', function() {
     $(".home-page-3").addClass("hidden");
     $(".home-page-2").addClass("hidden-xs hidden-sm");
-    $(".restaurant-reservation").addClass("hidden");
     $(".restaurant-menu").removeClass("hidden");
     $('html, body').animate({
         scrollTop: $(".restaurant-menu").offset().top
     }, 500);
   });
 
-  $(".reservations-button").on('click tap', function() {
-    $(".home-page-3").addClass("hidden");
-    $(".home-page-2").addClass("hidden");
-    $(".restaurant-menu").addClass("hidden");
-    $(".restaurant-reservation").removeClass("hidden");
-    $('html, body').animate({
-        scrollTop: $(".restaurant-reservation").offset().top
-    }, 500);
-  });
-
   if ("#{params[:menu]}" == "open"){
     $(".home-page-3").addClass("hidden");
     $(".home-page-2").addClass("hidden-xs hidden-sm");
-    $(".restaurant-reservation").addClass("hidden");
     $(".restaurant-menu").removeClass("hidden");
     $('html, body').animate({
         scrollTop: $(".restaurant-menu").offset().top
@@ -60,6 +36,7 @@ javascript:
     handler = Gmaps.build('Google');
     handler.buildMap({ 
       provider: {
+        scrollwheel: false,
         disableDefaultUI: true,
         rotateControl: true,
         streetViewControl: true,

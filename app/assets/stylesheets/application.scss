@@ -13,12 +13,9 @@
 @import "slick";
 @import "slick-theme";
 @import "jquery-ui";
-@import "jquery.timepicker";
 @import "font-awesome";
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import 'bootstrap-datetimepicker';
-@import 'bootstrap-datepicker';
 
 /* Variables */
 $header-red: rgb(230, 0, 0);
@@ -35,6 +32,8 @@ $header-red: rgb(230, 0, 0);
   src: font-url('AlegreyaSans-Bold.ttf');
 }
 
+
+/* General global settings */
 html,body {
   height: calc(100% + 20px);
   padding-top: 0;
@@ -62,23 +61,37 @@ input{
   border-radius: 0px;
 }
 
-.restaurant-serach input:focus{
-  border: none !important;
-  box-shadow: none !important;
-}
-
-label{
-  font-size: 19px;
-}
-
 a, a:active, a:focus {
   outline: none;  /* Removing the dotted border around links when clicked */
   text-decoration: none;
 }
 
+.container-white{
+  background-color: white;
+  padding-bottom: 10px;
+}
+
+.container-fluid{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+
+/* ------------------------------------------ */
+
+/* Errors */
 .error-explanation{
   margin-top: 20px;
   color: black;
+}
+
+.alert-error{
+  background-color: rgba(230,0,0,0.3);
+  font-size: 23px;
+  font-weight: bold;
 }
 
 .flash_messages{
@@ -118,29 +131,9 @@ a, a:active, a:focus {
   background-color: $header-red;
 }
 
-.container-white{
-  background-color: white;
-  padding-bottom: 10px;
-}
+/* ---------------------------------- */
 
-.container-fluid{
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-
-.alert-error{
-  background-color: rgba(230,0,0,0.3);
-  font-size: 23px;
-  font-weight: bold;
-}
-
-.space-down{
-  margin-bottom: 15px;
-}
-
-.space-up{
-  margin-top: 15px;
-}
+/* Navbar */
 
 .space-up-animation{
   animation-duration: 1s;
@@ -160,14 +153,6 @@ a, a:active, a:focus {
   }
 }
 
-.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
-    border: none;
-}
-
-.container-min-height{
-  min-height: 600px;
-}
-
 /* Global settings specifically for large devices */
 @media (min-width: 768px) {
   /* Input not visible on large devices when <20px */
@@ -184,6 +169,24 @@ a, a:active, a:focus {
   h2{
     font-size: 35px;
   }
+
+  .navbar-custom {
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+  }
+  .navbar-custom .navbar-brand {
+    font-size: 2em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .navbar-custom.affix {
+    padding: 10px 0;
+  }
+  .navbar-custom.affix .navbar-brand {
+    font-size: 1.5em;
+  }
 }
 
 /* Navigation bar */
@@ -193,6 +196,7 @@ a, a:active, a:focus {
 .nav-up {
   top: -50px;
 }
+
 .navbar-custom {
   -webkit-transition: top 0.6s;
   -moz-transition: top 0.6s;
@@ -260,62 +264,13 @@ a, a:active, a:focus {
     color: white;
     border-color: white;
   }
-  .language-pick{
-    padding: 15px;
-  }
-  .dropdown-language li a{
-    color: black;
-  }
 }
 
-@media (min-width: 768px) {
-  .navbar-custom {
-    -webkit-transition: padding 0.3s;
-    -moz-transition: padding 0.3s;
-    transition: padding 0.3s;
-  }
-  .navbar-custom .navbar-brand {
-    font-size: 2em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-  }
-  .navbar-custom.affix {
-    padding: 10px 0;
-  }
-  .navbar-custom.affix .navbar-brand {
-    font-size: 1.5em;
-  }
-}
+/* ------------------------------------ */
 
+/* Footer and breadcrumbs */
 .footer{
   background-color: #f0f0f0;
-}
-
-.account-important{
-  position: relative;
-  margin-bottom: 50px;
-  a{
-    font-size: 24px;
-  }
-}
-
-.cd-fixed-bg {
-  min-height: 100%;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
-  
-}
- 
-.cd-fixed-bg.cd-bg-1 {
-  background-image: image-url('index-background.jpg');
-}
-
- 
-.cd-scrolling-bg {
-  min-height: 100%;
 }
 
 .breadcrumbs{

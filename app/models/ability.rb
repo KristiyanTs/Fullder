@@ -24,7 +24,6 @@ class Ability
         can :read, Restaurant
         can :read, Product
         can :read, Category
-        can [:read, :create], Reservation
     end
   end
 end

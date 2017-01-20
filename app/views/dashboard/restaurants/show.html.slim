@@ -1,18 +1,15 @@
 = render 'layouts/dashboard/dashboard_navbar'
 
 .container.container-white.col-xs-12.col-sm-8.col-sm-offset-1.dashboard-main-window
-  h2 Notifications & Statistics
+  h2.text-center Notifications & Statistics
   hr
-  .col-xs-12.space-up
-    ul
-      li = link_to "#{@restaurant.reservations.count} new reservations!", 
-          dashboard_restaurant_reservations_path(@restaurant)
-      li = link_to "#{@restaurant.orders.count} new prepared orders!", 
-          dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered")
-      li = link_to "#{@restaurant.orders.count} new unready orders!", 
-          dashboard_restaurant_order_items_path(@restaurant, order_status: "unready")
-      li = link_to "#{@restaurant.orders.count} new delivery orders!", 
-          dashboard_restaurant_order_items_path(@restaurant, order_status: "ready")
+  ul.col-xs-12.orders-info
+    li.col-xs-12.col-md-4 = link_to "#{@restaurant.orders.count} new prepared orders!", 
+        dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered")
+    li.col-xs-12.col-md-4 = link_to "#{@restaurant.orders.count} new unready orders!", 
+        dashboard_restaurant_order_items_path(@restaurant, order_status: "unready")
+    li.col-xs-12.col-md-4 = link_to "#{@restaurant.orders.count} new delivery orders!", 
+        dashboard_restaurant_order_items_path(@restaurant, order_status: "ready")
 
   .col-xs-12 
     h3 Views of your restaurant

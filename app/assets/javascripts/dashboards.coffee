@@ -7,7 +7,6 @@ document.addEventListener 'turbolinks:load', ->
 
 document.addEventListener 'turbolinks:load', ->
   do ->
-
     toggleHandler = (toggle) ->
       toggle.addEventListener 'click', (e) ->
         e.preventDefault()

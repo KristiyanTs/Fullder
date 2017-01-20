@@ -15,7 +15,7 @@
       i.fa.fa-angle-down.fa-2x
     .product-more-options
       = render partial: 'products/product_buy_form', locals: {product: product}
-  - elsif current_user && @restaurant.sells_online
+  - elsif current_user
     .col-xs-2.plus-button
       = minimal_form_for @order_item, html: { class: 'new-order-item' }, remote: true do |f|
         = f.input :product_id, as: :hidden, input_html: {value: product.id || @product.id}

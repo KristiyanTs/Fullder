@@ -40,9 +40,6 @@ class User < ApplicationRecord
   has_many :roles, through: :positions
   has_many :orders
   has_many :tables
-  has_many :reservations
-  has_many :favorites, dependent: :destroy
-  has_many :favorite_restaurants, through: :favorites, source: :restaurant
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable

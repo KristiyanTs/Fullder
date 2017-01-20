@@ -1,6 +1,0 @@
-<% if @reservation.errors.any? %>
-  $('.container-white').html("<%= escape_javascript (render partial: 'form') %>");
-  end
-<% else %>
-  $('.restaurant-reservation').html("<%= escape_javascript (render partial: 'successful') %>");
-<% end %>

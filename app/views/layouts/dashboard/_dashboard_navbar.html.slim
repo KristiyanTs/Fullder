@@ -43,11 +43,6 @@
                 = link_to dashboard_restaurant_tables_path(@restaurant) do
                   = "#{t 'navbar.tables'}"
                   i.fa.fa-archive.button-icon aria-hidden="true"
-            - if can? :read, Reservation, restaurant_id: @restaurant.id
-              li.nested
-                = link_to dashboard_restaurant_reservations_path(@restaurant) do
-                  = "#{t 'navbar.reservations'}"
-                  i.fa.fa-calendar.button-icon aria-hidden="true"
             - if can? :read, Order, restaurant_id: @restaurant.id
               li.nested
                 = link_to dashboard_restaurant_order_items_path(@restaurant, order_status: "delivered") do

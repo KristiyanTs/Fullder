@@ -54,9 +54,6 @@ class Restaurant < ApplicationRecord
   has_many :tables, dependent: :destroy
   has_many :working_times, dependent: :destroy
   has_many :images, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :favorited_by, through: :favorites, source: :user
-  has_many :reservations
 
   validates :name, presence: true
   validates :address, presence: true
