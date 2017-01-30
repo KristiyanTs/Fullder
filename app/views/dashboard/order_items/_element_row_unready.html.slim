@@ -3,6 +3,7 @@ tr.item class="row-#{item.id} #{item.order.user.trustworthy? ? '' : 'confirm-ord
     h4 = item.product.name
     h5 = item.size.try(:name)
     h5 = option_names(item).to_sentence
+    h4.demands = item.try(:demands)
   td.col-xs-5
     .username.col-xs-12 = link_to dashboard_restaurant_order_item_path(@restaurant, item) do 
       b #{item.order.user.try(:name)} (#{item.order.user.rating} rating)
@@ -12,5 +13,3 @@ tr.item class="row-#{item.id} #{item.order.user.trustworthy? ? '' : 'confirm-ord
     = link_to dashboard_restaurant_order_item_path(@restaurant, item),
       {method: :patch, remote: true, class: "btn btn-success pull-right" } do 
       i.fa.fa-check
-.col-xs-12
-  .demands = item.try(:demands)

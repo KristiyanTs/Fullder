@@ -73,7 +73,7 @@ class User < ApplicationRecord
   end
 
   def add_rating
-    self.rating = self.rating + 1
+    self.update(rating: rating + 1)
   end
 
   def reset_rating

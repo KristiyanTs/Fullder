@@ -6,10 +6,25 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
     - if f.object.provider.blank?
       = f.input :password, required: true, placeholder: "Password", label: false
       = f.input :password_confirmation, required: true, placeholder: "Confirm password", label: false
-    = f.button :submit, "Submit", class: "col-xs-12 btn btn-primary"
+    = f.button :submit, "Sign Up", class: "col-xs-12 btn btn-default"
+    p style="margin-top:80px;"
+      ' By clicking Sign Up, you agree to our 
+      a data-toggle="modal" data-target="#terms" Terms & Privacy Policy.
 .container.col-xs-12.col-md-6.col-md-offset-3.login-footer
   .text-center
     = link_to "Log in", new_user_session_path
+
+#terms.modal.fade role="dialog" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"  ×
+        h3.modal-title Moonhythe Terms of Service and Privacy Policy
+      .modal-body
+        = render 'legal'
+      .modal-footer
+        button.btn.btn-default data-dismiss="modal" type="button"  Close
+
 
 .footer.navbar-fixed-bottom
   h4.col-xs-6.col-md-6.text-center Developed by MOONHYTHE
