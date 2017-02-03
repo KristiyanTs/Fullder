@@ -24,10 +24,6 @@ module OrderItemsHelper
   end
 
   def delivery_destination(item)
-    if item.order.table_number
-      (t 'order.table') + " " + item.order.table_number.to_s 
-    else
-      (t 'order.delivery') + " " + item.order.address
-    end
-  end 
+    ((t 'order.table') + " " + item.order.table_number.to_s) unless item.order.table_number.nil?
+  end
 end

@@ -13,16 +13,7 @@ puts "Generating seeds..."
 # User.find_or_create_by([
 #            {name: 'Kristiyan Tsvetanov',
 #             email: 'test1@example.com', password: 'password',
-#             password_confirmation: 'password', admin: true},
-#            {name: 'Valentina Latinska',
-#             email: 'test2@example.com', password: 'password',
-#             password_confirmation: 'password'},
-#            {name: 'Plamen Dimitrov',
-#             email: 'test3@example.com', password: 'password',
-#             password_confirmation: 'password'},
-#            {name: 'Pesho Speshno',
-#             email: 'pesho@abv.bg', password: '123123123',
-#             password_confirmation: '123123123'}
+#             password_confirmation: 'password', admin: true}
 # ])
 
 

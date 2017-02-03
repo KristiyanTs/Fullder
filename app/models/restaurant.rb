@@ -4,11 +4,14 @@
 # Table name: restaurants
 #
 #  id                             :integer          not null, primary key
-#  name                           :string
-#  address                        :string
+#  name                           :string           not null
+#  address                        :string           not null
 #  wifipassword                   :string
+#  available_payment              :string
 #  phone_number                   :string
 #  country                        :string           default("en-GB")
+#  google_id                      :string
+#  description                    :text
 #  latitude                       :float
 #  longitude                      :float
 #  sells_online                   :boolean
@@ -19,19 +22,6 @@
 #  restaurant_avatar_file_size    :integer
 #  restaurant_avatar_updated_at   :datetime
 #  slug                           :string
-#  accepts_reservations           :boolean
-#  accepts_deliveries             :boolean
-#  google_id                      :string
-#  avg_meal_price                 :decimal(, )
-#  staff_count                    :integer
-#  facebook_link                  :string
-#  twitter_link                   :string
-#  available_payment              :string
-#  delivery_time                  :integer
-#  delivery_cost                  :decimal(, )
-#  min_delivery_price             :decimal(, )
-#  delivery_radius                :integer
-#  reservation_time_tolerance     :integer
 #
 # Indexes
 #

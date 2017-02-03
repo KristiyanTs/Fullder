@@ -7,13 +7,4 @@
 
 - else
   = link_to root_path, class: "btn col-xs-12 pay-button disabled"
-    - if current_order.address
-      .col-xs-6
-        b.col-xs-12 = formatted_price(current_order.subtotal, current_order.restaurant)
-        .col-xs-12 = "Min. " + formatted_price(current_order.restaurant.min_delivery_price, current_order.restaurant)
-      .col-xs-6
-        - if current_order.address
-          .col-xs-12 = "+" + formatted_price(current_order.restaurant.delivery_cost, current_order.restaurant)
-          h5.col-xs-12 = t 'cart.delivery'
-    - else
-      b.col-xs-12 = formatted_price(current_order.subtotal, current_order.restaurant)
+    b.col-xs-12 = formatted_price(current_order.subtotal, current_order.restaurant)

@@ -1,5 +1,4 @@
 .col-xs-12 
   b.col-xs-12.well.well-sm 
     h3 = shorthand(category.name, 33) 
-  = render partial: "categories/category_row", collection: category.subcategories, as: :subcategory
   = render partial: "products/product_row", collection: category.products, as: :product

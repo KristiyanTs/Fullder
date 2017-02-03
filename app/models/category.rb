@@ -5,7 +5,7 @@
 #
 #  id                  :integer          not null, primary key
 #  restaurant_id       :integer
-#  supercategory_id    :integer
+#  name                :string
 #  age_restriction     :boolean
 #  available_all_day   :boolean
 #  created_at          :datetime         not null
@@ -21,7 +21,6 @@
 #
 #  index_categories_on_restaurant_id           (restaurant_id)
 #  index_categories_on_restaurant_id_and_slug  (restaurant_id,slug) UNIQUE
-#  index_categories_on_supercategory_id        (supercategory_id)
 #
 # Foreign Keys
 #
@@ -33,10 +32,8 @@ class Category < ApplicationRecord
   friendly_id :name, use: [:slugged, :scoped], :scope => :restaurant
 
   belongs_to :restaurant
-  belongs_to :supercategory, class_name: "Category"
 
   has_many :products
-  has_many :subcategories, class_name: "Category", foreign_key: "supercategory_id", dependent: :destroy
 
   has_attached_file :avatar, styles: { small: '140x140#' }, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

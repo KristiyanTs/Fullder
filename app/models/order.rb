@@ -52,7 +52,7 @@ class Order < ApplicationRecord
   end
 
   def fulfils_requirements?
-    return false if address && restaurant.min_delivery_price && subtotal < restaurant.min_delivery_price
+    #conditions
     return true
   end
 
@@ -75,6 +75,6 @@ class Order < ApplicationRecord
   end
 
   def set_total
-    total = subtotal + (address ? restaurant.delivery_cost : 0)
+    total = subtotal
   end
 end

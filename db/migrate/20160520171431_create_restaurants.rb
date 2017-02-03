@@ -2,12 +2,14 @@
 class CreateRestaurants < ActiveRecord::Migration
   def up
     create_table :restaurants do |t|
-      t.string :name
-      t.string :address
+      t.string :name,                    null: false
+      t.string :address,                 null: false, unique: true
       t.string :wifipassword
-      t.text :description
+      t.string :available_payment
       t.string :phone_number
       t.string :country,                 default: 'en-GB'
+      t.string :google_id
+      t.text :description
       t.float :latitude
       t.float :longitude
       t.boolean :sells_online
