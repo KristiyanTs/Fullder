@@ -6,8 +6,9 @@ class CreateProducts < ActiveRecord::Migration
       t.references :category,              index: true, foreign_key: true
       t.string :name
       t.string :short_description
+      t.string :weight
       t.text :description
-      t.decimal :price                  
+      t.decimal :price,                    null: false
       t.boolean :active
       t.integer :average_prepare_time
       t.boolean :ready

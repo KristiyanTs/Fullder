@@ -6,7 +6,11 @@
 #  id                   :integer          not null, primary key
 #  restaurant_id        :integer
 #  category_id          :integer
-#  price                :decimal(, )
+#  name                 :string
+#  short_description    :string
+#  weight               :string
+#  description          :text
+#  price                :decimal(, )      not null
 #  active               :boolean
 #  average_prepare_time :integer
 #  ready                :boolean
@@ -16,7 +20,6 @@
 #  avatar_content_type  :string
 #  avatar_file_size     :integer
 #  avatar_updated_at    :datetime
-#  weight               :string
 #
 # Indexes
 #

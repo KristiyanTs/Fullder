@@ -14,7 +14,6 @@
     = f.input :age_restriction
     = f.input :available_all_day
     = f.input :index
-    = f.association :supercategory, collection: @restaurant.categories, prompt: "Choose a supercategory or leave it blank", include_blank: false
 
   .modal-footer
     = f.button :submit, disable_with: "#{t "simple_form.please-wait"}"

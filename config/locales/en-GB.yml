@@ -3,7 +3,7 @@ en-GB:
   search:
     no-results: "No results found."
   restaurant:
-    search-placeholder: "restaurant name, address or id" 
+    search-placeholder: "or enter your table code here" 
     working-time: Hours
     open: Open
     closed: Closed
@@ -17,7 +17,7 @@ en-GB:
   order:
     demands-placeholder: "Any demands? Please, be concise."
     add-to-cart: "Add to Cart"
-    choose-table: "Choose a table"
+    choose-table: "Your table code"
   navbar:
     home: "Home"
     manage: "Manage"

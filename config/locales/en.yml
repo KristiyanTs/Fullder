@@ -11,7 +11,7 @@ en:
   search:
     no-results: "No results found."
   restaurant:
-    search-placeholder: "search by name, place or tag" 
+    search-placeholder: "or enter your table code" 
     working-time: Hours
     open: Open
     closed: Closed
@@ -43,7 +43,7 @@ en:
     in-place-orders: "Accepts in-shop orders: "
     copied: Copied
     distance: km. away
-    share-location: Share your location
+    share-location: Search around your location
     going-out: I am going out
     want-delivery: I want delivery
   product:
@@ -64,7 +64,7 @@ en:
   order:
     demands-placeholder: "Any demands? Please, be concise."
     add-to-cart: "Add to Cart"
-    choose-table: "Choose a table"
+    choose-table: "Your table code"
     choose-address: Or select an address for delivery
     table: Table
     delivery: Delivery

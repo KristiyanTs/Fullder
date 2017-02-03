@@ -22,14 +22,16 @@ class OrdersController < ApplicationController
   end
 
   def create
+    table = Table.find_by(code: order_params[:address])
     @order = current_user.orders.new(order_params)
-    @order.restaurant_id = @restaurant.id
+    @order.table_id = table.id
+    @order.restaurant_id = table.restaurant_id
+    @order.table_number = table.number
+
     respond_to do |format|
       if @order.save
         @order_item = @restaurant.order_items.new(session[:order_item])
         @order.order_items << @order_item
-
-        flash[:success] = "Item added to your cart."
         session[:order_id] = @order.id
 
         redirect_to restaurant_path(@restaurant, menu: "open") and return
@@ -67,7 +69,7 @@ class OrdersController < ApplicationController
         session[:order_id] = nil
         flash[:success] = "Order sent to restaurant."
         format.js { render 'pay.js.erb'}
-        format.html { redirect_to @restaurant }
+        format.html { redirect_to restaurant_path(@restaurant) }
       else
         flash[:error] = "The requirements are not met."
         format.js { }
@@ -83,6 +85,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:table_number, :restaurant_id, :user_id, :table_id, :address)
+    params.require(:order).permit(:address)
   end
 end

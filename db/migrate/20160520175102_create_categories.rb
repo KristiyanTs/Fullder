@@ -3,7 +3,6 @@ class CreateCategories < ActiveRecord::Migration
   def up
     create_table :categories do |t|
       t.references :restaurant,        index: true, foreign_key: true
-      t.references :supercategory,     index: true
       t.string :name
       t.boolean :age_restriction
       t.boolean :available_all_day

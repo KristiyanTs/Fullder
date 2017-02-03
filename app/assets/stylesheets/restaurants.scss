@@ -15,6 +15,10 @@
       height: 100%;
     }
 
+    .table-code{
+      margin-top: 20%;
+    }
+
     .location, #map{
       margin-top: 10vh;
       width: 100%;
@@ -29,7 +33,7 @@
       }
     }
 
-    .tags{
+    .order_address{
       input::-webkit-input-placeholder {
         text-align: center;
         color: white;
@@ -56,26 +60,19 @@
       }
     }
 
-    .btn-submit{
-      margin-top: 10vh;
+    .btn-default{
       width: 100%;
       border-radius: 0px;
-      background-color: rgba(0,216,0,0.0);
-      i{
-        font-size: 5em;
-        -webkit-animation: pulsate 5s ease-out;
-        -webkit-animation-iteration-count: infinite;
-        color: rgb(230,0,0);
-      }
+      background-color: rgba(255,255,255,0.8);
+      border: 2px solid rgba(0, 0, 0, 0.2);
     }
-    @-webkit-keyframes pulsate {
-        0% {-webkit-transform: scale(1, 1); opacity: 0.5;}
-        50% {-webkit-transform: scale(1.2, 1.2); opacity: 1;}
-        100% {-webkit-transform: scale(1, 1); opacity: 0.5;}
-    }
-    .btn-submit:hover{
+    .btn-default:hover{
       opacity: 1;
       -webkit-animation:  none;
+    }
+    .btn-default.disabled{
+      background-color: rgba(255,255,255,0.2);
+      color: grey;
     }
   }
 

@@ -6,6 +6,7 @@
 #  id            :integer          not null, primary key
 #  number        :integer
 #  capacity      :integer
+#  code          :string           not null
 #  restaurant_id :integer
 #  user_id       :integer
 #  created_at    :datetime         not null
@@ -27,9 +28,13 @@ class Table < ApplicationRecord
   belongs_to :user
 
   has_many :orders
+
+  before_validation :generate_code
   
   validates :number, uniqueness: { scope: :restaurant_id }
   validates :number, presence: true
+  validates :code, uniqueness: true
+  validates :code, presence: true
   validates :capacity, presence: true
 
   scope :search, lambda { |keyword|
@@ -37,4 +42,11 @@ class Table < ApplicationRecord
       where(capacity: keyword) if keyword
     end
   }
+
+  private
+
+  def generate_code
+    self.code = rand(36**4).to_s(36) if code.nil?
+    generate_code if Table.exists?(code: self.code)
+  end
 end
