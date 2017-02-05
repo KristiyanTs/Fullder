@@ -14,6 +14,8 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
         i.fa.fa-google-plus.visible-xs
         span.hidden-xs Google+
 
+h1.text-center.col-xs-12  OR 
+
 container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
   h3.text-center
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -22,13 +24,18 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
     = f.button :submit, "Log in", class: "col-xs-12 btn btn-default"
 .container.col-xs-12.col-md-6.col-md-offset-3.login-footer
   .col-xs-12.col-sm-6.col-md-4.text-center
-    = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+    = link_to "Forgot password?", new_password_path(resource_name)
   .col-xs-12.col-sm-6.col-md-4.text-center
     = link_to "Register", new_user_registration_path
   .col-xs-12.col-sm-6.col-md-4.text-center
-    = link_to "Forgot password?", new_password_path(resource_name)
+    = link_to "Resend confirmation", new_confirmation_path(resource_name)
+
+= render 'layouts/legal'
 
 .footer.navbar-fixed-bottom
-  h4.col-xs-6.col-md-6.text-center Copyright © Moonhythe 2016
-  h4.col-xs-6.col-md-6.text-center 
+  h4.col-xs-12.col-md-4 
+    ' By loggind in, you agree to our 
+    a data-toggle="modal" data-target="#terms" Terms & Privacy Policy.
+  h4.col-md-4.text-center.hidden-sm.hidden-xs Copyright © Moonhythe 2017
+  h4.col-md-4.text-center.hidden-sm.hidden-xs 
     a href="http://www.moonhythe.com" moonhythe.com

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include OrdersHelper
   load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_restaurant, only: [:new, :create, :pay]
+  before_action :set_restaurant, only: [:new, :pay]
   before_action :delete_unpaid_orders, only: [:create]
 
   def index
@@ -23,22 +23,30 @@ class OrdersController < ApplicationController
 
   def create
     table = Table.find_by(code: order_params[:address])
-    @order = current_user.orders.new(order_params)
-    @order.table_id = table.id
-    @order.restaurant_id = table.restaurant_id
-    @order.table_number = table.number
 
-    respond_to do |format|
-      if @order.save
-        @order_item = @restaurant.order_items.new(session[:order_item])
-        @order.order_items << @order_item
-        session[:order_id] = @order.id
+    if table
+      @order = current_user.orders.new(order_params)
+      @order.table_id = table.id
+      @order.restaurant_id = table.restaurant_id
+      @order.table_number = table.number
 
-        redirect_to restaurant_path(@restaurant, menu: "open") and return
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @order.save
+          session[:order_id] = @order.id
+          unless params[:from] == "index"
+            @order.order_items << OrderItem.new(session[:order_item])
+            redirect_to restaurant_path(@order.restaurant, menu: "open") and return
+          end
+
+          format.html { redirect_to restaurant_path(@order.restaurant, menu: "open") }
+        else
+          format.html { render :new }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:error] = "Wrong table code. Please try again."
+      redirect_to restaurants_path
     end
   end
 

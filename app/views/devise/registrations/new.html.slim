@@ -14,19 +14,15 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
   .text-center
     = link_to "Log in", new_user_session_path
 
-#terms.modal.fade role="dialog" 
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close data-dismiss="modal" type="button"  ×
-        h3.modal-title Moonhythe Terms of Service and Privacy Policy
-      .modal-body
-        = render 'legal'
-      .modal-footer
-        button.btn.btn-default data-dismiss="modal" type="button"  Close
+
+= render 'layouts/legal'
+
 
 
 .footer.navbar-fixed-bottom
-  h4.col-xs-6.col-md-6.text-center Developed by MOONHYTHE
-  h4.col-xs-6.col-md-6.text-center 
+  h4.col-xs-12.col-md-4 
+    ' By loggind in, you agree to our 
+    a data-toggle="modal" data-target="#terms" Terms & Privacy Policy.
+  h4.col-md-4.text-center.hidden-sm.hidden-xs Copyright © Moonhythe 2017
+  h4.col-md-4.text-center.hidden-sm.hidden-xs 
     a href="http://www.moonhythe.com" moonhythe.com
