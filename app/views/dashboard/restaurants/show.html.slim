@@ -11,37 +11,39 @@
     li.col-xs-12.col-md-4 = link_to "#{@restaurant.orders.count} new delivery orders!", 
         dashboard_restaurant_order_items_path(@restaurant, order_status: "ready")
 
-  .col-xs-12 
+  .col-xs-12.views
     h3 Views of your restaurant
-    .col-xs-6
-      ul
-        li Today
-        li This week
-        li This month
-        li This year
-    .col-xs-6
-      ul
-        li = Ahoy::Event.where(name: "Viewed restaurant home page").\
-              where("time>= :date", date: 1.day.ago).where_properties(restaurant_id: @restaurant.id).count
-        li = Ahoy::Event.where(name: "Viewed restaurant home page").\
-              where("time>= :date", date: 1.week.ago).where_properties(restaurant_id: @restaurant.id).count
-        li = Ahoy::Event.where(name: "Viewed restaurant home page").\
-              where("time>= :date", date: 1.month.ago).where_properties(restaurant_id: @restaurant.id).count
-        li = Ahoy::Event.where(name: "Viewed restaurant home page").\
-              where("time>= :date", date: 1.year.ago).where_properties(restaurant_id: @restaurant.id).count 
+    ul.col-xs-12
+      li
+        .when.col-xs-12 Today 
+        .count = Ahoy::Event.where(name: "Viewed restaurant home page").\
+          where("time>= :date", date: 1.day.ago).where_properties(restaurant_id: @restaurant.id).count
+      li 
+        .when.col-xs-12 Week
+        .count = Ahoy::Event.where(name: "Viewed restaurant home page").\
+            where("time>= :date", date: 1.week.ago).where_properties(restaurant_id: @restaurant.id).count
+      li 
+        .when.col-xs-12 Month
+        .count = Ahoy::Event.where(name: "Viewed restaurant home page").\
+            where("time>= :date", date: 1.month.ago).where_properties(restaurant_id: @restaurant.id).count
+      li 
+        .when.col-xs-12 Year
+        .count = Ahoy::Event.where(name: "Viewed restaurant home page").\
+            where("time>= :date", date: 1.year.ago).where_properties(restaurant_id: @restaurant.id).count 
 
-  .col-xs-12
+  .col-xs-12.orders
     h3 Orders in your restaurant
-    .col-xs-6
-      ul
-        li Today
-        li This week
-        li This month
-        li This year
-    .col-xs-6
-      ul
-        li = @restaurant.orders.where("created_at>= :date", date: 1.day.ago).count
-        li = @restaurant.orders.where("created_at>= :date", date: 1.week.ago).count
-        li = @restaurant.orders.where("created_at>= :date", date: 1.month.ago).count
-        li = @restaurant.orders.where("created_at>= :date", date: 1.year.ago).count
+    ul.col-xs-12
+      li
+        .when.col-xs-12 Today
+        .count = @restaurant.orders.where("created_at>= :date", date: 1.day.ago).count
+      li
+        .when.col-xs-12 Week
+        .count = @restaurant.orders.where("created_at>= :date", date: 1.week.ago).count
+      li
+        .when.col-xs-12 Month
+        .count = @restaurant.orders.where("created_at>= :date", date: 1.month.ago).count
+      li
+        .when.col-xs-12 Year
+        .count = @restaurant.orders.where("created_at>= :date", date: 1.year.ago).count
 
