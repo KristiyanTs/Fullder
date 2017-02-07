@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
       respond_to do |format|
         if @order.save
           session[:order_id] = @order.id
-          unless params[:from] == "index"
+          unless params[:from] == "start ordering"
             @order.order_items << OrderItem.new(session[:order_item])
             redirect_to restaurant_path(@order.restaurant, menu: "open") and return
           end

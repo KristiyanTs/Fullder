@@ -11,14 +11,16 @@ module RestaurantsHelper
     night = today.change( hour: 20 )
     tomorrow = today.tomorrow
 
-    if (morning..noon).cover? now
-      name.empty? ? 'Good morning. Would you like to ' + (link_to 'log in', new_user_session_path) + ' before we continue?' : 'Good morning, ' + name
+    if !current_user
+      "Welcome. <br> Please, #{(link_to 'log in', new_user_session_path)} to begin your journey!"
+    elsif (morning..noon).cover? now
+      name.empty? ? 'Good morning!' : 'Good morning, ' + name
     elsif (noon..evening).cover? now
-      name.empty? ? 'Good afternoon. Would you like to ' + (link_to 'log in', new_user_session_path) + ' before we continue?' : 'Good afternoon,' + name
+      name.empty? ? 'Good afternoon!' : 'Good afternoon,' + name
     elsif (evening..night).cover? now
-      name.empty? ? 'Good evening. Would you like to ' + (link_to 'log in', new_user_session_path) + ' before we continue?' : 'Good evening,' + name
+      name.empty? ? 'Good evening!' : 'Good evening,' + name
     elsif (night..tomorrow).cover? now
-      name.empty? ? 'Good night. Would you like to ' + (link_to 'log in', new_user_session_path) + ' before we continue?' : 'Good night,' + name
+      name.empty? ? 'Good night!' : 'Good night,' + name
     end
   end
 
