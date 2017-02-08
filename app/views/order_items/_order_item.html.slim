@@ -1,4 +1,0 @@
-tr id="item-#{order_item.id}"
-  td = order_item.product.name
-  td = formatted_price(order_item.unit_price, order_item.product.restaurant)
-  td = link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash" }

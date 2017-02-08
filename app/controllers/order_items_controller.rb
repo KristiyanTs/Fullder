@@ -24,7 +24,7 @@ class OrderItemsController < ApplicationController
 
     respond_to do |format|
       if @order_item.update(order_item_params)
-        @order_items = current_order.order_items.order(:created_at)
+        @order_items = current_order.order_items.order('created_at DESC')
         format.html { redirect_to cart_path }
         format.json { render json: current_order.subtotal }
         format.js   

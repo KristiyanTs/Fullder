@@ -1,4 +1,4 @@
 container.col-xs-12.col-md-6.col-md-offset-3.container-white
   h3.text-center #{t 'order.order-from'} #{@order.created_at.strftime("%d/%m %H:%M")}
   hr
-  = render partial: 'order_item_row', collection: @order.order_items, as: :item
+  = render partial: 'order_item_row', collection: @order.order_items.order('created_at DESC'), as: :item
