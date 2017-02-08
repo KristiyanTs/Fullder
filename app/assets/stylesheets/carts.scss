@@ -1,35 +1,55 @@
 /* Variables */
 $header-red: rgb(230, 0, 0);
 
-.carts.show{
+.carts.show, .compact-cart{
+  #order-items{
+    padding: 0px;
+  }
   .cart-row{
+    padding: 0px;
     background-color: white;
-    height: 100px;
+    height: 110px;
     margin-top: 10px;
     .item-name{
-      padding: 10px;
+      font-size: 1.4em;
+      padding: 0px 0px 0px 20px;
+      i{
+        font-size: 0.6em;
+      }
     }
     #order_item_quantity{
-      min-width: 72px;
-      margin-top: 10px;
+      min-width: 80px;
+      text-align: left;
+    }
+    .order_item_demands{
+      position: absolute;
+      bottom: -15px;
+      padding: 0px;
+      input{
+        border-radius: 0px;
+      }
     }
   }
 
   .remove-item{
     margin-top: 9px;
-    background-color: rgb(216,0,0);
-    line-height: 100px !important;
-    height: 100px;
-    color: white;
-    text-align: center;
-    font-size: 20px;
+    background-color: white;
+    line-height: 110px !important;
+    height: 110px;
+    color: rgb(216,0,0);
+    font-size: 1.5em;
+  }
+
+  .buy-button{
+    padding: 0px;
+    margin-top: 15px;
   }
 
   .pay-button{
     background-color: rgb(216,0,0);
     color: white;
     border-radius: 0px !important;
-    margin-top: 20px;
+    font-size: 1.5em;
   }
 }
 
@@ -37,9 +57,11 @@ $header-red: rgb(230, 0, 0);
 
 .compact-cart{
   position: fixed !important;
-  margin-top: 15px;
+  padding: 0px !important;
+  top: 60px;
   min-width: 300px;
-  min-height: 600px !important;
+  height: 600px;
+  overflow-y: scroll;
   right: 5%;
   th{
     font-size: 25px;
@@ -59,11 +81,9 @@ $header-red: rgb(230, 0, 0);
     color: white;
   }
   .buy-button{
-    background-color: $header-red;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    left: 0px;
+    position: fixed;
+    top: 660px;
+    padding: 0px;
   }
 }
 

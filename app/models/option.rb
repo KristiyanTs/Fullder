@@ -5,9 +5,9 @@
 #
 #  id         :integer          not null, primary key
 #  group_id   :integer
-#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  price      :decimal(, )      default(0.0), not null
 #
 # Indexes
 #
@@ -26,4 +26,8 @@ class Option < ApplicationRecord
   validates :name, presence: true 
 
   translates :name
+
+  def name_and_price
+    "#{name} + #{ActiveSupport::NumberHelper.number_to_currency(price, locale: group.product.restaurant.country.to_sym)}" 
+  end
 end

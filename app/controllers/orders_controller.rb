@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
 
   def destroy
     current_order.order_items.destroy_all
-    @order_items = current_order.order_items.order('updated_at DESC')
+    @order_items = current_order.order_items.order('updated_at')
   end
 
   def pay
