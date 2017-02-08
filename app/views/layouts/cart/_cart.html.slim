@@ -3,7 +3,7 @@
     h3.col-xs-12.text-center #{t 'cart.cart'}
     #order-items
       = render partial: "carts/order_item", collection: current_order.order_items.order('created_at'), as: :order_item
-    .buy-button
+    .buy-button.col-md-4
       = render partial: 'layouts/cart/buy_button'
   
 

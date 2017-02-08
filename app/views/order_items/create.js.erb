@@ -3,7 +3,7 @@
 <% else %>
   $(".buy-button").html("<%= j render 'layouts/cart/buy_button' %>");
   $(".mobile-cart").html("<a href='/cart'><div class='glyphicon glyphicon-shopping-cart'></div><%=formatted_price(current_order.subtotal, current_order.restaurant)%></a>");
-  $('#order-items').prepend("<%= j render 'carts/order_item', order_item: @order_item %>");
+  $('#order-items').append("<%= j render 'carts/order_item', order_item: @order_item %>");
 <% end %>
 
 

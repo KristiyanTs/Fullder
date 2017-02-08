@@ -33,22 +33,23 @@ $header-red: rgb(230, 0, 0);
 
   .remove-item{
     margin-top: 9px;
-    background-color: rgb(216,0,0);
+    background-color: white;
     line-height: 110px !important;
     height: 110px;
-    color: white;
+    color: rgb(216,0,0);
     font-size: 1.5em;
-    text-align: center;
   }
 
   .buy-button{
     padding: 0px;
+    margin-top: 15px;
   }
+
   .pay-button{
     background-color: rgb(216,0,0);
     color: white;
     border-radius: 0px !important;
-    margin-top: 20px;
+    font-size: 1.5em;
   }
 }
 
@@ -57,9 +58,10 @@ $header-red: rgb(230, 0, 0);
 .compact-cart{
   position: fixed !important;
   padding: 0px !important;
-  margin-top: 15px;
+  top: 60px;
   min-width: 300px;
-  min-height: 600px !important;
+  height: 600px;
+  overflow-y: scroll;
   right: 5%;
   th{
     font-size: 25px;
@@ -79,10 +81,9 @@ $header-red: rgb(230, 0, 0);
     color: white;
   }
   .buy-button{
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    left: 0px;
+    position: fixed;
+    top: 660px;
+    padding: 0px;
   }
 }
 
