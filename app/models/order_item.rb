@@ -58,7 +58,9 @@ class OrderItem < ApplicationRecord
     if persisted?
       self[:unit_price]
     else
-      size_id.nil? ? product.price : product.price + product.sizes.find(size_id).price
+      options_total_price = options.map(&:price).inject(0, &:+) || 0
+      size_total_price = product.sizes.find_by_id(size_id).try(:price) || 0
+      product.price = product.price + options_total_price + size_total_price
     end
   end
 

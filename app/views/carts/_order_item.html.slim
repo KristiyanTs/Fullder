@@ -1,9 +1,10 @@
-.cart-row.col-xs-10.col-md-5.col-md-offset-3 id="item-#{order_item.id}"
+.cart-row.col-xs-10.col-md-10.col-lg-11 id="item-#{order_item.id}"
     = simple_form_for order_item, remote: true, id: "form-#{order_item.id}" do |f|
-      .item-name.col-xs-8.col-md-7 = " #{order_item.product.name} #{order_item.size.try(:name)} "
+      .item-name.col-xs-8.col-md-7 
+        = " #{order_item.product.name} #{order_item.size.try(:name)} <i>#{ order_item.options.map(&:name).join(', ')}</i> ".html_safe
       = f.select :quantity, [["x 1", 1], ["x 2", 2], ["x 3", 3], ["x 4", 4], ["x 5", 5]], { selected: order_item.quantity },
-      onChange: "javascript: $(this).submit();", class: "col-xs-3"
+      onChange: "javascript: $(this).submit();", class: "col-xs-3 pull-right"
       .item-price.col-xs-3.col-md-5 = formatted_price(order_item.unit_price, order_item.product.restaurant) 
       = f.input :demands, label: false, class: "demands-update", input_html: { onchange: "$(this).submit();" },
         placeholder: "#{t 'cart.add-demands'}", wrapper_html: {class: "col-xs-12"}              
-= link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash col-xs-2 col-md-1 remove-item" }
+= link_to "", order_item, {method: :delete, remote: true, class: "glyphicon glyphicon-trash col-xs-2 col-md-2 col-lg-1 remove-item" }

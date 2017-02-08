@@ -11,7 +11,6 @@
 #  phone_number                   :string
 #  country                        :string           default("en-GB")
 #  google_id                      :string
-#  description                    :text
 #  latitude                       :float
 #  longitude                      :float
 #  sells_online                   :boolean
