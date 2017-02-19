@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
         current_order.order_items.update_all(status: 'unready', received_at: Time.current)
         session[:order_id] = nil
         flash[:success] = "Order sent to restaurant."
-        format.js { render 'pay.js.erb'}
+        format.js { render 'orders/pay.js.erb'}
         format.html { redirect_to restaurant_path(@restaurant) }
       else
         flash[:error] = "The requirements are not met."

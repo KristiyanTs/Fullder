@@ -1,7 +1,7 @@
 - if current_order.fulfils_requirements?
 
   = link_to pay_order_path(current_order), class: "btn col-xs-12 pay-button", 
-    remote: (params[:controller] == 'restaurants') , data: {confirm: "Send order to restaurant?"}
+    remote: (controller_name == 'restaurants' ? "true" : "false") , data: {confirm: "Send order to restaurant?"}
       b = formatted_price(current_order.subtotal, current_order.restaurant)
 
 
