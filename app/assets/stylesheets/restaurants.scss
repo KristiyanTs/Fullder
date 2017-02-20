@@ -13,6 +13,9 @@
     }
 
     .table-code{
+      position: relative;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
       margin-top: 8vh;
       height: 70vh;
       background: rgba(0,0,0,0.5);
@@ -25,9 +28,44 @@
       }
       .greeting{
         margin-bottom: 6vh;
+        z-index: 1;
+        text-align: center;
+        transform: translate3d(0, 0, 0);
+        color: white;
+        text-shadow: 0 1px 0 rgba(black, .1);
+        text-indent: .3em;
       }
       #new_order{
         z-index: 1;
+      }
+      .wave {
+        z-index: -10;
+        opacity: .4;
+        position: absolute;
+        top: 3%;
+        left: 50%;
+        background: black;
+        width: 100vh;
+        height: 100vh;
+        margin-left: -50vh;
+        margin-top: -45vh;
+        border-radius: 43%;
+        animation: drift 12000ms infinite linear;
+      }
+
+      .wave.-three {
+        animation: drift 8000ms infinite linear;
+        background: grey;
+      }
+
+      .wave.-two {
+        animation: drift 15000ms infinite linear;
+        opacity: .1;
+        background: white;
+      }
+      @keyframes drift {
+        from { transform: rotate(0deg); }
+        from { transform: rotate(360deg); }
       }
     }
 
@@ -112,13 +150,8 @@
 
   .restaurant-index-button{
     position: relative;
-    margin-top:5px;
-    padding:0px !important;
-    background-color: white;
-    border-top-right-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-    border-top-left-radius: 0px !important;
-    border-bottom-left-radius: 0px !important;
+    padding:0px;
+    border-radius: 0px;
     .restaurant-avatar img{
       width: 100%;
     }
@@ -201,18 +234,17 @@
 
     /* Restaurant index buttons */
     .restaurant-row{
-      padding-left: 8px !important;
-      padding-right: 8px !important;
+      width: 30%;
+      margin-right: 3%;
+      margin-top: 3%;
       .restaurant-row-menu{
         border-right: 0px;
-        width: 100%;
         padding: 10px;
       }
     }
 
     .restaurant-index-button{
       border-bottom: 1px solid rgb(240,240,240) !important;
-      margin-top: 20px;
     }
 
   }
@@ -272,78 +304,4 @@
       padding: 20px;
     }
   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.table-code {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-}
-
-.wave {
-  z-index: -10 !important;
-  opacity: .4;
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  background: black;
-  width: 100vh;
-  height: 100vh;
-  margin-left: -50vh;
-  margin-top: -45vh;
-  border-radius: 43%;
-  animation: drift 12000ms infinite linear;
-}
-
-.wave.-three {
-  animation: drift 8000ms infinite linear;
-  background: grey;
-}
-
-.wave.-two {
-  animation: drift 15000ms infinite linear;
-  opacity: .1;
-  background: white;
-}
-
-.greeting {
-  z-index: 1;
-  text-align: center;
-  transform: translate3d(0, 0, 0);
-  color: white;
-  text-shadow: 0 1px 0 rgba(black, .1);
-  text-indent: .3em;
-}
-@keyframes drift {
-  from { transform: rotate(0deg); }
-  from { transform: rotate(360deg); }
 }

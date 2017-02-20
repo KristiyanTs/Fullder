@@ -56,11 +56,12 @@ $header-red: rgb(230, 0, 0);
 
 
 .compact-cart{
+  box-shadow: 0 10px 20px rgba(black, .3);
   position: fixed !important;
   padding: 0px !important;
   top: 60px;
   min-width: 300px;
-  height: 600px;
+  height: 70vh;
   overflow-y: scroll;
   right: 5%;
   th{
@@ -75,6 +76,7 @@ $header-red: rgb(230, 0, 0);
     margin-bottom: 40px;
   }
   .pay-button{
+    box-shadow: 0 10px 20px rgba(black, .3);
     font-size: 25px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -82,7 +84,7 @@ $header-red: rgb(230, 0, 0);
   }
   .buy-button{
     position: fixed;
-    top: 660px;
+    top: 78vh;
     padding: 0px;
   }
 }

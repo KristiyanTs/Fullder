@@ -28,6 +28,6 @@ class Option < ApplicationRecord
   translates :name
 
   def name_and_price
-    "#{name} + #{ActiveSupport::NumberHelper.number_to_currency(price, locale: group.product.restaurant.country.to_sym)}" 
+    "<b>#{name}</b> <span class='price pull-right'>+ #{ActiveSupport::NumberHelper.number_to_currency(price, locale: group.product.restaurant.country.to_sym)}</span>" 
   end
 end

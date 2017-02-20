@@ -4,4 +4,7 @@
     h4.max-options.text-center #{group.name} (max #{group.maximum.to_s})
     .col-xs-12.option_holder.padding-top-small
       = f.collection_check_boxes :option_ids, group.options, :id, :name_and_price,          
-        item_wrapper_class: "col-xs-12 col-sm-6 col-md-4 col-lg-3 product_option #{group.maximum.to_s}"
+        item_wrapper_class: "col-xs-12 col-sm-6 product_option #{group.maximum.to_s}" do |b|
+        = b.label do
+          = b.text.html_safe
+
