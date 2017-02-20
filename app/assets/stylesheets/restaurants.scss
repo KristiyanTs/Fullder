@@ -5,20 +5,19 @@
   /* Restaurant search */
   #restaurant-finder{
     background: image-url('wallpaper2.jpg') center/cover no-repeat;
-    position: relative;
-    height: 100%;
-    background-color: white;
     padding: 0px;
-
+    height: calc(100vh - 40px);
+    ;
     #restaurant-search{
-      position: relative;
-      height: 100%;
+      margin-top: 7vh;
     }
 
     .table-code{
-      margin-top: 10vh;
-      background-color: rgba(0,0,0,0.3);
-      padding: 3vh 3vw 10vh 3vw;
+      margin-top: 8vh;
+      height: 70vh;
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 20px 30px rgba(black, .3);
+      padding: 3vh 3vw 0vh 3vw;
       color: white;
       a{
         color: white;
@@ -27,20 +26,17 @@
       .greeting{
         margin-bottom: 6vh;
       }
+      #new_order{
+        z-index: 1;
+      }
     }
 
-    .location, #map{
-      margin-top: 10vh;
-      width: 100%;
-      height: 40vh;
-      .share-location{
-        font-size: 2em;
-        height: 100%;
-        width: 100%;
-        background-color: transparent;
-        border: 0px;
-        color: rgb(230,0,0);
-      }
+    .share-location{
+      font-size: 0.8em;
+      background-color: transparent;
+      border: 0px;
+      color: white;
+      text-decoration: underline;
     }
 
     .order_address{
@@ -74,6 +70,10 @@
       }
     }
 
+    form{
+      z-index: 100;
+    }
+
     .btn-default{
       width: 100%;
       border-radius: 0px;
@@ -92,8 +92,8 @@
 
   /* Restaurant index buttons */
   .restaurant-row{
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
     padding-bottom: 15px;
       .restaurant-row-menu{
         font-size: 20px;
@@ -187,7 +187,7 @@
 @media (min-width: 768px) {
   .restaurants.index{
     /* Restaurant search */
-    .location, #map{
+    .location{
       .share-location{
         font-size: 3em;
       }
@@ -201,6 +201,8 @@
 
     /* Restaurant index buttons */
     .restaurant-row{
+      padding-left: 8px !important;
+      padding-right: 8px !important;
       .restaurant-row-menu{
         border-right: 0px;
         width: 100%;
@@ -270,4 +272,78 @@
       padding: 20px;
     }
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.table-code {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave {
+  z-index: -10 !important;
+  opacity: .4;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  background: black;
+  width: 100vh;
+  height: 100vh;
+  margin-left: -50vh;
+  margin-top: -45vh;
+  border-radius: 43%;
+  animation: drift 12000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 8000ms infinite linear;
+  background: grey;
+}
+
+.wave.-two {
+  animation: drift 15000ms infinite linear;
+  opacity: .1;
+  background: white;
+}
+
+.greeting {
+  z-index: 1;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  color: white;
+  text-shadow: 0 1px 0 rgba(black, .1);
+  text-indent: .3em;
+}
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
 }

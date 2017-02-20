@@ -35,7 +35,7 @@ $header-red: rgb(230, 0, 0);
 
 /* General global settings */
 html,body {
-  height: calc(100% + 20px);
+  height: calc(100% + 80px);
   padding-top: 0;
   min-height: 600px;
   margin-top: 25px;
@@ -124,6 +124,9 @@ a, a:active, a:focus {
         font-weight: bold;
       }
     }
+  }
+  .col-xs-12{
+    padding: 0px;
   }
 }
 

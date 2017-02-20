@@ -1,7 +1,11 @@
 .login-options{
+  padding: 0px !important;
   position: relative;
-  margin-bottom: 30px;
+  div{
+    padding: 0px;
+  }
   a{
+    border-radius: 0px;
     font-size: 25px;
     font-weight: bold;
     height: 120px;
@@ -18,7 +22,6 @@
 .omb_btn-google {background: #c32f10; color: white;}
 
 .login-footer{
-  background-color: rgb(240,240,240);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   height: 60px;
@@ -27,13 +30,14 @@
     padding-top: 20px;
     line-height: 60px;
     color: grey;
+    text-decoration: underline;
   }
 }
 
 .login-container{
-  padding-bottom: 20px;
+  margin-top: 15px;
+  padding: 0px !important;
   color: grey;
-  margin-top: 20px;
   border-bottom-right-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
   input{

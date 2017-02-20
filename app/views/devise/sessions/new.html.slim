@@ -1,5 +1,4 @@
 container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
-  h3.text-center Log in via 
   .col-xs-12.login-options
     .col-xs-4.col-sm-4
       = link_to omniauth_authorize_path(:user, :facebook), class: "btn btn-lg btn-block omb_btn-facebook text-center" do
@@ -16,7 +15,7 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
 
 h1.text-center.col-xs-12  OR 
 
-container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
+container.col-xs-10.col-xs-offset-1.col-md-6.col-md-offset-3.login-container
   h3.text-center
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = f.input :email, required: false, autofocus: true, placeholder: "Email", label: false
@@ -33,9 +32,9 @@ container.col-xs-12.col-md-6.col-md-offset-3.container-white.login-container
 = render 'layouts/legal'
 
 .footer.navbar-fixed-bottom
-  h4.col-xs-12.col-md-4 
+  h5.col-xs-12.col-md-4 
     ' By loggind in, you agree to our 
     a data-toggle="modal" data-target="#terms" Terms & Privacy Policy.
-  h4.col-md-4.text-center.hidden-sm.hidden-xs Copyright © Moonhythe 2017
-  h4.col-md-4.text-center.hidden-sm.hidden-xs 
+  h5.col-md-4.text-center.hidden-sm.hidden-xs Copyright © Moonhythe 2017
+  h5.col-md-4.text-center.hidden-sm.hidden-xs 
     a href="http://www.moonhythe.com" moonhythe.com
